@@ -1,0 +1,29 @@
+<div class="header" color="accent">
+  <nav class="navbar navbar-expand-lg second-part">
+    <a routerLink="" class="logoLink">
+      <img src="assets/images/scoutingBaground.png" alt="My TEAM" class="logo" />
+    </a>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a routerLink="login" routerLinkActive="active" class="nav-link">
+          Football
+        </a>
+      </li>
+      <!-- <li class="nav-item">
+        <a href="https://scout.myteambyfrmf.ma/" class="nav-link"> Scouting </a>
+      </li> -->
+      <li class="nav-item">
+        <a routerLink="login-futsal" routerLinkActive="active" class="nav-link">
+          Futsal
+        </a>
+      </li>
+      <li class="nav-item" style="display: none">
+        <a routerLink="signup" routerLinkActive="active" class="nav-link">
+          Creer un compte
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <mat-progress-bar *ngIf="loading" color="primary" mode="indeterminate">
+  </mat-progress-bar>
+</div>

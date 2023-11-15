@@ -1,0 +1,57 @@
+<div class="col-12 mt-4">
+  <div class="row mx-0">
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="col-md-2">
+            <div class="player_prof">
+              <img src="assets/images/profil-default.jpg" width="100%" height="100%" alt="" />
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="text-center">
+            <h4 class="font-weight-bold">{{current_palyer.joueur}} in 22/23</h4>
+            <div class="font-weight-bold">{{current_palyer?.equipe?.nom}} - {{current_palyer?.minutes_played}} minutes
+              at {{current_palyer?.position}} -{{current_palyer?.age}}</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="player_prof">
+            <img
+              src="data:image/jpeg;base64,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"
+              width="100%" height="100%" />
+          </div>
+        </div>
+      </div>
+      <div id="chartContainer" style="width: 100%; height: 500px"></div>
+    </div>
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="col-md-2">
+            <div class="player_prof">
+              <img src="assets/images/profil-default.jpg" width="100%" height="100%" alt="" />
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="text-center">
+            <h4 class="font-weight-bold">{{players_comparison.joueur}} in 22/23</h4>
+            <div class="font-weight-bold">{{players_comparison?.equipe?.nom}} - {{players_comparison?.minutes_played}}
+              minutes at {{players_comparison?.position}} -{{players_comparison?.age}}</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="player_prof">
+            <img
+              src="data:image/jpeg;base64,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"
+              width="100%" height="100%" />
+          </div>
+        </div>
+      </div>
+      <div id="chartContainer2" style="width: 100%; height: 500px"></div>
+    </div>
+
+  </div>
+</div>

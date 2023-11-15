@@ -1,0 +1,143 @@
+<mat-spinner *ngIf="isLoading[0]" style="margin: 0 auto"></mat-spinner>
+<div class="adduser pb-3" *ngIf="!isLoading[0]">
+  <div class="container mt-5">
+    <form #clubForm="ngForm" (submit)="onSave()">
+      <div class="formContainer row">
+        <div class="col-md-2 text-center">
+          <i class="fas fa-user bigIcon"></i>
+        </div>
+        <div class="col-md-5">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Nom :</mat-label>
+            <input matInput name="nom" required [(ngModel)]="club.nom" #nom="ngModel" />
+            <mat-error *ngIf="nom.invalid && nom.touched">
+              Nom n'est pas valide
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Slug :</mat-label>
+            <input matInput name="slug" required [(ngModel)]="club.slug" #slug="ngModel" />
+            <mat-error *ngIf="slug.invalid && slug.touched">
+              Slug n'est pas valide
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Fullname</mat-label>
+            <input matInput name="fullname" type="text" [(ngModel)]="club.fullname" />
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Catégorie d'âge :</mat-label>
+            <mat-select [(ngModel)]="club.categorie" name="categorie" required>
+              <mat-option value="Seniors"> Seniors </mat-option>
+              <mat-option value="U9">
+                U9
+              </mat-option>
+              <mat-option value="U8">
+                U8
+              </mat-option>
+              <mat-option value="U10">
+                U10
+              </mat-option>
+              <mat-option value="U11">
+                U11
+              </mat-option>
+              <mat-option value="U12">
+                U12
+              </mat-option>
+              <mat-option value="U13">
+                U13
+              </mat-option>
+              <mat-option value="U14">
+                U14
+              </mat-option>
+              <mat-option value="U15">
+                U15
+              </mat-option>
+              <mat-option value="U16">
+                U16
+              </mat-option>
+              <mat-option value="U17">
+                U17
+              </mat-option>
+              <mat-option value="U18">
+                U18
+              </mat-option>
+              <mat-option value="U19">
+                U19
+              </mat-option>
+              <mat-option value="U20">
+                U20
+              </mat-option>
+              <mat-option value="U21">
+                U21
+              </mat-option>
+              <mat-option value="U22">
+                U22
+              </mat-option>
+              <mat-option value="U23">
+                U23
+              </mat-option>
+              <mat-option value="U24">
+                U24
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Sexe :</mat-label>
+            <mat-select [(ngModel)]="club.sexe" name="sexe" required>
+              <mat-option value="m">
+                Masculin
+              </mat-option>
+              <mat-option value="f">
+                Feminin
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Sport :</mat-label>
+            <mat-select [(ngModel)]="club.genre" name="genre" required>
+              <mat-option value="football">
+                Football
+              </mat-option>
+              <mat-option value="futsal">
+                Futsal
+              </mat-option>
+              <mat-option value="beachsoccer">
+                Beachsoccer
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Color :</mat-label>
+            <input matInput name="color" type="color" [(ngModel)]="club.color" required />
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Index Sort</mat-label>
+            <input matInput name="index_sort" type="number" [(ngModel)]="club.index_sort" required />
+          </mat-form-field>
+        </div>
+        <div class="col-md-5 logoEquipe ">
+          <div class="imagePreviewContainer">
+            <img [src]="imgURL" (click)="file.click()" class="imagePreview" #imgPreview
+              *ngIf="imgURL != '' && imgURL != null" />
+          </div>
+          <button type="button" mat-raised-button color="primary" style="margin-top: 10px" (click)="file.click()">
+            <i class="fas fa-image mr-2"></i> Logo
+          </button>
+          <input type="file" style="visibility: hidden" #file (change)="onChangeImage($event)" />
+        </div>
+      </div>
+      <div class="spinnerContainer" *ngIf="isLoading[1]">
+        <mat-spinner class="spinner"></mat-spinner>
+      </div>
+      <hr />
+      <div class="fixdedOnSave">
+        <button mat-raised-button color="primary">
+          <i class="fas fa-save mr-2"></i> Enregistrer
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

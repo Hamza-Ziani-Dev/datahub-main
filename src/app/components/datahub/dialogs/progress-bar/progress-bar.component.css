@@ -1,0 +1,79 @@
+.progress2 {
+  border-radius: 30px;
+  background-color: #fff;
+}
+
+.progress-moved {
+  display: 'flex';
+}
+
+.progress-bar2 {
+  height: 14px;
+  border-radius: 30px;
+  transition: 0.4s linear;
+  transition-property: width, background-color;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.progress-moved .progress-bar2 {
+  background-color: #e2c878;
+  animation: progress 5s none;
+}
+
+.value-display {
+  color: #e2c878;
+  font-size: 1.1rem;
+  font-family: "Century Gothic Bold";
+  font-weight: bold;
+  text-align: center;
+}
+
+.icon {
+  color: #e2c878;
+  animation: icon 5s;
+  background-color: transparent;
+  padding-right: 400px;
+  padding-bottom: 20px;
+}
+
+@keyframes icon {
+  0% {
+    opacity: 0.2;
+    text-shadow: 0 0 0 #e2c878;
+  }
+
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 10px #e2c878;
+  }
+}
+
+.progress-bar2 {
+  position: relative;
+  padding-right: 5px;
+  /* Adjust this value to control the width of the right border */
+}
+
+.progress-bar2::before,
+.progress-bar2::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  /* Adjust this value to control the height of the border */
+  background-color: #e2c878;
+  /* Color of the border */
+}
+
+.progress-bar2::before {
+  right: 0px;
+  top: -10px;
+}
+
+.progress-bar2::after {
+  right: 0px;
+  top: -10px;
+  transform: translateY(10px);
+}

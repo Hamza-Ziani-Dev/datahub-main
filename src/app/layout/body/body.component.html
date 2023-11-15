@@ -1,0 +1,6 @@
+<div [ngStyle]="{'width': authStatus ? 'calc(100% - 5rem)' : '100%','margin-left': authStatus ? '5rem' : '0'}"
+  [ngClass]="getBodyClass()">
+  <app-header></app-header>
+  <router-outlet></router-outlet>
+  <!-- <app-footer></app-footer> -->
+</div>

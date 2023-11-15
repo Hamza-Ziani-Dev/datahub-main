@@ -1,0 +1,128 @@
+.login {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: bottom;
+}
+
+.overlayBackground {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    position: absolute;
+}
+
+.overlayBackground img {
+    object-fit: cover;
+    object-position: top;
+    width: 100%;
+    height: 100vh;
+}
+
+.spinnerContainer {
+    z-index: 100;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(23, 23, 23, 0.6);
+}
+
+.spinnerContainer mat-spinner {
+    margin: 290px auto;
+}
+
+.infosForm {
+    width: 100%;
+}
+
+.full-width {
+    width: 97%;
+    margin: 10px 0px;
+}
+
+.loginContainer {
+    background: rgb(255 255 255 / 43%);
+    border-radius: 11px;
+    padding: 50px;
+    position: relative;
+    border-bottom: 2px solid #ffffff;
+}
+
+label {
+    color: rgba(0, 0, 0, 0.54) !important;
+}
+
+.block_login {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 60%;
+    transform: translate(-50%, -50%);
+}
+
+.loginContainer h3 {
+    color: #000;
+}
+
+.loginButton {
+    width: 97%;
+    margin-left: 1.5%;
+    background-color: var(--secondary-color);
+    padding: 4px 0;
+    font-size: 1.2rem;
+    outline: none;
+    border: none;
+}
+
+hr {
+    background: #000;
+}
+
+mat-label {
+    color: #000 !important
+}
+
+.formInput {
+    color: #000 !important;
+}
+
+.loginText {
+    color: var(--secondary-color) !important;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+}
+
+.footerText {
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    z-index: 99;
+}
+
+::ng-deep #login-from .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick,
+::ng-deep #login-from .mat-form-field-appearance-outline .mat-form-field-outline:hover {
+    color: var(--secondary-color) !important;
+    outline-color: var(--secondary-color) !important;
+    border-color: var(--secondary-color) !important;
+}
+
+::ng-deep #login-from .mat-form-field-appearance-outline .mat-form-field-outline {
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+
+.loginButton:hover {
+    background-color: #c29b6e;
+}
+
+.error__message {
+    color: #d42525;
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: center;
+}

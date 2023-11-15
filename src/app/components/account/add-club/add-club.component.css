@@ -1,0 +1,74 @@
+.addPlayer {
+    background: #eeeeee;
+    min-height: 350px;
+}
+
+.addPlayer .container {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.formContainer {
+    background: #ffffff;
+    padding: 25px;
+    margin-bottom: 50px;
+}
+
+.bigIcon {
+    font-size: 110px;
+    color: var(--primary-color);
+}
+
+.addPlayer .container h4 {
+    color: #6e6e6e;
+}
+
+.infosForm {
+    width: 100%;
+}
+
+.full-width {
+    width: 97%;
+}
+
+img.imagePreview {
+    width: 150px;
+    cursor: pointer;
+}
+
+.imagePreviewContainer {
+    height: 160px;
+}
+
+.spinnerContainer {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.logoEquipe {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+
+.logoEquipe>button,
+.fixdedOnSave button {
+    background-color: green;
+
+}
+
+.fixdedOnSave {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0px 1px 7px 0 rgb(31 38 135 / 37%);
+    backdrop-filter: blur(1px);
+    border-radius: 7px;
+}

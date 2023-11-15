@@ -1,0 +1,128 @@
+<div class="container-fluid container-content mx-0 mb-4">
+  <!-- Performence Individuelle -->
+  <div class="recent-container row col-12 col-md-12 mb-4 d-flex justify-content-center align-items-center">
+    <div class="col-12 col-md-6 justify-content-center align-items-start">
+      <div class="recent-content">
+        <div class="recent-title">
+          <div class="d-flex">
+            <i class="fas fa-weight-hanging i-color mr-2"></i>
+            <div class="bold__text mr-1">
+              Recent Performance
+            </div>
+          </div>
+        </div>
+          <div class="table-content">
+            <table class="table-responsive-md">
+              <thead>
+                <tr>
+                  <th class="th-color">Munite</th>
+                  <th class="th-color">Butes</th>
+                  <th class="th-color">xG</th>
+                  <th class="th-color">Assists</th>
+                  <th class="th-color" >Passe <br> réussi %</th>
+                  <th class="th-color">Progression <br> du balle</th>
+                  <th class="th-color">Interceptions </th>
+                  <th class="th-color">Duels <br> Gagnés </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="td-brown text-center">2021</td>
+                  <td class="td-rose text-center">4</td>
+                  <td class="td-brown text-center">2.5</td>
+                  <td class="td-rose text-center">3</td>
+                  <td class="td-brown text-center">60%</td>
+                  <td class="td-rose text-center">5.4</td>
+                  <td class="td-brown text-center">7</td>
+                  <td class="td-rose text-center">70%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+      </div>
+      <div class="offensive">
+        <div class="offensive-title ">
+          <div class="d-flex">
+            <i class="fas fa-weight-hanging i-color mr-2"></i>
+            <div class="bold__text mr-1">
+              Offensive Performance
+            </div>
+          </div>
+        </div>
+        <div class="offensive-content">
+          <div class="chart-scatter1-block1 row mx-0">
+            <div class="row mx-0 col-12 col-md-6">
+                <div id="chart-scatter1"  style="width: 100%; height: 150px"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="deffensive">
+        <div class="deffensive-title ">
+          <div class="d-flex">
+            <i class="fas fa-weight-hanging i-color mr-2"></i>
+            <div class="bold__text mr-1">
+              Deffensive Performance
+            </div>
+          </div>
+        </div>
+        <div class="deffensive-content">
+          <div class="chart-scatter2-block2 row mx-0">
+            <div class="row mx-0 col-12 col-md-6">
+                <div id="chart-scatter2" style="width: 100%; height: 100px"></div>
+            </div>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+    <!-- Chart -->
+    <div class="col-12 col-md-6 justify-content-center align-items-start">
+      <span class="d-flex justify-content-center my-2 ">
+        <ng-container>
+          <select class="radar-select form-select form-select-sm bold__text">
+            <option  selected>Radar Percentilles</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </ng-container>
+        <ng-container>
+          <div  class="ml-2 btn-fw  bold__text" type="button">FW</div>
+        </ng-container>
+        
+      </span>
+      <div class="chart-block row mx-0">
+        <div class="col-11">
+          <div id="radar-percentilles" style="width: 100%; height: 400px"></div>
+        </div>
+        <!-- <div class="chart-block-labels row mx-0 col-12">
+          <div class="mx-2 my-1 p-0 d-flex col-12 col-md-3 justify-content-center align-items-center"
+            *ngFor="let label of chart?.legend; let i = index">
+            <div class="ec-color mr-2" [ngStyle]="{ 'background-color': COLORS[i] }"></div>
+            <div class="ec-label label_chart_name">{{ label }} 1</div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+    <!-- end Chart -->
+  </div>
+    <!-- End Perforfence Individuelle -->
+
+    <!-- analyse les charts -->
+  <div class="analyse-container row col-12 col-md-12 mt-4 mb-10  justify-content-center align-items-center">
+      <div class="chart-presence col-12 col-md-6 justify-content-center align-items-center">
+        <h2>Chart 1</h2>
+      </div>
+      <div class="chart-temps col-12 col-md-6 justify-content-center align-items-center">
+        <h2>Chart 2</h2>
+      </div>
+      <div class="chart-principe col-12 col-md-6 justify-content-center align-items-center">
+        <h2>Chart 3</h2>
+   </div>
+   <div class="chart-souprincipe col-12 col-md-6 justify-content-center align-items-center">
+        <h2>Chart 4</h2>
+   </div>
+  </div>
+  <!-- end analyse les charts -->
+</div>

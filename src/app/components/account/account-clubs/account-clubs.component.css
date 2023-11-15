@@ -1,0 +1,56 @@
+.commentsContainer {
+    background: #ffffff;
+    padding: 60px 20px;
+}
+
+.commentConfig {
+    list-style: none;
+    padding: 0px;
+    text-align: center;
+}
+
+.commentConfig li {
+    display: inline-block;
+    margin: 0px 10px;
+    font-size: 20px;
+    color: #464646;
+}
+
+.title {
+    width: 100%;
+    background: #ffffff;
+    color: #616161;
+    padding: 21px 74px;
+    font-weight: bold;
+}
+
+.title h5 {
+    color: var(--primary-color);
+}
+
+.commentConfig li a {
+    color: #464646;
+}
+
+.add_btn {
+    background-color: var(--primary-color);
+}
+
+.logo {
+    max-width: 100px;
+}
+
+.sexe_f {
+    color: rgb(248 99 250);
+    font-size: 1.3rem;
+}
+
+.sexe_m {
+    color: rgb(99, 182, 250);
+    font-size: 1.3rem;
+}
+
+.color__left {
+    border-radius: 3px;
+    padding-left: 10px;
+}

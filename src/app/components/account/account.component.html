@@ -1,0 +1,22 @@
+<div class="menu"
+  *ngIf="!['hotel','DTR-ADMINISTATEUR', 'DTR-CONTROLLER','RESPONSABLE-CENTRE','SCOUTING-ADMINISTATEUR', 'SCOUTING-CONTROLLER'].includes(user?.role) ">
+  <ul>
+    <li
+      *ngIf="(user != null  &&  (user?.type == 'owner' || user?.role == 'FRMF')) ||  (user != null  &&  user?.type == 'sub_user')">
+      <a routerLink="dashboard" routerLinkActive="active"><i class="far fa-user mr-2"></i> MON COMPTE</a>
+    </li>
+
+    <li
+      *ngIf="user != null && (user?.type == 'owner' || user?.role == 'FRMF') && !['DTR-ADMINISTATEUR', 'DTR-CONTROLLER','RESPONSABLE-CENTRE','SCOUTING-ADMINISTATEUR', 'SCOUTING-CONTROLLER'].includes(user?.role)">
+      <a routerLink="competitions" routerLinkActive="active"><i class="fas fa-trophy mr-2"></i> MES COMPETITIONS</a>
+    </li>
+    <li
+      *ngIf="(user != null  &&  (user?.type == 'owner' || user?.role == 'FRMF')) ||  (user != null  &&  user?.type == 'sub_user')"
+      style="border: none;">
+      <a routerLink="clubs" routerLinkActive="active"><i class="fas fa-paperclip mr-2"></i> MES EQUIPES</a>
+    </li>
+
+  </ul>
+</div>
+
+<router-outlet></router-outlet>

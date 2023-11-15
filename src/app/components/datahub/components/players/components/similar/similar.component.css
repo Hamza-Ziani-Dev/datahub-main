@@ -1,0 +1,350 @@
+.container {
+  margin-top: 100px;
+  position: relative;
+  max-width: 500px;
+  margin: 100px auto;
+}
+
+.slider {
+  position: relative;
+  z-index: 1;
+  height: 8px;
+  margin: 0 -2px 0 2px;
+}
+
+.slider>.track {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 8px;
+  background-color: #cdcdcd;
+}
+
+.rounded__circle {
+  border-radius: 50%;
+  overflow: hidden;
+  width: 40px;
+}
+
+.font-weight-blod {
+  font-family: "Century Gothic Bold";
+  font-weight: bold;
+}
+
+.player__name {
+  font-size: 1.2rem;
+  font-family: "Century Gothic Bold";
+  font-weight: bold;
+}
+
+.img__ply__right {
+  right: 36px;
+  z-index: 1;
+}
+
+.img__ply__left {
+  left: 36px;
+  z-index: 2;
+}
+
+.time__pl {
+  color: var(--secondary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Century Gothic Bold";
+  font-weight: bold;
+}
+
+.block__chart {
+  background: #f1f1f1;
+  border-radius: 13px;
+  border: 2px solid white;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.block__ply {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid rgb(210 210 210);
+  background: linear-gradient(91deg, rgb(20 52 155), rgb(20 52 155), rgb(217 217 218), rgb(217 217 218), rgb(217 217 218), rgb(1 1 1), rgb(1 1 1));
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.player_prof {
+  width: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border: 1px solid white;
+}
+
+.player_profs_ {
+  width: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border: 1px solid white;
+}
+
+.font-size-1-2 {
+  font-size: 1.2rem;
+}
+
+.position {
+  background: var(--secondary-color);
+  border-radius: 5px;
+  color: white;
+  font-family: "Century Gothic Bold";
+  font-weight: bold;
+  padding: 2px 6px;
+  font-size: .8rem;
+  margin: 0 4px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  border: 1px solid white;
+}
+
+.block__value {
+  border-radius: 5px;
+  padding: 5px;
+  flex: 1;
+  background: linear-gradient(2deg, rgb(217 217 217), rgb(248 248 248));
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 5px;
+  height: 45px;
+}
+
+.block__value_dorry {
+  background: linear-gradient(2deg, rgb(208 165 116), rgb(210 171 127));
+}
+
+.slider>.track:before {
+  position: absolute;
+  content: attr(default-min);
+  top: -5px;
+  left: -15px;
+  color: #cdcdcd;
+}
+
+
+.ply-block:nth-child(odd) .score {
+  background-color: #d2d2d2;
+}
+
+.ply-block:nth-child(even) .score {
+  background-color: rgb(241 241 241);
+}
+
+
+
+.ply-block {
+  border-radius: 10px;
+  margin: 15px 0 0 0;
+  border: 1px solid white;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  overflow: hidden;
+}
+
+.slider>.track:after {
+  position: absolute;
+  content: attr(default-max);
+  top: -5px;
+  right: -35px;
+  color: #cdcdcd;
+}
+
+.slider>.range {
+  position: absolute;
+  z-index: 3;
+  left: 0%;
+  right: 0%;
+  top: 0;
+  bottom: 0;
+  border-radius: 8px;
+  background-color: #3561ce;
+}
+
+.slider>.relevant-range {
+  position: absolute;
+  z-index: 2;
+  left: 0%;
+  right: 0%;
+  top: 0;
+  bottom: 0;
+  border-radius: 8px;
+  background-color: #b6cbff;
+}
+
+.slider>.relevant-range:before {
+  position: absolute;
+  content: attr(relevant-min);
+  top: 15px;
+  left: -10px;
+  color: #b6cbff;
+}
+
+.slider>.relevant-range:after {
+  position: absolute;
+  content: attr(relevant-max);
+  top: 15px;
+  right: -10px;
+  color: #b6cbff;
+}
+
+.slider>.old-range {
+  position: absolute;
+  z-index: 2;
+  left: 0%;
+  right: 0%;
+  top: 0;
+  bottom: 0;
+}
+
+.slider>.old-range:before {
+  position: absolute;
+  content: attr(old-min);
+  border-left: 1px solid #dedede;
+  height: 60px;
+  bottom: 0px;
+  color: #dedede;
+}
+
+.slider>.old-range:after {
+  position: absolute;
+  content: attr(old-max);
+  border-right: 1px solid #dedede;
+  padding-top: 40px;
+  right: 0px;
+  color: #dedede;
+}
+
+.slider>.thumb {
+  position: absolute;
+  z-index: 3;
+  width: 20px;
+  height: 20px;
+  background-color: #3561ce;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(98, 0, 238, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.slider>.thumb.left {
+  left: 0%;
+  transform: translate(-10px, -6px);
+}
+
+.slider>.thumb.right {
+  right: 0%;
+  transform: translate(10px, -6px);
+}
+
+.slider>.thumb.left:before {
+  position: absolute;
+  content: attr(data-min);
+  top: -20px;
+  left: -5px;
+  color: #3561ce;
+}
+
+.slider>.thumb.right:before {
+  position: absolute;
+  content: attr(data-max);
+  top: -20px;
+  left: -5px;
+  color: #3561ce;
+}
+
+input[type="range"] {
+  position: absolute;
+  pointer-events: none;
+  -webkit-appearance: none;
+  z-index: 2;
+  height: 10px;
+  width: 100%;
+  opacity: 0;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  pointer-events: all;
+  width: 20px;
+  height: 20px;
+  border-radius: 0;
+  background-color: red;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+  pointer-events: all;
+  width: 20px;
+  height: 20px;
+  border-radius: 0;
+  background-color: red;
+  -moz-appearance: none;
+  cursor: pointer;
+}
+
+.similar-row .odd {
+  background-color: #e5e5e5;
+}
+
+.similar-row .even {
+  background-color: white;
+}
+
+
+
+
+.example-h2 {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.example-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+}
+
+.example-margin {
+  margin: 8px;
+}
+
+.example-width {
+  max-width: 180px;
+  width: 100%;
+}
+
+.mat-mdc-slider {
+  max-width: 300px;
+  width: 100%;
+}
+
+.mat-mdc-card+.mat-mdc-card {
+  margin-top: 8px;
+}
+
+.example-result-card h2 {
+  margin: 0 8px;
+}
+
+.example-label-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 10px 0;
+  max-width: 284px;
+}
+
+.example-result-card .example-value-label {
+  font-weight: 600;
+}

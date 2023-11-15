@@ -1,0 +1,48 @@
+# Node modules
+node_modules
+./my-team
+# Compiled output
+dist
+build
+tmp
+
+# Logs
+logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Dependency lock files
+# package-lock.json
+yarn.lock
+
+# Environment variables
+.env.local
+.env.production.local
+
+# IDE / editor files
+.idea
+.vscode
+*.iml
+*.ipr
+*.iws
+*.bak
+
+# TypeScript generated files
+*.js
+*.js.map
+*.d.ts
+
+# Test files
+test/**/*.js
+
+# Coverage reports
+coverage
+.nyc_output
+
+# git remote urls
+.git-remote
+*.environment.ts
+*.environment.prod.ts

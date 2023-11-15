@@ -1,0 +1,25 @@
+.progress-bar-container {
+  background-color: #eee;
+}
+
+.progress-bar.green {
+  background-color: green;
+}
+
+.progress-bar.yellow {
+  background-color: yellow;
+}
+
+.progress-bar.red {
+  background-color: red;
+}
+
+.content-style {
+  z-index: 3000;
+  display: flex;
+  height: 100vh;
+  padding: 10px 0 0 0;
+  background: linear-gradient(-165deg, var(--primary-linear-gradient-one-color), var(--primary-linear-gradient-two-color));
+  justify-content: center;
+  align-items: center;
+}

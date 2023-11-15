@@ -1,0 +1,12 @@
+::ng-deep .custom-snackbar-error {
+    background: #b7312c !important;
+}
+::ng-deep .custom-snackbar-info {
+    background: #37AAC1 !important;
+}
+::ng-deep .custom-snackbar-success {
+    background: #61BDAC !important;
+}
+::ng-deep .custom-snackbar-warning {
+    background: #E57655  !important;
+}

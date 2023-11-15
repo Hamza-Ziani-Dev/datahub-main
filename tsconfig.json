@@ -1,0 +1,39 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "module": "es2015",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    // "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "paths": {
+      "exceljs": [
+        "node_modules/exceljs/dist/exceljs.min"
+      ],
+      "signature_pad": [
+        "node_modules/signature_pad/dist/signature_pad.js"
+      ],
+      "@ng-plus/signature-pad": [
+        "node_modules/@ng-plus/signature-pad"
+      ],
+    }
+  },
+  "angularCompilerOptions": {
+    "enableIvy": true
+  }
+}

@@ -1,0 +1,230 @@
+const chartContainer =
+      this.elementRef.nativeElement.querySelector("#chartContainer");
+    const myChart = echarts.init(chartContainer);
+    const chartContainer2 =
+      this.elementRef.nativeElement.querySelector("#chartContainer2");
+    const myChart2 = echarts.init(chartContainer2);
+
+    var option;
+    // Sample data
+    const data = [
+      { name: "Category 1", value: 335, itemStyle: { color: "red" } },
+      { name: "Category 2", value: 310, itemStyle: { color: "#d0a675" } },
+      { name: "Category 3", value: 234, itemStyle: { color: "yellow" } },
+      { name: "Category 4", value: 135, itemStyle: { color: "yellow" } },
+    ];
+
+    // Sort the data by value in descending order
+    data.sort((a, b) => b.value - a.value);
+
+    // Limit the number of slices displayed (e.g., top 3 slices)
+    const maxSlices = 3;
+    const topSlices = data.slice(0, maxSlices);
+
+    // Sum the values of remaining slices to create an "Other" category
+    const otherValue = data
+      .slice(maxSlices)
+      .reduce((total, slice) => total + slice.value, 0);
+
+    // Create a new data array with the top slices and the "Other" slice
+    const newData = [
+      ...topSlices,
+      { name: "Other", value: otherValue, itemStyle: { color: "yellow" } },
+    ];
+    option = {
+      // legend: { top: "bottom" },
+      tooltip: {
+        trigger: "item",
+        formatter: "{a} <br/>{b}: {c}",
+      },
+      series: [
+        {
+          name: "",
+          type: "pie",
+          radius: [50, 250],
+          center: ["50%", "50%"],
+          roseType: "area",
+          itemStyle: {
+            borderColor: "white", // Set the border color
+            borderWidth: 4, // Set the border width
+          },
+
+          data: newData.map((item) => ({
+            name: item.name,
+            itemStyle: item.itemStyle,
+            value: item.value,
+            label: {
+              formatter: "{b}: {c}", // Display both name and value
+            },
+          })),
+        },
+      ],
+    };
+    console.log(
+      JSON.stringify(
+        newData.map((item) => ({
+          name: item.name,
+          itemStyle: item.itemStyle,
+          value: item.value,
+          label: {
+            formatter: "{b}: {c}", // Display both name and value
+          },
+        }))
+      )
+    );
+    // option = {
+    //   tooltip: {},
+    //   angleAxis: {
+    //     type: "category",
+    //     data: ["Category A", "Category B", "Category C", "Category D"],
+    //     min: 0,
+    //     max: 360,
+    //     interval: 30,
+    //     clockwise: false,
+    //     startAngle: 45,
+    //   },
+    //   radiusAxis: {
+    //     min: 0,
+    //     max: 10,
+    //     interval: 2,
+    //   },
+    //   polar: {},
+    //   series: [
+    //     {
+    //       type: "bar",
+    //       name: "A",
+    //       data: [
+    //         { value: 30, itemStyle: { color: "#FF5733" } }, // Custom color for the first data item
+    //         { value: 40, itemStyle: { color: "#FF5733" } }, // Custom color for the second data item
+    //         { value: 40, itemStyle: { color: "#FF5733" } }, // Custom color for the second data item
+    //         { value: 40, itemStyle: { color: "#FF5733" } }, // Custom color for the second data item
+    //         { value: 20, itemStyle: { color: "#8A2BE2" } }, // Custom color for the third data item
+    //         { value: 50, itemStyle: { color: "#8A2BE2" } }, // Custom color for the fourth data item
+    //       ],
+    //       coordinateSystem: "polar",
+    //       stack: "a",
+    //       showSymbol: false,
+    //       emphasis: {
+    //         focus: "series",
+    //       },
+    //       barWidth: "95%",
+    //       barGap: "10%",
+    //     },
+    //     {
+    //       type: "line",
+    //       data: [
+    //         { value: 40, itemStyle: { color: "#FF5733" } }, // Custom color for the first data item
+    //         { value: 50, itemStyle: { color: "#FF5733" } }, // Custom color for the second data item
+    //         { value: 50, itemStyle: { color: "#FF5733" } }, // Custom color for the second data item
+    //         { value: 50, itemStyle: { color: "#FF5733" } }, // Custom color for the second data item
+    //         { value: 30, itemStyle: { color: "#8A2BE2" } }, // Custom color for the third data item
+    //         { value: 60, itemStyle: { color: "transparent" } }, // Custom color for the fourth data item
+    //       ],
+    //       coordinateSystem: "polar",
+    //       name: "C",
+    //       stack: "a",
+    //       showSymbol: false,
+    //       emphasis: {
+    //         focus: "series",
+    //       },
+    //     },
+    //   ],
+    //   legend: {
+    //     show: false,
+    //   },
+    // };
+    // option = {
+    //   title: {
+    //     text: "Comparison for Y. Jabrane and M. Hrimat",
+    //   },
+    //   tooltip: {
+    //     trigger: "item",
+    //   },
+    //   areaStyle: {
+    //     color: "black",
+    //   },
+    //   legend: {
+    //     data: ["Y. Jabrane", "M. Hrimat"],
+    //     left: "right",
+    //   },
+    //   radar: {
+    //     indicator: [
+    //       {
+    //         name: "Passes précises, %",
+    //         max: 96.3,
+    //       },
+    //       {
+    //         name: "Passes progressives par 90",
+    //         max: 12.87,
+    //       },
+    //       {
+    //         name: "xA par 90",
+    //         max: 0.66,
+    //       },
+    //       {
+    //         name: "Dribbles réussis par 90",
+    //         max: 5.89,
+    //       },
+    //       {
+    //         name: "Fautes subies par 90",
+    //         max: 4.53,
+    //       },
+    //       {
+    //         name: "Interceptions PAdj",
+    //         max: 17.14,
+    //       },
+    //       {
+    //         name: "Courses progressives par 90",
+    //         max: 5.25,
+    //       },
+    //     ],
+    //   },
+    //   series: [
+    //     {
+    //       name: "Player Comparison",
+    //       type: "radar",
+    //       data: [
+    //         {
+    //           value: [88.19, 10.11, 0.02, 0.46, 1.12, 7.61, 0.88],
+    //           name: "Y. Jabrane",
+    //           areaStyle: {
+    //             color: "yellow",
+    //           },
+    //         },
+    //         {
+    //           value: [90.58, 9.03, 0.04, 0.99, 1.39, 6.54, 0.6],
+    //           name: "M. Hrimat",
+    //           areaStyle: {
+    //             color: "red",
+    //           },
+    //         },
+    //       ],
+    //       symbol: "rect",
+    //       symbolSize: 12,
+    //       label: {
+    //         show: true,
+    //         formatter: function (params) {
+    //           return params.value;
+    //         },
+    //       },
+    //     },
+    //   ],
+    // };
+    let option_bar = {
+      xAxis: {
+        type: "category",
+        data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+      },
+      yAxis: {
+        type: "value",
+      },
+      series: [
+        {
+          data: [120, 200, 150, 80, 70, 110, 130],
+          type: "bar",
+        },
+      ],
+    };
+    myChart.setOption(option);
+    myChart2.setOption(option_bar);
+    // this.scoutter();

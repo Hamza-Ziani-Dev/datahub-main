@@ -1,0 +1,239 @@
+.commentsContainer {
+    background: #ffffff;
+    padding: 60px 20px;
+}
+
+.commentConfig {
+    list-style: none;
+    padding: 0px;
+    text-align: center;
+}
+
+.commentConfig li {
+    display: inline-block;
+    margin: 0px 10px;
+    font-size: 20px;
+    color: #464646;
+}
+
+.commentConfig li a {
+    color: #464646;
+}
+
+.myteam {
+    min-height: 370px;
+    background: #eeeeee;
+}
+
+.title {
+    width: 100%;
+    background: #ffffff;
+    color: #616161;
+    padding: 21px 74px;
+    font-weight: bold;
+}
+
+.title h5 {
+    color: var(--primary-color);
+}
+
+.add_btn {
+    background-color: var(--primary-color);
+}
+
+.tableContainer {
+    background: #ffffff;
+    margin-bottom: 60px;
+    padding: 20px;
+}
+
+table.playersTable thead {
+    color: #b5b5b5;
+}
+
+table.playersTable thead i {
+    font-size: 27px;
+}
+
+table.playersTable thead {
+    text-align: center;
+    border-bottom: 1px solid #c5c5c5;
+}
+
+table.playersTable thead img {
+    height: 31px;
+}
+
+table.playersTable thead th {
+    width: 7%;
+}
+
+td.playerHeader {
+    width: 30%;
+}
+
+table.playersTable tbody tr td {
+    text-align: center;
+}
+
+th {
+    border-bottom: none !important;
+}
+
+td.identity {
+    text-align: left !important;
+}
+
+table.playersTable tbody tr td {
+    text-align: center;
+}
+
+.post {
+    background: #2f2f2f;
+    color: #ffffff;
+    padding: 0px 10px 5px 13px;
+    margin: 0px !important;
+    font-size: 20px;
+    border-radius: 10%;
+    display: inline-block;
+    line-height: 35px;
+}
+
+.playerLink {
+    color: #202020;
+}
+
+.playerImage {
+    width: 38px;
+    height: 38px;
+    margin: -9px 5px;
+    border-radius: 50%;
+    background-size: cover !important;
+    line-height: 35px;
+    background-position: center !important;
+}
+
+.tableTrainings {
+    width: 100%;
+}
+
+th {
+    width: 28%;
+}
+
+.optionsTh {
+    width: 10%;
+}
+
+.edit-event-container {
+    width: calc(100% - 48px);
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 48px;
+    background: rgba(0, 0, 0, 0.6509803921568628);
+    z-index: 1000;
+}
+
+.edit-event-box {
+    width: 86%;
+    margin-left: 7%;
+    background: #fff;
+    margin-top: 25px;
+    height: auto;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.evalutionList {
+    list-style: none;
+    padding: 0px;
+}
+
+.evalutionList li {
+    display: inline-block;
+    margin: 0px 5px;
+}
+
+.edit-event-box h6 {
+    font-weight: 600;
+    color: #353535;
+}
+
+.full-width {
+    width: 100%;
+}
+
+label {
+    font-size: 13px;
+    color: #949494;
+}
+
+.edit-form {
+    height: 57%;
+    overflow-y: scroll;
+}
+
+.event-rooms-table {
+    width: 79%;
+}
+
+.event-rooms-table td {
+    width: 25%;
+    text-align: center;
+}
+
+.actions-td i {
+    cursor: pointer;
+}
+
+.event-titles {
+    width: 30%;
+    font-size: 18px;
+    font-weight: 600;
+    color: #525252;
+    padding: 14px 0px;
+}
+
+.events-table {
+    width: 100%;
+}
+
+.show-event-actions {
+    padding: 10px;
+}
+
+@media(max-width: 1024px) {
+    .emailButtonTd {
+        display: none;
+    }
+}
+
+@media(max-width: 991px) {
+    .edit-event-container {
+        left: 0px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .emailButtonTd,
+    .post,
+    .emailTd,
+    .mobileHeader {
+        display: none;
+    }
+}
+
+@media (max-width: 450px) {
+
+    .statisques,
+    .iconicHeaders {
+        display: none;
+    }
+
+    .post {
+        display: block
+    }
+}

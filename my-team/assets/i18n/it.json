@@ -1,0 +1,30 @@
+{
+    "HEADER": {
+        "GREETING": "Buongiorno",
+        "SEASON": "Stagione",
+        "ACCOUNT": "IL MIO ACCOUNT",
+        "CONTACT": "CONTATTACI",
+        "DIRECTOR": "President",
+        "ENTRAINEUR": "Entraineur",
+        "EXERCISE_SHEET": "FOGLI DI ESERCIZIO",
+        "ANALYSEVIDEO": "Analyse Video",
+        "ENTRAINEURADJOINT": "Entraineur-adjoint",
+        "MEDECIN": "Médecin",
+        "ATHLETE": "Performance",
+        "PREPARATEURPHYSIQUE": "Préparateur Physique",
+        "HOME": "ACCOGLIENZA",
+        "EFFECTIVE": "EFFICACE",
+        "MAIL": "MAIL",
+        "MATCH": "INCONTRO",
+        "TRAINING": "Allenamento",
+        "STATS": "STATISTICHE",
+        "PHYSICAL": "FISICO",
+        "MEDICAL": "MEDICO",
+        "CALENDAR": "CALENDARIO",
+        "ADMINISTRATIVE": "AMMINISTRATIVO",
+        "CENTER_LIFE": "VITA AL CENTRO",
+        "STAGES": "STAGES",
+        "DATA_EXPORT": "DATA EXPORT",
+        "SIGN_OUT": "DISCONNESSIONE"
+    }
+}

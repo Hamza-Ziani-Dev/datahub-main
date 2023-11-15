@@ -1,0 +1,16 @@
+<div class="content-style">
+  <div  *ngIf="error == false" style="
+  display: flex;  align-items: center; flex-direction: column-reverse;
+  ">
+    <p  *ngIf="progressType == 1" style="font-weight: bold; color: #ffffff; font-size: 1.5rem;" >{{progress}}%</p>
+    <img width="150px" src="assets/images/scoutingBackgroundWhite.png" alt=""  >
+    <span class="one" *ngIf="progressType == 0">.</span><span class="two"
+     *ngIf="progressType == 0">.</span><span class="three" *ngIf="progressType == 0">.</span>
+
+  </div>
+  <div *ngIf="error" style="
+  display: flex;  align-items: center; flex-direction: column-reverse;
+  ">
+    <button (click)="addElemToParentArray($event)" style="font-weight: bold; color: #ffffff;" type="button" class="btn btn-info" ><i class="fas fa-exclamation-triangle"></i> {{ms_error}}</button>
+  </div>
+</div>

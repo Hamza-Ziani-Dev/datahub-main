@@ -1,0 +1,3 @@
+export class Staff {
+    constructor(public role: string, public nom: string, public prenom: string, public adresse: string, public email: string, public mobile: string, public fix: string, public adresse_etrange: string, public pere: string, public fonction_pere: string, public mere: string, public mere_fonction: string, public contact_urgence: string, public contact_urgence_tele: string, public nomber_freres: string) {}
+}

@@ -1,0 +1,272 @@
+@import "../node_modules/ng-pick-datetime/assets/style/picker.min.css";
+@import '../node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min';
+@import '../node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min';
+
+html,
+body {
+  height: 100%;
+}
+
+/* FRMF */
+:root {
+  --primary-color: #155928;
+  --primary-1-color: #353232;
+  --primary-linear-gradient-one-color: #1e4c29;
+  --primary-linear-gradient-two-color: #0a1d19;
+  --secondary-color: #d0a576;
+  --primary-myteam-color: #2fa87f;
+  --secondary-myteam-color: #fff;
+  --bg-dashboard-color: #155928;
+}
+
+
+/* Century Gothic */
+@font-face {
+  font-family: "Century Gothic";
+  src: local("Century Gothic"), local("CenturyGothic"), url('./assets/fonts/CenturyGothic/CenturyGothic.ttf') format("truetype");
+}
+
+@font-face {
+  font-family: "Century Gothic Bold";
+  src: local("Century Gothic Bold"), url('./assets/fonts/CenturyGothic/GOTHICB0.ttf') format("truetype");
+}
+
+@font-face {
+  font-family: "Century Gothic Regular";
+  src: local("Century Gothic Regular"), url('./assets/fonts/CenturyGothic/GOTHIC.ttf') format("truetype");
+}
+
+@font-face {
+  font-family: "Century Gothic Regular TTF";
+  src: local("Century Gothic Regular TTF"), url('./assets/fonts/CenturyGothic/Century Gothic.ttf') format("truetype");
+}
+
+@font-face {
+  font-family: "Century Gothic Bold TTF";
+  src: local("Century Gothic Bold TTF"), url('./assets/fonts/CenturyGothic/gothicb.ttf') format("truetype");
+}
+
+/* PT Sans */
+@font-face {
+  font-family: "PT Sans";
+  src: local("PT Sans"), url('./assets/fonts/PT_Sans/PTSans-Bold.ttf') format("truetype");
+}
+
+@font-face {
+  font-family: "PT Sans";
+  src: local("PT Sans"), url('./assets/fonts/PT_Sans/PTSans-BoldItalic.ttf') format("truetype");
+}
+
+@font-face {
+  font-family: "PT Sans";
+  src: local("PT Sans"), url('./assets/fonts/PT_Sans/PTSans-Italic.ttf') format("truetype");
+}
+
+@font-face {
+  font-family: "PT Sans";
+  src: local("PT Sans"), url('./assets/fonts/PT_Sans/PTSans-Regular.ttf') format("truetype");
+}
+
+body {
+  margin: 0;
+  font-family: 'PT Sans', sans-serif !important;
+  /* For cross-browser font fallback */
+}
+
+/* Additional styles for other elements can be added below */
+
+
+
+.fc-button-primary {
+  color: #fff;
+  background-color: linear-gradient(360deg, #0e1420, #17294c) !important;
+  border-color: #2C3E50;
+}
+
+.fc-button-primary:not(:disabled):active,
+.fc-button-primary:not(:disabled).fc-button-active {
+  color: #fff;
+  background-color: linear-gradient(360deg, #0e1420, #17294c) !important;
+  border-color: #151e27;
+}
+
+.fc-button-primary:disabled {
+  color: #fff;
+  background-color: linear-gradient(360deg, #0e1420, #17294c) !important;
+  border-color: #2C3E50;
+}
+
+.fc-toolbar h2 {
+  text-transform: uppercase !important;
+}
+
+.fc-widget-content .fc-scroller {
+  height: auto !important;
+}
+
+.overflowContainer {
+  left: 48px;
+  width: calc(100% - 48px);
+  height: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.ficheHeader {
+  position: relative;
+  background: linear-gradient(-165deg, var(--primary-linear-gradient-one-color), var(--primary-linear-gradient-two-color));
+  padding: 3px 19px;
+  color: #2196f3;
+  height: 10%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.FicheTitle {
+  font-size: 23px;
+  color: white;
+  text-align: center;
+  align-self: center;
+}
+
+.paginate_button.current,
+.paginate_button.current:hover {
+  background: #2196f3 !important;
+  color: #ffffff !important;
+  border-radius: 50% !important;
+  border: none !important;
+}
+
+.close {
+  cursor: pointer;
+  align-self: center;
+  color: #E9E9E9;
+  position: absolute;
+  right: 25px;
+  opacity: 1;
+}
+
+@media(max-width: 991px) {
+  .overflowContainer {
+    left: 0px;
+    width: 100%;
+  }
+}
+
+@media(max-width: 991px) and (min-width: 930px) {
+  .container {
+    max-width: 926px !important;
+  }
+}
+
+::-webkit-scrollbar {
+  height: .5rem;
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  /* background: initial; */
+  background-color: transparent;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb {
+
+  /* border-radius: 10px; */
+
+  background-color: var(--secondary-color);
+  border-color: rgba(255, 255, 255, var(1));
+  border-radius: 9999px;
+  border-width: 1px;
+}
+
+
+.A4-h {
+  height: 1123px;
+}
+
+.A4-w {
+  width: 794px;
+}
+
+
+
+.loading-dots {
+  display: flex;
+}
+
+.loading-dots .dot {
+  position: relative;
+  width: 1em;
+  height: 1em;
+  margin: 0.8em;
+  border-radius: 50%;
+}
+
+.loading-dots .dot::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  border-radius: inherit;
+  animation: wave 2s ease-out infinite;
+}
+
+
+.loading-dots .dot:nth-child(1) {
+  background: var(--secondary-color);
+}
+
+.loading-dots .dot:nth-child(1)::before {
+  animation-delay: 0.2s;
+}
+
+.loading-dots .dot:nth-child(2) {
+  background: var(--secondary-color);
+}
+
+.loading-dots .dot:nth-child(2)::before {
+  animation-delay: 0.4s;
+}
+
+.loading-dots .dot:nth-child(3) {
+  background: var(--secondary-color);
+}
+
+.loading-dots .dot:nth-child(3)::before {
+  animation-delay: 0.6s;
+}
+
+.loading-dots .dot:nth-child(4) {
+  background: var(--secondary-color);
+}
+
+.loading-dots .dot:nth-child(4)::before {
+  animation-delay: 0.8s;
+}
+
+.loading-dots .dot:nth-child(5) {
+  background: #e7d2ba;
+}
+
+.loading-dots .dot:nth-child(5)::before {
+  animation-delay: 1s;
+}
+
+@keyframes wave {
+
+  50%,
+  75% {
+    transform: scale(2.5);
+  }
+
+  80%,
+  100% {
+    opacity: 0;
+  }
+}

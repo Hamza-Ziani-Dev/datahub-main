@@ -1,0 +1,60 @@
+<div class="login" id="login-from">
+    <div class="overlayBackground">
+        <img [src]=" envirement == 'pro' ? 'assets/images/myTeam_baground_pro.png' : 'assets/images/myTeam_baground.png'"
+            alt="">
+    </div>
+    <div class="spinnerContainer" *ngIf="isLoading">
+        <mat-spinner class="spinner"></mat-spinner>
+    </div>
+    <div class="block_login justify-content-center">
+        <div class="d-flex justify-content-center w-100">
+            <div class="loginContainer col-md-6">
+                <!-- <h3>Scouting</h3> -->
+                <!-- <div class="w-100 d-flex justify-content-center align-items-center">
+                    <div style="transform: translateX(-15px)" class="d-flex justify-content-between align-items-center">
+                        <div class="mb-3" style="width: 150px">
+                            <img src="assets/images/scoutingBaground.png" alt="My TEAM" width="100%" />
+                        </div>
+                    </div>
+                </div> -->
+                <form (submit)="onLogin()" #loginForm="ngForm" class="loginForm">
+                    <mat-form-field class="form-group w-100" appearance="outline">
+                        <mat-label>Email :</mat-label>
+                        <input matInput class="formInput" ngModel email required name="email" #email="ngModel" />
+                        <mat-error *ngIf="email.invalid && email.touched">
+                            Email n'est pas valide
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="form-group w-100" appearance="outline">
+                        <mat-label>Mot de passe :</mat-label>
+                        <div class="d-flex justify-content-between align-items-center ">
+                            <input [type]="typePassword ? 'password' : 'text'" matInput class="formInput" ngModel
+                                required name="password" #password="ngModel" />
+                            <div role="button">
+                                <i (click)="typePassword = !typePassword " class="fas "
+                                    [ngClass]="{'fa-eye': typePassword , 'fa-eye-slash' : !typePassword }"
+                                    style="color:#5e5d5c;"></i>
+                            </div>
+                        </div>
+                        <mat-error *ngIf="password.invalid && password.touched">
+                            Mot de passe n'est pas valide
+                        </mat-error>
+                    </mat-form-field>
+                    <button mat-raised-button class="loginButton" type="submit" color="primary">
+                        Se Connecter
+                    </button>
+                    <div class="error__message " *ngIf="errorMessage !== '' && !isLoading  "><i
+                            class="fas fa-exclamation-circle mr-2"></i><small>{{ errorMessage | uppercase}}
+                        </small>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- <div class="footerText d-flex mt-2 justify-content-between align-items-center">
+            <div style="width: 30px">
+                <img src="assets/images/drapeau_marocco.png" alt="" width="100%" />
+            </div>
+            <div>#MadelnMorocco</div>
+        </div> -->
+    </div>
+</div>

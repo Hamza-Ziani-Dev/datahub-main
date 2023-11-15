@@ -1,0 +1,283 @@
+::ng-deep .mat-dialog-container {
+  border-bottom: 3px solid var(--secondary-color) !important;
+}
+
+.image__preview>img {
+  object-fit: cover;
+  height: 100px;
+}
+
+.image__preview {
+  width: 105px;
+  overflow: hidden;
+  border: 2px solid var(--secondary-color);
+  border-radius: 50%;
+}
+
+/* .block__clubs {
+  line-height: 0 !important;
+} */
+
+.img__club {
+  width: 36px;
+  /* border-radius: 50%; */
+  overflow: hidden;
+  height: 36px;
+}
+
+
+
+.children_selected {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #d09a60;
+  margin: 2px;
+  padding: 2px 4px 1px 8px;
+  border: 1px solid white;
+  border-radius: 4px;
+  box-shadow: rgb(50 50 93 / 25%) 0px 2px 5px -1px, rgb(0 0 0 / 30%) 0px 1px 3px -1px;
+  color: white;
+  font-size: .9rem;
+
+}
+
+.children_selected:hover {
+  background-color: var(--secondary-color);
+}
+
+.menu {
+  width: 100%;
+  background: linear-gradient(-165deg, var(--primary-linear-gradient-one-color), var(--primary-linear-gradient-two-color));
+  color: #ffffff;
+  /* padding: 21px 74px; */
+  padding: 10px 40px;
+  border-bottom-right-radius: 50px;
+  border-bottom-left-radius: 50px;
+  /* border-bottom: 4px solid var(--secondary-color); */
+}
+
+.menu .logo {
+  width: 30px;
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0px;
+  margin-bottom: 0px !important;
+}
+
+.menu ul li {
+  display: inline-block;
+  padding: 0px 14px;
+  /* border-right: 2px solid #ffffff; */
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.menu ul li svg {
+  fill: white;
+  width: 30px;
+}
+
+.menu ul li .active svg {
+  fill: var(--secondary-color) !important;
+}
+
+.menu ul li a {
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: bold !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.active {
+  font-weight: bold !important;
+  color: var(--secondary-color) !important;
+}
+
+
+
+.menu ul>li:last-child {
+  border: none !important;
+}
+
+.menu ul>li>a:hover {
+  text-decoration: none !important;
+
+  color: #ebd6be !important;
+}
+
+
+@media (max-width : 768px) {
+  .menu {
+    padding: 21px 0 !important;
+  }
+
+  .menu ul>li {
+    border: none !important;
+    padding: 5px 14px;
+  }
+}
+
+.search__div__clubs {
+  background: white;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  position: sticky;
+  top: 0;
+  left: 0;
+  background: white;
+}
+
+.search__clubs {
+  font-size: .7rem;
+  margin: 10px 12px;
+  width: 92%;
+}
+
+.actions_block {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  transform: translateY(24px);
+}
+
+.btn_save {
+  background-color: var(--primary-color);
+  color: white;
+  outline: none;
+}
+
+.btn_cancel {
+  outline: none;
+  background-color: #efeded;
+}
+
+.data-hub-image {
+  background: url('../../../../../assets/images/bg-image-player.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.image_player {
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid white;
+  width: 200px;
+}
+
+.nbr_maillot {
+  font-size: 2.8rem;
+}
+
+.name_player {
+  font-size: 1.2rem;
+}
+
+.value_pl {
+  font-family: "Century Gothic Bold";
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.post__ {
+  background: var(--secondary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  font-family: "Century Gothic Bold";
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.font-weight-blod {
+  font-family: "Century Gothic Bold";
+  font-weight: bold;
+}
+
+.icon__ {
+  color: var(--secondary-color);
+  font-size: 1rem
+}
+
+.data-hub {
+  background: linear-gradient(177deg, var(--primary-linear-gradient-one-color), var(--primary-linear-gradient-two-color));
+
+  /* background: #054034; */
+  /* background: url('/assets/images/img_bk.jpg'); */
+  /* background: linear-gradient(180deg, #ffffff00, var(--primary-linear-gradient-two-color)); */
+}
+
+.data-hub-content {
+  background: url('/assets/images/background-motif2.png');
+}
+
+.circular-chart {
+  display: block;
+  margin: 10px auto;
+  max-width: 80%;
+  max-height: 250px;
+}
+
+.circle-bg {
+  fill: none;
+  stroke: #585858;
+  stroke-width: 2.8;
+}
+
+.circle {
+  fill: none;
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  animation: progress 1s ease-out forwards;
+}
+
+@keyframes progress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}
+
+.circular-chart.orange .circle {
+  stroke: #d0a675;
+}
+
+.circular-chart.green .circle {
+  stroke: #4CC790;
+}
+
+.circular-chart.blue .circle {
+  stroke: #3c9ee5;
+}
+
+.percentage {
+  fill: #d0a675;
+  font-family: sans-serif;
+  font-size: 0.5em;
+  text-anchor: middle;
+}
+
+
+.meter {
+  height: 20px;
+  position: relative;
+  background: #585858;
+  border-radius: 25px;
+  /* padding: 10px; */
+  box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
+}
+
+.meter>span {
+  display: block;
+  height: 100%;
+  border-radius: 25px;
+  background-color: #d0a675;
+  position: relative;
+  overflow: hidden;
+}

@@ -1,0 +1,58 @@
+.addPlayer {
+    background: #eeeeee;
+    min-height: 350px;
+}
+
+.addPlayer .container {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.formContainer {
+    background: #ffffff;
+    padding: 25px;
+}
+
+.bigIcon {
+    font-size: 110px;
+    color: var(--primary-color);
+}
+
+.addPlayer .container h4 {
+    color: #6e6e6e;
+}
+
+.title {
+    width: 100%;
+    background: #ffffff;
+    color: #616161;
+    padding: 21px 74px;
+    font-weight: bold;
+}
+
+.title h5 {
+    color: var(--primary-color);
+}
+
+.infosForm {
+    width: 100%;
+}
+
+.full-width {
+    width: 97%;
+}
+
+img.imagePreview {
+    width: 150px;
+    cursor: pointer;
+}
+
+.imagePreviewContainer {
+    height: 160px;
+}
+
+.spinnerContainer {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

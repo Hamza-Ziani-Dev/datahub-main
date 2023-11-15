@@ -1,0 +1,5 @@
+<div class="col-12 row mx-0">
+  <div class="col-12 col-md-3" *ngFor="let data of datasource;let i = index">
+    <app-two-players-by-post [data]="data" [routerLink]="['list-players-post',i]"></app-two-players-by-post>
+  </div>
+</div>

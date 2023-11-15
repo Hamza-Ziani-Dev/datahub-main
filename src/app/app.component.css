@@ -1,0 +1,31 @@
+.h2,
+h2 {
+    font-size: 23px;
+}
+
+::ng-deep .mat-tab-label {
+    background: radial-gradient(var(--primary-linear-gradient-one-color), var(--primary-linear-gradient-two-color));
+    border-right: 0.03px solid #bfbfbf;
+    opacity: 1 !important;
+    color: #ffffff !important;
+    font-weight: 700;
+}
+
+::ng-deep .mat-tab-label-active {
+    background: var(--secondary-color);
+}
+
+::ng-deep .mat-ink-bar {
+    display: none;
+}
+
+/* styles.scss or styles.css */
+
+
+.hi {
+    background-color: var(--primary-color);
+}
+
+.secondary {
+    background-color: var(--secondary-color);
+}

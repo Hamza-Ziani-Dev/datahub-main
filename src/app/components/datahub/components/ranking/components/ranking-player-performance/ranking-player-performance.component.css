@@ -1,0 +1,174 @@
+.container-content{
+  font-family: "Century Gothic" !important;
+}
+
+  /* Gps-Data-Container */
+  .gps-data-container{
+    box-shadow: rgba(235, 230, 230, 0.1) 4px 1px 3px 0px;
+    border-radius: 6px;
+    background-color: rgba(205, 131, 131, 0.1);
+    width: 100%;
+  }
+  .chart-distance,.chart-temps,.chart-speed, .chart-accelerations{
+    border-radius: 4px;
+    box-shadow: rgba(245, 242, 242, 0.1) 2px 1px 3px 0px;
+    background-color: #fff;
+    margin: 2px;
+    height: 350px !important;
+  }
+  /* .chart-distance-labels {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: rgb(237 237 237);
+  } */
+  .chart-temps{
+    box-shadow: rgba(245, 242, 242, 0.1) 2px 1px 3px 0px;
+    border-radius: 6px;
+    width: 100%;
+    height: 300px;
+    margin-left: 5px;
+  }
+  .chart-speed{
+    box-shadow: rgba(245, 242, 242, 0.1) 2px 1px 3px 0px;
+    border-radius: 6px;
+    width: 100%;
+    height: 300px;
+    margin-right: 5px;
+  }
+  .chart-accelerations{
+    box-shadow: rgba(245, 242, 242, 0.1) 2px 1px 3px 0px;
+    border-radius: 6px;
+    width: 100%;
+    height: 300px;
+    margin-left: 5px;
+  }
+  .gps-data-title{
+    margin-left: 140px;
+  }
+
+  /* End  Gps-Data-Container */
+
+ /* Test-Technique-Container */
+ .test-technique-container{
+  box-shadow: rgba(235, 230, 230, 0.1) 4px 1px 3px 0px;
+  border-radius: 6px;
+  background-color: rgba(205, 131, 131, 0.1);
+  width: 100%;
+}
+.table-vitesse , .radar-vitesse{
+  border-radius: 6px;
+  width: 100%;
+  height: 300px;
+  margin-left: 5px;
+  background-color: #f4f7f9;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.fn-inferieurs, .radar-fn-inferieurs{
+  border-radius: 6px;
+  width: 100%;
+  height: 300px;
+  margin-left: 5px;
+  background-color: #f4f7f9;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.table-qualites , .radar-qualites{
+  border-radius: 6px;
+  width: 100%;
+  height: 200px;
+  margin-left: 5px;
+  background-color: #f4f7f9;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.table-energetique , .radar-energetique {
+  border-radius: 6px;
+  width: 100%;
+  height: 210px;
+  margin-left: 5px;
+  background-color: #f4f7f9;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.radar-fn-inferieurs  , .table-fn-inferieurs  {
+  border-radius: 6px;
+  width: 100%;
+  height: 280px;
+  margin-left: 5px;
+  background-color: #f4f7f9;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.gps-data-title,.test-technique-title{
+  margin-left: 140px;
+}
+.bold__text{
+    font-family: "Century Gothic Bold";
+    font-size: large;
+    font-weight: bold;
+}
+#table-vitesse  td{
+  padding: 1px 10px;
+}
+#table-qualites  td{
+  padding: 10px;
+}
+#table-energetique td{
+  padding: 3px;
+}
+#table-fn-inferieurs  td{
+  padding: 6px;
+}
+
+.thead-inferieurs{
+  background-color: #ed1c24;
+  text-align: center;
+}
+.thead-energetique{
+  background-color: #1769ff;
+  text-align: center;
+}
+.thead-qualites{
+  background-color: #efdf00;
+  text-align: center;
+}
+.thead-vitesse {
+  background-color: #7ac143;
+  text-align: center;
+}
+.tbody-inferieurs, .table-fn-inferieurs{
+  background-color: #ffaaaa
+}
+.tbody-energetique, .table-energetique{
+  background-color: #5fc4dd
+}
+.tbody-qualites, .table-qualites{
+  background-color: #d9d56b
+}
+.tbody-vitesse, .table-vitesse  {
+  background-color: #668a4b
+}
+
+
+  /* End Test-Technique-Container */
+
+
+
+  @media screen and (max-width: 768px) {
+    /* CSS rules for screens with a maximum width of 768px (typical for mobile devices) */
+    /* player */
+    .demo-player{
+      background-color: rgb(237 237 237);
+      border-radius: 42px;
+      margin-inline: 145px;
+      height: 113px;
+    }
+    .info-block {
+      height: initial !important;
+    }
+    .img_profile {
+      width: 10px;
+      justify-content: center !important;
+      align-items: center !important;
+    }
+    /* end player */
+  }

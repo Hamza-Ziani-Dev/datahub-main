@@ -1,0 +1,234 @@
+.sidenav {
+  background: linear-gradient(10deg, var(--primary-linear-gradient-one-color), var(--primary-linear-gradient-two-color));
+  transition: all 0.5s ease;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  width: 5rem;
+  height: 100vh;
+  /* box-shadow: 0.063rem 0 1.25rem 0 #8690a3; */
+  z-index: 200000;
+}
+
+.sidenav .logo-container {
+  display: flex;
+  align-items: center;
+  padding: 0.938rem 0.938rem 0 0.938rem;
+  width: 100%;
+}
+
+.sidenav .logo-container .logo {
+  background: inherit;
+  text-align: center;
+  width: 3rem;
+  min-width: 3rem;
+  border-radius: 0.313rem;
+  padding: 0.313rem;
+  font-size: 24px;
+  font-weight: 900;
+  cursor: pointer;
+  border: none;
+}
+
+.h--40 {
+  height: 45px;
+}
+
+.sidenav .logo-container .full_logo {
+  width: 100%;
+  padding: 0 2rem;
+}
+
+.sidenav .logo-container .logo-text {
+  margin-left: 1.5rem;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--secondary-color);
+}
+
+.sidenav .logo-container .btn-close {
+  margin-left: auto;
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: transparent;
+  border: none;
+}
+
+.sidenav .logo-container .btn-close .fa-times {
+  color: #fff;
+  font-size: 24px;
+}
+
+.sidenav-collapsed {
+  width: 16.5625rem;
+}
+
+.sidenav-nav {
+  list-style: none;
+  padding: 0.338rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  font-family: 'PT Sans', sans-serif !important;
+}
+
+.sidenav-nav .sidenav-nav-item {
+  width: 100%;
+  margin-bottom: 0.125rem;
+}
+
+.sidenav-nav .sidenav-nav-item .sidenav-nav-link {
+  display: flex;
+  align-items: center;
+  height: 3rem;
+  color: var(--secondary-color);
+  text-decoration: none;
+  border-radius: 0.325rem;
+  transition: all 0.3s ease;
+}
+
+.sidenav-nav .sidenav-nav-item .sidenav-nav-link .sidenav-link-icon {
+  font-size: 18px;
+  width: 2rem;
+  min-width: 2rem;
+  margin: 0 0.9rem;
+  text-align: center;
+}
+
+.sidenav-nav .sidenav-nav-item .sidenav-nav-link .sidenav-link-text {
+  margin-left: 0rem;
+  color: #fff;
+}
+
+.sidenav-nav .sidenav-nav-item .sidenav-nav-link:hover {
+  background-color: var(--primary-linear-gradient-one-color);
+  color: #fff;
+}
+
+.sidenav-nav .sidenav-nav-item .sidenav-nav-link:hover .menu-collapse-icon {
+  color: #fff;
+}
+
+.active {
+  background-color: var(--primary-linear-gradient-one-color);
+  color: #fff;
+
+}
+
+.active .menu-collapse-icon,
+.active .sidenav-link-icon,
+.active .sidenav-link-text {
+  color: #fff;
+}
+
+.active-sublevel {
+  color: #f3f3f3 !important;
+}
+
+.menu-collapse-icon {
+  font-size: 25px;
+  width: 2rem;
+  min-width: 2rem;
+  margin: auto 0.5rem auto auto;
+  text-align: center;
+  color: #f3f3f3;
+}
+
+.sublevel-nav {
+  list-style: none;
+  margin-left: 0px;
+  padding-left: 40px;
+}
+
+.sublevel-nav .sublevel-nav-item .sublevel-nav-link {
+  display: flex;
+  align-items: center;
+  height: 3rem;
+  color: #f3f3f3;
+  text-decoration: none;
+  border-radius: 0.325rem;
+  padding-left: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.sublevel-nav .sublevel-nav-item .sublevel-nav-link .sublevel-link-icon {
+  font-size: 4px;
+  width: 2rem;
+  min-width: 2rem;
+  margin: 0 0.5rem;
+  text-align: center;
+}
+
+.sublevel-nav .sublevel-nav-item .sublevel-nav-link .sublevel-link-text {
+  margin-left: 0.8rem;
+}
+
+.sublevel-nav .sublevel-nav-item .sublevel-nav-link:hover {
+  background-color: var(--primary-linear-gradient-one-color);
+  color: #fff;
+}
+
+.scrollwrap {
+  overflow-y: auto;
+  visibility: hidden;
+  height: calc(100% - 3.65rem);
+}
+
+.sidenav-nav,
+.scrollwrap:hover,
+.scrollwrap:focus {
+  visibility: visible;
+}
+
+.scrollwrap_delayed {
+  transition: visibility 0.5s 0.2s;
+}
+
+.scrollwrap_delayed:hover {
+  transition: visibility 0.2s 0.2s;
+}
+
+.scrollwrap::-webkit-scrollbar {
+  width: 10px;
+}
+
+.scrollwrap::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollwrap::-webkit-scrollbar-thumb {
+  background-color: var(--secondary-color);
+  border-radius: 20px;
+}
+
+.scrollwrap {
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary-color) transparent;
+}
+
+.left__block {
+  width: 100%;
+  background: #253238;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  overflow: hidden;
+  opacity: 0.2;
+  z-index: 100000;
+  transition: all 0.5s ease;
+}
+
+
+.version {
+  color: var(--secondary-color);
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: .8rem;
+  height: 6%;
+}

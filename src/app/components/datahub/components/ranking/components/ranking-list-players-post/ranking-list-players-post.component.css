@@ -1,0 +1,113 @@
+.list-container {
+  font-family: "Century Gothic";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.table-container {
+  border-radius: 20px;
+  overflow: hidden;
+  width: 90%;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.th-head {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #000;
+  border-bottom: 2px solid;
+  font-family: "Century Gothic Bold";
+}
+
+.equipe__logo {
+  border-radius: 50%;
+  overflow: hidden;
+  width: 38px;
+  margin-right: 20px;
+}
+
+.tr-rows td {
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: "Century Gothic Bold";
+  height: 55px !important;
+  color: #424242;
+}
+
+.form--field {
+  font-size: .8rem;
+  width: 20%;
+  height: 45px;
+  margin: auto;
+}
+
+
+.tr-rows:nth-child(odd) {
+  background-color: rgb(245 245 245) !important;
+}
+
+.tr-rows:nth-child(even) {
+  background-color: rgb(255 255 255) !important;
+}
+
+#tr-rows:hover {
+  background-color: rgb(203 172 102) !important;
+}
+
+.list-container ::ng-deep .mat-paginator-container {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+@media screen and (max-width: 768px) {
+  .tr-rows td {
+    font-size: .9rem;
+    height: 45px !important;
+    text-align: center !important;
+  }
+
+  .th-head {
+    font-size: 1rem;
+    border-bottom: 1px solid;
+
+  }
+
+  .table-container {
+    overflow: scroll;
+    margin-bottom: 80px;
+  }
+
+
+  .th-head {
+    min-width: 150px !important;
+    text-align: center !important;
+  }
+
+  .equipe__logo {
+    width: 26px !important;
+    margin: 0 20px !important;
+  }
+
+  .th-head-lg {
+    min-width: 280px !important;
+  }
+
+  .th-head-lg:nth-child(1),
+  .tr-rows td:nth-child(1) {
+    text-align: left !important;
+  }
+
+  .tr-rows td:nth-child(1) {
+    padding-left: 0 !important;
+  }
+
+  .form--field {
+    font-size: .8rem;
+  }
+}
+

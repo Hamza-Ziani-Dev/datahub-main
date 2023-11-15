@@ -1,0 +1,16 @@
+<div class="modal-header">
+  <h4 class="modal-title" style="font-size: 1.2rem">{{ title }}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="dismiss()">
+    <span aria-hidden="true">
+      <i class="far fa-times-circle icon_close"></i
+    ></span>
+  </button>
+</div>
+<div class="modal-body" *ngIf="showMs" style="font-size: 1.2rem">
+  {{ message }}
+</div>
+<div class="modal-footer footer">
+  <button type="button" [class]="'btn btn-primary '+color" (click)="dismiss()">
+    {{ btnOkText }}
+  </button>
+</div>
