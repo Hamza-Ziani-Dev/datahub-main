@@ -360,9 +360,8 @@ export class RankingPlayerPerformanceComponent implements OnInit {
             ],
             axisLabel: {
               show: true,
-              interval: 1, // Set the interval to display every label
+              interval: 1,
             },
-           
           },
           series: [
             {

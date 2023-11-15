@@ -1,15 +1,13 @@
 .container-content{
     font-family:"Century Gothic" !important;
   }
-  /* Resume-generele  */
+  /* Resume-generele */
   .resume-container{
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   }
-
   th{
     text-decoration: underline;
   }
-
   .btn-fw{
     background-color: #d8a067;
     padding: 4px;
