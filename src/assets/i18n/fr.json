@@ -42,6 +42,8 @@
         "CTR_DATA": "CTR Data",
         "PREVENTION": "Prevention",
         "GESTION_STAFF": "Gestion Staff",
-        "MEDIA_CENTER": "Media Center"
+        "MEDIA_CENTER": "Media Center",
+        "TEAMS": "TEAMS",
+        "BASE DE DONNEES":"Base de données"
     }
 }

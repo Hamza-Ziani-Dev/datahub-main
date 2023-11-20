@@ -1,0 +1,125 @@
+<!-- <mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'">
+    <mat-toolbar class="navigation--mobile-top">
+      <div class="navigation--content-top">
+        <div class="logo--app-web">
+          <div mat-list-item><img [src]="'assets/images/scoutingBackgroundWhite.png'" class="sideLogo" /></div>
+        </div>
+        <div class="logout--app">
+          <button mat-icon-button (click)="logout();drawer.toggle()">
+            <i class="fa fa-solid fa-power-off"></i>
+          </button>
+        </div>
+      </div>
+    </mat-toolbar>
+    <mat-toolbar class="navigation--user-info">
+      <div
+        (click)="!['DTR-ADMINISTATEUR','RESPONSABLE-CENTRE', 'DTR-CONTROLLER', 'SCOUTING-ADMINISTATEUR', 'SCOUTING-CONTROLLER'].includes(user?.role) && navigateToMyaccount();drawer.toggle()"
+        disabled class="naigation--link-compote">
+        <div class="navigation--content-info">
+          <div class="user-info__avatar">
+            <img [src]="user?.logo" alt="">
+          </div>
+          <div class="user-info__general">
+            <span class="user-info__name">{{ user?.nom | uppercase }} {{ user?.prenom | titlecase }}</span>
+            <span class="user-info__email">{{ user?.email }}</span>
+            <span class="user-info__saison"> {{ "Saison " +user?.saisonYear }}</span>
+          </div>
+        </div>
+        <i class="fa fa-solid fa-angle-right"></i>
+      </div>
+    </mat-toolbar>
+    <mat-nav-list>
+      <ul class="navigation--list">
+        <ng-container *ngFor="let link of linkSlidnav">
+
+          <a id="icons" [routerLink]="link.routerLink" [routerLinkActive]="link.routerLinkActive" mat-list-item
+            (click)="drawer.toggle()">
+            <i [class]="link.icon"></i>
+            {{ link.translate | translate }}
+          </a>
+        </ng-container>
+      </ul>
+    </mat-nav-list>
+    <mat-toolbar class="navigation--mobile-bottom">
+      <div class="navigation--content-bottom">
+        <span class="vertion">{{('V - '+user?.version) | uppercase }}</span>
+      </div>
+    </mat-toolbar>
+  </mat-sidenav>
+
+  <mat-sidenav-content style="width: 100%;">
+    <mat-toolbar class="nav--mobile-top header__top p-0" *ngIf="authStatus">
+      <div class="nav--content-top justify-content-between">
+        <div class="logo--club ml-2"
+          *ngIf="['DTR-ADMINISTATEUR','DTR-CONTROLLER','RESPONSABLE-CENTRE','SCOUTING-ADMINISTATEUR','SCOUTING-CONTROLLER'].includes(user?.role)">
+          <img [src]="user?.logo" class="club-logo " />
+        </div>
+        <div class="logo--club ml-2"
+          *ngIf="!['DTR-ADMINISTATEUR','DTR-CONTROLLER','RESPONSABLE-CENTRE','SCOUTING-ADMINISTATEUR','SCOUTING-CONTROLLER'].includes(user?.role)">
+          <ng-container *ngIf="equipes != undefined  && equipes.length > 0 ">
+            <a routerLink="/myaccount/clubs" #levelOneTrigger="matMenuTrigger"
+              (mouseenter)=" levelOneTrigger.openMenu()" [matMenuTriggerFor]=" myaccount_clubs"
+              [style]="{'outline':'none'}"><img [src]="user?.logo" class="club-logo " />
+              <span class="nom__equipe">
+                {{ user?.slug == null || user?.slug == "" ? user?.club : user?.slug }}
+              </span>
+            </a>
+            <mat-menu id="myaccount_clubs" #myaccount_clubs="matMenu" class="mt-2" overlapTrigger="false"
+              backdropClass="mat_menu_mobile" class="mr-1">
+              <ng-container>
+                <button mat-menu-item *ngFor="let equipe of equipes" (click)="selected(equipe?.id)">
+                  <img [src]="equipe?.logo" class="club-logo " />
+                  {{ equipe.nom }}
+                </button>
+              </ng-container>
+            </mat-menu>
+          </ng-container>
+          <ng-container *ngIf="equipes != undefined  && equipes.length < 1 ">
+            <a routerLink="/myaccount/clubs" [style]="{'outline':'none'}"><img [src]="user?.logo" class="club-logo " />
+              <span class="nom__equipe">
+                {{ user?.slug == null || user?.slug == "" ? user?.club : user?.slug }}
+              </span>
+            </a>
+          </ng-container>
+
+        </div>
+        <div class="logo--app mr-2">
+          <div mat-list-item><img width="40" [src]="'assets/images/icon-logo.png'" class="sideLogo" /></div>
+          <button mat-icon-button (click)="logout()" *ngIf="linkSlidnav.length < 5">
+            <i class="fa fa-solid fa-power-off"></i>
+          </button>
+        </div>
+      </div>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+    <ng-container *ngIf="authStatus">
+      <app-header> </app-header>
+      <mat-toolbar class="nav--mobile-bottom header__bottom">
+        <div class="nav--content-bottom">
+          <div class="nav--menu-btn" *ngIf="linkSlidnav.length > 0">
+            <a type="button" (click)="drawer.toggle()">
+              <i class="fa fa-solid fa-bars icon--menu-bottom"></i>
+              <div class="nav--menu-label">Menu</div>
+            </a>
+          </div>
+          <ng-container *ngFor="let link of linksButtom ">
+            <div class="nav--menu-btn">
+              <a type="button" [routerLink]="link.routerLink" [routerLinkActive]="link.routerLinkActive">
+                <i [class]="link.icon+' icon--menu-bottom'"></i>
+                <div class="nav--menu-label">{{ link.translate | translate }}</div>
+              </a>
+            </div>
+          </ng-container>
+          <div class="nav--menu-btn">
+            <a type="button" routerLink="myaccount/dashboard">
+              <i class="fas fa-user-cog icon--menu-bottom "></i>
+              <div class="nav--menu-label">Mon Compte</div>
+            </a>
+          </div>
+        </div>
+      </mat-toolbar>
+    </ng-container>
+  </mat-sidenav-content>
+</mat-sidenav-container> -->

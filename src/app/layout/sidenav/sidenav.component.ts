@@ -92,19 +92,36 @@ export class SidenavComponent implements OnInit {
                   display: false,
                   permission: this.user?.type == 'owner' && this.user?.pack != 'pack_starter',
                   items: [
+                  
                     {
-                      label: 'HEADER.RANKING',
+                      label: 'HEADER.PLAYERS',
+                      icon: 'fas fa-street-view',
+                      //permission: this.user?.type == 'owner',
+                      permission: false,
+                      routerLink: '/datahub/players',
+                      items: []
+                    },
+                   
+                    {
+                      label: 'Base de données',
+                      icon: 'fas fa-users',
+                      permission: this.user?.type == 'owner',
+                      routerLink: '/datahub/database/list-players-post',
+                      items: []
+                    },
+                    {
+                      label: 'Botola data hub',
                       icon: 'fas fa-users',
                       permission: this.user?.type == 'owner',
                       routerLink: '/datahub/ranking',
                       items: []
                     },
                     {
-                      label: 'HEADER.PLAYERS',
-                      icon: 'fas fa-street-view',
-                      //permission: this.user?.type == 'owner',
-                      permission: false,
-                      routerLink: '/datahub/players/profil',
+                      label: 'HEADER.TEAMS',
+                      icon: 'fas fa-users-cog',
+                      permission: this.user?.type == 'owner',
+                      //permission: false,
+                      routerLink: '/datahub/teams',
                       items: []
                     },
                   ]

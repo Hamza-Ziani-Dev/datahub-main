@@ -1,0 +1,81 @@
+
+.teamContainer {
+  background-color: hsl(0, 0%, 97%);
+  background-image: url(../../../../../assets/images/bg-image.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100%;
+  font-family: 'Century Gothic' !important;
+}
+/* Header */
+.header{
+    position: relative;
+    overflow: hidden;
+    border-bottom-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    height: 80px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: linear-gradient(238deg, #1c7b22, rgb(16, 83, 20));
+    box-shadow: rgba(112, 120, 114, 0.25) 0px 2px 5px -1px, rgba(126, 121, 121, 0.3) 0px 1px 3px -1px;
+}
+.navbar{
+    justify-content: space-between;
+}
+.header .logo {
+    width: 60px;
+    margin-left: 10px;
+  }
+  .image-background-header {
+    background-image: url(../../../../../assets/images/bg-image-black-player.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 0 96px;
+  }
+
+.nav-link{
+    color: white;
+    font-family: 'Century Gothic' !important;
+    font-size: large;
+}  
+
+.nav-link:hover{
+    color: rgb(198, 216, 0);
+}  
+  
+/* End Header */
+
+
+
+  
+  
+
+  
+  
+
+  
+
+
+
+
+
+
+  @media screen and (max-width: 768px) {
+
+.nav-link{
+    padding: 0px;
+}  
+    /* .teamContainer .header {
+      border-bottom-right-radius: 30px;
+      border-bottom-left-radius: 30px;
+    }
+  
+    .teamContainer .header div {
+      font-size: 1.1rem;
+    }
+  
+    .teamContainer .header .logo {
+      width: 45px;
+    } */
+  
+  }

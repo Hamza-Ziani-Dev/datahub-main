@@ -1,0 +1,178 @@
+.container-content {
+  font-family: "Century Gothic" !important;
+}
+
+/* Resume-generele  */
+.resume-container {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+th {
+  text-decoration: underline;
+}
+
+.btn-fw {
+  background-color: #d8a067;
+  padding: 4px;
+  width: 45px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.radar-select {
+  background-color: #d0d2d3;
+  border-radius: 5px;
+}
+
+.chart-presence,
+.chart-temps {
+  box-shadow: rgba(245, 242, 242, 0.1) 2px 1px 3px 0px;
+  background-color: #fff;
+  height: auto !important;
+  width: 100% !important;
+}
+
+th,
+td {
+  text-align: center !important;
+}
+
+th {
+  text-decoration: underline;
+}
+
+.bold__text {
+  font-family: "Century Gothic Bold";
+  font-size: large;
+  font-weight: bold;
+
+}
+
+.chart-block {
+  border-radius: 20px;
+  /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px; */
+  margin-bottom: 10px;
+  overflow: hidden;
+  width: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 35px;
+}
+
+/* End Resume-generele  */
+
+.table-medicale {
+  border-radius: 3px;
+}
+
+.medicale table {
+  margin: 10px 0;
+}
+
+.medicale td {
+  font-family: "Century Gothic";
+  font-weight: bold;
+  padding: 5px 0;
+}
+
+.medicale th {
+  font-family: "Century Gothic";
+  font-weight: bold;
+  padding: 5px 0;
+}
+
+/* end chart-pie-blessures */
+.medicale {
+  width: 100%;
+  height: auto;
+  background-color: #eccfe0;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+#MyqmdM {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+#MyqmdM caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+
+#MyqmdM tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+#MyqmdM th,
+#MyqmdM td {
+  padding: .625em;
+  text-align: center;
+}
+
+#MyqmdM th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+  #MyqmdM {
+    border: 0;
+  }
+
+  #MyqmdM caption {
+    font-size: 1.3em;
+  }
+
+  #MyqmdM thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  #MyqmdM tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+
+  #MyqmdM td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 1rem;
+    text-align: right !important;
+    font-weight: bold;
+
+  }
+
+  #MyqmdM td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  #MyqmdM td:last-child {
+    border-bottom: 0;
+  }
+}

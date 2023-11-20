@@ -1,0 +1,79 @@
+<div class="row p-0 m-0 col-12 w-100 mb-4">
+  <!-- Resume-generele -->
+  <div class="resume-container row mx-0 col-12 col-md-12 mb-4 d-flex justify-content-center align-items-center">
+    <div class="col-12 row m-0 p-0 col-md-6 justify-content-center align-items-center">
+      <div class=" d-flex chart-temps p-2 col-12 col-md-12  justify-content-center align-items-center">
+        <div id="chart-absence" style="width: 100%; height: 450px"></div>
+      </div>
+      <div class=" d-flex chart-temps p-2 col-12 col-md-12  justify-content-center align-items-center">
+        <div id="chart-temps" style="width: 100%; height: 450px"></div>
+      </div>
+    </div>
+    <div class="col-12 row mx-0 col-md-6 justify-content-center align-items-center">
+      <select (ngModelChange)="actions('TYPE_CHART',$event)" class="mb-2" [(ngModel)]="type_chart" name="type_chart"
+        class="radar-select form-select form-select-sm px-2 bold__text">
+        <option selected value="pie">Radar Percentilles</option>
+        <option value="bar">Bar</option>
+      </select>
+      <div id="radar-percentilles-pie" *ngIf="type_chart == 'pie' " style="width: 100%; height: 400px"></div>
+      <div id="radar-percentilles-bar" *ngIf="type_chart == 'bar' " style="width: 100%; height: 400px"></div>
+    </div>
+  </div>
+
+  <div
+    class="resume-container row col-12 col-md-12 my-4 px-0 mx-0 py-4 d-flex justify-content-center align-items-center">
+    <div class="mb-2 blessures-title col-12 col-md-12 justify-content-start align-items-start">
+      <div class="bold__text">
+        <svg class="-color mr-1" version="1.1" xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink" width="30px" height="30px" viewBox="0,0,256,256">
+          <g fill="#000" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+            stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none"
+            font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+            <g transform="scale(10.66667,10.66667)">
+              <path
+                d="M19,2h-2.0921c-0.20709,-0.58075 -0.7569,-1 -1.4079,-1h-1.51025c-0.46973,-0.62305 -1.20801,-1 -1.98975,-1c-0.78174,0 -1.52002,0.37695 -1.98975,1h-1.51025c-0.651,0 -1.20081,0.41925 -1.4079,1h-2.0921c-1.10303,0 -2,0.89697 -2,2v18c0,1.10303 0.89697,2 2,2h14c1.10303,0 2,-0.89697 2,-2v-18c0,-1.10303 -0.89697,-2 -2,-2zM8,2.5c0,-0.27588 0.22412,-0.5 0.5,-0.5h1.77734c0.17773,0 0.34229,-0.09473 0.43213,-0.24854c0.27393,-0.4707 0.75635,-0.75146 1.29053,-0.75146c0.53418,0 1.0166,0.28076 1.29053,0.75146c0.08984,0.15381 0.25439,0.24854 0.43213,0.24854h1.77734c0.27588,0 0.5,0.22412 0.5,0.5v0.5c0,0.55127 -0.44873,1 -1,1h-6c-0.55127,0 -1,-0.44873 -1,-1zM20,22c0,0.55127 -0.44873,1 -1,1h-14c-0.55127,0 -1,-0.44873 -1,-1v-18c0,-0.55127 0.44873,-1 1,-1h2c0,1.10303 0.89697,2 2,2h6c1.10303,0 2,-0.89697 2,-2h2c0.55127,0 1,0.44873 1,1z">
+              </path>
+              <path
+                d="M16.5,20h-9c-0.27637,0 -0.5,0.22363 -0.5,0.5c0,0.27637 0.22363,0.5 0.5,0.5h9c0.27637,0 0.5,-0.22363 0.5,-0.5c0,-0.27637 -0.22363,-0.5 -0.5,-0.5z">
+              </path>
+              <path
+                d="M16.5,17h-9c-0.27637,0 -0.5,0.22363 -0.5,0.5c0,0.27637 0.22363,0.5 0.5,0.5h9c0.27637,0 0.5,-0.22363 0.5,-0.5c0,-0.27637 -0.22363,-0.5 -0.5,-0.5z">
+              </path>
+              <path
+                d="M16.5,12h-0.69092l-0.86182,-1.72363c-0.08838,-0.17773 -0.26758,-0.28174 -0.47363,-0.27588c-0.19824,0.01074 -0.37207,0.1377 -0.44189,0.32373l-0.93604,2.49658l-1.11084,-4.44189c-0.05078,-0.20312 -0.22217,-0.35303 -0.43018,-0.37598c-0.21045,-0.021 -0.4082,0.08643 -0.50195,0.27344l-1.86182,3.72363h-1.69092c-0.27637,0 -0.5,0.22363 -0.5,0.5c0,0.27637 0.22363,0.5 0.5,0.5h2c0.18945,0 0.3623,-0.10693 0.44727,-0.27637l1.39551,-2.79102l1.17236,4.68848c0.05273,0.2124 0.23779,0.36572 0.45654,0.37793c0.00928,0.00049 0.01904,0.00098 0.02832,0.00098c0.20752,0 0.39453,-0.12842 0.46826,-0.32422l1.09717,-2.92676l0.4873,0.97461c0.08496,0.16943 0.25781,0.27637 0.44727,0.27637h1c0.27637,0 0.5,-0.22363 0.5,-0.5c0,-0.27637 -0.22363,-0.5 -0.5,-0.5z">
+              </path>
+            </g>
+          </g>
+        </svg>
+        Blessures
+      </div>
+    </div>
+    <div class="medicale row col-12 col-md-8 m-0 p-0 d-flex justify-content-center align-items-center">
+      <table id="MyqmdM">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Type</th>
+            <th scope="col">Localisation</th>
+            <th scope="col">Latéralite</th>
+            <th scope="col">Indisponibilité (jours)</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="dataSource.injuries.length > 0">
+          <tr *ngFor="let injury of dataSource.injuries" scope="row" data-label="Date">
+            <td data-label="Date">{{ injury?.date_blessure }}</td>
+            <td data-label="Type">{{ injury?.type_blessure }}</td>
+            <td data-label="Localisation">{{ injury?.localisation }}</td>
+            <td data-label="Latéralite">-----</td>
+            <td data-label="Indisponibilité (jours)">{{ injury.date_retour_prevue+"
+              "+charedService.getDaysAbsence(+injury.durre_injury ||
+              +injury.date_retour_prevue)+( injury.date_retour_prevue && +injury.durre_injury != 30 &&
+              +injury.date_retour_prevue > 1 ? 's'
+              : '') }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- End Resume-generele -->
+</div>

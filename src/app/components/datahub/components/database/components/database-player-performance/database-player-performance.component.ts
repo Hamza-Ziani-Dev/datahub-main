@@ -1,0 +1,417 @@
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { DatabaseService } from '../../service/database.service';
+import { ActivatedRoute } from '@angular/router';
+import * as echarts from 'echarts';
+import { PlayerService } from 'src/app/services/player.service';
+import { CharedService } from 'src/app/services/chared.service';
+import { PhysiqueService } from 'src/app/services/physique.service';
+
+
+@Component({
+  selector: 'app-database-player-performance',
+  templateUrl: './database-player-performance.component.html',
+  styleUrls: ['./database-player-performance.component.css']
+})
+export class DatabasePlayerPerformanceComponent implements OnInit {
+  colors: any[] = [
+    { "className": "inferieurs", "color": "#ed1c24" },
+    { "className": "energetique", "color": "#1769ff" },
+    { "className": "qualites", "color": "#efdf00" },
+    { "className": "vitesse", "color": "#7ac143" },
+    { "className": "inferieurs", "color": "#ffaaaa" },
+    { "className": "inferieurs", "color": "#ed1c24" },
+    { "className": "energetique", "color": "#1769ff" },
+    { "className": "qualites", "color": "#efdf00" },
+    { "className": "vitesse", "color": "#7ac143" },
+    { "className": "inferieurs", "color": "#ffaaaa" },
+  ]
+
+  isLoading: boolean = true;
+  URL: string = "https://interface.myteambyfrmf.ma/uploads/datahub/";
+  COLORS: string[] = ['#0357A0', "#007934", "#E55C00"];
+  chart: any = {
+    title: null,
+    legend: []
+  };
+  PLAYER_ID: number = null;
+  playerSub: []
+  dataSource: any[] = [];
+  physiqueTests = [];
+  playerTestsPhysiques = [];
+  isLoadingTest: boolean = true;
+  constructor(
+    private rankingService: DatabaseService,
+    private playerService: PlayerService,
+    private physiqueService: PhysiqueService,
+    private charedService: CharedService,
+    private route: ActivatedRoute
+  ) { }
+
+  ngOnInit() {
+    this.PLAYER_ID = this.route.snapshot.parent?.params.player_id;
+    this.actions('GET');
+    this.playerService.getGpsPlayer(this.PLAYER_ID).subscribe(
+      (RES: any) => {
+        this.actions('CREATE_CHART_BAR1', RES.distance);
+        this.actions('CREATE_CHART_BAR2', RES.duration);
+        this.actions('CREATE_CHART_BAR3', { max_speed: RES.max_speed, speed_event: RES.speed_event });
+        this.actions('CREATE_CHART_BAR4', RES.acceleration_deceleration);
+      }
+    )
+    this.physiqueService.getTestPhysique().subscribe(
+      (result: any) => {
+        this.dataSource = result.reduce((accumulator, currentValue) => {
+          const testIndex = accumulator.findIndex(element => element.id === currentValue.testId);
+
+          if (testIndex >= 0) {
+            accumulator[testIndex].children.push(currentValue);
+          } else {
+            const testBody = {
+              id: currentValue.testId,
+              name: currentValue.testName,
+              children: [currentValue]
+            };
+            accumulator.push(testBody);
+          }
+
+          return accumulator;
+        }, this.dataSource);
+        this.isLoadingTest = false;
+        this.physiqueService.getPlayerPhysiqueTest(this.PLAYER_ID);
+        setTimeout(() => {
+          this.actions('CREATE_CHART_RADAR', this.dataSource);
+        }, 300);
+      }
+    );
+    this.physiqueService.getUpdatedPlayerPhysiqueTestsListner().subscribe(
+      (result: any) => {
+        this.playerTestsPhysiques = result;
+        console.log(this.playerTestsPhysiques);
+      })
+
+  }
+  getPlayerTests(id) {
+    let data = this.playerTestsPhysiques.filter(element => element.childTestId == id);
+    if (data.length > 0) {
+      data = data.sort((a, b) => { return (new Date(b.date)).getTime() - (new Date(a.date)).getTime(); });
+      return data[0].value;
+    }
+    return '0';
+  }
+  // getDataVissite() {
+  //   this.playerService.getOnePlayerGps(this.PLAYER_ID).subscribe(
+
+  //   );
+  // }
+
+  actions(CASE: string, RES: any = null) {
+    switch (CASE) {
+      case 'CREATE_CHART_BAR1':
+        const myChart1 = echarts.init(document.getElementById('chart-distance'));
+        const option1 = {
+          title: [
+            {
+              left: 'center',
+              text: 'Distance Total',
+            },
+          ],
+          tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+              type: 'cross',
+              crossStyle: {
+                color: '#999'
+              }
+            }
+          },
+          xAxis: [
+            {
+              type: 'category',
+              data: RES.map(e => e.adversaire),
+              axisPointer: {
+                type: 'shadow'
+              }
+            }
+          ],
+          yAxis: [
+            {
+              type: 'value',
+              name: 'Precipitation',
+              min: 0,
+              axisLabel: {
+                formatter: '{value} km'
+              }
+            },
+            // {
+            //   type: 'value',
+            //   name: 'Temperature',
+            //   min: 0,
+            //   max: 25,
+            //   interval: 5,
+            //   axisLabel: {
+            //     formatter: '{value} km'
+            //   }
+            // }
+          ],
+          series: [
+            {
+              name: 'Evaporation',
+              type: 'bar',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ' km';
+                }
+              },
+              data: RES.map(e => +e.value),
+            },
+            // {
+            //   name: 'Temperature',
+            //   type: 'line',
+            //   yAxisIndex: 1,
+            //   tooltip: {
+            //     valueFormatter: function (value) {
+            //       return value + ' km';
+            //     }
+            //   },
+            //   data: RES.map(e => +e.value),
+            // }
+          ]
+        };
+        myChart1.setOption(option1);
+        break;
+      case 'CREATE_CHART_BAR2':
+        const myChart2 = echarts.init(document.getElementById('chart-temps'));
+        const option2 = {
+          title: [
+            {
+              left: 'center',
+              text: 'Temps de Jeu',
+            },
+          ],
+          tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+              type: 'cross',
+              crossStyle: {
+                color: '#999'
+              }
+            }
+          },
+          xAxis: [
+            {
+              type: 'category',
+              data: RES.map(e => e.adversaire),
+              axisPointer: {
+                type: 'shadow'
+              }
+            }
+          ],
+          yAxis: [
+            {
+              type: 'value',
+              name: 'Precipitation',
+              min: 0,
+              axisLabel: {
+                formatter: '{value} km'
+              }
+            },
+          ],
+          series: [
+            {
+              name: 'Evaporation',
+              type: 'bar',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ' km';
+                }
+              },
+              data: RES.map(e => this.charedService.timeStringToFloat(e.value)),
+            },
+          ]
+        };
+        myChart2.setOption(option2);
+        break;
+      case 'CREATE_CHART_BAR3':
+        const myChart3 = echarts.init(document.getElementById('chart-speed'));
+        const option3 = {
+          title: [
+            {
+              left: 'center',
+              text: 'Speed Event /Max Speed',
+            },
+          ],
+          tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+              type: 'shadow'
+            }
+          },
+          grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+          },
+          xAxis: [
+            {
+              type: 'value'
+            }
+          ],
+          yAxis: [
+            {
+              type: 'category',
+              axisTick: {
+                show: false
+              },
+            }
+          ],
+          series: [
+            {
+              name: 'Profit',
+              type: 'bar',
+              label: {
+                show: true,
+                position: 'inside'
+              },
+              emphasis: {
+                focus: 'series'
+              },
+              data: RES.speed_event.map(e => +e.value),
+            },
+            {
+              name: 'Income',
+              type: 'bar',
+              stack: 'Total',
+              label: {
+                show: true
+              },
+              emphasis: {
+                focus: 'series'
+              },
+              data: RES.max_speed.map(e => +e.value)
+            },
+            // {
+            //   name: 'Expenses',
+            //   type: 'bar',
+            //   stack: 'Total',
+            //   label: {
+            //     show: true,
+            //     position: 'left'
+            //   },
+            //   emphasis: {
+            //     focus: 'series'
+            //   },
+            //   data: [-120, -132, -101, -134, -190, -230, -210]
+            // }
+          ]
+        };
+        myChart3.setOption(option3);
+        break;
+      case 'CREATE_CHART_BAR4':
+        const myChart4 = echarts.init(document.getElementById('chart-accelerations'));
+        const option4 = {
+          title: [
+            {
+              left: 'center',
+              text: 'Accelerations / Decelerations',
+            },
+          ],
+          legend: {},
+          grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+          },
+          xAxis: {
+            type: 'value'
+          },
+
+          yAxis: {
+            type: 'category',
+            data: RES.map(e => e.acceleration_adversaire || e.e.acceleration_adversaire)
+          },
+          series: [
+            {
+              type: 'bar',
+              stack: 'total',
+              label: {
+                show: true
+              },
+              emphasis: {
+                focus: 'series'
+              },
+              data: RES.map(e => e.acceleration_value),
+            },
+            {
+              type: 'bar',
+              stack: 'total',
+              label: {
+                show: true
+              },
+              emphasis: {
+                focus: 'series'
+              },
+              data: RES.map(e => e.deceleration_value),
+            },
+          ]
+        };
+        myChart4.setOption(option4);
+        break;
+
+      case 'CREATE_CHART_RADAR':
+        let myChart5, option5;
+        RES.forEach((chart, i) => {
+          myChart5 = echarts.init(document.getElementById(`radar-${this.colors[i]?.className}_${i}`));
+          option5 = {
+            radar: {
+              indicator: chart.children.map(val => Object({
+                name: val?.name, min: 0
+              })),
+              // axisLabel: {
+              //   show: true,
+              //   interval: 1 // Set the interval to display every label
+              // }
+            },
+
+            series: [
+              {
+                itemStyle: {
+                  color: this.colors[i]?.color ?? '#000'
+                },
+                name: 'Budget vs spending',
+                type: 'radar',
+                data: [
+                  {
+                    value: chart.children.map(val => Number(this.getPlayerTests(val?.id))) // Example values for each indicator
+                  },
+                ]
+              }
+            ]
+          };
+          myChart5.setOption(option5);
+        })
+        break;
+      case 'GET':
+        this.rankingService.TabOne('player-performance', this.PLAYER_ID).subscribe(
+          (RES: any) => {
+            this.isLoading = false;
+            this.COLORS = RES?.Option?.colors;
+            this.chart = {
+              title: RES?.Option?.title?.text,
+              legend: RES?.Option?.legend?.data
+            }
+            delete RES?.Option?.title?.text;
+            delete RES?.Option?.legend;
+          },
+          (ERROR: HttpErrorResponse) => {
+            this.isLoading = false;
+          }
+        )
+        break;
+      default:
+        break;
+    }
+  }
+}

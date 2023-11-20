@@ -1,20 +1,131 @@
-.container-blk {
-  font-family: "Century Gothic";
+.container-content {
+  font-family: "Century Gothic" !important;
 }
 
-.image-player {
-  overflow: hidden;
-  border-radius: 50%;
-  width: 150px;
-  height: 150px;
-  border: 4px solid rgb(237 237 237);
+.offensive {
+  width: 100%;
+  padding: 40px 0px;
+  font-size: 1.1rem;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+.deffensive {
+  width: 100%;
+  padding: 40px 0px;
+  font-size: 1.1rem;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+.__canvas {
+  width: 100%;
+  height: 400px;
+}
+
+.analyse-container {
+  /* box-shadow: rgba(15, 99, 183, 0.2) 0px 8px 24px; */
+}
+
+.bg-dorry {
+  background-color: #d8a067;
+  padding: 10px 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: "Century Gothic" !important;
+}
+
+.font---blod {
+  font-weight: bold !important;
+  padding: 10px 0;
+  font-family: "Century Gothic" !important;
+}
+
+.bg-dorry-1 {
+  background-color: #e0c9b1;
+  padding: 10px 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: "Century Gothic" !important;
+}
+
+.btn-fw {
+  background-color: #d8a067;
+  padding: 4px;
+  width: 45px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: bold;
+
+}
+
+.table-content {
+  background-color: #d0d2d3;
+  width: 100%;
+  margin: 10px 0;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  font-size: .8rem;
+  font-weight: bold;
+}
+
+th,
+td {
+  font-family: "Century Gothic bold" !important;
+  font-size: smaller;
+  padding: 5px 8px;
+}
+
+.radar-select {
+  background-color: #d0d2d3;
+  border-radius: 5px;
+
+}
+
+.chart-presence,
+.chart-temps,
+.chart-principe,
+.chart-souprincipe {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  width: 100%;
+  height: 400px;
+}
+
+.chart2 {
+  padding: 100px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.chart3 {
+  padding: 100px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.chart4 {
+  padding: 100px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.th-color {
+  background-color: #dfe5e8;
+}
+
+.td-brown {
+  background-color: #d8a067;
+}
+
+.td-rose {
+  background-color: #bd9ca7;
+}
+
+.filter-chart {
+  border-radius: 30px;
 }
 
 .bold__text,
 .ec-label,
 .post-player {
   font-family: "Century Gothic Bold";
-  font-weight: bold;
 }
 
 .club-logo {
@@ -27,31 +138,6 @@
   align-items: center;
 }
 
-.post_ {
-  background-color: rgb(226 200 120);
-  border-radius: 8px;
-  padding: 2px 0px;
-  font-family: "Century Gothic Bold";
-  font-weight: bold;
-}
-
-.info-block {
-  font-size: 1.1rem;
-  font-weight: bold;
-  height: 74px;
-}
-
-
-
-.i-color {
-  color: rgb(226 200 120);
-  fill: rgb(226 200 120);
-}
-
-.name-player {
-  font-size: 1.1rem;
-}
-
 .chart-block-labels {
   display: flex;
   justify-content: center;
@@ -60,12 +146,21 @@
   background: rgb(237 237 237);
 }
 
+.chart-scatter1-block1,
+.chart-scatter2-block2 {
+  justify-content: start;
+  align-items: start;
+  height: 100px;
+  width: 100%;
+  padding: 1px 2px;
+}
+
 .chart-block {
   border-radius: 20px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   margin-bottom: 10px;
   overflow: hidden;
-  width: 95%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -91,29 +186,25 @@
   margin-bottom: 40px;
 }
 
-.label_1 {
-  background: #e2c878;
-  padding: 5px 0px;
+.j-color {
+  color: rgb(254, 252, 244);
+  fill: rgb(248, 247, 246);
+}
+
+.i-color {
+  color: rgb(226 200 120);
+  fill: rgb(226 200 120);
+}
+
+.label_1,
+.label_2,
+.label_3 {
+  background-color: rgb(16, 14, 14);
+  padding: 5px 4px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.1rem;
-}
-
-.label_2 {
-  background: rgb(237 237 237);
-  padding: 5px 0px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.1rem;
-}
-
-.block_similarities {
-  background: #ededed;
-  overflow: hidden;
-  border-radius: 20px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
 .black_title {
@@ -210,7 +301,14 @@
 }
 
 @media screen and (max-width: 768px) {
+
   /* CSS rules for screens with a maximum width of 768px (typical for mobile devices) */
+  .demo-player {
+    background-color: rgb(237 237 237);
+    border-radius: 42px;
+    margin-inline: 145px;
+    height: 113px;
+  }
 
   .info-block {
     height: initial !important;
@@ -226,7 +324,18 @@
   }
 
   .img_profile {
+    width: 10px;
     justify-content: center !important;
     align-items: center !important;
+  }
+
+  .__canvas {
+    width: 100%;
+    height: 200px !important;
+  }
+
+  .__chart4 {
+    padding: 0 !important;
+    margin: 0 !important;
   }
 }

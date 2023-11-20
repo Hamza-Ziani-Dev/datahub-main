@@ -1,0 +1,95 @@
+<div class="row p-0 mx-0 mb-4">
+  <!-- Performence Individuelle -->
+  <div class="recent-container m-0 row col-12 col-md-12 mb-4 d-flex justify-content-center align-items-center">
+    <div class="col-12 col-md-6 justify-content-center align-items-start">
+      <div class="recent-content">
+        <div class="recent-title">
+          <div class="d-flex">
+            <i class="fas fa-weight-hanging i-color mr-2"></i>
+            <div class="bold__text mr-1">
+              Recent Performance
+            </div>
+          </div>
+        </div>
+
+        <div class="table-content">
+          <div class="table-responsive-md row m-0 p-0">
+            <div class="row mx-0 p-0 col-md-12 col-12 ">
+              <div
+                class="col-6 text-center font---blod d-flex justify-content-center align-items-center px-1 {{ [1,2].includes(i) ? 'col-md-1' :'col-md-2' }} "
+                *ngFor="let rperf of dataSource?.recent_performance;let i =index ">
+                {{ rperf.label }} </div>
+            </div>
+            <div class="row mx-0 p-0 col-md-12 col-12 ">
+              <div *ngFor="let rperf of dataSource?.recent_performance ;let i = index"
+                [ngClass]="{'bg-dorry-1': i % 2 !== 0,'bg-dorry': i % 2 === 0 }"
+                class="col-6 text-center font-weight-blod {{ [1,2].includes(i) ? 'col-md-1' :'col-md-2' }}  ">{{
+                rperf.value }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="offensive">
+        <div class="offensive-title ">
+          <div class="d-flex">
+            <i class="fas fa-weight-hanging i-color mr-2"></i>
+            <div class="bold__text mr-1">
+              Offensive Performance
+            </div>
+          </div>
+        </div>
+        <div class="offensive-content">
+          <div class="chart-scatter1-block1 row mx-0">
+            <div class="row mx-0 col-12 w-100 col-md-12">
+              <div id="chart-scatter1" style="width: 100%; height: 150px"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="deffensive">
+        <div class="deffensive-title ">
+          <div class="d-flex">
+            <i class="fas fa-weight-hanging i-color mr-2"></i>
+            <div class="bold__text mr-1">
+              Deffensive Performance
+            </div>
+          </div>
+        </div>
+        <div class="deffensive-content">
+          <div class="chart-scatter2-block2 row mx-0">
+            <div class="row mx-0 col-12 col-md-12">
+              <div id="chart-scatter2" style="width: 100%; height: 100px"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- Chart -->
+    <div class="col-12 row mx-0 col-md-6 justify-content-center align-items-center">
+      <select (ngModelChange)="actions('TYPE_CHART',$event)" class="mb-2" [(ngModel)]="type_chart" name="type_chart"
+        class="radar-select form-select form-select-sm px-2 bold__text">
+        <option selected value="pie">Radar Percentilles</option>
+        <option value="bar">Bar</option>
+      </select>
+      <div id="radar-percentilles-pie" *ngIf="type_chart == 'pie' " style="width: 100%; height: 400px"></div>
+      <div id="radar-percentilles-bar" *ngIf="type_chart == 'bar' " style="width: 100%; height: 400px"></div>
+    </div>
+    <!-- end Chart -->
+  </div>
+  <!-- End Perforfence Individuelle -->
+
+  <!-- analyse les charts -->
+  <div class="analyse-container row col-12 col-md-12 mt-4 mb-10  justify-content-center align-items-center">
+    <div class="commentsContainer mt-3" style="text-align: center;overflow-x: hidden;">
+      <div class="container-fluid">
+        <div class="row d-flex justify-content-center align-items-start" #canvasContainers>
+          <div class="col-md-6">
+            <div #canvasEntrainment></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end analyse les charts -->
+</div>

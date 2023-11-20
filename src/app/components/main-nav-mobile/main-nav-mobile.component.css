@@ -1,0 +1,313 @@
+.main--content {
+    height: 300vh;
+}
+
+.sidenav-container {
+    height: 100% !important;
+}
+
+.sidenav {
+    width: 85% !important;
+}
+
+.mat-toolbar.mat-primary {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1 !important;
+}
+
+.navigation--mobile-top,
+.nav--mobile-top {
+    position: sticky;
+    top: 0;
+    z-index: 99;
+}
+
+.navigation--mobile-top,
+.nav--mobile-top {
+    color: #fff !important;
+    background: linear-gradient(-165deg, var(--primary-linear-gradient-one-color), var(--primary-linear-gradient-two-color)) !important;
+    border-bottom: 2px solid var(--secondary-color) !important;
+}
+
+.nav--mobile-bottom {
+    position: fixed !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    overflow: hidden !important;
+    color: #fff !important;
+    background: linear-gradient(165deg, var(--primary-linear-gradient-one-color), #000) !important;
+    border-top: 2px solid var(--secondary-color) !important;
+    border-radius: 20px 20px 0 0px !important;
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+    padding-bottom: 0 !important;
+    height: 50px !important;
+}
+
+.navigation--content-top,
+.nav--content-top,
+.nav--content-bottom {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    justify-content: space-around;
+    align-items: center !important;
+}
+
+.navigation--content-top {
+    justify-content: space-between;
+}
+
+.nav--content-bottom {
+    padding-bottom: 0.75rem !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+}
+
+.logo--app,
+.logo--club {
+    width: 100% !important;
+    height: 100% !important;
+    flex: 0 0 33.333333% !important;
+    max-width: 33.333333% !important;
+    position: relative !important;
+}
+
+.logo--club,
+.logo--app {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.logo--app {
+    justify-content: end !important;
+}
+
+.logo--app-web img {
+    width: 80px !important;
+    object-fit: scale-down !important;
+}
+
+.logo--club img {
+    width: 25px !important;
+    height: 35px !important;
+    object-fit: scale-down !important;
+}
+
+.logo--club span {
+    font-size: .75rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.5px !important;
+    margin: 0 10px 5px !important;
+}
+
+.icon--menu-bottom {
+    position: relative !important;
+    font-size: 20px !important;
+}
+
+
+.nav--menu-btn {
+    transform: translateY(5px);
+}
+
+.nav--menu-btn span {
+    /* position: absolute !important;
+    top: 18px !important;
+    left: 6px !important; */
+    font-size: 10px !important;
+    letter-spacing: 1px !important;
+    z-index: 1 !important;
+}
+
+.nav--menu-btn a .nav--menu-label {
+    font-size: .6rem;
+    line-height: 16px;
+    color: white;
+}
+
+.nav--menu-btn a i {
+    font-size: .7rem;
+    color: white;
+}
+
+.nav--menu-btn a {
+    height: 10px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.logout--app .mat-icon-button {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Navigation */
+
+.naigation--link-compote {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--primary-linear-gradient-two-color);
+}
+
+.navigation--content-info {
+    display: flex;
+    align-items: center;
+}
+
+
+.navigation--content-info .user-info__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--primary-linear-gradient-one-color);
+    padding: 5px;
+}
+
+.navigation--content-info .user-info__avatar img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+}
+
+.navigation--content-info .user-info__general {
+    position: relative;
+}
+
+.navigation--content-info .user-info__saison,
+.navigation--content-info .user-info__email,
+.navigation--content-info .user-info__name {
+    font-size: 10px;
+    text-transform: capitalize;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+    position: absolute;
+    top: -27px;
+    left: 5px;
+    width: 100%;
+}
+
+.navigation--content-info .user-info__email {
+    text-transform: lowercase !important;
+    top: -15px !important;
+}
+
+.navigation--content-info .user-info__saison {
+    top: 0 !important;
+    font-weight: normal !important;
+}
+
+.navigation--list {
+    list-style: none;
+    padding: 0;
+}
+
+.navigation--list i {
+    margin-right: 10px;
+    color: var(--secondary-color);
+}
+
+.navigation--list span {
+    margin-left: 10px;
+    color: var(--primary-linear-gradient-two-color);
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: lowercase;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.navigation--mobile-bottom {
+    position: absolute !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    overflow: hidden !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background: white !important;
+}
+
+.navigation--mobile-bottom .navigation--content-bottom .vertion {
+    font-size: 12px;
+    color: var(--primary-linear-gradient-one-color);
+    font-weight: bold;
+    text-transform: capitalize;
+    font-family: 'Roboto Mono', monospace;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.header__top {
+    transform: translateY(-1px);
+}
+
+.header__bottom {
+    transform: translateY(1px);
+}
+
+.header__top,
+.header__bottom {
+    z-index: 100000000;
+}
+
+/* ::ng-deep .mat-list-item-content,
+.navigation--content-info .user-info__avatar img,
+.navigation--content-info .user-info__avatar .sideLogo,
+.navigation--content-info .user-info__avatar {
+    outline: none !important;
+    border: none !important;
+} */
+
+.nom__equipe {
+    color: white;
+}
+
+::ng-deep .mat_menu_mobile+* button.mat-menu-item:hover,
+::ng-deep .mat_menu_mobile+* button.mat-menu-item:active {
+    background: var(--secondary-color) !important;
+    color: #ffffff !important;
+    font-weight: bold !important;
+}
+
+::ng-deep .mat_menu_mobile+* button.mat-menu-item {
+    color: rgb(53 49 45);
+    font-weight: bold !important;
+    transition: .3s ease-in !important;
+    text-transform: capitalize !important;
+}
+
+::ng-deep .mat_menu_mobile+* .mat-menu-panel {
+    transform-origin: left top;
+    transform-origin: left top;
+    background: rgb(218 218 218 / 25%);
+    backdrop-filter: blur(17px);
+    -webkit-backdrop-filter: blur(4px);
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: 1px solid rgb(250 250 250);
+    border-bottom: 6px solid var(--secondary-color);
+    font-weight: bold;
+}
+
+::ng-deep .mat_menu_mobile+* .mat-menu-panel:first-child {
+    height: 42vh !important;
+    overflow-y: scroll !important;
+}
+
+.club-logo {
+    height: 25px;
+    margin-right: 10px;
+}

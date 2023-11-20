@@ -1,0 +1,136 @@
+<!-- [routerLink]="['../','profile-player',element?.myteam_id ||  element?.id ,'player-resume']" -->
+<div class="mx-0 overflow-auto list-container">
+  <div class="table-container">
+    <div class="row mx-0 ">
+      <mat-form-field class="form--field col-12 col-md-3 " appearance="outline">
+        <mat-label><strong>Joueur</strong></mat-label>
+        <input matInput [(ngModel)]="filters.player" name="player"
+          (ngModelChange)="actions('DO_FILTERS',{column:'player',value:$event})">
+      </mat-form-field>
+      <mat-form-field class="form--field col-12 col-md-3 " appearance="outline">
+        <mat-label><strong>Ligues</strong></mat-label>
+        <mat-select multiple (ngModelChange)="actions('DO_FILTERS',{column:'ligue',value:$event})"
+          [(ngModel)]="filters.ligue" name="ligue">
+          <mat-option value="LNFF"><strong>LNFF</strong></mat-option>
+          <mat-option value="LNFP"><strong>LNFP</strong></mat-option>
+          <mat-option value="LNFD"><strong>LNFD</strong></mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="form--field col-12 col-md-3 " appearance="outline">
+        <mat-label><strong>Annee de Naissance</strong></mat-label>
+        <mat-select multiple (ngModelChange)="actions('DO_FILTERS',{column:'annee',value:$event})"
+          [(ngModel)]="filters.annee" name="annee">
+          <mat-option [value]="date" *ngFor="let date of DATES"><strong>{{ date }}</strong></mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="form--field col-12 col-md-3 " appearance="outline">
+        <mat-label><strong>Posts</strong></mat-label>
+        <mat-select multiple (ngModelChange)="actions('DO_FILTERS',{column:'post',value:$event})"
+          [(ngModel)]="filters.post" name="post">
+          <mat-option [value]="post.key" *ngFor="let post of POSTS"><strong>{{ post.label }}</strong></mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </div>
+    <table mat-table [dataSource]="dataSource" class="w-100">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef class="th-head th-head-lg"> Joueur </th>
+        <td mat-cell *matCellDef="let element;let i = index"
+          [routerLink]="['../','profile-player',element?.myteam_id ||  element?.id ,'player-resume']">
+          <div class="d-flex justify-content-start align-items-center ">
+            <div class="post_player">
+              {{ i + 1 }}
+            </div>
+            <div class="equipe__logo">
+              <img [src]="URL+element?.img_src" alt="" width="100%" height="100%" />
+            </div>
+            <div>{{element['Joueur']}}</div>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="equipe">
+        <th mat-header-cell *matHeaderCellDef class="th-head th-head-lg"> {{ '\u00c9quipe dans la période sélectionnée'
+          }} </th>
+        <td mat-cell *matCellDef="let element"
+          [routerLink]="['../','profile-player',element?.myteam_id ||  element?.id ,'player-resume']">
+          <div class="d-flex justify-content-start align-items-center ">
+            <div class="equipe__logo">
+              <img [src]="URL+element['Équipe']['logo']" alt="" width="100%" height="100%" />
+            </div>
+            <div>{{element['Équipe']?.nom}}</div>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="age">
+        <th mat-header-cell *matHeaderCellDef class="th-head"> {{ '\u00c2ge' }} </th>
+        <td mat-cell *matCellDef="let element"
+          [routerLink]="['../','profile-player',element?.myteam_id ||  element?.id ,'player-resume']">
+          {{element['\u00c2ge']}}
+          ans
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="time_play">
+        <th mat-header-cell *matHeaderCellDef class="th-head"> {{ 'Minutes jou\u00e9es' }} </th>
+        <td mat-cell *matCellDef="let element"
+          [routerLink]="['../','profile-player',element?.myteam_id ||  element?.id ,'player-resume']">
+          {{element['Minutes
+          jou\u00e9es']+" min"}}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="pied">
+        <th mat-header-cell *matHeaderCellDef class="th-head"> Poids </th>
+        <td mat-cell *matCellDef="let element"
+          [routerLink]="['../','profile-player',element?.myteam_id ||  element?.id ,'player-resume']">
+          {{element['Pied'] |
+          titlecase}} </td>
+      </ng-container>
+      <ng-container matColumnDef="taille">
+        <th mat-header-cell *matHeaderCellDef class="th-head"> Taille </th>
+        <td mat-cell *matCellDef="let element"
+          [routerLink]="['../','profile-player',element?.myteam_id ||  element?.id ,'player-resume']">
+          {{element['Taille']+"
+          cm"}}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="indice">
+        <th mat-header-cell *matHeaderCellDef class="th-head"> Indice </th>
+        <td mat-cell *matCellDef="let element"
+          [routerLink]="['../','profile-player',element?.myteam_id ||  element?.id ,'player-resume']">
+          {{element?.indice }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row role="button" id="tr-rows" class="tr-rows" *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <div class="no-profile" *ngIf="dataSource.length == 0 && !pagination.loading">
+      <div>
+        <ng-container *ngTemplateOutlet="NoFile"></ng-container>
+      </div>
+      <strong>{{ 'Aucune donnée !' | titlecase }}</strong>
+    </div>
+    <mat-paginator [length]="pagination?.length" [pageSize]="pagination?.pageSize" [pageIndex]="pagination?.pageIndex"
+      [pageSizeOptions]="pagination?.pageSizeOptions" (page)="actions('IS_PAGINATED',$event)" showFirstLastButtons
+      aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
+</div>
+
+
+<ng-template #NoFile>
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50px"
+    height="50px" viewBox="0,0,256,256">
+    <g fill="var(--primary-color)" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+      stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none"
+      font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+      <g transform="scale(2,2)">
+        <path
+          d="M32,6c-7.2,0 -13,5.8 -13,13v90c0,7.2 5.8,13 13,13h20.5c0,0 -0.00039,0.09961 0.09961,0.09961c1.7,3.1 4.90039,4.90039 8.40039,4.90039h56c3.5,0 6.60039,-1.80039 8.40039,-4.90039c1.8,-3 1.70039,-6.69922 -0.09961,-9.69922l-16.30078,-27.09961v-56.30078c0,-6.1 -2.39922,-11.90078 -6.69922,-16.30078c-4.3,-4.4 -10.20078,-6.69922 -16.30078,-6.69922zM89,12.30078c3.4,0.6 6.5,2.19922 9,4.69922c2.5,2.5 4.09922,5.6 4.69922,9h-6.69922c-3.9,0 -7,-3.1 -7,-7zM41.90039,56h39c1.7,0 3,1.3 3,3c0,1.7 -1.3,3 -3,3h-39c-1.7,0 -3,-1.3 -3,-3c0,-1.7 1.3,-3 3,-3zM88.90039,66.90039c1.3,0 2.39961,0.59883 3.09961,1.79883l28.09961,46.80078c0.7,1.2 0.79961,2.49922 0.09961,3.69922c-0.7,1.2 -1.79922,1.80078 -3.19922,1.80078h-56c-1.3,0 -2.49922,-0.70078 -3.19922,-1.80078c-0.7,-1.2 -0.6,-2.49922 0,-3.69922l28,-46.80078c0.7,-1.1 1.79961,-1.79883 3.09961,-1.79883zM41.90039,71h29c1.7,0 3,1.3 3,3c0,1.7 -1.3,3 -3,3h-29c-1.7,0 -3,-1.3 -3,-3c0,-1.7 1.3,-3 3,-3zM89,78c-1.7,0 -3,1.3 -3,3v15c0,1.7 1.3,3 3,3c1.7,0 3,-1.3 3,-3v-15c0,-1.7 -1.3,-3 -3,-3zM42.09961,86h20c1.7,0 3,1.3 3,3c0,1.7 -1.3,3 -3,3h-20c-1.7,0 -3,-1.3 -3,-3c0,-1.7 1.3,-3 3,-3zM89,106c-1.7,0 -3,1.3 -3,3v3c0,1.7 1.3,3 3,3c1.7,0 3,-1.3 3,-3v-3c0,-1.7 -1.3,-3 -3,-3z">
+        </path>
+      </g>
+    </g>
+  </svg>
+</ng-template>

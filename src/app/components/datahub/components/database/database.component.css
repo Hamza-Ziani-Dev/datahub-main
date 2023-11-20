@@ -1,0 +1,102 @@
+.rankingContainer {
+  background-color: hsl(0deg 0% 100%);
+  background-image: url(../../../../../assets/images/bg-image.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100%;
+  font-family: 'Century Gothic', sans-serif !important;
+  overflow: hidden;
+}
+
+.rankingContainer .header div {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.rankingContainer .header .logo {
+  width: 60px;
+  margin-left: 10px;
+}
+
+.pagination__route>div:hover {
+  background-color: white;
+}
+
+.pagination__route>div {
+  background: #f4f1f1;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  margin: 0 20px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  border: 1px solid white;
+
+
+}
+
+.disabled_pagination {
+  opacity: .4;
+  pointer-events: none;
+  background-color: #c7c7c7;
+}
+
+.pagination__route {
+  /* position: absolute; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rankingContainer .header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom-right-radius: 100px;
+  border-bottom-left-radius: 100px;
+  background: linear-gradient(238deg, #c7c7c7, white);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.title {
+  font-family: "Century Gothic Bold";
+  font-weight: bold;
+}
+
+.image-background-header {
+  background-image: url(../../../../../assets/images/bg-image-black-player.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.logo-botola {
+  width: 40px !important;
+}
+
+@media screen and (max-width: 768px) {
+  .rankingContainer .header {
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+  }
+
+  .rankingContainer .header div {
+    font-size: 1.1rem;
+  }
+
+  .rankingContainer .header .logo {
+    width: 45px;
+  }
+
+  .logo-botola {
+    width: 30px !important;
+  }
+
+  .pagination__route {
+    transform: translateY(-30px);
+  }
+
+}

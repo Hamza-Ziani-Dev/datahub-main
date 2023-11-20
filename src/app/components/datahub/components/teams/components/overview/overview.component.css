@@ -1,0 +1,137 @@
+
+/* Sub Header */
+.table-classement, .xg-pour, .xg-contre, .distribition-passe, .pertes-balle, .recuperation-balle{
+    border-radius: 10px;
+    background-color: rgb(211, 211, 211);
+    width: 175px;
+    height: 41px;
+    padding: 11px 12px;
+    font-size: small;
+    font-weight: bold;
+}
+.list-container {
+    font-family: "Century Gothic";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  #table:hover {
+    background-color: rgb(180, 174, 54) !important;
+  }
+  
+.table {
+    padding: 20px;
+
+}
+
+  .table-header{
+    background-color: rgb(222, 222, 222);
+    margin-top: 50px;
+    padding: 6px;
+    border-radius: 9px;
+  }
+  th{ 
+    background-color: rgb(211, 205, 87);
+    color: #000;
+    text-align: center;
+    justify-content: center;
+  }
+  tr.mat-header-row{
+    height: 35px;
+    text-align: center;
+  }
+
+  tr.mat-row{
+    height: 20px;
+  }
+  tr.mat-row:nth-child(even){
+    height: 30px;
+    background-color: #f1f1f1;
+  }
+  .mat-table{
+    font-family: "Century Gothic";
+    font-weight: bold;
+    font-size: large;
+    border-radius: 10px; /* Adjust the value as per your preference */
+    overflow: hidden; 
+  }
+  .table-content{
+    border-radius: 11px;
+    background-color: gainsboro;
+    margin-bottom: 10px;
+  }
+  .equipe__logo {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 38px;
+    margin-right: 20px;
+  }
+  
+
+  
+  
+
+
+  
+ 
+  
+  @media (max-width : 768px) {
+    .no-profile {
+      padding: 40px
+    }
+  
+    .no-profile div {
+      width: 15%;
+    }
+ 
+  }
+  
+  
+  @media screen and (max-width: 768px) {
+    .tr-rows td {
+      font-size: .9rem;
+      height: 45px !important;
+      text-align: center !important;
+    }
+  
+    .th-head {
+      font-size: 1rem;
+      border-bottom: 1px solid;
+  
+    }
+  
+    .table-container {
+      overflow: scroll;
+      margin-bottom: 80px;
+    }
+  
+  
+    .th-head {
+      min-width: 150px !important;
+      text-align: center !important;
+    }
+  
+    .equipe__logo {
+      width: 26px !important;
+      margin: 0 20px !important;
+    }
+  
+    .th-head-lg {
+      min-width: 280px !important;
+    }
+  
+    .th-head-lg:nth-child(1),
+    .tr-rows td:nth-child(1) {
+      text-align: left !important;
+    }
+  
+    .tr-rows td:nth-child(1) {
+      padding-left: 0 !important;
+    }
+  
+    .form--field {
+      font-size: .8rem;
+    }
+  }
