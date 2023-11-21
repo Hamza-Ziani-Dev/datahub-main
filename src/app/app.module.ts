@@ -36,6 +36,7 @@ import { SublevelMenuComponent } from './layout/sidenav/sublevel-menu.component'
 import { HeaderComponent } from './layout/header/header.component';
 import { BodyComponent } from './layout/body/body.component';
 import { FooterComponent } from './layout/footer/footer.component';
+import { MainNavMobileComponent } from './components/main-nav-mobile/main-nav-mobile.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -55,6 +56,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       HeaderComponent,
       BodyComponent,
       SublevelMenuComponent,
+      MainNavMobileComponent
     ],
   imports: [
     MatDatepickerModule,

@@ -1,6 +1,6 @@
 <!-- <app-main-nav *ngIf="!charedService.DetectIsMobile()"></app-main-nav> -->
-<!-- <app-main-nav-mobile *ngIf="charedService.DetectIsMobile()"></app-main-nav-mobile>
-<ng-container *ngIf="!charedService.DetectIsMobile()"> -->
+<app-main-nav-mobile *ngIf="charedService.DetectIsMobile()"></app-main-nav-mobile>
+<ng-container *ngIf="!charedService.DetectIsMobile()">
   <app-sidenav (onToggleSideNav)="onToggleSideNav($event)"></app-sidenav>
   <app-body [collapsed]="isSideNavCollapsed" [screenWidth]="screenWidth"></app-body>
-<!-- </ng-container> -->
+</ng-container>

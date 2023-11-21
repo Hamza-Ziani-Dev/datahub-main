@@ -15,15 +15,25 @@ export class OverviewComponent implements OnInit {
   ngOnInit() {
     // Replace this with your actual data source
     const data = [
-      { pos: '1', teams: 'RSB BERKANE', poits: '0.16', posisionnal:'81',
+      { pos: '1', teams: 'RCA CASA', poits: '0.16', posisionnal:'81',
       counter:'9.65', play:'18',goals:'29', xga:'2.19', diffirence:'3'},
-      { pos: '2', teams: 'RSB BERKANE', poits: '0.16', posisionnal:'81',
+      { pos: '2', teams: 'RCA CASA', poits: '0.16', posisionnal:'81',
       counter:'9.65', play:'18',goals:'29', xga:'2.19', diffirence:'3'},
-      { pos: '3', teams: 'RSB BERKANE', poits: '0.16', posisionnal:'81',
+      { pos: '3', teams: 'RCA CASA', poits: '0.16', posisionnal:'81',
       counter:'9.65', play:'18',goals:'29', xga:'2.19', diffirence:'3'},
-      { pos: '4', teams: 'RSB BERKANE', poits: '0.16', posisionnal:'81',
+      { pos: '4', teams: 'RCA CASA', poits: '0.16', posisionnal:'81',
       counter:'9.65', play:'18',goals:'29', xga:'2.19', diffirence:'3'},
-      { pos: '5', teams: 'RSB BERKANE', poits: '0.16', posisionnal:'81',
+      { pos: '5', teams: 'RCA CASA', poits: '0.16', posisionnal:'81',
+      counter:'9.65', play:'18',goals:'29', xga:'2.19', diffirence:'3'},
+      { pos: '6', teams: 'RCA CASA', poits: '0.16', posisionnal:'81',
+      counter:'9.65', play:'18',goals:'29', xga:'2.19', diffirence:'3'},
+      { pos: '7', teams: 'RCA CASA', poits: '0.16', posisionnal:'81',
+      counter:'9.65', play:'18',goals:'29', xga:'2.19', diffirence:'3'},
+      { pos: '8', teams: 'RCA CASA', poits: '0.16', posisionnal:'81',
+      counter:'9.65', play:'18',goals:'29', xga:'2.19', diffirence:'3'},
+      { pos: '9', teams: 'RCA CASA', poits: '0.16', posisionnal:'81',
+      counter:'9.65', play:'18',goals:'29', xga:'2.19', diffirence:'3'},
+      { pos: '10', teams: 'RCA CASA', poits: '0.16', posisionnal:'81',
       counter:'9.65', play:'18',goals:'29', xga:'2.19', diffirence:'3'},
       // Add more data as needed
     ];

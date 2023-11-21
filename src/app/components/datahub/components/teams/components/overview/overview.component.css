@@ -1,4 +1,6 @@
-
+.overviewContainer{
+  height: 1000px;
+}
 /* Sub Header */
 .table-classement, .xg-pour, .xg-contre, .distribition-passe, .pertes-balle, .recuperation-balle{
     border-radius: 10px;
@@ -26,17 +28,35 @@
 
 }
 
+.logo{
+  width: 15px;
+  height: 15px;
+  padding: 0px;
+  margin-top: -3px;
+
+}
+
   .table-header{
     background-color: rgb(222, 222, 222);
     margin-top: 50px;
     padding: 6px;
     border-radius: 9px;
+    font-family: "Century Gothic Bold";
+    text-transform: uppercase;
+    color: gray;
   }
   th{ 
     background-color: rgb(211, 205, 87);
     color: #000;
     text-align: center;
     justify-content: center;
+  }
+  th.mat-header-cell{
+    text-align: center;
+    padding: 8px;
+    font-family: "Century Gothic Bold";
+    text-transform: uppercase;
+    color: gray;
   }
   tr.mat-header-row{
     height: 35px;
@@ -46,6 +66,12 @@
   tr.mat-row{
     height: 20px;
   }
+  td.mat-cell{
+    padding: 8px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+  }
+ 
   tr.mat-row:nth-child(even){
     height: 30px;
     background-color: #f1f1f1;
@@ -60,7 +86,8 @@
   .table-content{
     border-radius: 11px;
     background-color: gainsboro;
-    margin-bottom: 10px;
+    padding: 0 1px;
+    margin-bottom: 11px;
   }
   .equipe__logo {
     border-radius: 50%;
