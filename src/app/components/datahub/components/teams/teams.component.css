@@ -4,8 +4,15 @@
   background-image: url(../../../../../assets/images/bg-image.png);
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 100%;
+  min-height: 350%;
   font-family: 'Century Gothic' !important;
+}
+
+.image-background-header {
+  background-image: url(../../../../../assets/images/bg-image-black-player.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0 96px;
 }
 /* Header */
 .header{
@@ -13,41 +20,65 @@
     overflow: hidden;
     border-bottom-right-radius: 50px;
     border-bottom-left-radius: 50px;
-    height: 80px;
-    font-size: 1.5rem;
-    font-weight: bold;
+    height: 60px;
+    font-size: 1rem;
+    font-family: 'Century Gothic' !important;
     background: linear-gradient(238deg, #1c7b22, rgb(16, 83, 20));
     box-shadow: rgba(112, 120, 114, 0.25) 0px 2px 5px -1px, rgba(126, 121, 121, 0.3) 0px 1px 3px -1px;
 }
 .navbar{
-    justify-content: space-between;
+  padding: 2px;
+  justify-items: center;
+  justify-content: space-between;
 }
+.nav-link{
+  color: white;
+  padding: 8px;
+  font-family: 'Century Gothic' !important;
+  /* padding-left: 0px; */
+  padding-right: 20px;
+} 
+.nav-link:hover{
+  color: rgb(255, 247, 3);
+}   
 .header .logo {
     width: 60px;
     margin-left: 10px;
   }
-  .image-background-header {
-    background-image: url(../../../../../assets/images/bg-image-black-player.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 0 96px;
+
+
+
+
+  
+/* End Header  */
+
+
+
+@media screen and (max-width: 768px) {
+  /* CSS rules for screens with a maximum width of 768px (typical for mobile devices) */
+  .teamContainer{
+    flex-direction: column;
+    align-items: center;
+    min-height: 350%;
+    width: 100%;
+    padding-right: 1px;
+    padding-left: 3px;
+    /* padding-right: 2px;
+    padding-left: 1px;  */
   }
-
-.nav-link{
+  .navbar{
+    justify-content: center;
+    padding: 0.5rem 0rem;
+  }
+  .nav-link{
     color: white;
+    padding: 0px;
     font-family: 'Century Gothic' !important;
-    font-size: large;
+    font-size: small;
 }  
 
-.nav-link:hover{
-    color: rgb(198, 216, 0);
-}  
-  
-/* End Header */
 
-
-
-  
+}
   
 
   

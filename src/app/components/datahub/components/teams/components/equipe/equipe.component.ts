@@ -58,19 +58,29 @@ export class EquipeComponent implements OnInit {
               { name: 'Duels Offensive ', max: 25000 }
             ],
             radius: 85,
-            center: ['45%', '60%'],
+            center: ['42%', '60%'],
           },
           series: [
             {
               type: 'radar',
+              areaStyle: {},
+              // itemStyle: {
+              //   color:"#E55C00",
+              // },
               data: [
                 {
                   value: [4200, 3000, 20000, 35000, 50000, 18000, 20000, 35000,],
-                  name: 'RSB Berkane'
+                  name: 'RSB Berkane',
+                   itemStyle: {
+                     color:"#E55C00",
+                     },
                 },
                 {
                   value: [5000, 14000, 28000, 26000, 42000, 21000, 20000, 35000,],
-                  name: 'Moyenne de ligne'
+                  name: 'Moyenne de ligne',
+                  itemStyle: {
+                    color:"#fbb034",
+                    },
                 }
               ]
             }
@@ -96,19 +106,27 @@ export class EquipeComponent implements OnInit {
               { name: 'Duels Offensive ', max: 25000 }
             ],
             radius: 85,
-            center: ['45%', '60%'],
+            center: ['42%', '60%'],
           },
           series: [
             {
               type: 'radar',
+              areaStyle: {},
+           
               data: [
                 {
                   value: [4200, 3000, 20000, 35000, 50000, 18000, 20000, 35000,],
-                  name: 'RSB Berkane'
+                  name: 'RSB Berkane',
+                  itemStyle: {
+                    color:"#E55C00",
+                    },
                 },
                 {
                   value: [5000, 14000, 28000, 26000, 42000, 21000, 20000, 35000,],
-                  name: 'Moyenne de ligne'
+                  name: 'Moyenne de ligne',
+                  itemStyle: {
+                    color:"#fbb034",
+                    },
                 }
               ]
             }
@@ -134,19 +152,26 @@ export class EquipeComponent implements OnInit {
               { name: 'Duels Offensive ', max: 25000 }
             ],
             radius: 85,
-            center: ['45%', '60%'],
+            center: ['42%', '60%'],
           },
           series: [
             {
               type: 'radar',
+              areaStyle: {},
               data: [
                 {
                   value: [4200, 3000, 20000, 35000, 50000, 18000, 20000, 35000,],
-                  name: 'RSB Berkane'
+                  name: 'RSB Berkane',
+                  itemStyle: {
+                    color:"#E55C00",
+                    },
                 },
                 {
                   value: [5000, 14000, 28000, 26000, 42000, 21000, 20000, 35000,],
-                  name: 'Moyenne de ligne'
+                  name: 'Moyenne de ligne',
+                  itemStyle: {
+                    color:"#fbb034",
+                    },
                 }
               ]
             }
@@ -159,33 +184,48 @@ export class EquipeComponent implements OnInit {
         const option4 = {
           xAxis: {},
           yAxis: {},
+          title:{
+            text: 'Aerial Duel Win Ration %',
+            bottom: 5,
+            left: 'center'
+          },
           series: [
             {
-              data: [
-                        {
-                           value: [10, 100,'Berkan'],
-                          name: 'Berkan'
-                        },
-                         {
-                          value: [10, 37],
-                          name: 'RCA'
-                        },
-                         {
-                          value: [90, 30],
-                          name: 'WAC'
-                        },
-                         {
-                          value: [30, 80],
-                          name: 'KAC'
-                        },
-                         {
-                          value: [20, 70],
-                          name: 'RSB'
-                        },
-                        
-        
-                      ],
+              data:  [
+                {
+                   value: [1, 64,'Berkan'],
+                  name: 'Berkan'
+                },
+                 {
+                  value: [10, 56],
+                  name: 'RCA'
+                },
+                 {
+                  value: [20, 44],
+                  name: 'WAC'
+                },
+                 {
+                  value: [2, 22],
+                  name: 'KAC'
+                },
+                 {
+                  value: [1, 33],
+                  name: 'RSB'
+                },
+                 {
+                  value: [1, 10],
+                  name: 'MAS'
+                },
+
+              ],
               type: 'scatter',
+              name:"Title",
+              stack: 'Total',
+              symbol: 'circle',
+              symbolSize: 25,
+              // itemStyle: {
+              //   color:"#7ac143",
+              // },
               emphasis: {
                 focus: 'self'
               },
@@ -209,51 +249,62 @@ export class EquipeComponent implements OnInit {
         const myChart5 = echarts.init(document.getElementById("chart-passes"));
         const option5 = {
           xAxis: {},
-          yAxis: {},
-          series: [
-            {
-              data: [
-                        {
-                           value: [10, 100,'Berkan'],
-                          name: 'Berkan'
-                        },
-                         {
-                          value: [10, 37],
-                          name: 'RCA'
-                        },
-                         {
-                          value: [90, 30],
-                          name: 'WAC'
-                        },
-                         {
-                          value: [30, 80],
-                          name: 'KAC'
-                        },
-                         {
-                          value: [20, 70],
-                          name: 'RSB'
-                        },
-                        
+        yAxis: {},
+        title:{
+          text: 'Aerial Duel Win Ration %',
+          bottom: 5,
+          left: 'center'
+        },
+        series: [
+          {
+            data: [
+                      {
+                         value: [1, 10,'Berkan'],
+                        name: 'Berkan'
+                      },
+                       {
+                        value: [3, 56],
+                        name: 'RCA'
+                      },
+                       {
+                        value: [5, 40],
+                        name: 'WAC'
+                      },
+                       {
+                        value: [1, 54],
+                        name: 'KAC'
+                      },
+                       {
+                        value: [1, 33],
+                        name: 'RSB'
+                      },
+                       {
+                        value: [1, 23],
+                        name: 'MAS'
+                      },
+                      
+      
+                    ],
+            type: 'scatter',
+            symbol: 'circle',
+            symbolSize: 25,
+            emphasis: {
+              focus: 'self'
+            },
+            // labelLayout: {
         
-                      ],
-              type: 'scatter',
-              emphasis: {
-                focus: 'self'
-              },
-              labelLayout: {
-          
-              },
-              // labelLine: {
-              //   show: true,
-              //   length2: 10,
-              //   // lineStyle: {
-              //   //   color: ''
-              //   // }
-              // },
-             
-            }
-          ]
-        };
+            // },
+            labelLine: {
+              show: true,
+              // length2: 10,
+              // lineStyle: {
+              //   color: ''
+              // }
+            },
+           
+          }
+        ]
+        }
         myChart5.setOption(option5);
       break;
       case "CREATE_CHART_SCATTER3":
@@ -261,33 +312,44 @@ export class EquipeComponent implements OnInit {
         const option6 = {
           xAxis: {},
           yAxis: {},
+          title:{
+            text: 'Aerial Duel Win Ration %',
+            bottom: 5,
+            left: 'center'
+          },
           series: [
             {
-              data: [
-                        {
-                           value: [10, 100,'Berkan'],
-                          name: 'Berkan'
-                        },
-                         {
-                          value: [10, 37],
-                          name: 'RCA'
-                        },
-                         {
-                          value: [90, 30],
-                          name: 'WAC'
-                        },
-                         {
-                          value: [30, 80],
-                          name: 'KAC'
-                        },
-                         {
-                          value: [20, 70],
-                          name: 'RSB'
-                        },
-                        
-        
-                      ],
+              data:  [
+                {
+                   value: [1, 64,'Berkan'],
+                  name: 'Berkan'
+                },
+                 {
+                  value: [10, 56],
+                  name: 'RCA'
+                },
+                 {
+                  value: [20, 44],
+                  name: 'WAC'
+                },
+                 {
+                  value: [2, 22],
+                  name: 'KAC'
+                },
+                 {
+                  value: [1, 33],
+                  name: 'RSB'
+                },
+                 {
+                  value: [1, 10],
+                  name: 'MAS'
+                },
+                
+
+              ],
               type: 'scatter',
+              symbol: 'circle',
+              symbolSize: 25,
               emphasis: {
                 focus: 'self'
               },

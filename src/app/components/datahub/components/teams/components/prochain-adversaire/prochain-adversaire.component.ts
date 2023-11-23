@@ -37,8 +37,9 @@ export class ProchainAdversaireComponent implements OnInit {
       case "CREATE_CHART_RADAR1":
         const myChart1 = echarts.init(document.getElementById("chart-general"));
         const option1 ={
-          legend: {
-            data: ['RSB Berkane', 'Moyenne de ligne']
+          title: {
+            text: 'General Performance',
+            left: 'center'
           },
           radar: {
             // shape: 'circle',
@@ -48,11 +49,11 @@ export class ProchainAdversaireComponent implements OnInit {
               { name: 'Tirs', max: 30000 },
               { name: 'Tirs cadre', max: 38000 },
               { name: 'Contre Prise', max: 52000 },
-              { name: 'Passes Complete', max: 25000 },
-              { name: 'Duels Offensive ', max: 25000 }
+              { name: 'Degagements', max: 25000 },
+              { name: 'Foutes ', max: 25000 }
             ],
-            radius: 100,
-            center: ['50%', '60%'],
+            radius: 85,
+            center: ['45%', '65%'],
           },
           series: [
             {

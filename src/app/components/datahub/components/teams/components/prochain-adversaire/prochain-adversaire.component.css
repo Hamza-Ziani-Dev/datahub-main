@@ -223,8 +223,8 @@
     background-color: rgb(243, 243, 243);
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
-.title-principale{
-    padding: 10px 13px;
+.title-principales{
+    padding: 10px;
 }
 
 .row1, .row2, .row3 , .row4{
@@ -246,4 +246,71 @@
 .box-icon{
     margin-left: 40px;
     margin-bottom: 29px;
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .container-content{
+        flex-direction: column;
+        align-items: center;
+        min-height: 300%;
+        width: 100%;
+        padding-right: 20px !important;
+        padding-left: 22px !important;
+      }
+      .content1{
+        padding-right: 1px !important;
+        padding-left: 1px !important;
+        margin-bottom: 24px !important;
+      }
+      .box2{
+        padding-right: 0px !important;
+        padding-left: 0px !important;
+      }
+    .content2{
+        display: block !important;
+        padding-right: 1px !important;
+        padding-left: 1px !important;
+    }
+    .summary1, .tactic{
+        margin: 0px;
+        padding: 0px;
+    }
+    .summary-title, .tactic-title{
+        padding-left: 30px;
+    }
+
+    .match{
+        padding-right: 2px !important;
+        padding-left: 4px !important;
+        margin-top: 20px !important;
+    }
+   .general{
+    padding-right: 1px !important;
+    padding-left: 1px !important;
+   }
+   .principalesContent{
+    padding: 0px !important;
+   }
+   .icon1{
+    padding: 0px;
+    margin: 0px;
+   }
+   .row1, .row2, .row3, .row4{
+    background-color: #ececec;
+    width: 96%;
+    height: 61px;
+    padding: 0px;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8px;
+    border-radius: 11px;
+   }
+   .title{
+    margin-left: 14px;
+   }
+   .title-principales{
+    padding: 12px 22px;
+   }
 }
