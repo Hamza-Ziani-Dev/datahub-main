@@ -100,7 +100,7 @@
               </g>
             </svg>
             <div class=" bold__text mr-2">
-              {{ getAge(player?.date_naiss) + "ans" || dataSource["Informations personnelles"]["Âge"]}}
+              {{ player?.date_naiss ? getAge(player?.date_naiss) : dataSource["Informations personnelles"]["Âge"]}} ans
             </div>
           </div>
           <!-- end icon 2 -->
@@ -110,8 +110,13 @@
           <!-- icon 3 -->
           <div class="p-0 d-flex col-6 col-md-6 align-items-center justify-content-center">
             <i class="fas fa-weight-hanging i-color mr-1"></i>
-            <div class="bold__text mr-4">
-              {{ player?.weight || dataSource["Informations personnelles"]["Taille"]}}<small> KG</small>
+            <div class="bold__text mr-2">
+              {{
+              +player?.weight > 0 ? player?.weight+" KG" :
+              (+dataSource["Informations personnelles"]["Poids"] > 0 ?
+              dataSource["Informations personnelles"]["Poids"]+" KG" :
+              dataSource["Informations personnelles"]["Poids"])
+              }}
             </div>
           </div>
           <!-- end icon 3 -->
@@ -138,8 +143,12 @@
               </g>
             </svg>
             <div class="bold__text mr-2">
-              {{player?.height || dataSource["Informations personnelles"]["Taille"]}}
-              <small>CM</small>
+              {{
+              +player?.height > 0 ? player?.height+" CM" :
+              (+dataSource["Informations personnelles"]["Taille"] > 0 ?
+              dataSource["Informations personnelles"]["Taille"]+" CM" :
+              dataSource["Informations personnelles"]["Taille"])
+              }}
             </div>
           </div>
           <!-- end icon 4 -->
@@ -169,26 +178,27 @@
   <!-- infivuedialle-palyer  -->
   <div class="infivuedialle-palyer row col-12 col-md-12 pb-0 d-flex justify-content-center align-items-center ">
     <div class="block_title p-0 col-12 row mx-0">
-      <div class="col-12 col-md-3 label_0" routerLinkActive="active" routerLink="player-resume" type="button">
-        <i class="fas fa-history  j-color mr-1"></i>
+      <div class="col-12 col-md-3 py-2 label_0" routerLinkActive="active" routerLink="player-resume" type="button">
+        <i class="fas fa-tachometer-alt  j-color mr-1"></i>
         <div class="ml-2 d-flex justify-content-center align-items-center">
           <div class="bold__text mr-1 text-white">Vue D'ensemble</div>
         </div>
       </div>
-      <div class="col-12 col-md-3 label_1" routerLinkActive="active" routerLink="player-individuelle" type="button">
-        <i class="fas fa-history  j-color mr-1"></i>
+      <div class="col-12 col-md-3 py-2 label_1" routerLinkActive="active" routerLink="player-individuelle"
+        type="button">
+        <i class="fas fa-chart-bar j-color mr-1"></i>
         <div class="ml-2 d-flex justify-content-center align-items-center">
           <div class="bold__text mr-1 text-white">Performance Individuelle</div>
         </div>
       </div>
-      <div class="col-12 col-md-3 label_2" routerLinkActive="active" routerLink="player-performance" type="button">
-        <i class="fas fa-history  j-color mr-1"></i>
+      <div class="col-12 col-md-3 py-2 label_2" routerLinkActive="active" routerLink="player-performance" type="button">
+        <i class="fas fa-chart-pie j-color mr-1"></i>
         <div class="ml-2 d-flex justify-content-center align-items-center">
           <div class="bold__text mr-1 text-white">Suivi de Performance</div>
         </div>
       </div>
-      <div class="col-12 col-md-3 label_3" routerLinkActive="active" routerLink="player-medicale" type="button">
-        <i class="fas fa-history  j-color mr-1"></i>
+      <div class="col-12 col-md-3 py-2 label_3" routerLinkActive="active" routerLink="player-medicale" type="button">
+        <i class="fas fa-briefcase-medical j-color mr-1"></i>
         <div class="ml-2 d-flex justify-content-center align-items-center">
           <div class="bold__text mr-1 text-white">Medical</div>
         </div>
@@ -197,6 +207,7 @@
   </div>
   <!-- infivuedialle-palyer  -->
   <div class="col-12 p-4 outlet">
+
     <router-outlet>
     </router-outlet>
 

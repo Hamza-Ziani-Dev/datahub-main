@@ -82,16 +82,23 @@
             <th scope="col">Date</th>
             <th scope="col">Type</th>
             <th scope="col">Localisation</th>
-            <th scope="col">Latéralite</th>
+            <!-- <th scope="col">Latéralite</th> -->
             <th scope="col">Indisponibilité (jours)</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody *ngIf="dataSource.length == 0">
+          <tr>
+            <td colspan="4">
+              Aucune données n’est disponible
+            </td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="dataSource.length > 0">
           <tr *ngFor="let injury of dataSource" scope="row" data-label="Date">
             <td data-label="Date">{{ injury?.date_blessure }}</td>
             <td data-label="Type">{{ injury?.type_blessure }}</td>
             <td data-label="Localisation">{{ injury?.localisation }}</td>
-            <td data-label="Latéralite">-----</td>
+            <!-- <td data-label="Latéralite">-----</td> -->
             <td data-label="Indisponibilité (jours)">{{ injury.date_retour_prevue+"
               "+charedService.getDaysAbsence(+injury.durre_injury ||
               +injury.date_retour_prevue)+( injury.date_retour_prevue && +injury.durre_injury != 30 &&

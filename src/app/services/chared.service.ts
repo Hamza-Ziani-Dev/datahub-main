@@ -232,9 +232,6 @@ export class CharedService {
     FileSaver.saveAs(data, FILE_NAME + EXCEL_EXTENSION);
   }
 
-
-
-
   capitalizeWords(string) {
     return string.toLowerCase().replace(/(?:^|\s)\S/g, function (a) {
       return a.toUpperCase();

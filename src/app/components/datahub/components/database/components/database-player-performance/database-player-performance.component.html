@@ -1,6 +1,6 @@
 <div class="row p-0 m-0 mb-4 __block2">
   <!-- Gps-Data-Container  -->
-  <div class="gps-data-container mb-5 row col-12 col-md-12 pb-0  justify-content-center align-items-center">
+  <div class="___block mb-5 row col-12 col-md-12 pb-0  justify-content-center align-items-center">
     <div class="gps-data-title col-12 col-md-12 p-3 justify-content-start align-items-start">
       <svg class="mr-1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
         width="40px" height="40px" viewBox="0,0,256,256">
@@ -38,7 +38,7 @@
 
   </div>
   <!-- End  Gps-Data-Container  -->
-  <div class="test-technique-container mb-5 row col-12 col-md-12 pb-0  justify-content-center align-items-center">
+  <div class="___block mb-5 row col-12 col-md-12 pb-0  justify-content-center align-items-center">
     <div class="test-technique-title col-12 col-md-12 p-3 justify-content-start align-items-start">
       <svg class="mr-2" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
         width="40px" height="40px" viewBox="0,0,256,256">
@@ -52,7 +52,7 @@
           </g>
         </g>
       </svg>
-      <span class="bold__text">TEST </span>TECHNIQUE
+      <span class="bold__text">Batterie de tests physiques </span>
     </div>
     <!-- 1 -->
 
@@ -60,7 +60,7 @@
       <ng-container *ngFor="let value of dataSource;let i = index">
         <div class="row  m-0 p-0 col-12 d-flex justify-content-between my-2   ">
           <div
-            class=" {{'table-'+colors[i]?.className }}   __block col-12 col-md-5 p-0 justify-content-center align-items-center">
+            class=" {{'table-'+colors[i]?.className }} table_v1 __block col-12 col-md-5 p-0 justify-content-center align-items-center">
             <table class="table table-borderless m-0 p-0 h-100 " id="table-vitesse">
               <thead class=" {{ 'thead-'+colors[i]?.className }}   text-white ">
                 <tr>
@@ -77,7 +77,7 @@
             </table>
           </div>
           <div class="radar-vitesse col-12  d-flex col-md-6 justify-content-center align-items-center">
-            <div [id]="'radar-'+colors[i]?.className+'_'+i" style="width: 100%; height: 300px"></div>
+            <div [id]="'radar-'+colors[i]?.className+'_'+i" style="width: 100%; height: 100%"></div>
           </div>
         </div>
       </ng-container>

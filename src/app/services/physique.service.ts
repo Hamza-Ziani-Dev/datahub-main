@@ -10,6 +10,7 @@ export class PhysiqueService {
   link: string;
   API = "";
   endpoint = "physique";
+  updatedDatabasePlayerPhysiqueTests = new Subject();
   updatedPhysiqueTests = new Subject();
   updatedPlayerPhysiqueTests = new Subject();
   constructor(private http: HttpClient) {
@@ -22,6 +23,9 @@ export class PhysiqueService {
   }
   getUpdatedPlayerPhysiqueTestsListner() {
     return this.updatedPlayerPhysiqueTests.asObservable();
+  }
+  getUpdatedDatabasePlayerPhysiqueTestsListner() {
+    return this.updatedDatabasePlayerPhysiqueTests.asObservable();
   }
   deletePlayerPhysiqueTests(ids) {
     return this.http.post(
@@ -81,6 +85,15 @@ export class PhysiqueService {
       .get(`${this.link}/${this.API}/${this.endpoint}/getPhysiqueTests`)
       .subscribe((result: any) => {
         this.updatedPhysiqueTests.next(result);
+      });
+  }
+  getPlayerPhysiqueTestDatabase(id) {
+    this.http
+      .get(
+        `${this.link}/${this.API}/joueur/database-joueur-physique-test/${id}`
+      )
+      .subscribe((result: any) => {
+        this.updatedDatabasePlayerPhysiqueTests.next(result);
       });
   }
 }

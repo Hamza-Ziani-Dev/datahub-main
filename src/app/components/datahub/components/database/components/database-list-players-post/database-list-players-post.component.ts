@@ -11,7 +11,7 @@ import { CharedService } from 'src/app/services/chared.service';
   styleUrls: ['./database-list-players-post.component.css']
 })
 export class DatabaseListPlayersPostComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'equipe', 'age', 'time_play', 'pied', 'taille', 'indice'];
+  displayedColumns: string[] = ['id', 'equipe', 'age', 'time_play', 'pied', 'taille'];
   URL: string = "https://interface.myteambyfrmf.ma/uploads/datahub/";
   POSTS: any[] = [];
   DATES: any[] = [];
@@ -85,6 +85,7 @@ export class DatabaseListPlayersPostComponent implements OnInit {
         this.actions('GET', { filters: this.filters });
         break
       case 'DO_FILTERS':
+
         let status = false;
         Object.keys(this.filters).forEach(key => {
           if (key === 'player' && typeof (RES.value) == 'string' && RES.value?.length > 3) {
@@ -99,7 +100,11 @@ export class DatabaseListPlayersPostComponent implements OnInit {
             status = false;
           }
         })
-
+        if (RES.column === "post" && RES.value?.length === 1) {
+          this.displayedColumns = [...this.displayedColumns, 'indice'];
+        } else {
+          this.displayedColumns = this.displayedColumns.filter(col => col != 'indice');
+        }
         if (status) {
           this.pagination.loading = true;
           this.pagination.pageIndex = 0;

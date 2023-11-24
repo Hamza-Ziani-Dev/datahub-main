@@ -1,10 +1,10 @@
 <div class="row p-0 mx-0 mb-4">
   <!-- Performence Individuelle -->
-  <div class="recent-container m-0 row col-12 col-md-12 mb-4 d-flex justify-content-center align-items-center">
+  <div class="___block recent-container m-0 row col-12 col-md-12 mb-4 d-flex justify-content-center align-items-start">
     <div class="col-12 col-md-6 justify-content-center align-items-start">
-      <div class="recent-content">
+      <!-- <div class="recent-content">
         <div class="recent-title">
-          <div class="d-flex">
+          <div class="d-flex align-items-center">
             <i class="fas fa-weight-hanging i-color mr-2"></i>
             <div class="bold__text mr-1">
               Recent Performance
@@ -28,10 +28,10 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <div class="offensive">
         <div class="offensive-title ">
-          <div class="d-flex">
+          <div class="d-flex align-items-center">
             <i class="fas fa-weight-hanging i-color mr-2"></i>
             <div class="bold__text mr-1">
               Offensive Performance
@@ -48,7 +48,7 @@
       </div>
       <div class="deffensive">
         <div class="deffensive-title ">
-          <div class="d-flex">
+          <div class="d-flex align-items-center">
             <i class="fas fa-weight-hanging i-color mr-2"></i>
             <div class="bold__text mr-1">
               Deffensive Performance
@@ -58,22 +58,53 @@
         <div class="deffensive-content">
           <div class="chart-scatter2-block2 row mx-0">
             <div class="row mx-0 col-12 col-md-12">
-              <div id="chart-scatter2" style="width: 100%; height: 100px"></div>
+              <div id="chart-scatter2" style="width: 100%; height: 150px"></div>
             </div>
           </div>
 
         </div>
       </div>
+      <div class="offensive d-flex justify-content-center align-items-center mt-4">
+        <div class="d-flex
+        justify-content-between
+        mt-4
+        align-items-center colors__
+    ">
+          <div class="flex-grow-1 text-center font---blod">FAIBLE</div>
+          <div class="___colors" *ngFor="let color of ['#dd6f56','#958135','#257371']"
+            [ngStyle]="{'backgroundColor': color}"></div>
+          <div class="flex-grow-1 text-center font---blod">FORT</div>
+        </div>
+      </div>
     </div>
     <!-- Chart -->
-    <div class="col-12 row mx-0 col-md-6 justify-content-center align-items-center">
-      <select (ngModelChange)="actions('TYPE_CHART',$event)" class="mb-2" [(ngModel)]="type_chart" name="type_chart"
+    <div class="col-12 row mx-0 col-md-6 justify-content-center align-items-center ">
+      <!-- <select (ngModelChange)="actions('TYPE_CHART',$event)" class="mb-2" [(ngModel)]="type_chart" name="type_chart"
         class="radar-select form-select form-select-sm px-2 bold__text">
         <option selected value="pie">Radar Percentilles</option>
         <option value="bar">Bar</option>
-      </select>
-      <div id="radar-percentilles-pie" *ngIf="type_chart == 'pie' " style="width: 100%; height: 400px"></div>
-      <div id="radar-percentilles-bar" *ngIf="type_chart == 'bar' " style="width: 100%; height: 400px"></div>
+      </select> -->
+      <div id="radar-percentilles-pie" *ngIf="type_chart == 'pie' " style="width: 100%; height: 500px"></div>
+      <div id="radar-percentilles-bar" *ngIf="type_chart == 'bar' " style="width: 100%; height: 500px"></div>
+      <div class="mt-4
+      d-flex
+      justify-content-around
+      align-items-center
+      w-100
+      ">
+        <div *ngFor="let type of CHART_TYPES " class="
+        d-flex
+        justify-content-center
+        align-items-center
+        ">
+          <div class="color__circle mr-2" [ngStyle]="{'backgroundColor': type?.color}"></div>
+          <div>
+            {{
+            type?.label
+            }}
+          </div>
+        </div>
+      </div>
     </div>
     <!-- end Chart -->
   </div>
@@ -83,10 +114,10 @@
   <div class="analyse-container row col-12 col-md-12 mt-4 mb-10  justify-content-center align-items-center">
     <div class="commentsContainer mt-3" style="text-align: center;overflow-x: hidden;">
       <div class="container-fluid">
-        <div class="row d-flex justify-content-center align-items-start" #canvasContainers>
-          <div class="col-md-6">
-            <div #canvasEntrainment></div>
-          </div>
+        <div class="row mx-0" #canvasContainers>
+          <!-- <div class="col-md-6 col-12 m-0"> -->
+          <div #canvasEntrainment class="p-1 col-md-6 col-12"></div>
+          <!-- </div> -->
         </div>
       </div>
     </div>

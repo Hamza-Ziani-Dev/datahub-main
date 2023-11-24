@@ -15,7 +15,7 @@ export class RankingProfilePlayerComponent implements OnInit {
   COLORS: string[] = ['#0357A0', "#007934", "#E55C00"];
   ID: number = null;
   chart: any = {
-    title: null,
+    title: [],
     legend: []
   };
   PLAYER_ID: number = null;
@@ -45,8 +45,8 @@ export class RankingProfilePlayerComponent implements OnInit {
     switch (CASE) {
       case 'CREATE_CHART':
         const myChart = echarts.init(document.getElementById('radar-chart'));
-
         const option = RES ? RES : {
+
           radar: {
             // shape: 'circle',
             indicator: []
@@ -69,12 +69,21 @@ export class RankingProfilePlayerComponent implements OnInit {
         this.rankingService.One(this.ID, this.PLAYER_ID).subscribe(
           (RES: any) => {
             this.dataSource = RES;
+            console.log("this.dataSource", this.dataSource);
             this.isLoading = false;
             this.COLORS = RES?.Option?.colors;
+            //  delete RES?.Option?.legend;
             this.chart = {
-              title: RES?.Option?.title?.text,
-              legend: RES?.Option?.legend?.data
+              title: [
+                {
+                  text: RES?.Option?.title?.text,
+                  left: 'center',
+                }
+
+              ],
+              legend: RES?.Option?.legend,
             }
+
             // lineStyle: {
             //   color: '#000', // Set line color for the check value
             // },
@@ -82,10 +91,19 @@ export class RankingProfilePlayerComponent implements OnInit {
             //   color: '#000', // Set item (symbol) color for the check value
             // },
             // console.log(this.chart);
-            delete RES?.Option?.title?.text;
-            delete RES?.Option?.legend;
+            //  delete RES?.Option?.title?.text;
 
-            this.actions('CREATE_CHART', RES?.Option)
+            setTimeout(() => {
+              this.actions('CREATE_CHART', {
+                ...RES?.Option, legend: { bottom: '0%', right: 'center' }, title: [
+                  {
+                    text: RES?.Option?.title?.text,
+                    left: 'center',
+                  }
+
+                ]
+              })
+            }, 200);
           },
           (ERROR: HttpErrorResponse) => {
             this.isLoading = false;

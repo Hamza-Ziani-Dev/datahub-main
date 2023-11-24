@@ -20,6 +20,7 @@ export class DatabaseProfilePlayerComponent implements OnInit {
     title: null,
     legend: []
   };
+  ID: number = null;
   PLAYER_ID: number = null;
   player: Player;
   playerSub: Subscription;
@@ -32,26 +33,30 @@ export class DatabaseProfilePlayerComponent implements OnInit {
 
   ngOnInit() {
     this.PLAYER_ID = this.route.snapshot.params.player_id;
+    this.ID = this.route.snapshot.params.is;
     this.route.params.subscribe(
       p => {
         if (this.PLAYER_ID != p.player_id) {
           this.PLAYER_ID = p.player_id;
         }
+        if (this.ID != p.id) {
+          this.ID = p.id;
+        }
       }
     );
     this.actions('GET');
-    this.playerSub = this.playerService.getUpdatedPlayerListner().subscribe(
+    this.playerSub = this.playerService.getUpdatedPlayerDatabaseListner().subscribe(
       (result: Player) => {
         this.player = result;
       }
     );
-    this.playerService.getPlayer(this.PLAYER_ID);
+    this.playerService.getPlayerDatadase(this.PLAYER_ID);
   }
 
   actions(CASE: string, RES: any = null) {
     switch (CASE) {
       case 'GET':
-        this.rankingService.One(this.PLAYER_ID).subscribe(
+        this.rankingService.One(this.ID, this.PLAYER_ID).subscribe(
           (RES: any) => {
             this.dataSource = RES;
             this.isLoading = false;

@@ -4,6 +4,8 @@ import { Observable, Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+// import { RESPONCE_ClubJSON } from 'src/app/components/scouting/interface/Clubs';
+// import { PlayerList } from 'src/app/components/adminstration/list-players/models/PlayersList';
 
 @Injectable({
   providedIn: "root",
@@ -26,12 +28,14 @@ export class PlayerService {
   documents;
   playerSpending;
   updatedPlayers = new Subject();
+  updatedPlayerDatabase = new Subject();
   updatedPlayersTerminated = new Subject();
   updatedPlayersPret = new Subject();
   updatedPlayer = new Subject();
   updatedComments = new Subject();
   updatedInjuries = new Subject();
   updatedTrainings = new Subject();
+  updatedTrainingsDatabase = new Subject();
   updatedTestsPhysique = new Subject();
   updatedPlayerVideos = new Subject();
   updatedDocuments = new Subject();
@@ -81,6 +85,7 @@ export class PlayerService {
   updatedPlayerGpsFields = new Subject();
   updatedStageOne = new Subject();
   updatedPhysiqueChildTests = new Subject();
+  updatedDatabasePlayerPhysiqueTests = new Subject();
   updatedPlayerPhysiqueTests = new Subject();
   updatedPlayerVaccins = new Subject();
   updatedCountry = new Subject();
@@ -128,8 +133,8 @@ export class PlayerService {
   getUpdatedPlayerVaccinsListner() {
     return this.updatedPlayerVaccins.asObservable();
   }
-  getUpdatedPlayerPhysiqueTestsListner() {
-    return this.updatedPlayerPhysiqueTests.asObservable();
+  getUpdatedDatabasePlayerPhysiqueTestsListner() {
+    return this.updatedDatabasePlayerPhysiqueTests.asObservable();
   }
   getUpdatedPhysiqueTestsListner() {
     return this.updatedPhysiqueTests.asObservable();
@@ -171,6 +176,9 @@ export class PlayerService {
   getUpdatedPlayerListner() {
     return this.updatedPlayer.asObservable();
   }
+  getUpdatedPlayerDatabaseListner() {
+    return this.updatedPlayerDatabase.asObservable();
+  }
   getUpdatedCommentsListner() {
     return this.updatedComments.asObservable();
   }
@@ -179,6 +187,9 @@ export class PlayerService {
   }
   getUpdatedTrainingsListner() {
     return this.updatedTrainings.asObservable();
+  }
+  getUpdatedTrainingsDatabaseListner() {
+    return this.updatedTrainingsDatabase.asObservable();
   }
   getUpdatedDocumentsListner() {
     return this.updatedDocuments.asObservable();
@@ -634,6 +645,48 @@ export class PlayerService {
       .subscribe((result) => {
         this.player = result[0];
         this.updatedPlayer.next(result[0]);
+      });
+  }
+  getPlayerDatadase(id) {
+    this.http
+      .get(`${this.link}/${this.API}/${this.endpoint}/database-one/${id}`)
+      .pipe(
+        map((player: any) => {
+          return player.map((p: any) => {
+            if (p.cni_expiration != "" && p.cni_expiration != null) {
+              const cniexpiration = new Date(p.cni_expiration);
+              const daycni =
+                cniexpiration.getDate() < 10
+                  ? "0" + cniexpiration.getDate()
+                  : cniexpiration.getDate();
+              const monthcni =
+                cniexpiration.getMonth() + 1 < 10
+                  ? "0" + (cniexpiration.getMonth() + 1)
+                  : cniexpiration.getMonth() + 1;
+              const yearcni = cniexpiration.getFullYear();
+              p.cni_expiration = yearcni + "-" + monthcni + "-" + daycni;
+            }
+            if (p.passport_expiration != "" && p.passport_expiration != null) {
+              const passportexpiration = new Date(p.passport_expiration);
+              const daypassport =
+                passportexpiration.getDate() < 10
+                  ? "0" + passportexpiration.getDate()
+                  : passportexpiration.getDate();
+              const monthpassport =
+                passportexpiration.getMonth() + 1 < 10
+                  ? "0" + (passportexpiration.getMonth() + 1)
+                  : passportexpiration.getMonth() + 1;
+              const yearpassport = passportexpiration.getFullYear();
+              p.passport_expiration =
+                yearpassport + "-" + monthpassport + "-" + daypassport;
+            }
+            return p;
+          });
+        })
+      )
+      .subscribe((result) => {
+        this.player = result[0];
+        this.updatedPlayerDatabase.next(result[0]);
       });
   }
   getPlayerContrat(id) {
@@ -1793,6 +1846,14 @@ export class PlayerService {
         this.updatedTrainings.next(result);
       });
   }
+  getTrainingsDatabase(id) {
+    this.http
+      .get(`${this.link}/${this.API}/${this.endpoint}/database-trainings/${id}`)
+      .subscribe((result) => {
+        this.trainings = result;
+        this.updatedTrainingsDatabase.next(result);
+      });
+  }
   addPlayerToStageMultip(stageId, request) {
     this.http
       .post(
@@ -2932,6 +2993,7 @@ export class PlayerService {
         this.updatedPlayerPhysiqueTests.next(result);
       });
   }
+ 
   JoueurPhysiqueChart(id) {
     return this.http.get(
       `${this.link}/${this.API}/${this.endpoint}/joueur-physique-chart/${id}`
@@ -3029,20 +3091,20 @@ export class PlayerService {
     );
   }
   // API: /list-clubs/:type
-  getClubs(type: string): Observable<any> {
-    return this.http.get<any>(
-      `${this.link}/${this.API}/club/list-clubs/${type}`
-    );
-  }
-  getListPlayers(
-    clubIds: number[],
-    type: string = "player"
-  ): Observable<any> {
-    return this.http.post<any>(
-      `${this.link}/${this.API}/joueur/all-players`,
-      { equipes_ids: clubIds, type: type }
-    );
-  }
+  // getClubs(type: string): Observable<RESPONCE_ClubJSON> {
+  //   return this.http.get<RESPONCE_ClubJSON>(
+  //     `${this.link}/${this.API}/club/list-clubs/${type}`
+  //   );
+  // }
+  // getListPlayers(
+  //   clubIds: number[],
+  //   type: string = "player"
+  // ): Observable<PlayerList> {
+  //   return this.http.post<PlayerList>(
+  //     `${this.link}/${this.API}/joueur/all-players`,
+  //     { equipes_ids: clubIds, type: type }
+  //   );
+  // }
   SavePlayerInfo(playerId, player, brothers = []) {
     let data = {
       pere: player.pere,

@@ -2,11 +2,6 @@
   font-family: "Century Gothic" !important;
 }
 
-/* Resume-generele  */
-.resume-container {
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-}
-
 th {
   text-decoration: underline;
 }
@@ -18,6 +13,14 @@ th {
   border-radius: 6px;
   text-align: center;
   font-weight: bold;
+}
+
+.color__circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid white;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
 .radar-select {
@@ -175,4 +178,16 @@ th {
   #MyqmdM td:last-child {
     border-bottom: 0;
   }
+}
+
+.___block {
+  background: #fdfdfd;
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid white;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }

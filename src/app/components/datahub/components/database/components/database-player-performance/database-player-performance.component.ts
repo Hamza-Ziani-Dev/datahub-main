@@ -34,6 +34,7 @@ export class DatabasePlayerPerformanceComponent implements OnInit {
     title: null,
     legend: []
   };
+  ID: number = null;
   PLAYER_ID: number = null;
   playerSub: []
   dataSource: any[] = [];
@@ -50,6 +51,7 @@ export class DatabasePlayerPerformanceComponent implements OnInit {
 
   ngOnInit() {
     this.PLAYER_ID = this.route.snapshot.parent?.params.player_id;
+    this.ID = this.route.snapshot.parent?.params.id;
     this.actions('GET');
     this.playerService.getGpsPlayer(this.PLAYER_ID).subscribe(
       (RES: any) => {
@@ -78,13 +80,13 @@ export class DatabasePlayerPerformanceComponent implements OnInit {
           return accumulator;
         }, this.dataSource);
         this.isLoadingTest = false;
-        this.physiqueService.getPlayerPhysiqueTest(this.PLAYER_ID);
+        this.physiqueService.getPlayerPhysiqueTestDatabase(this.PLAYER_ID);
         setTimeout(() => {
           this.actions('CREATE_CHART_RADAR', this.dataSource);
         }, 300);
       }
     );
-    this.physiqueService.getUpdatedPlayerPhysiqueTestsListner().subscribe(
+    this.physiqueService.getUpdatedDatabasePlayerPhysiqueTestsListner().subscribe(
       (result: any) => {
         this.playerTestsPhysiques = result;
         console.log(this.playerTestsPhysiques);
@@ -108,12 +110,13 @@ export class DatabasePlayerPerformanceComponent implements OnInit {
   actions(CASE: string, RES: any = null) {
     switch (CASE) {
       case 'CREATE_CHART_BAR1':
+        console.log("RES", RES);
         const myChart1 = echarts.init(document.getElementById('chart-distance'));
         const option1 = {
           title: [
             {
               left: 'center',
-              text: 'Distance Total',
+              text: RES.name || 'Distance Total',
             },
           ],
           tooltip: {
@@ -128,7 +131,8 @@ export class DatabasePlayerPerformanceComponent implements OnInit {
           xAxis: [
             {
               type: 'category',
-              data: RES.map(e => e.adversaire),
+              data: RES.data.map(e => e.adversaire),
+              axisLabel: { interval: 0, rotate: 30 },
               axisPointer: {
                 type: 'shadow'
               }
@@ -137,10 +141,9 @@ export class DatabasePlayerPerformanceComponent implements OnInit {
           yAxis: [
             {
               type: 'value',
-              name: 'Precipitation',
               min: 0,
               axisLabel: {
-                formatter: '{value} km'
+                formatter: '{value} m'
               }
             },
             // {
@@ -158,12 +161,12 @@ export class DatabasePlayerPerformanceComponent implements OnInit {
             {
               name: 'Evaporation',
               type: 'bar',
-              tooltip: {
-                valueFormatter: function (value) {
-                  return value + ' km';
-                }
-              },
-              data: RES.map(e => +e.value),
+              // tooltip: {
+              //   valueFormatter: function (value) {
+              //     return value + ' km';
+              //   }
+              // },
+              data: RES.data.map(e => +e.value),
             },
             // {
             //   name: 'Temperature',
@@ -186,7 +189,7 @@ export class DatabasePlayerPerformanceComponent implements OnInit {
           title: [
             {
               left: 'center',
-              text: 'Temps de Jeu',
+              text: RES.name || 'Temps de Jeu',
             },
           ],
           tooltip: {
@@ -201,7 +204,8 @@ export class DatabasePlayerPerformanceComponent implements OnInit {
           xAxis: [
             {
               type: 'category',
-              data: RES.map(e => e.adversaire),
+              axisLabel: { interval: 0, rotate: 30 },
+              data: RES.data.map(e => e.adversaire),
               axisPointer: {
                 type: 'shadow'
               }
@@ -210,26 +214,21 @@ export class DatabasePlayerPerformanceComponent implements OnInit {
           yAxis: [
             {
               type: 'value',
-              name: 'Precipitation',
               min: 0,
               axisLabel: {
-                formatter: '{value} km'
+                formatter: '{value} min'
               }
             },
           ],
           series: [
             {
-              name: 'Evaporation',
               type: 'bar',
-              tooltip: {
-                valueFormatter: function (value) {
-                  return value + ' km';
-                }
-              },
-              data: RES.map(e => this.charedService.timeStringToFloat(e.value)),
+
+              data: RES.data.map(e => this.charedService.timeStringToFloat(e.value)),
             },
           ]
         };
+
         myChart2.setOption(option2);
         break;
       case 'CREATE_CHART_BAR3':
@@ -238,7 +237,7 @@ export class DatabasePlayerPerformanceComponent implements OnInit {
           title: [
             {
               left: 'center',
-              text: 'Speed Event /Max Speed',
+              text: `${RES.speed_event.name} / ${RES.max_speed.name}` || 'Speed Event /Max Speed',
             },
           ],
           tooltip: {
@@ -255,16 +254,20 @@ export class DatabasePlayerPerformanceComponent implements OnInit {
           },
           xAxis: [
             {
-              type: 'value'
+              type: 'value',
+              axisLabel: {
+                formatter: '{value} km/h'
+              }
             }
           ],
           yAxis: [
             {
               type: 'category',
-              axisTick: {
-                show: false
-              },
-            }
+              min: 0,
+              axisLabel: {
+                formatter: ''
+              }
+            },
           ],
           series: [
             {
@@ -277,7 +280,7 @@ export class DatabasePlayerPerformanceComponent implements OnInit {
               emphasis: {
                 focus: 'series'
               },
-              data: RES.speed_event.map(e => +e.value),
+              data: RES.speed_event.data.map(e => +e.value),
             },
             {
               name: 'Income',
@@ -289,7 +292,7 @@ export class DatabasePlayerPerformanceComponent implements OnInit {
               emphasis: {
                 focus: 'series'
               },
-              data: RES.max_speed.map(e => +e.value)
+              data: RES.max_speed.data.map(e => +e.value)
             },
             // {
             //   name: 'Expenses',
@@ -314,7 +317,7 @@ export class DatabasePlayerPerformanceComponent implements OnInit {
           title: [
             {
               left: 'center',
-              text: 'Accelerations / Decelerations',
+              text: RES.name || 'Accelerations / Decelerations',
             },
           ],
           legend: {},
@@ -330,7 +333,7 @@ export class DatabasePlayerPerformanceComponent implements OnInit {
 
           yAxis: {
             type: 'category',
-            data: RES.map(e => e.acceleration_adversaire || e.e.acceleration_adversaire)
+            data: RES.data.map(e => e.acceleration_adversaire || e.e.acceleration_adversaire)
           },
           series: [
             {
@@ -342,7 +345,7 @@ export class DatabasePlayerPerformanceComponent implements OnInit {
               emphasis: {
                 focus: 'series'
               },
-              data: RES.map(e => e.acceleration_value),
+              data: RES.data.map(e => e.acceleration_value),
             },
             {
               type: 'bar',
@@ -353,7 +356,7 @@ export class DatabasePlayerPerformanceComponent implements OnInit {
               emphasis: {
                 focus: 'series'
               },
-              data: RES.map(e => e.deceleration_value),
+              data: RES.data.map(e => e.deceleration_value),
             },
           ]
         };
@@ -394,7 +397,7 @@ export class DatabasePlayerPerformanceComponent implements OnInit {
         })
         break;
       case 'GET':
-        this.rankingService.TabOne('player-performance', this.PLAYER_ID).subscribe(
+        this.rankingService.TabOne('player-performance', this.ID, this.PLAYER_ID).subscribe(
           (RES: any) => {
             this.isLoading = false;
             this.COLORS = RES?.Option?.colors;

@@ -117,6 +117,7 @@ export class DatabasePlayerMedicaleComponent implements OnInit {
     'urticaire'
   ];
   turn = 0;
+  ID: number = null;
   PLAYER_ID: number = null;
   dataSource: any[] = [];
   rightSideInjuries = [];
@@ -149,7 +150,8 @@ export class DatabasePlayerMedicaleComponent implements OnInit {
   ) { }
   user: User;
   ngOnInit() {
-    this.PLAYER_ID = this.route.snapshot.parent?.params.player_id;
+    this.PLAYER_ID = this.route.snapshot.parent?.params?.player_id;
+    this.ID = this.route.snapshot.parent?.params?.id;
     this.actions('GET');
     this.authService.getUpdatedUser()
       .subscribe(
@@ -350,7 +352,8 @@ export class DatabasePlayerMedicaleComponent implements OnInit {
             },
           ],
           xAxis: {
-            data: RES.map(e => e.date)
+            data: RES.map(e => e.date),
+            axisLabel: { interval: 0, rotate: 30 },
           },
           yAxis: {
             type: 'value',
@@ -380,11 +383,12 @@ export class DatabasePlayerMedicaleComponent implements OnInit {
           title: [
             {
               left: 'center',
-              text: 'Poits (KG)'
+              text: 'Poids (KG)'
             },
           ],
           xAxis: {
-            data: RES.map(e => e.date)
+            data: RES.map(e => e.date),
+            axisLabel: { interval: 0, rotate: 30 },
           },
           yAxis: {
             type: 'value',
@@ -398,7 +402,7 @@ export class DatabasePlayerMedicaleComponent implements OnInit {
           },
           series: [
             {
-              name: 'poits',
+              name: 'poids',
               type: 'line',
               stack: 'Total',
               data: RES.map(e => e.valeur)
@@ -417,7 +421,8 @@ export class DatabasePlayerMedicaleComponent implements OnInit {
             },
           ],
           xAxis: {
-            data: RES.map(e => e.date)
+            data: RES.map(e => e.date),
+            axisLabel: { interval: 0, rotate: 30 },
           },
           yAxis: {
             type: 'value',
@@ -450,7 +455,8 @@ export class DatabasePlayerMedicaleComponent implements OnInit {
             },
           ],
           xAxis: {
-            data: RES.map(e => e.date)
+            data: RES.map(e => e.date),
+            axisLabel: { interval: 0, rotate: 30 },
           },
           yAxis: {
             type: 'value',
@@ -478,7 +484,7 @@ export class DatabasePlayerMedicaleComponent implements OnInit {
 
         break;
       case 'GET':
-        this.rankingService.TabOne('player-medicale', this.PLAYER_ID).subscribe(
+        this.rankingService.TabOne('player-medicale', this.ID, this.PLAYER_ID).subscribe(
           (RES: any) => {
             this.isLoading[1] = false;
             this.COLORS = RES?.Option?.colors;

@@ -1,4 +1,4 @@
-<!-- [routerLink]="['../','profile-player',element?.myteam_id ||  element?.id ,'player-resume']" -->
+<!-- [routerLink]="['../','profile-player',element?.Poste?.poste_id,element?.myteam_id ||  element?.id ,'player-resume']" -->
 <div class="mx-0 overflow-auto list-container">
   <div class="table-container">
     <div class="row mx-0 ">
@@ -36,9 +36,9 @@
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef class="th-head th-head-lg"> Joueur </th>
         <td mat-cell *matCellDef="let element;let i = index"
-          [routerLink]="['../','profile-player',element?.myteam_id ||  element?.id ,'player-resume']">
+          [routerLink]="['../','profile-player',element?.Poste?.poste_id,element?.myteam_id ||  element?.id ,'player-resume']">
           <div class="d-flex justify-content-start align-items-center ">
-            <div class="post_player">
+            <div class="post_player" *ngIf="filters.post.length === 1">
               {{ i + 1 }}
             </div>
             <div class="equipe__logo">
@@ -53,7 +53,7 @@
         <th mat-header-cell *matHeaderCellDef class="th-head th-head-lg"> {{ '\u00c9quipe dans la période sélectionnée'
           }} </th>
         <td mat-cell *matCellDef="let element"
-          [routerLink]="['../','profile-player',element?.myteam_id ||  element?.id ,'player-resume']">
+          [routerLink]="['../','profile-player',element?.Poste?.poste_id,element?.myteam_id ||  element?.id ,'player-resume']">
           <div class="d-flex justify-content-start align-items-center ">
             <div class="equipe__logo">
               <img [src]="URL+element['Équipe']['logo']" alt="" width="100%" height="100%" />
@@ -66,7 +66,7 @@
       <ng-container matColumnDef="age">
         <th mat-header-cell *matHeaderCellDef class="th-head"> {{ '\u00c2ge' }} </th>
         <td mat-cell *matCellDef="let element"
-          [routerLink]="['../','profile-player',element?.myteam_id ||  element?.id ,'player-resume']">
+          [routerLink]="['../','profile-player',element?.Poste?.poste_id,element?.myteam_id ||  element?.id ,'player-resume']">
           {{element['\u00c2ge']}}
           ans
         </td>
@@ -74,31 +74,33 @@
       <ng-container matColumnDef="time_play">
         <th mat-header-cell *matHeaderCellDef class="th-head"> {{ 'Minutes jou\u00e9es' }} </th>
         <td mat-cell *matCellDef="let element"
-          [routerLink]="['../','profile-player',element?.myteam_id ||  element?.id ,'player-resume']">
-          {{element['Minutes
-          jou\u00e9es']+" min"}}
+          [routerLink]="['../','profile-player',element?.Poste?.poste_id,element?.myteam_id ||  element?.id ,'player-resume']">
+          {{
+          +element['Minutes jou\u00e9es'] > 0 ?
+          element['Minutes jou\u00e9es']+" min" :
+          element['Minutes jou\u00e9es']
+          }}
         </td>
       </ng-container>
 
       <ng-container matColumnDef="pied">
         <th mat-header-cell *matHeaderCellDef class="th-head"> Poids </th>
         <td mat-cell *matCellDef="let element"
-          [routerLink]="['../','profile-player',element?.myteam_id ||  element?.id ,'player-resume']">
-          {{element['Pied'] |
-          titlecase}} </td>
+          [routerLink]="['../','profile-player',element?.Poste?.poste_id,element?.myteam_id ||  element?.id ,'player-resume']">
+          {{ +element['Poids'] > 0 ? element['Poids']+" kg" : element['Poids']}}
+        </td>
       </ng-container>
       <ng-container matColumnDef="taille">
         <th mat-header-cell *matHeaderCellDef class="th-head"> Taille </th>
         <td mat-cell *matCellDef="let element"
-          [routerLink]="['../','profile-player',element?.myteam_id ||  element?.id ,'player-resume']">
-          {{element['Taille']+"
-          cm"}}
+          [routerLink]="['../','profile-player',element?.Poste?.poste_id,element?.myteam_id ||  element?.id ,'player-resume']">
+          {{ +element['Taille'] > 0 ? element['Taille']+" cm" : element['Taille']}}
         </td>
       </ng-container>
       <ng-container matColumnDef="indice">
         <th mat-header-cell *matHeaderCellDef class="th-head"> Indice </th>
         <td mat-cell *matCellDef="let element"
-          [routerLink]="['../','profile-player',element?.myteam_id ||  element?.id ,'player-resume']">
+          [routerLink]="['../','profile-player',element?.Poste?.poste_id,element?.myteam_id ||  element?.id ,'player-resume']">
           {{element?.indice }}
         </td>
       </ng-container>

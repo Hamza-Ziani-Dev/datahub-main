@@ -21,6 +21,7 @@ export class DatabasePlayerResumeComponent implements OnInit {
     title: null,
     legend: [],
   };
+  CHART_TYPES: any[] = [];
   countPresence = {
     présent: 0,
     absent: 0,
@@ -33,6 +34,7 @@ export class DatabasePlayerResumeComponent implements OnInit {
   };
   trainingSub: Subscription;
   type_chart: string = 'pie';
+  ID: number = null;
   PLAYER_ID: number = null;
   dataSource: any = {
     injuries: [],
@@ -49,6 +51,7 @@ export class DatabasePlayerResumeComponent implements OnInit {
   }
   ngOnInit() {
     this.PLAYER_ID = this.route.snapshot.parent?.params.player_id;
+    this.ID = this.route.snapshot.parent?.params.id;
     this.actions("GET");
     this.playerService.getInjuries(this.PLAYER_ID);
     this.playerService.getUpdatedInjuriesListner().subscribe(
@@ -60,7 +63,7 @@ export class DatabasePlayerResumeComponent implements OnInit {
         this.actions('CREATE_CHART_BAR2', RES.duration);
       })
 
-    this.trainingSub = this.playerService.getUpdatedTrainingsListner().subscribe(
+    this.trainingSub = this.playerService.getUpdatedTrainingsDatabaseListner().subscribe(
       (result: any) => {
         Object.keys(this.countPresence).forEach(key => {
           this.countPresence[key] = 0;
@@ -78,7 +81,7 @@ export class DatabasePlayerResumeComponent implements OnInit {
           title: [
             {
               text: "Rapport de présence",
-              bottom: 0,
+              top: 0,
               left: "center",
               show: true,
             }
@@ -90,13 +93,11 @@ export class DatabasePlayerResumeComponent implements OnInit {
             formatter: `{b}: {c}`, // {b} represents the name, {c} represents the value, and {d}% represents the percentage
           },
           legend: {
-            // orient: "vertical",
-            left: "center",
-            // show: false,
+            orient: 'horizontal',
+            bottom: 'bottom'
           },
           series: [
             {
-              name: "tags",
               type: "pie",
               // radius: ['30%', '50%'],
               radius: "70%",
@@ -128,7 +129,7 @@ export class DatabasePlayerResumeComponent implements OnInit {
                   shadowColor: "rgba(0, 0, 0, 0.5)",
                 },
               },
-              center: ["40%", "50%"],
+              //center: ["40%", "50%"],
             },
           ],
           width: "100%",
@@ -139,22 +140,88 @@ export class DatabasePlayerResumeComponent implements OnInit {
       }
     );
 
-    this.playerService.getTrainings(this.PLAYER_ID);
+    this.playerService.getTrainingsDatabase(this.PLAYER_ID);
   }
 
   actions(CASE: string, RES: any = null) {
     switch (CASE) {
       case 'TYPE_CHART':
         this.type_chart = RES;
+        const graphs = this.dataSource.one?.graphs.find(e => e.type === RES);
         setTimeout(() => {
-          this.actions("CREATE_CHART_RADAR", this.dataSource.one?.graphs.find(e => e.type === RES));
+          this.actions("CREATE_CHART_RADAR", graphs);
         }, 100);
         break
       case "CREATE_CHART_RADAR":
         const myChart1 = echarts.init(
-          document.getElementById("radar-percentilles-" + this.type_chart)
+          document.getElementById("radar-percentiles-" + this.type_chart)
         );
-        myChart1.setOption(RES?.option);
+        let data = RES;
+        const allLabelsAndValues = Object.keys(data.option).reduce((result, category) => {
+          const color = data.option[category].color;
+          this.CHART_TYPES.push({ label: category, color });
+          const categoryData = data.option[category].data.map(item => ({ color, name: item.name, value: item.value }));
+          return result.concat(categoryData);
+        }, []);
+
+        var option = {
+          // legend: {
+          //   top: "5%",
+          //   left: "center",
+          // },
+          // title: {
+          //   text: "Hi Anas",
+          //   fontSize: 18,
+          //   textStyle: {
+          //     color: "black",
+          //   },
+          //   left: "center",
+          //   padding: [0, 0, 20, 0],
+          // },
+          angleAxis: {
+            type: "category",
+            data: allLabelsAndValues?.map(({ value, name }) => {
+              const _name = name.split('').reduce((acc, char, index) => {
+                if (index % 17 === 0) {
+                  acc.push(name.substr(index, 17));
+                }
+                return acc;
+              }, []).join('\n')
+              return `${_name} \n ( ${value} )`
+            }) ?? [],
+            axisLabel: {
+              fontSize: 13,
+              fontWeight: "bold",
+              align: "center",
+            },
+          },
+          radiusAxis: {
+            max: 100,
+            min: 0,
+          },
+          polar: {},
+          series: [
+            {
+              type: "bar",
+              data: allLabelsAndValues?.map(({ value }) => value) ?? [],
+              coordinateSystem: "polar",
+              name: "A",
+              stack: "a",
+              emphasis: {
+                focus: "series",
+              },
+              itemStyle: {
+                color: function (params) {
+                  return allLabelsAndValues?.map(({ color }) => color)[params.dataIndex % allLabelsAndValues?.map(({ color }) => color).length] ?? [];
+                },
+                barBorderRadius: [30, 0, 10, 10],
+              },
+            },
+          ],
+        };
+
+        myChart1.setOption(option);
+
         break;
       case 'CREATE_CHART_BAR2':
         const myChart2 = echarts.init(document.getElementById('chart-temps'));
@@ -162,7 +229,7 @@ export class DatabasePlayerResumeComponent implements OnInit {
           title: [
             {
               left: 'center',
-              text: 'Temps de Jeu',
+              text: RES.name || 'Temps de Jeu',
             },
           ],
           tooltip: {
@@ -177,32 +244,27 @@ export class DatabasePlayerResumeComponent implements OnInit {
           xAxis: [
             {
               type: 'category',
-              data: RES.map(e => e.adversaire),
+              axisLabel: { interval: 0, rotate: 30 },
+              data: RES.data.map(e => e.adversaire),
               axisPointer: {
                 type: 'shadow'
-              }
+              },
             }
           ],
           yAxis: [
             {
               type: 'value',
-              name: 'Precipitation',
               min: 0,
               axisLabel: {
-                formatter: '{value} km'
+                formatter: '{value} min'
               }
             },
           ],
           series: [
             {
-              name: 'Evaporation',
               type: 'bar',
-              tooltip: {
-                valueFormatter: function (value) {
-                  return value + ' km';
-                }
-              },
-              data: RES.map(e => this.charedService.timeStringToFloat(e.value)),
+
+              data: RES.data.map(e => this.charedService.timeStringToFloat(e.value)),
             },
           ]
         };
@@ -217,19 +279,23 @@ export class DatabasePlayerResumeComponent implements OnInit {
         break;
       case "GET":
 
-        this.rankingService.TabOne('player-resume', this.PLAYER_ID).subscribe(
+
+        this.rankingService.One(this.ID, this.PLAYER_ID).subscribe(
           (RES: any) => {
             this.dataSource = { ... this.dataSource, one: RES };
             this.isLoading = false;
-            this.COLORS = RES?.Option?.colors;
-            this.chart = {
-              title: RES?.Option?.title?.text,
-              legend: RES?.Option?.legend?.data,
-            };
-            delete RES?.Option?.title?.text;
-            delete RES?.Option?.legend;
-
             this.actions('TYPE_CHART', 'pie');
+            // this.rankingService.One(this.ID, this.PLAYER_ID).subscribe(
+            //   (RES: any) => {
+            //     this.dataSource = RES;
+            //     this.isLoading = false;
+            //     console.log("this.dataSource", this.dataSource);
+            //     this.actions('TYPE_CHART', 'pie');
+            //   },
+            //   (ERROR: HttpErrorResponse) => {
+            //     this.isLoading = false;
+            //   }
+            // )
           },
           (ERROR: HttpErrorResponse) => {
             this.isLoading = false;

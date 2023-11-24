@@ -1,4 +1,4 @@
-<div class="row mx-0 mb-4 container-blk ">
+<div class="row mx-0 mb-4 container-blk " *ngIf="dataSource['Informations personnelles']">
   <div class="col-12 mb-4 d-flex justify-content-center align-items-center  row mx-0">
     <div class="col-md-3 col-12  img_profile row mx-0 d-flex justify-content-end align-items-end  ">
       <div class="image-player">
@@ -11,18 +11,19 @@
           <div class="bold__text">{{ dataSource['Informations personnelles']?.Joueur }}</div>
           <!-- <div class="ml-2">Anas</div> -->
         </div>
-        <div *ngIf="dataSource['Informations personnelles']['main position']"
+        <div *ngIf="dataSource['Informations personnelles']"
           class=" col-12 d-flex justify-content-center align-items-center col-md-2 post_">
           {{ dataSource['Informations personnelles']['main position']?.label }}
         </div>
-        <div class="d-flex col-12 col-md-3 justify-content-center align-items-center  ">
+        <div class="d-flex col-12 col-md-3 justify-content-center align-items-center  "
+          *ngIf="dataSource['Informations personnelles']">
           <div class="club-logo"> <img [src]="URL+dataSource['Informations personnelles']['Équipe']?.logo" alt=""
               width="100%" height="100%" />
           </div>
           <div class="ml-2">{{ dataSource['Informations personnelles']['Équipe']?.nom }}</div>
         </div>
       </div>
-      <div class="col-12  row mx-0 d-flex justify-content-center align-items-center pt-2">
+      <div class="col-12 row mx-0 d-flex justify-content-start align-items-center pt-0">
         <div class="d-flex col-12 col-md-4 p-0 row mx-0 align-items-center justify-content-center">
           <div class="d-flex col-6 col-md-6 align-items-center justify-content-center">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="mr-2"
@@ -46,10 +47,13 @@
             <div class="bold__text mr-1">{{ dataSource['Informations personnelles']?.Taille }}</div> <small>Cm</small>
           </div>
         </div>
-        <div class="d-flex col-12 col-md-4 row mx-0 align-items-center py-2 justify-content-center">
+        <div class="d-flex col-12 col-md-6 row mx-0 align-items-center py-2 justify-content-center">
           <div class=" d-flex col-6 col-md-6 justify-content-center align-items-center ">
             <i class="fas fa-weight-hanging i-color mr-2"></i>
-            <div class="bold__text mr-1">{{ dataSource['Informations personnelles']?.Poids }}</div> <small>Kg</small>
+            <div class="bold__text mr-1">{{ 
+                                     (dataSource["Informations personnelles"]["Poids"] > 0 ?
+                                      dataSource["Informations personnelles"]["Poids"]+" KG" :
+                                       dataSource["Informations personnelles"]["Poids"]) }}</div>
           </div>
           <div class=" d-flex col-6 col-md-6 justify-content-center align-items-center ">
             <i class="fas fa-history i-color mr-2 "></i>
@@ -57,7 +61,7 @@
             <small>Min</small>
           </div>
         </div>
-        <div class="d-flex col-12 col-md-4 row mx-0 align-items-center justify-content-center">
+        <!-- <div class="d-flex col-12 col-md-4 row mx-0 align-items-center justify-content-center">
           <div class=" d-flex col-6 col-md-6 justify-content-center align-items-center ">
             <i class="fas fa-bullseye i-color mr-2 "></i>
             <div class=" d-flex justify-content-center align-items-center mr-1">
@@ -72,22 +76,22 @@
               <div class="ml-1">xA/90</div>
             </div> <small>Min</small>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
   <div class="col-12 col-md-6 d-flex justify-content-center align-items-start">
-    <div class="chart-block row mx-0">
-      <div class="col-11">
-        <div id="radar-chart" style="width: 100%; height: 400px;"></div>
+    <div class="chart-block  d-flex justify-content-center align-items-center row p-4  mx-0">
+      <div class="col-11 d-flex justify-content-center align-items-center">
+        <div id="radar-chart" style="width: 100%; height: 500px;"></div>
       </div>
-      <div class="chart-block-labels row mx-0 col-12">
+      <!-- <div class="chart-block-labels row mx-0 col-12">
         <div class="mx-2 my-1 p-0 d-flex col-12 col-md-3 justify-content-center align-items-center"
           *ngFor="let label of chart?.legend;let i = index ">
           <div class="ec-color mr-2" [ngStyle]="{'background-color' : COLORS[i]}"></div>
           <div class="ec-label label_chart_name">{{ label }} 1</div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
   <div class="col-12 col-md-6 row mx-0 d-flex justify-content-center align-items-center">
@@ -102,7 +106,7 @@
         <div class="bold__text"><strong>{{ dataSource['Classements']['Classement'] }}</strong></div> <small>Th</small>
       </div>
     </div>
-    <div class="col-12 p-0 ">
+    <div class="col-12 p-0 " *ngIf="dataSource['Informations personnelles']">
       <div class="block_similarities">
         <div class="black_title">
           <ng-container *ngTemplateOutlet="ICON_SIMILARITIE"></ng-container>
@@ -124,7 +128,7 @@
               <div class="ml-2 bold__text">{{ dataSource['Informations personnelles']?.Joueur }}</div>
             </div>
             <div class="profile-name">
-              <div class="post-player" *ngIf="dataSource['Informations personnelles']['main position']">
+              <div class="post-player" *ngIf="dataSource['Informations personnelles']['main position']?.label">
                 {{ dataSource['Informations personnelles']['main position']?.label }}
               </div>
             </div>
@@ -138,7 +142,7 @@
                     width="100%" height="100%" />
                 </div>
                 <div class="online-indicator right-image">
-                  <img [src]="!player['Équipe'].logo ? 'assets/images/default-logo.jpg' : URL+player['Équipe'].logo "
+                  <img [src]="!player['equipe'].logo ? 'assets/images/default-logo.jpg' : URL+player['equipe'].logo "
                     alt="" width="100%" height="100%" />
                 </div>
               </div>
