@@ -5,12 +5,14 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
 import { DateAgoPipe } from './pipes/date-ago/date-ago.pipe';
 import { SafePipe } from './pipes/safe-pipe/safe.pipe';
-
+import { MatTableModule } from '@angular/material/table';
 @NgModule({
   imports: [
-    CommonModule, MatSnackBarModule],
+    CommonModule, MatSnackBarModule, MatTableModule,
+  ],
   declarations: [
     SnackbarComponent, UploadFileComponent, DateAgoPipe, SafePipe],
-  exports: [UploadFileComponent, DateAgoPipe, SafePipe]
+  exports: [UploadFileComponent, DateAgoPipe, SafePipe,MatTableModule
+  ]
 })
 export class SharedModule { }

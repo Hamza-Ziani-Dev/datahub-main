@@ -37,6 +37,7 @@ import { HeaderComponent } from './layout/header/header.component';
 import { BodyComponent } from './layout/body/body.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { MainNavMobileComponent } from './components/main-nav-mobile/main-nav-mobile.component';
+import { MatTableModule } from '@angular/material/table';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -59,6 +60,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       MainNavMobileComponent
     ],
   imports: [
+    MatTableModule,
     MatDatepickerModule,
     MatNativeDateModule,
     BrowserModule,
@@ -85,6 +87,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     //   logOnly: false,
 
     // }),
+   
     TranslateModule.forRoot(
       {
         loader: {

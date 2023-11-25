@@ -19,10 +19,13 @@
     width: 100%;
   }
   
-  #table:hover {
+  /* #table:hover {
     background-color: rgb(193, 181, 48) !important;
+  } */
+  .active {
+    color: #fff !important;
+    background-color: rgb(226 200 120) !important;
   }
-  
 .table {
     padding: 20px;
 }

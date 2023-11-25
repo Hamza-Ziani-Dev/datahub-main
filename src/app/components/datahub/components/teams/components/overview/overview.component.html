@@ -1,32 +1,32 @@
 <div class="overviewContainer container justify-content-center align-content-center">
     <div class="sub-header row d-flex col-12 col-md-12 mt-4 justify-content-center align-content-center ">
           <div class="col-12 col-md-2 ">
-            <div class="table-classement" id="table" role="button" routerLink="/datahub/teams" routerLinkActive="active">
+            <div class="table-classement" id="table" role="button" routerLink="teams" routerLinkActive="active">
                 Table De Classement
            </div>
           </div>
           <div class="col-12 col-md-2 ">
-            <div class="xg-pour" id="table" role="button" routerLink="/datahub/teams" routerLinkActive="active">
+            <div class="xg-pour" id="table" role="button" routerLink="teams" routerLinkActive="active">
                  XG Pour
             </div>
           </div>
           <div class="col-12 col-md-2 ">
-            <div class="xg-contre" id="table" role="button" routerLink="/datahub/teams" routerLinkActive="active">
+            <div class="xg-contre" id="table" role="button" routerLink="teams" routerLinkActive="active">
                 XG Contre
            </div>
           </div>
           <div class="col-12 col-md-2 ">
-            <div class="distribition-passe" id="table" role="button" routerLink="/datahub/teams" routerLinkActive="active">
+            <div class="distribition-passe" id="table" role="button" routerLink="#" routerLinkActive="active">
                 Distribition des Passes
            </div>
           </div>
           <div class="col-12 col-md-2 ">
-            <div class="pertes-balle" id="table" role="button" routerLink="/datahub/teams" routerLinkActive="active">
+            <div class="pertes-balle" id="table" role="button" routerLink="#" routerLinkActive="active">
                 Pertes de Balles
            </div>
           </div>
           <div class="col-12 col-md-2 ">
-            <div class="recuperation-balle" id="table" role="button" routerLink="/datahub/teams" routerLinkActive="active">
+            <div class="recuperation-balle" id="table" role="button" routerLink="#" routerLinkActive="active">
                 Récupération des Balles
            </div>
           </div>
@@ -38,7 +38,7 @@
           <div>FINISHING</div>
         </div>
       <!-- table -->
-      <table class="th-head th-head-lg w-100 table "  mat-table [dataSource]="dataSource">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 th-head th-head-lg w-100 table">
            <!-- Pos Column -->
            <ng-container matColumnDef="pos">
             <th mat-header-cell *matHeaderCellDef style="color: #fff; background-color: black;"> Pos </th>

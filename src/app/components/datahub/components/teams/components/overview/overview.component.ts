@@ -13,7 +13,6 @@ export class OverviewComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit() {
-    // Replace this with your actual data source
     const data = [
       { pos: '1', teams: 'RCA CASA', poits: '0.16', posisionnal:'81',
       counter:'9.65', play:'18',goals:'29', xga:'2.19', diffirence:'3'},

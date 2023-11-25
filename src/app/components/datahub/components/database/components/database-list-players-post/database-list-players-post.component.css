@@ -16,8 +16,7 @@
 }
 
 .th-head {
-  font-size: 1.1rem;
-  font-weight: bold;
+  font-size: 1rem !important;
   color: #000;
   border-bottom: 2px solid;
   font-family: "Century Gothic Bold";
@@ -127,7 +126,6 @@
   .th-head {
     font-size: 1rem;
     border-bottom: 1px solid;
-
   }
 
   .table-container {

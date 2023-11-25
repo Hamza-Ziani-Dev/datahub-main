@@ -71,9 +71,9 @@ th {
   border-radius: 3px;
 }
 
-.medicale table {
+/* .medicale table {
   margin: 10px 0;
-}
+} */
 
 .medicale td {
   font-family: "Century Gothic";
@@ -87,10 +87,36 @@ th {
   padding: 5px 0;
 }
 
+.mannequinConatiner {
+  height: 226px;
+  width: 160px;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  background-size: 100%;
+}
+
+.table{
+  border-radius: 10px;
+  background-color: #dcd6d6;
+}
+.table thead th{
+    font-size: smaller;
+    padding: 0px 8px;
+    vertical-align: middle;
+}
+.table td{
+     padding: 6px;
+    vertical-align: top;
+    font-size: large;
+    font-weight: bold;
+    border-top: 1px solid #dee2e6;
+    background-color: #d8a067;
+}
 /* end chart-pie-blessures */
 .medicale {
   width: 100%;
-  height: auto;
+  height: 500px;
   background-color: #eccfe0;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border-radius: 20px;
@@ -101,9 +127,10 @@ th {
   border: 1px solid #ccc;
   border-collapse: collapse;
   margin: 0;
-  padding: 0;
+  /* padding: 0; */
   width: 100%;
   table-layout: fixed;
+  padding: 3px;
 }
 
 #MyqmdM caption {
@@ -119,13 +146,13 @@ th {
 
 #MyqmdM th,
 #MyqmdM td {
-  padding: .625em;
+  padding: 3px;
   text-align: center;
 }
 
 #MyqmdM th {
-  font-size: .85em;
-  letter-spacing: .1em;
+  font-size: 1em;
+  /* letter-spacing: .1em; */
   text-transform: uppercase;
 }
 
@@ -179,7 +206,11 @@ th {
     border-bottom: 0;
   }
 }
-
+.title-recent{
+  margin-bottom: 10px;
+  font-size: bold !important;
+  font-weight: 400;
+}
 .___block {
   background: #fdfdfd;
   padding: 20px;

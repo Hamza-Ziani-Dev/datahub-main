@@ -96,7 +96,7 @@ export class SidenavComponent implements OnInit {
                     {
                       label: 'HEADER.PLAYERS',
                       icon: 'fas fa-street-view',
-                      //permission: this.user?.type == 'owner',
+                      // permission: this.user?.type == 'owner',
                       permission: false,
                       routerLink: '/datahub/players',
                       items: []

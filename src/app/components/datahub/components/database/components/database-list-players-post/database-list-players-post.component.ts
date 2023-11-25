@@ -39,16 +39,7 @@ export class DatabaseListPlayersPostComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.ID = this.route.snapshot.params.id;
-    // this.route.params.subscribe(
-    //   p => {
-    //     if (this.ID != p.id) {
-    //       this.ID = p.id;
-    //     }
-    //   }
-    // );
     this.actions('GET', { filters: null });
-
     this.rankingService.FiltersListPlayersPost().subscribe(
       (responce: any) => {
         this.DATES = responce.years;

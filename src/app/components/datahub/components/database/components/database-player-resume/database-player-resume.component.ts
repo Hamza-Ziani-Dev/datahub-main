@@ -16,7 +16,10 @@ export class DatabasePlayerResumeComponent implements OnInit {
   isLoading: boolean = true;
   URL: string = "https://interface.myteambyfrmf.ma/uploads/datahub/";
   COLORS: string[] = ["#0357A0", "#007934", "#E55C00"];
-  datapresence = []
+  datapresence = [];
+  injuriesType = [];
+  leftSideInjuries = [];
+  rightSideInjuries = [];
   chart: any = {
     title: null,
     legend: [],
@@ -50,6 +53,10 @@ export class DatabasePlayerResumeComponent implements OnInit {
     this.trainingSub.unsubscribe();
   }
   ngOnInit() {
+    const data = [
+      { minite: '1', buts: 'RCA CASA', xg: '0.16', assists:'81'},
+      { minite: '1', buts: 'RCA CASA', xg: '0.16', assists:'81'},
+    ];
     this.PLAYER_ID = this.route.snapshot.parent?.params.player_id;
     this.ID = this.route.snapshot.parent?.params.id;
     this.actions("GET");
@@ -57,11 +64,16 @@ export class DatabasePlayerResumeComponent implements OnInit {
     this.playerService.getUpdatedInjuriesListner().subscribe(
       (RES: any) => {
         this.dataSource = { ... this.dataSource, injuries: RES };
+        this.injuriesType = [];
+        this.leftSideInjuries = [];
+        this.rightSideInjuries = [];
       })
     this.playerService.getGpsPlayer(this.PLAYER_ID).subscribe(
       (RES: any) => {
         this.actions('CREATE_CHART_BAR2', RES.duration);
-      })
+      });
+
+    
 
     this.trainingSub = this.playerService.getUpdatedTrainingsDatabaseListner().subscribe(
       (result: any) => {
@@ -143,6 +155,10 @@ export class DatabasePlayerResumeComponent implements OnInit {
     this.playerService.getTrainingsDatabase(this.PLAYER_ID);
   }
 
+  displayedColumns: string[] = ['minite', 'buts', 'xg', 'assits'];
+
+  
+
   actions(CASE: string, RES: any = null) {
     switch (CASE) {
       case 'TYPE_CHART':
@@ -165,19 +181,6 @@ export class DatabasePlayerResumeComponent implements OnInit {
         }, []);
 
         var option = {
-          // legend: {
-          //   top: "5%",
-          //   left: "center",
-          // },
-          // title: {
-          //   text: "Hi Anas",
-          //   fontSize: 18,
-          //   textStyle: {
-          //     color: "black",
-          //   },
-          //   left: "center",
-          //   padding: [0, 0, 20, 0],
-          // },
           angleAxis: {
             type: "category",
             data: allLabelsAndValues?.map(({ value, name }) => {
