@@ -93,13 +93,13 @@
     font-family: 'Century Gothic' !important;
 }
 /* tactic */
-.tactic-content{
+/* .tactic-content{
     /* width: 100%;
     height: 400px;
     background-color: #2ecc71;
     position: relative;
-    border-radius: 10px; */
-}
+    border-radius: 10px; */ */
+
 
   
   .player {
@@ -312,7 +312,7 @@
     .content2{
         display: block !important;
         padding-right: 1px !important;
-        padding-left: 1px !important;
+        padding-left: 0px !important;
     }
     .summary1, .tactic{
         margin: 0px;
@@ -353,5 +353,8 @@
    }
    .title-principales{
     padding: 12px 22px;
+   }
+   .moyenne{
+    margin-left: -1px !important;
    }
 }

@@ -76,13 +76,11 @@ export class DatabaseListPlayersPostComponent implements OnInit {
         this.actions('GET', { filters: this.filters });
         break
       case 'DO_FILTERS':
-
         let status = false;
         Object.keys(this.filters).forEach(key => {
           if (key === 'player' && typeof (RES.value) == 'string' && RES.value?.length > 3) {
             this.filters = { ...this.filters, [RES.column]: RES.value };
             status = true;
-
           } else if (key !== 'player' && RES.value?.length > 0) {
             this.filters = { ...this.filters, [RES.column]: RES.value };
             status = true;
@@ -103,7 +101,7 @@ export class DatabaseListPlayersPostComponent implements OnInit {
         } else {
           this.actions('GET', { filters: null });
         }
-        break
+        break;
 
       default:
         break;

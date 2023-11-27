@@ -54,7 +54,7 @@ export class EquipeComponent implements OnInit {
         );
         const option1 = {
           legend: {
-            data: ["RSB Berkane", "Moyenne de ligne"],
+            data: ["RSB Berkane", "Moyenne de ligue"],
           },
           radar: {
             // shape: 'circle',
@@ -89,7 +89,7 @@ export class EquipeComponent implements OnInit {
                   value: [
                     5000, 14000, 28000, 26000, 42000, 21000, 20000, 35000,
                   ],
-                  name: "Moyenne de ligne",
+                  name: "Moyenne de ligue",
                   itemStyle: {
                     color: "#fbb034",
                   },
@@ -106,7 +106,7 @@ export class EquipeComponent implements OnInit {
         );
         const option2 = {
           legend: {
-            data: ["RSB Berkane", "Moyenne de ligne"],
+            data: ["RSB Berkane", "Moyenne de ligue"],
           },
           radar: {
             // shape: 'circle',
@@ -139,7 +139,7 @@ export class EquipeComponent implements OnInit {
                   value: [
                     5000, 14000, 28000, 26000, 42000, 21000, 20000, 35000,
                   ],
-                  name: "Moyenne de ligne",
+                  name: "Moyenne de ligue",
                   itemStyle: {
                     color: "#fbb034",
                   },
@@ -156,7 +156,7 @@ export class EquipeComponent implements OnInit {
         );
         const option3 = {
           legend: {
-            data: ["RSB Berkane", "Moyenne de ligne"],
+            data: ["RSB Berkane", "Moyenne de ligue"],
           },
           radar: {
             // shape: 'circle',
@@ -188,7 +188,7 @@ export class EquipeComponent implements OnInit {
                   value: [
                     5000, 14000, 28000, 26000, 42000, 21000, 20000, 35000,
                   ],
-                  name: "Moyenne de ligne",
+                  name: "Moyenne de ligue",
                   itemStyle: {
                     color: "#fbb034",
                   },
@@ -207,7 +207,7 @@ export class EquipeComponent implements OnInit {
           xAxis: {},
           yAxis: {},
           title: {
-            text: "Aerial Duel Win Ratio %",
+            text: `Aerial Duel Win Ratio %`,
             bottom: 5,
             left: "center",
           },
@@ -229,56 +229,56 @@ export class EquipeComponent implements OnInit {
                   value: [90, 90, "RCA"],
                   name: "RCA",
                   symbol: `image://${this.URL1}`,
-                 symbolSize: [30, 30],
+                 symbolSize: [20, 20],
                 },
                 {
                   value: [80, 86, "RSB"],
                   name: "RSB",
                   symbol: `image://${this.URL2}`,
-                 symbolSize: [30, 30],
+                symbolSize: [20, 20],
                 },
               
                 {
                   value: [40, 40, "IRT"],
                   name: "IRT",
                   symbol: `image://${this.URL3}`,
-                 symbolSize: [30, 30],
+                symbolSize: [20, 20],
                 },
                 {
                   value: [83, 87, "WAC"],
                   name: "WAC",
                   symbol: `image://${this.URL4}`,
-                 symbolSize: [30, 30],
+                symbolSize: [20, 20],
                 },
                 {
                   value: [10, 20, "KAC"],
                   name: "KAC",
                   symbol: `image://${this.URL5}`,
-                 symbolSize: [30, 30],
+                symbolSize: [20, 20],
                 },
                 {
                   value: [49, 43, "FUS"],
                   name: "FUS",
                   symbol: `image://${this.URL6}`,
-                  symbolSize: [30, 30],
+                 symbolSize: [20, 20],
                 },
                 {
                   value: [59, 26, "FAR"],
                   name: "FAR",
                   symbol: `image://${this.URL7}`,
-                  symbolSize: [30, 30],
+                 symbolSize: [20, 20],
                 },
                 {
                   value: [14, 40, "MAT"],
                   name: "MAT",
                   symbol: `image://${this.URL8}`,
-                  symbolSize: [30, 30],
+                 symbolSize: [20, 20],
                 },
                 {
                   value: [32, 70, "MAS"],
                   name: "MAS",
                   symbol: `image://${this.URL9}`,
-                  symbolSize: [30, 30],
+                 symbolSize: [20, 20],
                 },
               ],
               type: "scatter",
@@ -322,56 +322,56 @@ export class EquipeComponent implements OnInit {
                   value: [90, 90, "RCA"],
                   name: "RCA",
                   symbol: `image://${this.URL1}`,
-                 symbolSize: [30, 30],
+                symbolSize: [20, 20],
                 },
                 {
                   value: [80, 86, "RSB"],
                   name: "RSB",
                   symbol: `image://${this.URL2}`,
-                 symbolSize: [30, 30],
+                symbolSize: [20, 20],
                 },
               
                 {
                   value: [40, 40, "IRT"],
                   name: "IRT",
                   symbol: `image://${this.URL3}`,
-                 symbolSize: [30, 30],
+                symbolSize: [20, 20],
                 },
                 {
                   value: [83, 87, "WAC"],
                   name: "WAC",
                   symbol: `image://${this.URL4}`,
-                 symbolSize: [30, 30],
+                symbolSize: [20, 20],
                 },
                 {
                   value: [10, 20, "KAC"],
                   name: "KAC",
                   symbol: `image://${this.URL5}`,
-                 symbolSize: [30, 30],
+                symbolSize: [20, 20],
                 },
                 {
                   value: [49, 43, "FUS"],
                   name: "FUS",
                   symbol: `image://${this.URL6}`,
-                  symbolSize: [30, 30],
+                 symbolSize: [20, 20],
                 },
                 {
                   value: [59, 26, "FAR"],
                   name: "FAR",
                   symbol: `image://${this.URL7}`,
-                  symbolSize: [30, 30],
+                 symbolSize: [20, 20],
                 },
                 {
                   value: [14, 40, "MAT"],
                   name: "MAT",
                   symbol: `image://${this.URL8}`,
-                  symbolSize: [30, 30],
+                 symbolSize: [20, 20],
                 },
                 {
                   value: [32, 70, "MAS"],
                   name: "MAS",
                   symbol: `image://${this.URL9}`,
-                  symbolSize: [30, 30],
+                 symbolSize: [20, 20],
                 },
               ],
               type: "scatter",
@@ -414,56 +414,56 @@ export class EquipeComponent implements OnInit {
                   value: [90, 90, "RCA"],
                   name: "RCA",
                   symbol: `image://${this.URL1}`,
-                 symbolSize: [30, 30],
+                symbolSize: [20, 20],
                 },
                 {
                   value: [80, 86, "RSB"],
                   name: "RSB",
                   symbol: `image://${this.URL2}`,
-                 symbolSize: [30, 30],
+                symbolSize: [20, 20],
                 },
               
                 {
                   value: [40, 40, "IRT"],
                   name: "IRT",
                   symbol: `image://${this.URL3}`,
-                 symbolSize: [30, 30],
+                symbolSize: [20, 20],
                 },
                 {
                   value: [83, 87, "WAC"],
                   name: "WAC",
                   symbol: `image://${this.URL4}`,
-                 symbolSize: [30, 30],
+                symbolSize: [20, 20],
                 },
                 {
                   value: [10, 20, "KAC"],
                   name: "KAC",
                   symbol: `image://${this.URL5}`,
-                 symbolSize: [30, 30],
+                symbolSize: [20, 20],
                 },
                 {
                   value: [49, 43, "FUS"],
                   name: "FUS",
                   symbol: `image://${this.URL6}`,
-                  symbolSize: [30, 30],
+                 symbolSize: [20, 20],
                 },
                 {
                   value: [59, 26, "FAR"],
                   name: "FAR",
                   symbol: `image://${this.URL7}`,
-                  symbolSize: [30, 30],
+                 symbolSize: [20, 20],
                 },
                 {
                   value: [14, 40, "MAT"],
                   name: "MAT",
                   symbol: `image://${this.URL8}`,
-                  symbolSize: [30, 30],
+                 symbolSize: [20, 20],
                 },
                 {
                   value: [32, 70, "MAS"],
                   name: "MAS",
                   symbol: `image://${this.URL9}`,
-                  symbolSize: [30, 30],
+                 symbolSize: [20, 20],
                 },
               ],
               type: "scatter",

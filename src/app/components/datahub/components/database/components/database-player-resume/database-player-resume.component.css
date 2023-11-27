@@ -96,23 +96,22 @@ th {
   background-size: 100%;
 }
 
-.table{
-  border-radius: 10px;
-  background-color: #dcd6d6;
+ .table{
+  background-color: #dfdfdf;
 }
 .table thead th{
-    font-size: smaller;
-    padding: 0px 8px;
-    vertical-align: middle;
-}
+  font-size: medium;
+  padding: 9px;
+  vertical-align: middle;
+  text-decoration: none;
+
+} 
 .table td{
-     padding: 6px;
-    vertical-align: top;
-    font-size: large;
-    font-weight: bold;
-    border-top: 1px solid #dee2e6;
-    background-color: #d8a067;
-}
+    padding: 13px 1px;
+    border-top: 1px solid #eae8e8;
+    border-bottom: 2px solid #dee2e6;
+    background-color: #f7f5f5;
+} 
 /* end chart-pie-blessures */
 .medicale {
   width: 100%;
@@ -127,7 +126,6 @@ th {
   border: 1px solid #ccc;
   border-collapse: collapse;
   margin: 0;
-  /* padding: 0; */
   width: 100%;
   table-layout: fixed;
   padding: 3px;
@@ -157,6 +155,7 @@ th {
 }
 
 @media screen and (max-width: 600px) {
+  
   #MyqmdM {
     border: 0;
   }
@@ -206,14 +205,15 @@ th {
     border-bottom: 0;
   }
 }
-.title-recent{
-  margin-bottom: 10px;
-  font-size: bold !important;
-  font-weight: 400;
+.table{
+  border-radius: 6px;
+}
+.table th{
+  padding: 0;
 }
 .___block {
   background: #fdfdfd;
-  padding: 20px;
+  padding: 10px;
   border-radius: 20px;
   border: 1px solid white;
   height: 100%;

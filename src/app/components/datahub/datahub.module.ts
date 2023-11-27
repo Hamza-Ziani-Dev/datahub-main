@@ -32,6 +32,7 @@ import { RankingService } from './components/ranking/service/ranking.service';
 import { CdkTableModule } from '@angular/cdk/table';
 import { TeamsComponent } from './components/teams/teams.component';
 import {MatTableModule } from '@angular/material/table';
+import { OverviewComponent } from './components/teams/components/overview/overview.component';
 
 @NgModule({
   imports: [
@@ -46,12 +47,9 @@ import {MatTableModule } from '@angular/material/table';
     MatInputModule,
     MatTableModule,
     CdkTableModule,
-  
-    
-
-
   ],
   declarations: [
+    OverviewComponent,
     DatahubComponent,
     PlayersComponent,
     DatabaseComponent,

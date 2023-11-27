@@ -16,7 +16,8 @@
 }
 
 .th-head {
-  font-size: 1rem !important;
+  font-size: 13px;
+  font-weight: bold;
   color: #000;
   border-bottom: 2px solid;
   font-family: "Century Gothic Bold";

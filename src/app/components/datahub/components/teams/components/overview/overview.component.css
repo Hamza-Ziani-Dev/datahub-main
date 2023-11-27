@@ -1,6 +1,7 @@
 .overviewContainer{
   height: 1000px;
 }
+
 /* Sub Header */
 .table-classement, .xg-pour, .xg-contre, .distribition-passe, .pertes-balle, .recuperation-balle{
     border-radius: 10px;
@@ -11,6 +12,19 @@
     font-size: small;
     font-weight: bold;
 }
+.default {
+  background-color: lightblue;
+  color: black;
+}
+
+.clicked {
+  background-color: red;
+  color: white;
+}
+.active {
+  color: #fff !important;
+  background-color: rgb(193, 181, 48)  !important;
+}
 .list-container {
     font-family: "Century Gothic";
     display: flex;
@@ -18,14 +32,8 @@
     align-items: center;
     width: 100%;
   }
-  
-  /* #table:hover {
-    background-color: rgb(193, 181, 48) !important;
-  } */
-  .active {
-    color: #fff !important;
-    background-color: rgb(226 200 120) !important;
-  }
+
+ 
 .table {
     padding: 20px;
 }
