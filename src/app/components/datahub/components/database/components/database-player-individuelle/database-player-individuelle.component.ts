@@ -225,8 +225,7 @@ export class DatabasePlayerIndividuelleComponent implements OnInit {
 
         break;
       case "CREATE_CHART_RADAR":
-        const myChart1_ = echarts.init(
-          document.getElementById("radar-percentilles-" + this.type_chart)
+        const myChart1_ = echarts.init(document.getElementById("radar-percentilles-" + this.type_chart)
         );
         let data = RES;
         const allLabelsAndValues = Object.keys(data.option).reduce((result, category) => {
@@ -236,20 +235,6 @@ export class DatabasePlayerIndividuelleComponent implements OnInit {
           return result.concat(categoryData);
         }, []);
         var option = {
-          // legend: {
-          //   top: "5%",
-          //   left: "center",
-          // },
-          // title: {
-          //   text: "Hi Anas",
-          //   fontSize: 18,
-          //   textStyle: {
-          //     color: "black",
-          //   },
-          //   left: "center",
-          //   padding: [0, 0, 20, 0],
-          // },
-
           angleAxis: {
             type: "category",
             data: allLabelsAndValues?.map(({ value, name }) => {

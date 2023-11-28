@@ -16,6 +16,26 @@
   background-color: lightblue;
   color: black;
 }
+.negative-value {
+  color: red;
+}
+
+.low-value {
+  color: orange;
+}
+
+.medium-value {
+  color: blue;
+}
+
+.high-value {
+  color: green;
+}
+
+.default-value {
+  color: black;
+}
+
 
 .clicked {
   background-color: red;

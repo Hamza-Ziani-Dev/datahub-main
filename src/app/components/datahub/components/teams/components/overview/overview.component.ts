@@ -7,7 +7,10 @@ import { MatPaginator } from '@angular/material/paginator';
   styleUrls: ['./overview.component.css']
 })
 export class OverviewComponent implements OnInit {
-  isClicked: boolean = true;
+  activeButton: string = 'table'; // Initially, no button is active
+  setActiveButton(buttonId: string) {
+    this.activeButton = buttonId;
+  }
 
    dataSource: MatTableDataSource<any>;
    displayedColumns: string[] = ['pos', 'teams', 'poits', 'posisionnal','counter', 'play','goals','xga','diffirence'];

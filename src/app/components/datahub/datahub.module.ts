@@ -33,6 +33,7 @@ import { CdkTableModule } from '@angular/cdk/table';
 import { TeamsComponent } from './components/teams/teams.component';
 import {MatTableModule } from '@angular/material/table';
 import { OverviewComponent } from './components/teams/components/overview/overview.component';
+import { JoueursComponent } from './components/teams/components/joueurs/joueurs.component';
 
 @NgModule({
   imports: [
@@ -50,6 +51,7 @@ import { OverviewComponent } from './components/teams/components/overview/overvi
   ],
   declarations: [
     OverviewComponent,
+    JoueursComponent,
     DatahubComponent,
     PlayersComponent,
     DatabaseComponent,

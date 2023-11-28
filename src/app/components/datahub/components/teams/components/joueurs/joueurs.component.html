@@ -15,22 +15,22 @@
               <div class="bold__text mr-1 text-white">Favorites</div>
             </div>
           </div>
-          <div class="col-12 col-md-2 label_1" routerLinkActive="active" routerLink="teams" type="button">
+          <div class="col-12 col-md-2 label_1" type="button" [ngClass]="{ 'active': activeLabel === 1 }" (click)="setActiveLabel(1)">
             <div class="ml-2 d-flex justify-content-center align-items-center">
               <div class="bold__text mr-1 text-white">Gardients</div>
             </div>
           </div>
-          <div class="col-12 col-md-2 label_2"  type="button">
+          <div class="col-12 col-md-2 label_2" type="button" [ngClass]="{ 'active': activeLabel === 2 }" (click)="setActiveLabel(2)">
             <div class="ml-2 d-flex justify-content-center align-items-center">
               <div class="bold__text mr-1 text-white">Défenseurs</div>
             </div>
           </div>
-          <div class="col-12 col-md-2 label_3" type="button">
+          <div class="col-12 col-md-2 label_3" type="button" [ngClass]="{ 'active': activeLabel === 3 }" (click)="setActiveLabel(3)">
             <div class="ml-2 d-flex justify-content-center align-items-center">
               <div class="bold__text mr-1 text-white">Milieu de terrain</div>
             </div>
           </div>
-          <div class="col-12 col-md-2 label_4" routerLinkActive="active"  type="button">
+          <div class="col-12 col-md-2 label_4" type="button" [ngClass]="{ 'active': activeLabel === 4 }" (click)="setActiveLabel(4)">
             <div class="ml-2 d-flex justify-content-center align-items-center">
               <div class="bold__text mr-1 text-white">Pour les mots</div>
             </div>

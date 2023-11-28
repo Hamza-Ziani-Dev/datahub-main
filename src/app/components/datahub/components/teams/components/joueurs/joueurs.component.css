@@ -29,19 +29,11 @@
   .title{
     padding: 14px 23px;
   }
-  /* .sub-title{
-
-  } */
- 
 
   .label_0{
     background-color: #6a6666 !important;
   }
-  /* .active {
-    color: #fff !important;
-    background-color: rgb(246, 208, 96) !important;
-  } */
-  .label_1{
+  .activeLabel{
     color: #fff !important;
     background-color: rgb(246, 208, 96) !important;
   }

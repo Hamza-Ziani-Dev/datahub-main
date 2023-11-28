@@ -1,45 +1,42 @@
 <div class="overviewContainer container justify-content-center align-content-center">
   <div class="sub-header row d-flex col-12 col-md-12 mt-4 justify-content-center align-content-center">
     <div class="col-12 col-md-2">
-      <div class="table-classement"
-     id="table"
-     (click)="isClicked = !isClicked"
-     [ngClass]="{ 'active': isClicked }">
+      <div [ngClass]="{ 'active': activeButton === 'table' }" class="table-classement" (click)="setActiveButton('table')">
      Table De Classement
      </div>
 
     </div>
     <div class="col-12 col-md-2">
-      <div class="xg-pour" id="table" type="button">
+      <div [ngClass]="{ 'active': activeButton === 'xgPour' }" class="xg-pour" (click)="setActiveButton('xgPour')">
         XG Pour
       </div>
     </div>
     <div class="col-12 col-md-2">
-      <div class="xg-contre" id="table" role="button" routerLink="teams" routerLinkActive="active">
+      <div [ngClass]="{ 'active': activeButton === 'xgContre' }" class="xg-contre" (click)="setActiveButton('xgContre')">
         XG Contre
       </div>
     </div>
     <div class="col-12 col-md-2">
-      <div class="distribition-passe" id="table" role="button" routerLink="#" routerLinkActive="active">
+      <div class="distribition-passe" [ngClass]="{ 'active': activeButton === 'distribitionPasse' }" class="distribition-passe" (click)="setActiveButton('distribitionPasse')" >
         Distribition des Passes
       </div>
     </div>
     <div class="col-12 col-md-2">
-      <div class="pertes-balle" id="table" role="button" routerLink="#" routerLinkActive="active">
+      <div class="pertes-balle" [ngClass]="{ 'active': activeButton === 'pertesBalle' }" class="pertes-balle" (click)="setActiveButton('pertesBalle')" >
         Pertes de Balles
       </div>
     </div>
     <div class="col-12 col-md-2">
-      <div class="recuperation-balle" id="table" role="button" routerLink="#" routerLinkActive="active">
+      <div class="recuperation-balle" [ngClass]="{ 'active': activeButton === 'recuperationBalle' }" class="recuperation-balle" (click)="setActiveButton('recuperationBalle')">
         Récupération des Balles
       </div>
     </div>
   </div>
   <div class="table-content col-12 col-md-12 justify-content-center align-content-center">
     <div class="table-header d-flex w-100 h-50 justify-content-around align-content-center">
-      <div>POINTS</div>
-      <div>SHORTS</div>
-      <div>FINISHING</div>
+      <div style="text-align: center;">POINTS</div>
+      <div style="text-align: center;">SHORTS</div>
+      <div style="text-align: center;">FINISHING</div>
     </div>
     <!-- table -->
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 th-head th-head-lg w-100 table">

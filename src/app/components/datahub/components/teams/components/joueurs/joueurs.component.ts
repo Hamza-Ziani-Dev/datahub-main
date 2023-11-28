@@ -9,6 +9,11 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./joueurs.component.css']
 })
 export class JoueursComponent implements OnInit {
+  activeLabel: number = 1; // Initially, no label is active
+  setActiveLabel(labelNumber: number) {
+    this.activeLabel = labelNumber;
+  }
+  
   isLoading: boolean = true;
   URL: string = "https://interface.myteambyfrmf.ma/uploads/datahub/";
   COLORS: string[] = ["#0357A0", "#007934", "#E55C00"];

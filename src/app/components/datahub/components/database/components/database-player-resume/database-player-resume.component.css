@@ -104,13 +104,15 @@ th {
   padding: 9px;
   vertical-align: middle;
   text-decoration: none;
-
+  font-family: "Century Gothic Bold";
 } 
+
 .table td{
-    padding: 13px 1px;
+    padding: 5px 1px;
     border-top: 1px solid #eae8e8;
     border-bottom: 2px solid #dee2e6;
     background-color: #f7f5f5;
+    font-family: "Century Gothic Bold";
 } 
 /* end chart-pie-blessures */
 .medicale {

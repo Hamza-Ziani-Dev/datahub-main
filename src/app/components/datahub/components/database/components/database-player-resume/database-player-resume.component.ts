@@ -20,6 +20,80 @@ export class DatabasePlayerResumeComponent implements OnInit {
   injuriesType = [];
   leftSideInjuries = [];
   rightSideInjuries = [];
+  dataPlayer = [
+    {
+        "minutes_played": {
+          "label": "Minutes jou\u00e9es",
+          "player_value": 288,
+          "league_value": 515.2
+        },
+        "xG": {
+          "label": "xG",
+          "player_value": 0.0,
+          "league_value": 0.0
+        },
+        "Tirs": {
+          "label": "Tirs",
+          "player_value": 0.0,
+          "league_value": 0.30000000000000004
+        },
+        "qualite_tir": {
+          "label": "xG/Tir",
+          "player_value": 0.0,
+          "league_value": 0.1
+        },
+        "touches_surface": {
+          "label": "Touches dans la surface",
+          "player_value": 0.0,
+          "league_value": 0.5
+        },
+        "dribbles": {
+          "label": "Dribbles",
+          "player_value": 0.63,
+          "league_value": 0.4
+        },
+        "dribbles_reussis": {
+          "label": "Dribbles gagn\u00e9s",
+          "player_value": 100.0,
+          "league_value": 52.4
+        },
+        "actions_def": {
+          "label": "Actions D\u00e9fensives",
+          "player_value": 11.88,
+          "league_value": 8.1
+        },
+        "aerial_duels": {
+          "label": "Duels A\u00e9riens",
+          "player_value": 1.88,
+          "league_value": 2.4
+        },
+        "interceptions": {
+          "label": "Interceptions",
+          "player_value": 5.63,
+          "league_value": 4.5
+        },
+        "passes_prog": {
+          "label": "Passes Prog",
+          "player_value": 10.0,
+          "league_value": 7.3
+        },
+        "passes_surface": {
+          "label": "Passes vers la surface",
+          "player_value": 0.31,
+          "league_value": 0.5
+        },
+        "passes": {
+          "label": "Passes",
+          "player_value": 61.25,
+          "league_value": 38.5
+        },
+        "passes_precision": {
+          "label": "Passes pr\u00e9cises, %",
+          "player_value": 89.29,
+          "league_value": 83.3
+        }
+    }
+]
   chart: any = {
     title: null,
     legend: [],
@@ -53,10 +127,6 @@ export class DatabasePlayerResumeComponent implements OnInit {
     this.trainingSub.unsubscribe();
   }
   ngOnInit() {
-    const data = [
-      { minite: '1', buts: 'RCA CASA', xg: '0.16', assists:'81'},
-      { minite: '1', buts: 'RCA CASA', xg: '0.16', assists:'81'},
-    ];
     this.PLAYER_ID = this.route.snapshot.parent?.params.player_id;
     this.ID = this.route.snapshot.parent?.params.id;
     this.actions("GET");
@@ -169,9 +239,7 @@ export class DatabasePlayerResumeComponent implements OnInit {
         }, 100);
         break
       case "CREATE_CHART_RADAR":
-        const myChart1 = echarts.init(
-          document.getElementById("radar-percentiles-" + this.type_chart)
-        );
+        const myChart1 = echarts.init(document.getElementById("radar-percentiles-" + this.type_chart));
         let data = RES;
         const allLabelsAndValues = Object.keys(data.option).reduce((result, category) => {
           const color = data.option[category].color;
@@ -179,19 +247,30 @@ export class DatabasePlayerResumeComponent implements OnInit {
           const categoryData = data.option[category].data.map(item => ({ color, name: item.name, value: item.value }));
           return result.concat(categoryData);
         }, []);
-
         var option = {
           angleAxis: {
             type: "category",
-            data: allLabelsAndValues?.map(({ value, name }) => {
-              const _name = name.split('').reduce((acc, char, index) => {
-                if (index % 17 === 0) {
-                  acc.push(name.substr(index, 17));
-                }
-                return acc;
-              }, []).join('\n')
-              return `${_name} \n ( ${value} )`
-            }) ?? [],
+            // data: allLabelsAndValues?.map(({ value, name }) => {
+            //   const _name = name.split('').reduce((acc, char, index) => {
+            //     if (index % 17 === 0) {
+            //       acc.push(name.substr(index, 17));
+            //     }
+            //     return acc;
+            //   }, []).join('\n')
+            //   return `${_name} \n ( ${value} )`
+            // }) ?? [],
+            //  data : this.dataPlayer.forEach(player => {
+            //    Object.keys(player).forEach(key => {
+            //     const label = player[key].label;
+            //          console.log('====================================');
+            //          console.log(label);
+            //          console.log('====================================');
+            // });
+            // }),
+            data : ['Xg', 'Tirs', 'qualite_tir',
+            'touches_surface', 'dribbles', 'dribbles_reussis',
+            'actions_def', 'aerial_duels','interceptions','passes_prog',
+            'passes_surface','passes','passes_precision'],
             axisLabel: {
               fontSize: 13,
               fontWeight: "bold",
@@ -207,6 +286,14 @@ export class DatabasePlayerResumeComponent implements OnInit {
             {
               type: "bar",
               data: allLabelsAndValues?.map(({ value }) => value) ?? [],
+            //  data : this.dataPlayer.forEach(player => {
+            //    Object.keys(player).forEach(key => {
+            //     const value = player[key].player_value;
+            //          console.log('====================================');
+            //          console.log(value);
+            //          console.log('====================================');
+            // });
+            // }),
               coordinateSystem: "polar",
               name: "A",
               stack: "a",
