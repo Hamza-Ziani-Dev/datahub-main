@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { DatabaseService } from '../../service/database.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
@@ -11,6 +11,8 @@ import { CharedService } from 'src/app/services/chared.service';
   styleUrls: ['./database-list-players-post.component.css']
 })
 export class DatabaseListPlayersPostComponent implements OnInit {
+  @Output() selectedLigueChange = new EventEmitter<string>();
+  
   displayedColumns: string[] = ['id', 'equipe', 'age', 'time_play', 'pied', 'taille'];
   URL: string = "https://interface.myteambyfrmf.ma/uploads/datahub/";
   POSTS: any[] = [];
@@ -39,6 +41,7 @@ export class DatabaseListPlayersPostComponent implements OnInit {
   }
 
   ngOnInit() {
+    
     this.actions('GET', { filters: null });
     this.rankingService.FiltersListPlayersPost().subscribe(
       (responce: any) => {
@@ -49,8 +52,13 @@ export class DatabaseListPlayersPostComponent implements OnInit {
 
       }
     )
-
   }
+  onSelectionChange(event: any) {
+    this.selectedLigueChange.emit(event.value);
+  }
+
+
+ 
   actions(CASE: string, RES: any = null) {
     switch (CASE) {
       case 'GET':

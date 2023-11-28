@@ -34,7 +34,14 @@ export class DatabaseComponent implements OnInit {
   ) {
     this.envirement = environment.type;
   }
- 
+  selectedLigue: string = 'LNFF'; // Default value
+  logoPath: string = 'assets/images/logo-botola.png'; // Default logo path
+
+  onSelectedLigueChange(selectedLigue: string) {
+    this.selectedLigue = selectedLigue;
+    this.setLogoPath();
+  }
+
 
   ngOnInit() {
     this.authService.getUpdatedUser()
@@ -46,6 +53,16 @@ export class DatabaseComponent implements OnInit {
         })
     this.authService.getUser();
   }
+  setLogoPath() {
+    if (this.selectedLigue === 'LNFF') {
+      this.logoPath = 'assets/images/logo-botola.png';
+    } else if (this.selectedLigue === 'LNFP') {
+      this.logoPath = 'assets/images/logo_frmf.png';
+    } else{
+      this.logoPath = 'assets/images/logo-botola.png';
+    }
+  }
+
   actions(CASE: string, RES: any = null) {
     switch (CASE) {
       case 'DO_FILTERS':

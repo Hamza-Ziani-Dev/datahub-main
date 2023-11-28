@@ -9,7 +9,7 @@
       </mat-form-field>
       <mat-form-field class="form--field col-12 col-md-3 " appearance="outline">
         <mat-label><strong>Ligues</strong></mat-label>
-        <mat-select  (ngModelChange)="actions('DO_FILTERS',{column:'ligue',value:$event})"
+        <mat-select (selectionChange)="onSelectionChange($event)"  (ngModelChange)="actions('DO_FILTERS',{column:'ligue',value:$event})"
           [(ngModel)]="filters.ligue" name="ligue">
           <mat-option value="LNFF"><strong>LNFF</strong></mat-option>
           <mat-option value="LNFP"><strong>LNFP</strong></mat-option>
