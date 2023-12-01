@@ -1,0 +1,14 @@
+.table th{
+    padding: 11px 3px;
+    background-color: rgb(227, 224, 224);
+}
+
+
+
+@media screen and (max-width: 768px) {
+    /* CSS rules for screens with a maximum width of 768px (typical for mobile devices) */
+   .table th{
+    padding: 0px;
+    margin: 0px;
+   }
+}

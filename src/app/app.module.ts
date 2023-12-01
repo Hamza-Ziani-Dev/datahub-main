@@ -26,7 +26,7 @@ import { MatInputModule } from '@angular/material/input';
 import { DataTablesModule } from 'angular-datatables';
 import { MatNativeDateModule, MAT_DATE_LOCALE, DateAdapter } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogClose, MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { UserDateAdapter } from './native-date-adapter';
 import { VersionComponent } from './shared/components/version/version.component';
@@ -57,7 +57,8 @@ export function HttpLoaderFactory(http: HttpClient) {
       HeaderComponent,
       BodyComponent,
       SublevelMenuComponent,
-      MainNavMobileComponent
+      MainNavMobileComponent,
+    
     ],
   imports: [
     MatTableModule,

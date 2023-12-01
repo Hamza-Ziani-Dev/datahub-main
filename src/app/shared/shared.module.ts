@@ -6,12 +6,16 @@ import { SnackbarComponent } from './components/snackbar/snackbar.component';
 import { DateAgoPipe } from './pipes/date-ago/date-ago.pipe';
 import { SafePipe } from './pipes/safe-pipe/safe.pipe';
 import { MatTableModule } from '@angular/material/table';
+import { TableStatistiqueFormationComponent } from './components/table-statistique-formation/table-statistique-formation.component';
+import { DistributionComponent } from './components/distribution/distribution.component';
+import { DefensiveComponent } from './components/defensive/defensive.component';
+import { OffensiveComponent } from './components/offensive/offensive.component';
 @NgModule({
   imports: [
     CommonModule, MatSnackBarModule, MatTableModule,
   ],
   declarations: [
-    SnackbarComponent, UploadFileComponent, DateAgoPipe, SafePipe],
+    SnackbarComponent, UploadFileComponent, DateAgoPipe, SafePipe, TableStatistiqueFormationComponent, DistributionComponent, DefensiveComponent, OffensiveComponent],
   exports: [UploadFileComponent, DateAgoPipe, SafePipe,MatTableModule
   ]
 })
