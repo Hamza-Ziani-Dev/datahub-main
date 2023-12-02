@@ -210,6 +210,11 @@ export class EquipeComponent implements OnInit {
             text: `Aerial Duel Win Ratio %`,
             bottom: 5,
             left: "center",
+            textStyle: {
+              fontSize: 15, // Change the font size as needed
+              fontWeight: 'normal',
+              fontFamily:'Century Gothic',
+            }
           },
           tooltip: {
             formatter: function (params) {
@@ -303,6 +308,11 @@ export class EquipeComponent implements OnInit {
             text: "Aerial Duel Win Ratio %",
             bottom: 5,
             left: "center",
+            textStyle: {
+              fontSize: 15, // Change the font size as needed
+              fontWeight: 'normal',
+              fontFamily:'Century Gothic',
+            }
           },
           tooltip: {
             formatter: function (params) {
@@ -395,6 +405,11 @@ export class EquipeComponent implements OnInit {
             text: "Aerial Duel Win Ratio %",
             bottom: 5,
             left: "center",
+            textStyle: {
+              fontSize: 15, // Change the font size as needed
+              fontWeight: 'normal',
+              fontFamily:'Century Gothic',
+            }
           },
           tooltip: {
             formatter: function (params) {
