@@ -2,8 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import * as echarts from "echarts";
 import { TeamsService } from "../service/teams.service";
 import { ActivatedRoute } from "@angular/router";
-import  * as transform  from 'echarts-stat';
-import * as ecStat from 'echarts-stat';
+ import * as ecStat from 'echarts-stat';
+import   * as transform from 'echarts-stat';
 
 
 
@@ -44,6 +44,7 @@ export class JoueursComponent implements OnInit {
     this.actions("CREATE_CHART_SCATTER4");
     this.actions("CREATE_CHART_SCATTER5");
     this.actions("CREATE_CHART_SCATTER6");
+    // echarts.registerTransform(ecStat.transform.clustering);
   }
   actions(CASE: string, RES: any = null) {
    
