@@ -1,143 +1,144 @@
 /* header  */
 .container-content {
-    font-family: "Century Gothic" !important;
-    height: 1000px;
-  }
-  
-  .post-head {
-    background-color: rgb(226 200 120);
-    border-radius: 8px;
-    padding: 2px 20px;
-    font-family: "Century Gothic Bold";
-    font-weight: bold;
-  }
-  
-  .i-color {
-    color: rgb(226 200 120);
-    fill: rgb(226 200 120);
-  }
-  
-  .info-block {
-    font-family: "Century Gothic" !important;
-  }
-  
-  .bold__text {
-    font-family: "Century Gothic Bold" !important;
-    font-weight: 600;
-  }
-  
-  
-  .title{
-    padding: 14px 23px;
-  }
+  font-family: "Century Gothic" !important;
+  height: 1000px;
+}
 
-  .label_0{
-    background-color: #6a6666 !important;
-  }
-  .activeLabel{
-    color: #fff !important;
-    background-color: rgb(246, 208, 96) !important;
-  }
+.post-head {
+  background-color: rgb(226 200 120);
+  border-radius: 8px;
+  padding: 2px 20px;
+  font-family: "Century Gothic Bold";
+  font-weight: bold;
+}
 
-  .label_0,
-  .label_1,
-  .label_2,
-  .label_3,
-  .label_4 {
-    background-color: rgb(16, 14, 14);
-    padding: 5px 4px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.1rem;
-  }
-  
- 
-  
-  .th-color {
-    background-color: #dfe5e8;
-  }
-  
-  .td-brown {
-    background-color: #d8a067;
-  }
-  
-  .td-rose {
-    background-color: #bd9ca7;
-  }
-  
-  .filter-chart {
-    border-radius: 30px;
-  }
-  
-  .bold__text,
-  .ec-label,
-  .post-player {
-    font-family: "Century Gothic Bold";
-  }
-  
-  .club-logo {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  
-  
-  
-  .chart-block {
-    border-radius: 20px;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-    margin-bottom: 10px;
-    overflow: hidden;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: white;
-  
-  }
-  
+.i-color {
+  color: rgb(226 200 120);
+  fill: rgb(226 200 120);
+}
 
-  .block_title {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    overflow: hidden;
-    border-radius: 20px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
-  
-  }
-  
-  .j-color {
-    color: rgb(254, 252, 244);
-    fill: rgb(248, 247, 246);
-  }
-  
-  .active {
-    color: #fff !important;
-    background-color: rgb(226 200 120) !important;
-  }
-  
-  
-  .black_title {
-    background: #e2c878;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.1rem;
-    padding: 8px 0;
-    font-weight: bold;
-  }
-  
-  
-.performance{
+.info-block {
+  font-family: "Century Gothic" !important;
+}
+
+.bold__text {
+  font-family: "Century Gothic Bold" !important;
+  font-weight: 600;
+}
+
+
+.title {
+  padding: 14px 23px;
+}
+
+.label_0 {
+  background-color: #6a6666 !important;
+}
+
+.activeLabel {
+  color: #fff !important;
+  background-color: rgb(246, 208, 96) !important;
+}
+
+.label_0,
+.label_1,
+.label_2,
+.label_3,
+.label_4 {
+  background-color: rgb(16, 14, 14);
+  padding: 5px 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1rem;
+}
+
+
+
+.th-color {
+  background-color: #dfe5e8;
+}
+
+.td-brown {
+  background-color: #d8a067;
+}
+
+.td-rose {
+  background-color: #bd9ca7;
+}
+
+.filter-chart {
+  border-radius: 30px;
+}
+
+.bold__text,
+.ec-label,
+.post-player {
+  font-family: "Century Gothic Bold";
+}
+
+.club-logo {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+.chart-block {
+  border-radius: 20px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+
+}
+
+
+.block_title {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+
+}
+
+.j-color {
+  color: rgb(254, 252, 244);
+  fill: rgb(248, 247, 246);
+}
+
+.active {
+  color: #fff !important;
+  background-color: rgb(226 200 120) !important;
+}
+
+
+.black_title {
+  background: #e2c878;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1rem;
+  padding: 8px 0;
+  font-weight: bold;
+}
+
+
+.performance {
   width: 100%;
   height: 390px;
   background-color: rgba(240, 239, 239, 0.918);
@@ -145,17 +146,19 @@
   box-shadow: rgba(247, 247, 248, 0.25) 0px 30px 60px -12px inset, rgba(234, 230, 230, 0.3) 0px 18px 36px -18px inset;
 }
 
-.performance-header{
+.performance-header {
   width: 100%;
-  height: 47px;
-  padding: 10px 16px;
+  height: 50px;
+  padding: 14px 8px;
 }
-.sub-des{
+
+.sub-des {
   /* padding: 0px 25px; */
   height: 2px;
   font-size: small;
   color: rgb(120, 119, 119);
 }
+
 /* .logo-club{
   margin-bottom: 8px;
   padding: 0px 16px;
@@ -165,7 +168,7 @@
 } */
 
 
-.performance-body, .gardian-body, .defenseur-body{
+.performance-body, .gardian-body, .defenseur-body {
   width: 100%;
   height: 310px;
   border-radius: 8px;
@@ -173,65 +176,69 @@
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
 }
 
-.title-header{
-  font-family: 'Century Gothic Bold'!important;
+.title-header {
+  font-family: 'Century Gothic Bold' !important;
   padding: 0px;
 }
 
 
-  
- /* end header */
-  
+
+/* end header */
 
 
-  
-  @media screen and (max-width: 768px) {
-  
-    /* CSS rules for screens with a maximum width of 768px (typical for mobile devices) */
-    .container-content {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .label_0,
-    .label_1,
-    .label_2,
-    .label_3 {
-      background-color: rgb(16, 14, 14);
-      padding: 8px 2px !important;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 1.1rem;
-      margin: 2px;
-      padding: 0;
-  
-    }
-  
-    .info-block {
-      height: initial !important;
-    }
-  
-    .recent {
-      padding: 0px;
-      margin-top: 13px;
-      width: 100%;
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .block_title {
-      border-radius: 12px;
-      margin-bottom: 40px;
-    }
-    .gardient, .maitrise, .defenseur{ 
-      margin-top: 20px; 
-      padding-right: 0px;
-      padding-left: 9px;
-    }
-    .title-header{
-      padding: 0px;
-      line-height: 1rem;
-    }
+
+
+@media screen and (max-width: 768px) {
+
+  /* CSS rules for screens with a maximum width of 768px (typical for mobile devices) */
+  .container-content {
+    flex-direction: column;
+    align-items: center;
   }
 
+  .label_0,
+  .label_1,
+  .label_2,
+  .label_3 {
+    background-color: rgb(16, 14, 14);
+    padding: 8px 2px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    margin: 2px;
+    padding: 0;
+
+  }
+
+  .info-block {
+    height: initial !important;
+  }
+
+  .recent {
+    padding: 0px;
+    margin-top: 13px;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .block_title {
+    border-radius: 12px;
+    margin-bottom: 40px;
+  }
+
+  .efficacite, .creativite, .presence-tir, .qualite-tir, .contribution-jeu, .polyvalence-defensive,
+  .diversite-passes, .efficacite-domination, .progression-jeu, .limplication-creative,
+  .contribution-offensive, .chart-precision-passes, .jeu-aerien, .efficacite-sauvegarde, .controle-surface ,
+  .charge-defensive {
+    margin-top: 20px;
+    padding-right: 0px;
+    padding-left: 9px;
+  }
+
+  .title-header {
+    padding: 0px;
+    line-height: 1rem;
+  }
+}
