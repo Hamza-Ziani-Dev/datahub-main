@@ -73,7 +73,7 @@ export class ProchainAdversaireComponent implements OnInit {
         const myChart1 = echarts.init(document.getElementById("chart-general"));
         const option1 ={
           title: {
-            text: 'General Performance',
+            text: 'Prestation générale.',
             left: 'center'
           },
           legend: {

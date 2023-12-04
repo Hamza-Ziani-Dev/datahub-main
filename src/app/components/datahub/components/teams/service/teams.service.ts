@@ -15,8 +15,14 @@ export class TeamsService {
     private http: HttpClient
   ) { }
 
+  ngOnInit(): void {
+    console.log('====================================');
+    console.log(this.getListAttaques());
+    console.log('====================================');
+  }
 
-  getTable(type: string): Observable<any> {
-    return this.http.get<any>(`${this.link}/${this.API}/${this.endpoint}/tab/${type}`);
+
+  getListAttaques(): Observable<any> {
+    return this.http.get<any>(`${this.link}/${this.API}/${this.endpoint}/list-attaques`);
   }
 }
