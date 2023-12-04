@@ -12,7 +12,7 @@ import { DefensiveComponent } from './components/defensive/defensive.component';
 import { OffensiveComponent } from './components/offensive/offensive.component';
 @NgModule({
   imports: [
-    CommonModule, MatSnackBarModule, MatTableModule,
+    CommonModule, MatSnackBarModule, MatTableModule
   ],
   declarations: [
     SnackbarComponent, UploadFileComponent, DateAgoPipe, SafePipe, TableStatistiqueFormationComponent, DistributionComponent, DefensiveComponent, OffensiveComponent],

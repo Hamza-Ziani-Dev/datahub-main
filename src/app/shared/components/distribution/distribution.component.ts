@@ -16,6 +16,12 @@ export class DistributionComponent implements OnInit {
     this.actions("CREATE_CHART_Distribution");
   }
 
+  activeButton: string = 'XG'; // Variable to store the active button
+
+  setActive(button: string): void {
+    this.activeButton = button;
+  }
+
 
 
   actions(CASE: string, RES: any = null) {
@@ -37,11 +43,11 @@ export class DistributionComponent implements OnInit {
                   children: [
                     {
                       name: 'E.El Bassil',
-                      value: 8
+                      value: 10
                     },
                     {
                       name: 'Herve Guy',
-                      value: 6
+                      value: 20
                     }
                   ]
                 },
@@ -52,13 +58,19 @@ export class DistributionComponent implements OnInit {
                     {
                       name: 'J.Kameni',
                       value: 20,
-                      children: [
-                        {
-                          name: 'H.Hannouri',
+                    },
+                    {
+                          name: 'H.Reda',
                           value: 20
-                        }
-                      ]
-                    }
+                    },
+                    {
+                          name: 'H.Hedraf',
+                          value: 20
+                    },
+                    {
+                          name: 'M.Metwali',
+                          value: 90
+                    },
                   ]
                 },
                 {
@@ -68,12 +80,10 @@ export class DistributionComponent implements OnInit {
                     {
                       name: 'M.Louadni',
                       value: 10,
-                      children: [
-                        {
-                          name: 'A.Azri',
-                          value: 20
-                        }
-                      ]
+                    },
+                    {
+                      name: 'A.Karnass',
+                       value: 20
                     }
                   ]
                 }

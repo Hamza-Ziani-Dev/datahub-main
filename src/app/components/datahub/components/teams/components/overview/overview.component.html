@@ -34,15 +34,15 @@
   </div>
   <div class="table-content col-12 col-md-12 justify-content-center align-content-center">
     <div class="table-header d-flex w-100 h-50 justify-content-around align-content-center">
-      <div style="text-align: center;">POINTS</div>
-      <div style="text-align: center;">SHORTS</div>
-      <div style="text-align: center;">FINISHING</div>
+      <div style="text-align: center;color: rgb(226, 201, 79)">POINTS</div>
+      <div style="text-align: center;color: rgb(42, 42, 41)">SHOTS</div>
+      <div style="text-align: center;color: rgb(103 156 108)">FINISHING</div>
     </div>
     <!-- table -->
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 th-head th-head-lg w-100 table">
       <!-- Pos Column -->
       <ng-container matColumnDef="pos">
-        <th mat-header-cell *matHeaderCellDef style="color: #fff; background-color: black">
+        <th mat-header-cell *matHeaderCellDef style="color: #fff; background-color: rgb(226, 201, 79)">
           Pos
         </th>
         <td mat-cell *matCellDef="let element">
@@ -51,7 +51,8 @@
       </ng-container>
       <!-- Teams Column -->
       <ng-container matColumnDef="teams">
-        <th mat-header-cell *matHeaderCellDef>Teams</th>
+        <th mat-header-cell *matHeaderCellDef style="color: #fff; background-color: rgb(226, 201, 79)">
+          Teams</th>
         <td mat-cell *matCellDef="let element">
           <img src="https://seeklogo.com/images/R/raja-club-athletic-rca-logo-2C8B83D406-seeklogo.com.png" alt=""
             class="logo" />
@@ -60,37 +61,43 @@
       </ng-container>
       <!-- Poits Column -->
       <ng-container matColumnDef="poits">
-        <th mat-header-cell *matHeaderCellDef>Poits</th>
+        <th mat-header-cell *matHeaderCellDef style="color: #fff; background-color: rgb(226, 201, 79)">
+          Poits</th>
         <td mat-cell *matCellDef="let element">{{ element.poits }}</td>
       </ng-container>
       <!-- Posisionnal Column -->
       <ng-container matColumnDef="posisionnal">
-        <th mat-header-cell *matHeaderCellDef>Posisionnal</th>
+        <th mat-header-cell *matHeaderCellDef style="color: #fff; background-color: rgb(42, 42, 41)">
+          Posisionnal</th>
         <td mat-cell *matCellDef="let element">{{ element.posisionnal }}</td>
       </ng-container>
       <!-- Counter Column -->
       <ng-container matColumnDef="counter">
-        <th mat-header-cell *matHeaderCellDef>Counter</th>
+        <th mat-header-cell *matHeaderCellDef style="color: #fff; background-color: rgb(42, 42, 41)">
+          Counter</th>
         <td mat-cell *matCellDef="let element">{{ element.counter }}</td>
       </ng-container>
       <!-- Set Play  Column -->
       <ng-container matColumnDef="play">
-        <th mat-header-cell *matHeaderCellDef>Play</th>
+        <th mat-header-cell *matHeaderCellDef style="color: #fff; background-color: rgb(42, 42, 41)">
+          Play</th>
         <td mat-cell *matCellDef="let element">{{ element.play }}</td>
       </ng-container>
       <!-- Goals  Column -->
       <ng-container matColumnDef="goals">
-        <th mat-header-cell *matHeaderCellDef>Goals</th>
+        <th mat-header-cell *matHeaderCellDef style="color: #fff; background-color: rgb(103 156 108)">Goals</th>
         <td mat-cell *matCellDef="let element">{{ element.goals }}</td>
       </ng-container>
       <!-- XGA  Column -->
       <ng-container matColumnDef="xga">
-        <th mat-header-cell *matHeaderCellDef>XGA</th>
+        <th mat-header-cell *matHeaderCellDef style="color: #fff; background-color: rgb(103 156 108)">
+          XGA</th>
         <td mat-cell *matCellDef="let element">{{ element.xga }}</td>
       </ng-container>
       <!-- Diffirence Column -->
       <ng-container matColumnDef="diffirence">
-        <th mat-header-cell *matHeaderCellDef>Diffirence</th>
+        <th mat-header-cell *matHeaderCellDef style="color: #fff; background-color: rgb(103 156 108)">
+          Diffirence</th>
         <td mat-cell *matCellDef="let element">{{ element.diffirence }}</td>
       </ng-container>
       <!-- Replace column names with your actual column names -->

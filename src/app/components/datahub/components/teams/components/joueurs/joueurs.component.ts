@@ -2,8 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import * as echarts from "echarts";
 import { TeamsService } from "../service/teams.service";
 import { ActivatedRoute } from "@angular/router";
- import * as ecStat from 'echarts-stat';
-import   * as transform from 'echarts-stat';
+//import * as ecStat from 'echarts-stat';
+import {transform} from 'echarts-stat';
 
 
 
@@ -44,12 +44,14 @@ export class JoueursComponent implements OnInit {
     this.actions("CREATE_CHART_SCATTER4");
     this.actions("CREATE_CHART_SCATTER5");
     this.actions("CREATE_CHART_SCATTER6");
-    // echarts.registerTransform(ecStat.transform.clustering);
+    
   }
   actions(CASE: string, RES: any = null) {
    
     switch (CASE) {
       case "CREATE_CHART_SCATTER1":
+        echarts.registerTransform(transform.clustering);
+        // echarts.registerTransform(ecStat.transform.clustering);
         const myChart1 = echarts.init(
           document.getElementById("chart-maitrise")
         );
@@ -97,10 +99,11 @@ export class JoueursComponent implements OnInit {
             
             splitNumber: CLUSTER_COUNT,
             dimension: DIENSIION_CLUSTER_INDEX,
-            pieces: pieces
+            pieces: pieces,
+            show:false,
           },
           grid: {
-            left: 50,
+            left: 30,
             top:10,
             right:10,
           },
@@ -116,7 +119,7 @@ export class JoueursComponent implements OnInit {
                       return `
                   <div >
                       <img [src]=imageUrl style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden;"/>
-                </div>
+                  </div>
                       `;
                     },
                   },
@@ -177,10 +180,11 @@ export class JoueursComponent implements OnInit {
             
             splitNumber: CLUSTER_COUNT,
             dimension: DIENSIION_CLUSTER_INDEX,
-            pieces: pieces
+            pieces: pieces,
+            show:false,
           },
           grid: {
-            left: 50,
+            left: 30,
             top:10,
             right:10,
           },
@@ -255,10 +259,11 @@ export class JoueursComponent implements OnInit {
             
             splitNumber: CLUSTER_COUNT,
             dimension: DIENSIION_CLUSTER_INDEX,
-            pieces: pieces
+            pieces: pieces,
+            show:false,
           },
           grid: {
-            left: 50,
+            left: 30,
             top:10,
             right:10,
           },
@@ -335,10 +340,11 @@ export class JoueursComponent implements OnInit {
             
             splitNumber: CLUSTER_COUNT,
             dimension: DIENSIION_CLUSTER_INDEX,
-            pieces: pieces
+            pieces: pieces,
+            show:false,
           },
           grid: {
-            left: 50,
+            left: 30,
             top:10,
             right:10,
           },
@@ -414,7 +420,8 @@ export class JoueursComponent implements OnInit {
             left: 'center',
             splitNumber: CLUSTER_COUNT,
             dimension: DIENSIION_CLUSTER_INDEX,
-            pieces: pieces
+            pieces: pieces,
+            show:false,
           },
           grid: {
             left: 50
@@ -492,10 +499,11 @@ export class JoueursComponent implements OnInit {
             
             splitNumber: CLUSTER_COUNT,
             dimension: DIENSIION_CLUSTER_INDEX,
-            pieces: pieces
+            pieces: pieces,
+            show:false,
           },
           grid: {
-            left: 50,
+            left: 30,
             top:10,
             right:10,
           },

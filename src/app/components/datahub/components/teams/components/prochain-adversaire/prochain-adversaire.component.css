@@ -1,9 +1,10 @@
 
-.container-content{
-    height: 100%;
+.box2, .content1{
+    height: 900px;
 }
 .content1{
     width: 100%;
+    /* height: 835px; */
     border-radius: 10px;
     background-color: rgb(243, 243, 243);
     box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
@@ -79,13 +80,13 @@
     font-family: "Century Gothic";
 }
 
-.summary{
+/* .summary{
     width: 100%;
     height: 400px;
     border-radius: 20px;
     background-color: rgb(243, 243, 243);
     box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
-}
+} */
 .summary-title{
     padding: 3px 5px;
     font-family: 'Century Gothic Bold' !important;
@@ -97,25 +98,68 @@
     font-family: 'Century Gothic' !important;
 }
 /* tactic */
-/* .tactic-content{
-    /* width: 100%;
+.tactic-content{
+    width: 100%;
     height: 400px;
-    background-color: #2ecc71;
     position: relative;
-    border-radius: 10px; */ */
-
+    border-radius: 10px;
+}
 
   
   .player {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background-color: #fff;
-    color: #000;
+    background-color:rgb(255, 217, 0);
+    color: #4c4c4a;
     text-align: center;
-    line-height: 20px;
+    line-height: 31px;
     position: absolute;
+    font-weight: bold;
   }
+
+  #player1{
+    top: 15%;left: 92%; 
+  }
+  #player2{
+    top: 25%;left: 20%;
+  }
+  #player3{
+    top: 25%;left: 159%; 
+  }
+  #player4{
+    top: 42%;left: 44%;
+  }
+  #player5{
+    top: 42%;left: 141%;
+  }
+  #player6{
+    top: 58%;left: 91%;
+  }
+  #player7{
+    top: 78%;left: 20%;
+  }
+  #player8{
+    top: 78%;left: 162%;
+  }
+  #player9{
+    top: 103%;left: 91%; 
+  }
+  #player10{
+    top: 88%;left: 129%;
+  }
+  #player11{
+    top: 88%;left: 45%;
+  }
+
+
+  .tactic-match{
+    width: 100%;
+    height: 600px;
+    background-image: url("../../../../../../../assets/images/tiran.png");
+    background-repeat: no-repeat;
+    background-size: 354px 500px;
+}
   
 
 
@@ -362,4 +406,45 @@
    .moyenne{
     margin-left: -1px !important;
    }
+
+
+
+   /* tactic */
+
+   #player1{
+    top: 15%;left: 43%; 
+  }
+  #player2{
+    top: 25%;left: 20%;
+  }
+  #player3{
+    top: 25%;left: 67%; 
+  }
+  #player4{
+    top: 42%;left: 30%;
+  }
+  #player5{
+    top: 42%;left: 60%;
+  }
+  #player6{
+    top: 58%;left: 42%;
+  }
+  #player7{
+    top: 78%;left: 20%;
+  }
+  #player8{
+    top: 78%;left: 67%;
+  }
+  #player9{
+    top: 103%;left: 44%; 
+  }
+  #player10{
+    top: 88%;left: 30%;
+  }
+  #player11{
+    top: 88%;left: 56%;
+  }
+
+
+   /* end tactic */
 }
