@@ -8,7 +8,8 @@ import { environment } from 'src/environments/environment';
 })
 
 export class DatabaseService {
-  link: string = environment.link;
+  link: string = 'http://localhost:3000';
+  // link: string = environment.link;
   API: string = environment.API;
   endpoint = "database-hub";
   constructor(

@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import * as echarts from "echarts";
-import { TeamsService } from "../service/teams.service";
+import { TeamsService } from "../../service/teams.service";
 import { ActivatedRoute } from "@angular/router";
 
 @Component({
@@ -204,292 +204,648 @@ export class EquipeComponent implements OnInit {
           document.getElementById("chart-efficacite")
         );
         const option4 = {
-          xAxis: {},
-          yAxis: {},
-          title: {
-            text: `Aerial Duel Win Ratio %`,
-            bottom: 5,
-            left: "center",
-            textStyle: {
-              fontSize: 15, // Change the font size as needed
-              fontWeight: 'normal',
-              fontFamily:'Century Gothic',
-            }
+          grid: {
+            left: 40,
+            top:25,
+            right:25,
+             bottom: 40,
           },
-          tooltip: {
-            formatter: function (params) {
-              return `
-                    <div style="width: 120px" >
-                    <div class="mt-2 d-flex flex-column justify-content-center align-items-center ">
-                     Logo
-                    </div>
-                    </div>
-              `;
+        
+          xAxis: {
+            name: 'X',
+            nameLocation: 'middle',
+            nameTextStyle: {
+              fontSize: 15,
             },
+            axisLabel: {
+              formatter: function (value) {
+                return value + '';
+              }
+            },
+          },
+          yAxis: {
+            name: 'Y',
+            nameLocation: 'center', // Position of Y axis title
+            nameTextStyle: {
+              fontSize: 15,
+            },
+            axisLabel: {
+              formatter: function (value) {
+                return value + ''; // Customize Y axis label formatting if needed
+              }
+            },
+          },
+            tooltip: {
+            trigger: 'item',
+            formatter: function(params) {
+             if (params.value && params.value.length === 2) {
+                var imageUrl = 'https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--fc106789-60ea-4534-ace7-ee4e3247d853/MODRIC_carita_380x501.app.png?preferwebp=true&width=288&height=384';
+                return '<img src="' + imageUrl + '" style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden;"/>'
+                  + '<br>X: ' + params.value[0] + '<br>Y: ' + params.value[1];
+              }
+              // Default tooltip content
+              return params.data.label || '';
+            }
           },
           series: [
             {
+              symbolSize: 15,
+              datasetIndex: 1,
+               position: 'top',
               data: [
                 {
-                  value: [90, 90, "RCA"],
-                  name: "RCA",
-                  symbol: `image://${this.URL1}`,
-                 symbolSize: [20, 20],
+                  value: [1.35508, 2.957587],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'red' // Set the desired color for this specific data point
+                  }
                 },
                 {
-                  value: [80, 86, "RSB"],
-                  name: "RSB",
-                  symbol: `image://${this.URL2}`,
-                symbolSize: [20, 20],
-                },
-              
-                {
-                  value: [40, 40, "IRT"],
-                  name: "IRT",
-                  symbol: `image://${this.URL3}`,
-                symbolSize: [20, 20],
+                  value: [0.35508, 4.957587],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'black' // Set the desired color for this specific data point
+                  }
                 },
                 {
-                  value: [83, 87, "WAC"],
-                  name: "WAC",
-                  symbol: `image://${this.URL4}`,
-                symbolSize: [20, 20],
+                  value: [-0.993756, -0.884433],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: '#37A2DA' // Set the desired color for this specific data point
+                  }
                 },
                 {
-                  value: [10, 20, "KAC"],
-                  name: "KAC",
-                  symbol: `image://${this.URL5}`,
-                symbolSize: [20, 20],
+                  value:  [-3.344465, 2.603513],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'black' // Set the desired color for this specific data point
+                  }
                 },
                 {
-                  value: [49, 43, "FUS"],
-                  name: "FUS",
-                  symbol: `image://${this.URL6}`,
-                 symbolSize: [20, 20],
+                  value:  [-3.344465, 2.603513],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'black' // Set the desired color for this specific data point
+                  }
                 },
                 {
-                  value: [59, 26, "FAR"],
-                  name: "FAR",
-                  symbol: `image://${this.URL7}`,
-                 symbolSize: [20, 20],
+                  value:  [-4.366462, 4.023316],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'black' // Set the desired color for this specific data point
+                  }
+                },{
+                  value:  [-1.565978, -1.256985],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'black' // Set the desired color for this specific data point
+                  }
+                },{
+                  value:  [0.845762, -3.589788],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: '#e06343' // Set the desired color for this specific data point
+                  }
+                },{
+                  value:  [-1.79108, -2.184517],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: '#e06343' // Set the desired color for this specific data point
+                  }
+                },{
+                  value:  [-3.344465, 2.603513],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: '#e06343' // Set the desired color for this specific data point
+                  }
+                },{
+                  value:  [-3.344465, 2.603513],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'black' // Set the desired color for this specific data point
+                  }
+                },{
+                  value:  [-3.344465, 2.603513],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'black' // Set the desired color for this specific data point
+                  }
+                },{
+                  value:  [-3.344465, 2.603513],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'black' // Set the desired color for this specific data point
+                  }
+                },{
+                  value:  [-3.344465, 2.603513],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'black' // Set the desired color for this specific data point
+                  }
+                },{
+                  value:  [-3.344465, 2.603513],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'black' // Set the desired color for this specific data point
+                  }
+                },{
+                  value:  [-1.910108, 4.166946],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'black' // Set the desired color for this specific data point
+                  }
                 },
                 {
-                  value: [14, 40, "MAT"],
-                  name: "MAT",
-                  symbol: `image://${this.URL8}`,
-                 symbolSize: [20, 20],
+                  value:  [0.421993, -2.372646],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'green' // Set the desired color for this specific data point
+                  }
                 },
                 {
-                  value: [32, 70, "MAS"],
-                  name: "MAS",
-                  symbol: `image://${this.URL9}`,
-                 symbolSize: [20, 20],
+                  value:  [0.639276, -3.41284],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'green' // Set the desired color for this specific data point
+                  }
+                },
+                {
+                  value:  [-0.559558, -3.840539],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'green' // Set the desired color for this specific data point
+                  }
+                },
+                {
+                  value:  [-3.414343, 4.007573],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'green' // Set the desired color for this specific data point
+                  }
+                },
+                {
+                  value:  [-2.0782973, 2.552013],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'green' // Set the desired color for this specific data point
+                  }
+                },
+                {
+                  value:  [-2.078173, 2.552013],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'green' // Set the desired color for this specific data point
+                  }
+                },{
+                  value: [-3.912363, 1.325108],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'green' // Set the desired color for this specific data point
+                  }
+                },{
+                  value:  [2.441611, 0.444826],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'green' // Set the desired color for this specific data point
+                  }
                 },
               ],
-              type: "scatter",
-              name: "Title",
-              stack: "Total",
-              itemStyle: {},
-              emphasis: {
-                focus: "self",
-              },
-            },
-          ],
+              type: 'scatter'
+            }
+        
+          ]
         };
 
         myChart4.setOption(option4);
         break;
       case "CREATE_CHART_SCATTER2":
-        const myChart5 = echarts.init(document.getElementById("chart-passes"));
+        const myChart5 = echarts.init(document.getElementById("chart-defensive"));
         const option5 = {
-          xAxis: {},
-          yAxis: {},
-          title: {
-            text: "Aerial Duel Win Ratio %",
-            bottom: 5,
-            left: "center",
-            textStyle: {
-              fontSize: 15, // Change the font size as needed
-              fontWeight: 'normal',
-              fontFamily:'Century Gothic',
-            }
+          grid: {
+            left: 40,
+            top:25,
+            right:25,
+             bottom: 40,
           },
-          tooltip: {
-            formatter: function (params) {
-              return `
-                    <div style="width: 120px" >
-                    <div class="mt-2 d-flex flex-column justify-content-center align-items-center ">
-                     Logo
-                    </div>
-                    </div>
-              `;
+        
+          xAxis: {
+            name: 'X',
+            nameLocation: 'middle',
+            nameTextStyle: {
+              fontSize: 15,
             },
+            axisLabel: {
+              formatter: function (value) {
+                return value + '';
+              }
+            },
+          },
+          yAxis: {
+            name: 'Y',
+            nameLocation: 'center', // Position of Y axis title
+            nameTextStyle: {
+              fontSize: 15,
+            },
+            axisLabel: {
+              formatter: function (value) {
+                return value + ''; // Customize Y axis label formatting if needed
+              }
+            },
+          },
+            tooltip: {
+            trigger: 'item',
+            formatter: function(params) {
+             if (params.value && params.value.length === 2) {
+                var imageUrl = 'https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--fc106789-60ea-4534-ace7-ee4e3247d853/MODRIC_carita_380x501.app.png?preferwebp=true&width=288&height=384';
+                return '<img src="' + imageUrl + '" style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden;"/>'
+                  + '<br>X: ' + params.value[0] + '<br>Y: ' + params.value[1];
+              }
+              // Default tooltip content
+              return params.data.label || '';
+            }
           },
           series: [
             {
-              data:[
+              symbolSize: 15,
+              datasetIndex: 1,
+               position: 'top',
+              data: [
                 {
-                  value: [90, 90, "RCA"],
-                  name: "RCA",
-                  symbol: `image://${this.URL1}`,
-                symbolSize: [20, 20],
+                  value: [1.35508, 2.957587],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'red' // Set the desired color for this specific data point
+                  }
                 },
                 {
-                  value: [80, 86, "RSB"],
-                  name: "RSB",
-                  symbol: `image://${this.URL2}`,
-                symbolSize: [20, 20],
-                },
-              
-                {
-                  value: [40, 40, "IRT"],
-                  name: "IRT",
-                  symbol: `image://${this.URL3}`,
-                symbolSize: [20, 20],
+                  value: [0.35508, 4.957587],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'black' // Set the desired color for this specific data point
+                  }
                 },
                 {
-                  value: [83, 87, "WAC"],
-                  name: "WAC",
-                  symbol: `image://${this.URL4}`,
-                symbolSize: [20, 20],
+                  value: [-0.993756, -0.884433],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: '#37A2DA' // Set the desired color for this specific data point
+                  }
                 },
                 {
-                  value: [10, 20, "KAC"],
-                  name: "KAC",
-                  symbol: `image://${this.URL5}`,
-                symbolSize: [20, 20],
+                  value:  [-3.344465, 2.603513],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'black' // Set the desired color for this specific data point
+                  }
                 },
                 {
-                  value: [49, 43, "FUS"],
-                  name: "FUS",
-                  symbol: `image://${this.URL6}`,
-                 symbolSize: [20, 20],
+                  value:  [-3.344465, 2.603513],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'black' // Set the desired color for this specific data point
+                  }
                 },
                 {
-                  value: [59, 26, "FAR"],
-                  name: "FAR",
-                  symbol: `image://${this.URL7}`,
-                 symbolSize: [20, 20],
+                  value:  [-4.366462, 4.023316],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'black' // Set the desired color for this specific data point
+                  }
+                },{
+                  value:  [-1.565978, -1.256985],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'black' // Set the desired color for this specific data point
+                  }
+                },{
+                  value:  [0.845762, -3.589788],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: '#e06343' // Set the desired color for this specific data point
+                  }
+                },{
+                  value:  [-1.79108, -2.184517],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: '#e06343' // Set the desired color for this specific data point
+                  }
+                },{
+                  value:  [-3.344465, 2.603513],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: '#e06343' // Set the desired color for this specific data point
+                  }
+                },{
+                  value:  [-3.344465, 2.603513],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'black' // Set the desired color for this specific data point
+                  }
+                },{
+                  value:  [-3.344465, 2.603513],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'black' // Set the desired color for this specific data point
+                  }
+                },{
+                  value:  [-3.344465, 2.603513],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'black' // Set the desired color for this specific data point
+                  }
+                },{
+                  value:  [-3.344465, 2.603513],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'black' // Set the desired color for this specific data point
+                  }
+                },{
+                  value:  [-3.344465, 2.603513],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'black' // Set the desired color for this specific data point
+                  }
+                },{
+                  value:  [-1.910108, 4.166946],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'black' // Set the desired color for this specific data point
+                  }
                 },
                 {
-                  value: [14, 40, "MAT"],
-                  name: "MAT",
-                  symbol: `image://${this.URL8}`,
-                 symbolSize: [20, 20],
+                  value:  [0.421993, -2.372646],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'green' // Set the desired color for this specific data point
+                  }
                 },
                 {
-                  value: [32, 70, "MAS"],
-                  name: "MAS",
-                  symbol: `image://${this.URL9}`,
-                 symbolSize: [20, 20],
+                  value:  [0.639276, -3.41284],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'green' // Set the desired color for this specific data point
+                  }
+                },
+                {
+                  value:  [-0.559558, -3.840539],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'green' // Set the desired color for this specific data point
+                  }
+                },
+                {
+                  value:  [-3.414343, 4.007573],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'green' // Set the desired color for this specific data point
+                  }
+                },
+                {
+                  value:  [-2.0782973, 2.552013],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'green' // Set the desired color for this specific data point
+                  }
+                },
+                {
+                  value:  [-2.078173, 2.552013],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'green' // Set the desired color for this specific data point
+                  }
+                },{
+                  value: [-3.912363, 1.325108],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'green' // Set the desired color for this specific data point
+                  }
+                },{
+                  value:  [2.441611, 0.444826],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'green' // Set the desired color for this specific data point
+                  }
                 },
               ],
-              type: "scatter",
-              name: "Title",
-              stack: "Total",
-              itemStyle: {},
-              emphasis: {
-                focus: "self",
-              },
-            },
-          ],
+              type: 'scatter'
+            }
+        
+          ]
         };
         myChart5.setOption(option5);
         break;
       case "CREATE_CHART_SCATTER3":
-        const myChart6 = echarts.init(document.getElementById("chart-duels"));
+        const myChart6 = echarts.init(document.getElementById("chart-passes"));
         const option6 = {
-          xAxis: {},
-          yAxis: {},
-          title: {
-            text: "Aerial Duel Win Ratio %",
-            bottom: 5,
-            left: "center",
-            textStyle: {
-              fontSize: 15, // Change the font size as needed
-              fontWeight: 'normal',
-              fontFamily:'Century Gothic',
-            }
+          grid: {
+            left: 40,
+            top:25,
+            right:25,
+             bottom: 40,
           },
-          tooltip: {
-            formatter: function (params) {
-              return `
-                    <div style="width: 120px" >
-                    <div class="mt-2 d-flex flex-column justify-content-center align-items-center ">
-                     Logo
-                    </div>
-                    </div>
-              `;
+          xAxis: {
+            name: 'X',
+            nameLocation: 'middle',
+            nameTextStyle: {
+              fontSize: 15,
             },
+            axisLabel: {
+              formatter: function (value) {
+                return value + '';
+              }
+            },
+          },
+          yAxis: {
+            name: 'Y',
+            nameLocation: 'center', // Position of Y axis title
+            nameTextStyle: {
+              fontSize: 15,
+            },
+            axisLabel: {
+              formatter: function (value) {
+                return value + ''; // Customize Y axis label formatting if needed
+              }
+            },
+          },
+            tooltip: {
+            trigger: 'item',
+            formatter: function(params) {
+             if (params.value && params.value.length === 2) {
+                var imageUrl = 'https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--fc106789-60ea-4534-ace7-ee4e3247d853/MODRIC_carita_380x501.app.png?preferwebp=true&width=288&height=384';
+                return '<img src="' + imageUrl + '" style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden;"/>'
+                  + '<br>X: ' + params.value[0] + '<br>Y: ' + params.value[1];
+              }
+              // Default tooltip content
+              return params.data.label || '';
+            }
           },
           series: [
             {
+              symbolSize: 15,
+              datasetIndex: 1,
+               position: 'top',
               data: [
                 {
-                  value: [90, 90, "RCA"],
-                  name: "RCA",
-                  symbol: `image://${this.URL1}`,
-                symbolSize: [20, 20],
+                  value: [1.35508, 2.957587],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'red' // Set the desired color for this specific data point
+                  }
                 },
                 {
-                  value: [80, 86, "RSB"],
-                  name: "RSB",
-                  symbol: `image://${this.URL2}`,
-                symbolSize: [20, 20],
-                },
-              
-                {
-                  value: [40, 40, "IRT"],
-                  name: "IRT",
-                  symbol: `image://${this.URL3}`,
-                symbolSize: [20, 20],
+                  value: [0.35508, 4.957587],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'black' // Set the desired color for this specific data point
+                  }
                 },
                 {
-                  value: [83, 87, "WAC"],
-                  name: "WAC",
-                  symbol: `image://${this.URL4}`,
-                symbolSize: [20, 20],
+                  value: [-0.993756, -0.884433],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: '#37A2DA' // Set the desired color for this specific data point
+                  }
                 },
                 {
-                  value: [10, 20, "KAC"],
-                  name: "KAC",
-                  symbol: `image://${this.URL5}`,
-                symbolSize: [20, 20],
+                  value:  [-3.344465, 2.603513],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'black' // Set the desired color for this specific data point
+                  }
                 },
                 {
-                  value: [49, 43, "FUS"],
-                  name: "FUS",
-                  symbol: `image://${this.URL6}`,
-                 symbolSize: [20, 20],
+                  value:  [-3.344465, 2.603513],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'black' // Set the desired color for this specific data point
+                  }
                 },
                 {
-                  value: [59, 26, "FAR"],
-                  name: "FAR",
-                  symbol: `image://${this.URL7}`,
-                 symbolSize: [20, 20],
+                  value:  [-4.366462, 4.023316],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'black' // Set the desired color for this specific data point
+                  }
+                },{
+                  value:  [-1.565978, -1.256985],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'black' // Set the desired color for this specific data point
+                  }
+                },{
+                  value:  [0.845762, -3.589788],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: '#e06343' // Set the desired color for this specific data point
+                  }
+                },{
+                  value:  [-1.79108, -2.184517],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: '#e06343' // Set the desired color for this specific data point
+                  }
+                },{
+                  value:  [-3.344465, 2.603513],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: '#e06343' // Set the desired color for this specific data point
+                  }
+                },{
+                  value:  [-3.344465, 2.603513],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'black' // Set the desired color for this specific data point
+                  }
+                },{
+                  value:  [-3.344465, 2.603513],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'black' // Set the desired color for this specific data point
+                  }
+                },{
+                  value:  [-3.344465, 2.603513],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'black' // Set the desired color for this specific data point
+                  }
+                },{
+                  value:  [-3.344465, 2.603513],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'black' // Set the desired color for this specific data point
+                  }
+                },{
+                  value:  [-3.344465, 2.603513],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'black' // Set the desired color for this specific data point
+                  }
+                },{
+                  value:  [-1.910108, 4.166946],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'black' // Set the desired color for this specific data point
+                  }
                 },
                 {
-                  value: [14, 40, "MAT"],
-                  name: "MAT",
-                  symbol: `image://${this.URL8}`,
-                 symbolSize: [20, 20],
+                  value:  [0.421993, -2.372646],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'green' // Set the desired color for this specific data point
+                  }
                 },
                 {
-                  value: [32, 70, "MAS"],
-                  name: "MAS",
-                  symbol: `image://${this.URL9}`,
-                 symbolSize: [20, 20],
+                  value:  [0.639276, -3.41284],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'green' // Set the desired color for this specific data point
+                  }
+                },
+                {
+                  value:  [-0.559558, -3.840539],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'green' // Set the desired color for this specific data point
+                  }
+                },
+                {
+                  value:  [-3.414343, 4.007573],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'green' // Set the desired color for this specific data point
+                  }
+                },
+                {
+                  value:  [-2.0782973, 2.552013],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'green' // Set the desired color for this specific data point
+                  }
+                },
+                {
+                  value:  [-2.078173, 2.552013],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'green' // Set the desired color for this specific data point
+                  }
+                },{
+                  value: [-3.912363, 1.325108],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'green' // Set the desired color for this specific data point
+                  }
+                },{
+                  value:  [2.441611, 0.444826],
+                  label: 'cluster',
+                  itemStyle: {
+                    color: 'green' // Set the desired color for this specific data point
+                  }
                 },
               ],
-              type: "scatter",
-              name: "Title",
-              stack: "Total",
-              itemStyle: {},
-              emphasis: {
-                focus: "self",
-              },
-            },
-          ],
+              type: 'scatter'
+            }
+        
+          ]
         };
         myChart6.setOption(option6);
         break;

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as echarts from "echarts";
-import { TeamsService } from '../service/teams.service';
+import { TeamsService } from '../../service/teams.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { TableStatistiqueFormationComponent } from 'src/app/shared/components/table-statistique-formation/table-statistique-formation.component';
@@ -92,7 +92,7 @@ export class ProchainAdversaireComponent implements OnInit {
               { name: 'Foutes', max: 23000 }
             ],
             // radius: 100,
-             center: ['45%', '60%'],
+            center: ['50%', '50%'],
           },
           series: [
             {

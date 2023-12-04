@@ -49,7 +49,6 @@
     "datatables.net-dt": "^1.10.24",
     "date-fns": "^2.11.1",
     "echarts": "^5.4.3",
-    "echarts-stat": "^1.2.0",
     "fabric": "^4.0.0-beta.6",
     "file-saver": "^2.0.5",
     "flatpickr": "^4.6.3",
