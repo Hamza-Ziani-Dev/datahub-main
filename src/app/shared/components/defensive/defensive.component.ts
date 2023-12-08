@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import * as echarts from "echarts";
 
@@ -9,12 +9,13 @@ import * as echarts from "echarts";
   styleUrls: ['./defensive.component.css']
 })
 export class DefensiveComponent implements OnInit {
-  constructor(
-    private route: ActivatedRoute,
-  ) {}
-
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any){
+  }
   ngOnInit() {
     this.actions("CREATE_CHART_Defensive");
+    console.log('====================================');
+    console.log(this.data);
+    console.log('====================================');
   }
 
  

@@ -43,15 +43,29 @@ export class DatabaseListPlayersPostComponent implements OnInit {
   ngOnInit() {
     
     this.actions('GET', { filters: null });
-    this.rankingService.FiltersListPlayersPost().subscribe(
-      (responce: any) => {
-        this.DATES = responce.years;
-        this.POSTS = responce.posts;
-      },
-      (error: HttpErrorResponse) => {
-
-      }
-    )
+    
+    // this.rankingService.One(this.ID, this.PLAYER_ID).subscribe(
+    //   (RES: any) => {
+    //     this.dataSource = { ... this.dataSource, one: RES };
+    //     this.isLoading = false;
+    //     this.actions('TYPE_CHART', 'pie');
+    //     // this.rankingService.One(this.ID, this.PLAYER_ID).subscribe(
+    //     //   (RES: any) => {
+    //     //     this.dataSource = RES;
+    //     //     this.isLoading = false;
+    //     //     console.log("this.dataSource", this.dataSource);
+    //     //     this.actions('TYPE_CHART', 'pie');
+    //     //   },
+    //     //   (ERROR: HttpErrorResponse) => {
+    //     //     this.isLoading = false;
+    //     //   }
+    //     // )
+    //   },
+    //   (ERROR: HttpErrorResponse) => {
+    //     this.isLoading = false;
+    //   }
+    // );
+    // break;
   }
   onSelectionChange(event: any) {
     this.selectedLigueChange.emit(event.value);

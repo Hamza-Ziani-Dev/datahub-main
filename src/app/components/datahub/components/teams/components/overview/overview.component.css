@@ -1,20 +1,13 @@
 .overviewContainer{
-  height: 1000px;
+  height: 600px;
 }
-
-/* Sub Header */
-.table-classement, .xg-pour, .xg-contre, .distribition-passe, .pertes-balle, .recuperation-balle{
-    border-radius: 10px;
-    background-color: rgb(211, 211, 211);
-    width: 175px;
-    height: 41px;
-    padding: 11px 12px;
-    font-size: small;
-    font-weight: bold;
-}
-.default {
-  background-color: lightblue;
-  color: black;
+.btn-header{
+  width: 211px;
+  height: 40px;
+  margin: 2px;
+  border-radius: 10px;
+  background-color: rgb(211, 211, 211);
+  font-family: "Century Gothic";
 }
 .negative-value {
   color: red;
@@ -32,15 +25,6 @@
   color: green;
 }
 
-.default-value {
-  color: black;
-}
-
-
-.clicked {
-  background-color: red;
-  color: white;
-}
 .active {
   color: #fff !important;
   background-color: rgb(193, 181, 48)  !important;
@@ -57,20 +41,18 @@
 .table {
     padding: 20px;
 }
-
 .logo{
   width: 15px;
   height: 15px;
   padding: 0px;
   margin-top: -3px;
-
 }
-
   .table-header{
     background-color: rgb(222, 222, 222);
     margin-top: 50px;
     padding: 6px;
-    border-radius: 9px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     font-family: "Century Gothic Bold";
     text-transform: uppercase;
     color: gray;
@@ -83,7 +65,7 @@
   }
   th.mat-header-cell{
     text-align: center;
-    padding: 8px;
+    padding: 10px;
     vertical-align: revert;
     font-family: "Century Gothic Bold";
     text-transform: uppercase;
@@ -114,8 +96,9 @@
     font-family: "Century Gothic";
     font-weight: bold;
     font-size: large;
-    border-radius: 10px; /* Adjust the value as per your preference */
     overflow: hidden; 
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
   }
   .table-content{
     border-radius: 11px;
@@ -143,22 +126,17 @@
   
   @media screen and (max-width: 768px) {
     .overviewContainer{
-      width: 100%;
-      padding-right: 2px !important;
-      padding-left: 0px !important;
-      margin-right: auto;
-      margin-left: auto;
+      padding-right: 6px;
+      padding-left: 6px;
     }
-    .sub-header{
-      margin: 0;
-      padding: 5px 60px;
+    .btn-header{
+      width: 300px !important;
+      height: 30px !important;
+      margin-left: 41px !important;
     }
-    .table-classement, .xg-pour, .xg-contre, .distribition-passe, .pertes-balle, .recuperation-balle{
-      margin-bottom: 4px;
-      padding: 6px 60px;
-      line-height: 1rem;
-      width: 271px;
-      height: 28px;
+    .content{
+      padding-right: 0px;
+      padding-left: 0px;
     }
     tr.mat-header-row{
       height: 10px;
@@ -170,7 +148,7 @@
     }
     td.mat-cell{
       padding: 0px;
-      border-bottom-width: 0px;
+      border-bottom-width: 0px !important;
       border-bottom-style: solid;
     }
     .mat-cell{
@@ -178,12 +156,18 @@
       padding: 0;
     }
     th.mat-header-cell{
+      text-align: center;
       padding: 0px;
-     vertical-align: revert;
-     margin: 0px;
+      vertical-align: revert;
+      font-family: "Century Gothic";
+      text-transform: uppercase;
     }
-    th.mat-header-cell:last-of-type, th.mat-header-cell:first-of-type{
-      padding: 0px;
+    th.mat-header-cell:last-of-type,th.mat-header-cell:first-of-type{
+      padding: 0px !important
+    }
+    td.mat-cell:first-of-type, td.mat-cell:last-of-type{
+      padding-left: 0px !important;
+      padding: 0px !important
     }
     .tr-rows td {
       font-size: .9rem;
@@ -194,17 +178,9 @@
     .th-head {
       font-size: 1rem;
       border-bottom: 1px solid;
-  
-    }
-    .table {
-      overflow: scroll;
-      margin-bottom: 80px;
-    }
-  
-  
-    .th-head {
-      min-width: 150px !important;
+         min-width: 150px !important;
       text-align: center !important;
+  
     }
   
     .equipe__logo {

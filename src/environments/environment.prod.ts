@@ -4,7 +4,7 @@ export const environment = {
   version: "5.0.4",
   // pro | frmf
   type: "pro",
-  link: "http://localhost:3000",
+  // link: "http://localhost:3000",
   football_api: "https://api-football-v1.p.rapidapi.com/v2/",
   api_key: "e3bc398c77msh66c5d037d295c81p1997e4jsn7addf66362a4",
   API: "api",

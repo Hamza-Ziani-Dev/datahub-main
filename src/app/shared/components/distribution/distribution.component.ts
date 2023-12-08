@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import * as echarts from "echarts";
 @Component({
@@ -8,20 +8,21 @@ import * as echarts from "echarts";
   styleUrls: ['./distribution.component.css']
 })
 export class DistributionComponent implements OnInit {
-  constructor(
-    private route: ActivatedRoute,
-  ) {}
+  activeButton: string = 'XG'; // Initially, no button is active
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any){
+  }
 
   ngOnInit() {
     this.actions("CREATE_CHART_Distribution");
-  }
+    console.log('====================================');
+    console.log(this.data);
+    console.log('====================================');
+  } 
+  
 
-  activeButton: string = 'XG'; // Variable to store the active button
-
-  setActive(button: string): void {
+  setActiveButton(button: string): void {
     this.activeButton = button;
   }
-
 
 
   actions(CASE: string, RES: any = null) {
@@ -31,8 +32,12 @@ export class DistributionComponent implements OnInit {
         const option1 ={
           title: {
             text: 'Distribution XG (joueurs a plus de 400 minutes de jeu)',
-            left: 'center'
-          },
+            left: 'center',
+            textStyle: {
+              fontWeight: 'bold', // Font weight (e.g., bold, normal, etc.)
+              fontSize: 14 // Font size in pixels
+            }
+          },          
           series: [
             {
               type: 'treemap',

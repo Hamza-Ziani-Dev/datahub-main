@@ -4,7 +4,7 @@
   background-image: url(../../../../../assets/images/bg-image.png);
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 350%;
+  height: 820%;
   font-family: 'Century Gothic' !important;
 }
 
@@ -38,7 +38,7 @@
   /* padding-left: 0px; */
   padding-right: 20px;
 } 
-.nav-link:hover{
+.active{
   color: rgb(255, 247, 3);
 }   
 .header .logo {
@@ -59,12 +59,10 @@
   .teamContainer{
     flex-direction: column;
     align-items: center;
-    min-height: 350%;
-    width: 100%;
     padding-right: 1px;
     padding-left: 3px;
-    /* padding-right: 2px;
-    padding-left: 1px;  */
+    /* min-height: 100%; */
+
   }
   .navbar{
     justify-content: center;

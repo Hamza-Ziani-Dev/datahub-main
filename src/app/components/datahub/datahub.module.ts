@@ -48,6 +48,7 @@ import { JoueursComponent } from './components/teams/components/joueurs/joueurs.
     MatInputModule,
     MatTableModule,
     CdkTableModule,
+   
   ],
   declarations: [
     OverviewComponent,

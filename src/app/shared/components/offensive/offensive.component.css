@@ -6,7 +6,7 @@
 }
 .box2{
     width: 100%;
-    height: 400px;
+    height: 390px;
 }
 
 .performance-offensive{
@@ -47,3 +47,39 @@
     box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
 }
 
+
+
+
+
+@media screen and (max-width: 768px) {
+    .container-content{
+        padding-right: 0px;
+        padding-left: 22px;
+    }
+    .content{
+        padding: 0px;
+        margin: 0px;
+        line-height: revert;
+        padding-right: 0px;
+        padding-left: 0px;
+        display: contents;
+    }
+    .box1{
+    margin-bottom: 20px;
+    padding-right: 0px;
+    padding-left: 0px;
+    line-height: initial;
+    height: 240px;
+    padding: 3px 12px;
+    }
+
+    .box2{
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    
+    
+    }
+    
+   
+    

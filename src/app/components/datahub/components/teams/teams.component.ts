@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 })
 export class TeamsComponent implements OnInit {
   envirement: string = 'frmf';
+  defaultActive: boolean = true;
   constructor() { 
     this.envirement = environment.type;
   }

@@ -7,6 +7,7 @@ import { TableStatistiqueFormationComponent } from 'src/app/shared/components/ta
 import { DistributionComponent } from 'src/app/shared/components/distribution/distribution.component';
 import { DefensiveComponent } from 'src/app/shared/components/defensive/defensive.component';
 import { OffensiveComponent } from 'src/app/shared/components/offensive/offensive.component';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-prochain-adversaire',
@@ -14,7 +15,12 @@ import { OffensiveComponent } from 'src/app/shared/components/offensive/offensiv
   styleUrls: ['./prochain-adversaire.component.css']
 })
 export class ProchainAdversaireComponent implements OnInit {
-
+  fixtureInfoArray: any;
+  generalInfoArray: any;
+  playersOne : any;
+  playersTwo : any;
+  treeMapArray: any;
+  radarDataArray :any;
   isLoading: boolean = true;
   URL: string = "https://interface.myteambyfrmf.ma/uploads/datahub/";
   COLORS: string[] = ["#0357A0", "#007934", "#E55C00"];
@@ -26,7 +32,7 @@ export class ProchainAdversaireComponent implements OnInit {
   PLAYER_ID: number = null;
   dataSource: any[] = [];
   constructor(
-    private TeamService: TeamsService,
+    private teamService: TeamsService,
     private route: ActivatedRoute,
     private dialogTable : MatDialog,
     private dialogDistribution : MatDialog,
@@ -35,118 +41,224 @@ export class ProchainAdversaireComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.ID = this.route.snapshot.parent?.params.id;
-    this.PLAYER_ID = this.route.snapshot.parent?.params.player_id;
-    console.log(this.ID, this.PLAYER_ID);
     this.actions("CREATE_CHART_RADAR1");
+    this.getGeneralInfo();
+    this.getFixtureInfo();
   }
+getGeneralInfo(){
+  this.teamService.getGeneralInfo().subscribe((res)=>{
+    this.generalInfoArray = res;
+    this.playersOne = this.generalInfoArray['key_players'][0]
+    this.playersTwo = this.generalInfoArray['key_players'][1]
+  })
+}
 
-  openDialogTable(){
-   const showDialogTable = this.dialogTable.open(TableStatistiqueFormationComponent,{
-    width:'100%',
-   });
-  }
+getFixtureInfo(){
+   this.teamService.getFixtureInfo().subscribe((res)=>{
+    this.fixtureInfoArray  = res;
+  })
+}
 
-  openDialogDistribution(){
-    const showDialogDistribution = this.dialogDistribution.open(DistributionComponent,{
-     width:'90%',
+getTreeMapData(){
+  this.teamService.getTreeMapData().subscribe((res)=>{
+    this.treeMapArray = res;
+  })
+}
+
+// openDialogTable(){
+//     let height = '400px';
+//     let width = '50%';
+//     if (window.innerWidth < 768) { 
+//       height = '500px'; 
+//       width = '80%';
+//     }
+//    const showDialogTable = this.dialogTable.open(TableStatistiqueFormationComponent,{
+//     width:width,
+//     height: height,
+//     panelClass: 'dialog-with-margin'
+//    });
+// }
+
+// openDialogDistribution(){
+//     let height = '360px';
+//     let width = '50%';
+//     if (window.innerWidth < 768) { 
+//       height = '500px'; 
+//       width = '80%';
+//     }
+//     const showDialogDistribution = this.dialogDistribution.open(DistributionComponent,{
+//       width:width,
+//     height: height,
+//     panelClass: 'dialog-with-margin'
   
-    });
-   }
+//     });
+// }
    
-   openDialogDefensive(){
-    const showDialogDeffensive = this.dialogDefensive.open(DefensiveComponent,{
-     width:'100%',
-    });
-   }
+// openDialogDefensive(){
+//     let height = '400px';
+//     let width = '50%';
+//     if (window.innerWidth < 768) { 
+//       height = '500px'; 
+//       width = '80%';
+//     }
+//     const showDialogDeffensive = this.dialogDefensive.open(DefensiveComponent,{
+//       width:width,
+//       height: height,
+//     });
+// }
 
-   openDialogOffensive(){
-    const showDialogOffensive = this.dialogOffensive.open(OffensiveComponent,{
-     width:'100%',
-    });
-   }
+// openDialogOffensive(){
+//     let height = '400px';
+//     let width = '50%';
+//     if (window.innerWidth < 768) { 
+//       height = '500px'; 
+//       width = '80%';
+//     }
+//     const showDialogOffensive = this.dialogOffensive.open(OffensiveComponent,{
+//       width:width,
+//       height: height,
+//       data:{key:"test"}
+//     });
 
-
-  actions(CASE: string, RES: any = null) {
-    switch (CASE) {
-      case "CREATE_CHART_RADAR1":
-        const myChart1 = echarts.init(document.getElementById("chart-general"));
-        const option1 ={
-          title: {
-            text: 'Prestation générale.',
-            left: 'center'
-          },
-          legend: {
-            data: ['RSB Berkane', 'Moyenne de ligne'],
-            // left: 10,
-          },
-          radar: {
-            // shape: 'circle',
-            indicator: [
-              { name: 'Buts', max: 6500 },
-              { name: 'XContre', max: 16000 },
-              { name: 'Tirs', max: 30000 },
-              { name: 'Tirs cadre', max: 38000 },
-              { name: 'Contre Prise', max: 52000 },
-              { name: 'Degagements', max: 24000 },
-              { name: 'Foutes', max: 23000 }
-            ],
-            // radius: 100,
-            center: ['50%', '50%'],
-          },
-          series: [
-            {
-              type: 'radar',
-              data: [
-                {
-                  value: [4200, 3000, 20000, 35000, 50000, 18000],
-                  // name: 'RSB Berkane'
+    
+// }
+actions(CASE: string, RES: any = null) {
+  let height = '400px';
+  let width = '50%';
+  if (window.innerWidth < 768) { 
+    height = '500px'; 
+    width = '80%';
+  }
+  switch (CASE) {
+    case 'CREATE_CHART_RADAR1':
+              const myChart1 = echarts.init(document.getElementById("chart-general"));
+              const option1 ={
+                title: {
+                  text: 'Prestation générale.',
+                  left: 'center'
                 },
-                {
-                  value: [5000, 14000, 28000, 26000, 42000, 21000],
-                  // name: 'Moyenne de ligne'
-                }
-              ]
-            }
-          ]
-        };
-        myChart1.setOption(option1);
+                legend: {
+                  data: ['RSB Berkane', 'Moyenne de ligne'],
+                  // left: 10,
+                },
+                radar: {
+                  // shape: 'circle',
+                  indicator: [
+                    { name: 'Buts', max: 6500 },
+                    { name: 'XContre', max: 16000 },
+                    { name: 'Tirs', max: 30000 },
+                    { name: 'Tirs cadre', max: 38000 },
+                    { name: 'Contre Prise', max: 52000 },
+                    { name: 'Degagements', max: 24000 },
+                    { name: 'Foutes', max: 23000 }
+                  ],
+                  // radius: 100,
+                  center: ['50%', '50%'],
+                },
+                series: [
+                  {
+                    type: 'radar',
+                    data: [
+                      {
+                        value: [4200, 3000, 20000, 35000, 50000, 18000],
+                        // name: 'RSB Berkane'
+                      },
+                      {
+                        value: [5000, 14000, 28000, 26000, 42000, 21000],
+                        // name: 'Moyenne de ligne'
+                      }
+                    ]
+                  }
+                ]
+              };
+              myChart1.setOption(option1);
+            break;
+    case 'UPDATE_CHART_RADAR1':
+      break;
+    case 'openDialogTable':
+      this.openDialog(this.dialogTable, TableStatistiqueFormationComponent, width, height,'dialog-with-data', { table: 'test' });
       break;
 
+    case 'openDialogDistribution':
+      this.openDialog(this.dialogDistribution, DistributionComponent, width, height,'dialog-with-data', { distribution: 'test' });
+      break;
 
-   
-  
-        
+    case 'openDialogDefensive':
+      this.openDialog(this.dialogDefensive, DefensiveComponent, width, height ,'dialog-with-data', { defensive: 'test' });
+      break;
 
-      case "UPDATE_CHART":
-        break;
-      // case "GET":
-      //   this.TeamService.One(this.ID, this.PLAYER_ID).subscribe(
-      //     (RES: any) => {
-      //       this.dataSource = RES;
-      //       this.isLoading = false;
-      //       this.COLORS = RES?.Option?.colors;
-      //       this.chart = {
-      //         title: RES?.Option?.title?.text,
-      //         legend: RES?.Option?.legend?.data,
-      //       };
-      //       delete RES?.Option?.title?.text;
-      //       delete RES?.Option?.legend;
-
-      //       this.actions("CREATE_CHART_RADAR1", RES?.Option1);
-      //     },
-      //     (ERROR: HttpErrorResponse) => {
-      //       this.isLoading = false;
-      //     }
-      //   );
-      // break;
-      case "DO_FILTER":
-        break;
-
-      default:
-        break;
-    }
+    case 'openDialogOffensive':
+      this.openDialog(this.dialogOffensive, OffensiveComponent, width, height, 'dialog-with-data',{ data: this.radarDataArray });
+      break;
+    default:
+      break;
   }
+}
+openDialog(dialogInstance: any, component: any, width: string, height: string, panelClass?: string, data?: any) {
+  const dialogRef = dialogInstance.open(component, {
+    width: width,
+    height: height,
+    panelClass: panelClass || '',
+    data: data || null
+  });
+}
+
+
+// actions(CASE: string, RES: any = null) {
+//     switch (CASE) {
+//       case "CREATE_CHART_RADAR1":
+//         const myChart1 = echarts.init(document.getElementById("chart-general"));
+//         const option1 ={
+//           title: {
+//             text: 'Prestation générale.',
+//             left: 'center'
+//           },
+//           legend: {
+//             data: ['RSB Berkane', 'Moyenne de ligne'],
+//             // left: 10,
+//           },
+//           radar: {
+//             // shape: 'circle',
+//             indicator: [
+//               { name: 'Buts', max: 6500 },
+//               { name: 'XContre', max: 16000 },
+//               { name: 'Tirs', max: 30000 },
+//               { name: 'Tirs cadre', max: 38000 },
+//               { name: 'Contre Prise', max: 52000 },
+//               { name: 'Degagements', max: 24000 },
+//               { name: 'Foutes', max: 23000 }
+//             ],
+//             // radius: 100,
+//             center: ['50%', '50%'],
+//           },
+//           series: [
+//             {
+//               type: 'radar',
+//               data: [
+//                 {
+//                   value: [4200, 3000, 20000, 35000, 50000, 18000],
+//                   // name: 'RSB Berkane'
+//                 },
+//                 {
+//                   value: [5000, 14000, 28000, 26000, 42000, 21000],
+//                   // name: 'Moyenne de ligne'
+//                 }
+//               ]
+//             }
+//           ]
+//         };
+//         myChart1.setOption(option1);
+//       break;
+// case 'DO_FILTER':
+
+// break;
+
+// default:
+// break;
+// }
+// }
+
+
 
 
 }

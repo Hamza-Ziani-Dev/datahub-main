@@ -8,21 +8,33 @@ import { environment } from 'src/environments/environment';
 })
 export class TeamsService {
   link: string = 'http://localhost:3000';
- // link: string = environment.link;
+ //link: string = environment.link;
   API: string = environment.API;
   endpoint = "teams-hub";
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
   ) { }
 
   ngOnInit(): void {
-    console.log('====================================');
-    console.log(this.getListAttaques());
-    console.log('====================================');
   }
-
-
+ 
   getListAttaques(): Observable<any> {
     return this.http.get<any>(`${this.link}/${this.API}/${this.endpoint}/list-attaques`);
+  }
+
+  getGeneralInfo(): Observable<any> {
+    return this.http.get<any>(`${this.link}/${this.API}/${this.endpoint}/general-info`);
+  }
+
+  getFixtureInfo(): Observable<any> {
+    return this.http.get<any>(`${this.link}/${this.API}/${this.endpoint}/botola-info`);
+  }
+
+  getTreeMapData(): Observable<any> {
+    return this.http.get<any>(`${this.link}/${this.API}/${this.endpoint}/tree-map-data`);
+  }
+
+  getRadarData(): Observable<any> {
+    return this.http.get<any>(`${this.link}/${this.API}/${this.endpoint}/radar-data`);
   }
 }

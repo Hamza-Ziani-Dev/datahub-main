@@ -1,85 +1,128 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import * as echarts from "echarts";
+import { TeamsService } from 'src/app/components/datahub/components/teams/service/teams.service';
 @Component({
   selector: 'app-offensive',
   templateUrl: './offensive.component.html',
   styleUrls: ['./offensive.component.css']
 })
 export class OffensiveComponent implements OnInit {
-
+  isLoading: boolean;
+  constructor(private teamService:TeamsService){
+  
+  }
   ngOnInit() {
-    this.actions("CREATE_CHART_Offensive");
+    this.actions("CREATE_CHART");
+    this.actions('GET')
+    console.log('====================================');
+    console.log(this.actions("CREATE_CHART"));
+    console.log('====================================');
   }
 
 
-
-  actions(CASE: string, RES: any = null) {
-    switch (CASE) {
-      case "CREATE_CHART_Offensive":
-        const myChart = echarts.init(document.getElementById("chart-offensive"));
-       const option = {
-          legend: {
-            title: ["Man City", "Premier Division Average"],
-            bottom: 0,
-            left: "right",
-           
+ actions(CASE: string, RES: any = null) {
+  switch (CASE) {
+    case 'CREATE_CHART':
+      const myChart = echarts.init(document.getElementById('chart-offensive'));
+      const option = {
+          "title": {
+            "text": "Performance for Raja Casablanca (Defending)"
           },
-          radar: {
-            // shape: 'circle',
-            indicator: [
-              { name: "Goals per Game", max: 6500 },
-              { name: "Expected Goals per Game", max: 16000 },
-              { name: "Shots per Game", max: 30000 },
-              { name: "Shots On Target Ratio %", max: 38000 },
-              { name: "Dribbles per Game", max: 52000 },
-              { name: "Cross Completion", max: 25000 },
-              { name: "Pass Completion Ratio (%)", max: 25000 },
-               { name: "Fouls Against per Game", max: 39000 },
-            ],
-            // radius: 100,
-            // center: ["50%", "50%"],
+          "legend": {
+            "data": [
+              "Raja Casablanca",
+              "Average"
+            ]
           },
-          series: [
+          "radar": {
+            "indicator": [
+              {
+                "name": "Buts concédés",
+                "max": 78
+              },
+              {
+                "name": "xG",
+                "max": 89.05
+              },
+              {
+                "name": "Tacles glissés",
+                "max": 418
+              },
+              {
+                "name": "Duels défensifs gagnés, %",
+                "max": 65.18963636363637
+              },
+              {
+                "name": "Interceptions",
+                "max": 2434
+              },
+              {
+                "name": "Dégagements",
+                "max": 1061
+              },
+              {
+                "name": "Fautes",
+                "max": 889
+              }
+            ]
+          },
+          "series": [
             {
-              type: "radar",
-              areaStyle: {},
-              // itemStyle: {
-              //   color:"#E55C00",
-              // },
-              data: [
+              "name": " ",
+              "type": "radar",
+              "data": [
                 {
-                  value: [4200, 3000, 20000, 35000, 50000, 18000, 20000, 35000],
-                  name: "Man City",
-                  itemStyle: {
-                    color: "#E55C00",
-                  },
-                },
-                {
-                  value: [
-                    5000, 14000, 28000, 26000, 42000, 21000, 20000, 35000,
+                  "value": [
+                    49,
+                    77.4,
+                    332,
+                    62.28660714285714,
+                    1953,
+                    625,
+                    862
                   ],
-                  name: "Premier Division Average",
-                  itemStyle: {
-                    color: "#fbb034",
-                  },
+                  "name": "Raja Casablanca"
                 },
-              ],
-            },
-          ],
-        };
+                {
+                  "value": [
+                    49,
+                    77.4,
+                    332,
+                    62.29,
+                    1953,
+                    625,
+                    862
+                  ],
+                  "name": "Average"
+                }
+              ]
+            }
+          ]
+        }
         myChart.setOption(option);
       break;
+    case 'GET':
+      // this.teamService.getRadarData().subscribe(
+      //   (RES: any) => {
+      //     console.log("this.radarDataArray", RES);
+      //     this.isLoading = false;
+      //     this.actions('CREATE_CHART',RES)
+          
+      //   },
+      //   (ERROR: HttpErrorResponse) => {
+      //     this.isLoading = false;
+      //   }
+      // )
+      break;
+    case 'DO_FILTER':
 
-      case "UPDATE_CHART":
-        break;
-     
-      case "DO_FILTER":
-        break;
+      break;
 
-      default:
-        break;
-    }
+    default:
+      break;
   }
+}
 
 
 }

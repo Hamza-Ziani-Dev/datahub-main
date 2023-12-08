@@ -10,9 +10,12 @@ import { TableStatistiqueFormationComponent } from './components/table-statistiq
 import { DistributionComponent } from './components/distribution/distribution.component';
 import { DefensiveComponent } from './components/defensive/defensive.component';
 import { OffensiveComponent } from './components/offensive/offensive.component';
+import { MatSortModule } from '@angular/material/sort';
+
+
 @NgModule({
   imports: [
-    CommonModule, MatSnackBarModule, MatTableModule
+    CommonModule, MatSnackBarModule, MatTableModule,MatSortModule
   ],
   declarations: [
     SnackbarComponent, UploadFileComponent, DateAgoPipe, SafePipe, TableStatistiqueFormationComponent, DistributionComponent, DefensiveComponent, OffensiveComponent],

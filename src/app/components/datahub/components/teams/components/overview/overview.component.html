@@ -1,109 +1,110 @@
 <div class="overviewContainer container justify-content-center align-content-center">
-  <div class="sub-header row d-flex col-12 col-md-12 mt-4 justify-content-center align-content-center">
-    <div class="col-12 col-md-2 justify-content-center align-content-center">
-      <div [ngClass]="{ 'active': activeButton === 'table' }" class="table-classement" (click)="setActiveButton('table')">
-     Table De Classement
-     </div>
-
-    </div>
-    <div class="col-12 col-md-2 justify-content-center align-content-center">
-      <div [ngClass]="{ 'active': activeButton === 'xgPour' }" class="xg-pour" (click)="setActiveButton('xgPour')">
-        XG Pour
-      </div>
-    </div>
-    <div class="col-12 col-md-2 justify-content-center align-content-center">
-      <div [ngClass]="{ 'active': activeButton === 'xgContre' }" class="xg-contre" (click)="setActiveButton('xgContre')">
-        XG Contre
-      </div>
-    </div>
-    <div class="col-12 col-md-2">
-      <div class="distribition-passe" [ngClass]="{ 'active': activeButton === 'distribitionPasse' }" class="distribition-passe" (click)="setActiveButton('distribitionPasse')" >
-        Distribition des Passes
-      </div>
-    </div>
-    <div class="col-12 col-md-2">
-      <div class="pertes-balle" [ngClass]="{ 'active': activeButton === 'pertesBalle' }" class="pertes-balle" (click)="setActiveButton('pertesBalle')" >
-        Pertes de Balles
-      </div>
-    </div>
-    <div class="col-12 col-md-2">
-      <div class="recuperation-balle" [ngClass]="{ 'active': activeButton === 'recuperationBalle' }" class="recuperation-balle" (click)="setActiveButton('recuperationBalle')">
-        Récupération des Balles
-      </div>
-    </div>
-  </div>
-  <div class="table-content col-12 col-md-12 justify-content-center align-content-center">
+  <div class="content col-12 col-md-12 justify-content-center align-content-center" >
+   <div class="mt-4 mb-4 justify-content-center align-content-center ">
+    <button class="btn-header" *ngFor="let column of displayedParentColumns"
+    (click)="actions(column)"
+    [ngClass]="{'active': activeButton === column }"
+    (click)="setActiveButton(column)" >
+     <div>{{ column }}</div>
+   </button>
+   </div>
     <div class="table-header d-flex w-100 h-50 justify-content-around align-content-center">
-      <div style="text-align: center;color: rgb(226, 201, 79)">POINTS</div>
+      <div style="text-align: center;color: rgb(5, 5, 5)">POINTS</div>
       <div style="text-align: center;color: rgb(42, 42, 41)">SHOTS</div>
       <div style="text-align: center;color: rgb(103 156 108)">FINISHING</div>
     </div>
-    <!-- table -->
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 th-head th-head-lg w-100 table">
+      <!-- This is for the tab all  -->
+      <ng-container *ngIf="defaultTab === 'all'">
+      <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+        <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+        <td mat-cell *matCellDef="let element">{{element[column]}}</td>
+      </ng-container>
+    </ng-container>
+      <!-- This is for the tab not all  -->
+    
+      <ng-container *ngIf="defaultTab != 'all'">
+        <ng-container *ngFor="let column of displayedColumns">
+          <ng-container [matColumnDef]="column">
+            <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+            <td mat-cell *matCellDef="let element">{{element[column]}}</td>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    
+
+
+
+
+    <!-- table -->
+    <!-- <table mat-table [dataSource]="dataSource"  class="mat-elevation-z8 th-head th-head-lg w-100 table"> -->
       <!-- Pos Column -->
-      <ng-container matColumnDef="pos">
-        <th mat-header-cell *matHeaderCellDef style="color: #fff; background-color: rgb(226, 201, 79)">
+      <!-- <ng-container matColumnDef="pos">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="color: #fff; background-color: rgb(226, 201, 79)">
           Pos
         </th>
-        <td mat-cell *matCellDef="let element">
-          {{ element.pos }}
+        <td mat-cell *matCellDef="let element ; let i = index">
+          {{ (element)?.i }}
         </td>
-      </ng-container>
+      </ng-container> -->
       <!-- Teams Column -->
-      <ng-container matColumnDef="teams">
-        <th mat-header-cell *matHeaderCellDef style="color: #fff; background-color: rgb(226, 201, 79)">
+      <!-- <ng-container matColumnDef="teams">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="color: #fff; background-color: rgb(226, 201, 79)">
           Teams</th>
         <td mat-cell *matCellDef="let element">
-          <img src="https://seeklogo.com/images/R/raja-club-athletic-rca-logo-2C8B83D406-seeklogo.com.png" alt=""
+          <img [src]="element['Équipe'].img"
+           alt="{{ element['Équipe'].name }}"
             class="logo" />
-          {{ element.teams }}
         </td>
-      </ng-container>
+      </ng-container> -->
       <!-- Poits Column -->
-      <ng-container matColumnDef="poits">
-        <th mat-header-cell *matHeaderCellDef style="color: #fff; background-color: rgb(226, 201, 79)">
+      <!-- <ng-container matColumnDef="poits">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="color: #fff; background-color: rgb(226, 201, 79)">
           Poits</th>
-        <td mat-cell *matCellDef="let element">{{ element.poits }}</td>
-      </ng-container>
+        <td mat-cell *matCellDef="let element">{{ element['Points'] }}</td>
+      </ng-container> -->
       <!-- Posisionnal Column -->
-      <ng-container matColumnDef="posisionnal">
-        <th mat-header-cell *matHeaderCellDef style="color: #fff; background-color: rgb(42, 42, 41)">
-          Posisionnal</th>
-        <td mat-cell *matCellDef="let element">{{ element.posisionnal }}</td>
-      </ng-container>
+      <!-- <ng-container matColumnDef="positionnelle">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="color: #fff; background-color: rgb(42, 42, 41)">
+          positionnelles</th>
+        <td mat-cell *matCellDef="let element">{{ element['Attaques positionnelles'] }}</td>
+      </ng-container> -->
       <!-- Counter Column -->
-      <ng-container matColumnDef="counter">
-        <th mat-header-cell *matHeaderCellDef style="color: #fff; background-color: rgb(42, 42, 41)">
-          Counter</th>
-        <td mat-cell *matCellDef="let element">{{ element.counter }}</td>
-      </ng-container>
+      <!-- <ng-container matColumnDef="contre">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="color: #fff; background-color: rgb(42, 42, 41)">
+          Contre Attaques</th>
+        <td mat-cell *matCellDef="let element">{{ element['Contre-attaques'] }}</td>
+      </ng-container> -->
       <!-- Set Play  Column -->
-      <ng-container matColumnDef="play">
-        <th mat-header-cell *matHeaderCellDef style="color: #fff; background-color: rgb(42, 42, 41)">
-          Play</th>
-        <td mat-cell *matCellDef="let element">{{ element.play }}</td>
-      </ng-container>
+      <!-- <ng-container matColumnDef="coups-pied-arrêtés">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="color: #fff; background-color: rgb(42, 42, 41)">
+          Coups Arrêtés</th>
+        <td mat-cell *matCellDef="let element">{{ element['Coups de pied arrêtés'] }}</td>
+      </ng-container> -->
       <!-- Goals  Column -->
-      <ng-container matColumnDef="goals">
-        <th mat-header-cell *matHeaderCellDef style="color: #fff; background-color: rgb(103 156 108)">Goals</th>
-        <td mat-cell *matCellDef="let element">{{ element.goals }}</td>
-      </ng-container>
+      <!-- <ng-container matColumnDef="buts">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="color: #fff; background-color: rgb(103 156 108)">Buts</th>
+        <td mat-cell *matCellDef="let element">{{ element['Buts'] }}</td>
+      </ng-container> -->
       <!-- XGA  Column -->
-      <ng-container matColumnDef="xga">
-        <th mat-header-cell *matHeaderCellDef style="color: #fff; background-color: rgb(103 156 108)">
+      <!-- <ng-container matColumnDef="xga">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="color: #fff; background-color: rgb(103 156 108)">
           XGA</th>
-        <td mat-cell *matCellDef="let element">{{ element.xga }}</td>
-      </ng-container>
+        <td mat-cell *matCellDef="let element">{{ element['xGA'] | number:'1.3-3' }}</td>
+      </ng-container> -->
       <!-- Diffirence Column -->
-      <ng-container matColumnDef="diffirence">
-        <th mat-header-cell *matHeaderCellDef style="color: #fff; background-color: rgb(103 156 108)">
-          Diffirence</th>
-        <td mat-cell *matCellDef="let element">{{ element.diffirence }}</td>
-      </ng-container>
+      <!-- <ng-container matColumnDef="xg-diffirence">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="color: #fff; background-color: rgb(103 156 108)">
+          XG Diffirence</th>
+        <td mat-cell *matCellDef="let element">{{ element['xG difference'] }}</td>
+      </ng-container> -->
       <!-- Replace column names with your actual column names -->
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    </table>
+      <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr> -->
+    <!-- </table> -->
     <!-- end  table -->
   </div>
 </div>
