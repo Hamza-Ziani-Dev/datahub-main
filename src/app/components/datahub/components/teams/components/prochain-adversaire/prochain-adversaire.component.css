@@ -1,5 +1,6 @@
 .container-content{
-  height: 300%;
+  height: 100%;
+  min-height: 300%;
 }
 .box2, .content1{
     height: 900px;
@@ -342,7 +343,7 @@
 
 
 @media screen and (max-width: 768px) {
-  .dialog-with-margin .mat-dialog-container {
+  .dialog-with-margin .mat-dialog {
     margin-bottom: 60px; 
   }
 

@@ -27,134 +27,47 @@ export class EquipeComponent implements OnInit {
     title: null,
     legend: [],
   };
-  PLAYER_ID: number = null;
   dataSource: any[] = [];
+  attackingData : any;
   constructor(
-    private TeamService: TeamsService,
+    private teamService: TeamsService,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    this.ID = this.route.snapshot.parent?.params.id;
-    this.PLAYER_ID = this.route.snapshot.parent?.params.player_id;
-    console.log(this.ID, this.PLAYER_ID);
-    this.actions("CREATE_CHART_RADAR1");
-    this.actions("CREATE_CHART_RADAR2");
-    this.actions("CREATE_CHART_RADAR3");
     this.actions("CREATE_CHART_SCATTER1");
     this.actions("CREATE_CHART_SCATTER2");
     this.actions("CREATE_CHART_SCATTER3");
+    this.getGraphOffensive();
   }
-
+getGraphOffensive(){
+  this.teamService.getGraphsEquipe().subscribe((res)=>{
+    this.attackingData = res;
+    this.actions("CREATE_CHART_RADAR1");
+    this.actions("CREATE_CHART_RADAR2");
+    this.actions("CREATE_CHART_RADAR3");
+  })
+}
   actions(CASE: string, RES: any = null) {
     switch (CASE) {
       case "CREATE_CHART_RADAR1":
         const myChart1 = echarts.init(
           document.getElementById("chart-offensive")
         );
-        const option1 = {
-          legend: {
-            data: ["RSB Berkane", "Moyenne de ligue"],
-          },
-          radar: {
-            // shape: 'circle',
-            indicator: [
-              { name: "Buts", max: 6500 },
-              { name: "XContre", max: 16000 },
-              { name: "Tirs", max: 30000 },
-              { name: "Tirs cadre", max: 38000 },
-              { name: "Contre Prise", max: 52000 },
-              { name: "Passes Complete", max: 25000 },
-              { name: "Duels Offensive ", max: 25000 },
-            ],
-            radius: 85,
-            center: ["42%", "60%"],
-          },
-          series: [
-            {
-              type: "radar",
-              areaStyle: {},
-              // itemStyle: {
-              //   color:"#E55C00",
-              // },
-              data: [
-                {
-                  value: [4200, 3000, 20000, 35000, 50000, 18000, 20000, 35000],
-                  name: "RSB Berkane",
-                  itemStyle: {
-                    color: "#E55C00",
-                  },
-                },
-                {
-                  value: [
-                    5000, 14000, 28000, 26000, 42000, 21000, 20000, 35000,
-                  ],
-                  name: "Moyenne de ligue",
-                  itemStyle: {
-                    color: "#fbb034",
-                  },
-                },
-              ],
-            },
-          ],
-        };
-        myChart1.setOption(option1);
+        myChart1.setOption(this.attackingData?.attacking);
         break;
       case "CREATE_CHART_RADAR2":
         const myChart2 = echarts.init(
           document.getElementById("chart-deffensive")
         );
-        const option2 = {
-          legend: {
-            data: ["RSB Berkane", "Moyenne de ligue"],
-          },
-          radar: {
-            // shape: 'circle',
-            indicator: [
-              { name: "Buts", max: 6500 },
-              { name: "XContre", max: 16000 },
-              { name: "Tirs", max: 30000 },
-              { name: "Tirs cadre", max: 38000 },
-              { name: "Contre Prise", max: 52000 },
-              { name: "Passes Complete", max: 25000 },
-              { name: "Duels Offensive ", max: 25000 },
-            ],
-            radius: 85,
-            center: ["42%", "60%"],
-          },
-          series: [
-            {
-              type: "radar",
-              areaStyle: {},
-
-              data: [
-                {
-                  value: [4200, 3000, 20000, 35000, 50000, 18000, 20000, 35000],
-                  name: "RSB Berkane",
-                  itemStyle: {
-                    color: "#E55C00",
-                  },
-                },
-                {
-                  value: [
-                    5000, 14000, 28000, 26000, 42000, 21000, 20000, 35000,
-                  ],
-                  name: "Moyenne de ligue",
-                  itemStyle: {
-                    color: "#fbb034",
-                  },
-                },
-              ],
-            },
-          ],
-        };
-        myChart2.setOption(option2);
+       
+        myChart2.setOption(this.attackingData?.defending);
         break;
       case "CREATE_CHART_RADAR3":
         const myChart3 = echarts.init(
           document.getElementById("chart-generale")
         );
-        const option3 = {
+       const option3 = {
           legend: {
             data: ["RSB Berkane", "Moyenne de ligue"],
           },
@@ -295,7 +208,6 @@ export class EquipeComponent implements OnInit {
             },
           ],
         };
-
         myChart4.setOption(option4);
         break;
       case "CREATE_CHART_SCATTER2":
@@ -493,26 +405,6 @@ export class EquipeComponent implements OnInit {
 
       case "UPDATE_CHART":
         break;
-      // case "GET":
-      //   this.TeamService.One(this.ID, this.PLAYER_ID).subscribe(
-      //     (RES: any) => {
-      //       this.dataSource = RES;
-      //       this.isLoading = false;
-      //       this.COLORS = RES?.Option?.colors;
-      //       this.chart = {
-      //         title: RES?.Option?.title?.text,
-      //         legend: RES?.Option?.legend?.data,
-      //       };
-      //       delete RES?.Option?.title?.text;
-      //       delete RES?.Option?.legend;
-
-      //       this.actions("CREATE_CHART_RADAR1", RES?.Option1);
-      //     },
-      //     (ERROR: HttpErrorResponse) => {
-      //       this.isLoading = false;
-      //     }
-      //   );
-      // break;
       case "DO_FILTER":
         break;
 

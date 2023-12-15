@@ -1,254 +1,100 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { TeamsService } from '../../service/teams.service';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import {MatTableDataSource} from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import {MatSort, Sort} from '@angular/material/sort';
 
-const _ELEMENT_DATA: any = {
-  'all': {
-    headers:[
-      {
-        label : 'Points',
-        children : [
-          {label:'PARENT 1',colspan:3},
-          {label:'PARENT 2',colspan:3},
-          {label:'PARENT 3',colspan:3}
-        ]
-      }
-    ],
-    values : [   
-      {
-        'id':1,
-        "Équipe": {
-          "name": "Chabab Mohammédia",
-          "img": "images/logos/clubs/Chabab Mohammédia.jpg"
-        },
-        "Points": 52,
-        "positionnelle": 1246,
-        "Contre attaque": 84,
-        "Coups Arrêtés": 1506,
-        "Buts": 50,
-        "xGA": 1.165,
-        "xGA dif": -3.89
-      },
-      {
-        'id':1,
-        "Équipe": {
-          "name": "Chabab Mohammédia",
-          "img": "images/logos/clubs/Chabab Mohammédia.jpg"
-        },
-        "Points": 52,
-        "positionnelle": 1246,
-        "Contre attaque": 84,
-        "Coups Arrêtés": 1506,
-        "Buts": 50,
-        "xGA": 1.165,
-        "difference": -3.89
-      },
-      {
-        'id':1,
-        "Équipe": {
-          "name": "Chabab Mohammédia",
-          "img": "images/logos/clubs/Chabab Mohammédia.jpg"
-        },
-        "Points": 52,
-        "positionnelle": 1246,
-        "Contre attaque": 84,
-        "Coups Arrêtés": 1506,
-        "Buts": 50,
-        "xGA": 1.165,
-        "difference": -3.89
-      },
-    ]
-  },
-  'pertes de balles': [
-    {
-      Équipe: {
-        name: 'Chabab Mohammédia',
-        img: 'images/logos/clubs/Chabab Mohammédia.jpg',
-      },
-      'P.Bas': 1143.0,
-      'P.Moyen': 2093.0,
-      'P.Élevé': 2492.0,
-    },
-    {
-      Équipe: {
-        name: 'Difaâ El Jadida',
-        img: 'images/logos/clubs/Difaâ El Jadida.jpg',
-      },
-      'P.Bas': 539.0,
-      'P.Moyen': 1191.0,
-      'P.Élevé': 1472.0,
-    },
-    {
-      Équipe: {
-        name: 'Chabab Mohammédia',
-        img: 'images/logos/clubs/Chabab Mohammédia.jpg',
-      },
-      'P.Bas': 1143.0,
-      'P.Moyen': 2093.0,
-      'P.Élevé': 2492.0,
-    },
-    {
-      Équipe: {
-        name: 'Difaâ El Jadida',
-        img: 'images/logos/clubs/Difaâ El Jadida.jpg',
-      },
-      'P.Bas': 539.0,
-      'P.Moyen': 1191.0,
-      'P.Élevé': 1472.0,
-    },
-  ],
-  'recuperations de balles': [
-    {
-      Équipe: {
-        name: 'Chabab Mohammédia',
-        img: 'images/logos/clubs/Chabab Mohammédia.jpg',
-      },
-      PPDA: 778.39,
-      'R.Bas': 2484.0,
-      'R.Moyen': 1496.0,
-      'R.Élevé': 488.0,
-    },
-    {
-      Équipe: {
-        name: 'Difaâ El Jadida',
-        img: 'images/logos/clubs/Difaâ El Jadida.jpg',
-      },
-      PPDA: 245.37,
-      'R.Bas': 1175.0,
-      'R.Moyen': 919.0,
-      'R.Élevé': 313.0,
-    },
-    {
-      Équipe: {
-        name: 'Chabab Mohammédia',
-        img: 'images/logos/clubs/Chabab Mohammédia.jpg',
-      },
-      PPDA: 778.39,
-      'R.Bas': 2484.0,
-      'R.Moyen': 1496.0,
-      'R.Élevé': 488.0,
-    },
-    {
-      Équipe: {
-        name: 'Chabab Mohammédia',
-        img: 'images/logos/clubs/Chabab Mohammédia.jpg',
-      },
-      PPDA: 778.39,
-      'R.Bas': 2484.0,
-      'R.Moyen': 1496.0,
-      'R.Élevé': 488.0,
-    },
-  ],
-  'XGA ': [
-    {
-      PPDA: 778.39,
-      'R.Bas': 2484.0,
-      'R.Moyen': 1496.0,
-      'R.Élevé': 488.0,
-    },
-    {
-      PPDA: 245.37,
-      'R.Bas': 1175.0,
-      'R.Moyen': 919.0,
-      'R.Élevé': 313.0,
-    },
-    {
-      PPDA: 778.39,
-      'R.Bas': 2484.0,
-      'R.Moyen': 1496.0,
-      'R.Élevé': 488.0,
-    },
-    {
-      PPDA: 778.39,
-      'R.Bas': 2484.0,
-      'R.Moyen': 1496.0,
-      'R.Élevé': 488.0,
-    },
-  ],
-  'Distribution de Passes': [
-    {
-      PPDA: 778.39,
-      'R.Bas': 2484.0,
-      'R.Moyen': 1496.0,
-      'R.Élevé': 488.0,
-    },
-    {
-      PPDA: 245.37,
-      'R.Bas': 1175.0,
-      'R.Moyen': 919.0,
-      'R.Élevé': 313.0,
-    },
-    {
-      PPDA: 778.39,
-      'R.Bas': 2484.0,
-      'R.Moyen': 1496.0,
-      'R.Élevé': 488.0,
-    },
-    {
-      PPDA: 778.39,
-      'R.Bas': 2484.0,
-      'R.Moyen': 1496.0,
-      'R.Élevé': 488.0,
-    },
-  ],
-  
-};
+export interface TableData{
+  pos :string,equipe :string,matches :string,v:string,d:string,n:string,bp:string,bc:string,xgp:string,xgc:string,xgd:string
+}
 @Component({
   selector: 'app-overview',
   templateUrl: './overview.component.html',
-  styleUrls: ['./overview.component.css']
+  styleUrls: ['./overview.component.css'],
 })
 
 export class OverviewComponent implements OnInit {
-  // @ViewChild(MatSort, { static: true }) sort: MatSort; 
-  activeButton: string = 'table'; // Initially, no button is active
-  setActiveButton(buttonId: string) {
-    this.activeButton = buttonId;
-  }
+  constructor(private teamsService: TeamsService,) {}
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+   showTable: string = 'table1'; 
+   matches: TableData[];
+   sortedData: TableData[];
+   isActive: string = 'tableClassement'; // Keeps track of the active button
+   setActive(buttonId: string) {this.isActive = buttonId}
+   headerDataGoals :any = [];bodyDataGoals :any = [];
+   headerDataXg : any =[];bodyDataXg : any =[];
+   headerDataTirs : any = [];bodyDataTirs : any =[];
+   headerDataTirCadre : any = []; bodyDataTirCadre :any =[];
+   headerDataButsCon :any =[]; bodyDataButsCon :any =[];
+   headerDataXgAgain : any=[];bodyDataXgAgain :any =[];
+   headerDataTirsContre : any=[];bodyDataTirsContre :any =[];
+   headerDataTirsContreCadre : any=[];bodyDataTirsContreCadre :any =[];
+   headerDataFautes : any=[];bodyDataFautes :any =[];
+   headerDataCarteJoune : any =[];bodyDataCarteJoune : any =[];
+   headerDataCarteRouge : any =[];bodyDataCarteRouge : any =[];
+   headerDataPossession : any=[]; bodyDataPossession : any = [];
   
-  constructor(private teamsService: TeamsService,private route: ActivatedRoute ) {}
-  //  displayedColumns: string[] = ['pos', 'teams', 'poits', 'positionnelle','contre', 'coups-pied-arrêtés','buts','xga','xg-diffirence'];
-  // ngOnInit() {
-  //     this.teamsService.getListAttaques().subscribe((res)=>{
-  //     this.dataSource = res;
-  //   });
-  // }
 
-   displayedParentColumns: string[] = [];  // For get the parent columns
-   displayedColumns: string[] = [];   // For get the children of parent column at var defaultTab
-   dataSource = [];
-   // default tab selected 
-   defaultTab: string = 'all';
-   ELEMENT_DATA: any;
-   ngOnInit(): void {
-        this.teamsService.getListAttaques().subscribe((res)=>{
+   
+ngOnInit() {
+    this.teamsService.getListTable().subscribe((res)=>{
+      this.matches = res;
+      this.sortedData = this.matches.slice();
     });
-    this.ELEMENT_DATA = _ELEMENT_DATA;
-     this.displayedParentColumns = Object.keys(this.ELEMENT_DATA); // get the parent columns : ['pertes de balles','recuperations de balles']
-     this.activeButton = this.displayedParentColumns[0]; // Assuming displayedParentColumns is your column array
-     this.UpdateTableColumnsDataSource();
-   }
-   
-   actions(tab: string) { // Fun for on click at some tab change the varaibale needed like : 
-     this.defaultTab = tab; // change default value 
-     this.UpdateTableColumnsDataSource();
-   }
- 
-  UpdateTableColumnsDataSource() {
-    const __ELEMENT_DATA = JSON.parse(JSON.stringify(this.ELEMENT_DATA));
-    const values = this.defaultTab === 'all' ? // Get the values based on the defaultTab
-      __ELEMENT_DATA[this.defaultTab].values :
-      __ELEMENT_DATA[this.defaultTab];
-    this.displayedColumns = Object.keys(values[0]); // Construct the displayedColumns dynamically using the first object's keys
-  
-   
-    this.dataSource = values; // Update the dataSource with the values
-  }
+    this.getRankingInfos();
+} 
 
+sortData(sort: Sort) {
+    const data = this.matches.slice();
+    if (!sort.active || sort.direction === '') {
+      this.sortedData = data;
+      return;
+    }
+    this.sortedData = data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'pos': return compare(a.pos, b.pos, isAsc);
+        case 'equipe': return compare(a.equipe, b.equipe, isAsc);
+        case 'matches': return compare(a.matches, b.matches, isAsc);
+        case 'v': return compare(a.v, b.v, isAsc);
+        case 'd': return compare(a.d, b.d, isAsc);
+        case 'n': return compare(a.n, b.n, isAsc);
+        case 'bp': return compare(a.bp, b.bp, isAsc);
+        case 'bc': return compare(a.bc, b.bc, isAsc);
+        case 'xgp': return compare(a.xgp, b.xgp, isAsc);
+        case 'xgc': return compare(a.xgc, b.xgc, isAsc);
+        case 'xgd': return compare(a.xgd, b.xgd, isAsc);
+        default: return 0;
+      }
+      function compare(a: number | string, b: number | string, isAsc: boolean) {
+        return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+      }
+    });
+}
   
-  
+getRankingInfos(){
+  this.teamsService.getRankingInfo().subscribe((res :any[])=>{
+    this.headerDataGoals = res['Buts'][0]['header'][0];this.bodyDataGoals = res['Buts'][1]['body'];
+    this.headerDataXg = res['xG'][0]['header'][0];this.bodyDataXg = res['xG'][1]['body'];
+    this.headerDataTirs = res['Tirs'][0]['header'][0];this.bodyDataTirs = res['Tirs'][1]['body'];
+    this.headerDataTirCadre = res['Tirs_cadres'][0]['header'][0];this.bodyDataTirCadre = res['Tirs_cadres'][1]['body'];
+    this.headerDataButsCon = res['Buts_concedes'][0]['header'][0];this.bodyDataButsCon = res['Buts_concedes'][1]['body'];
+    this.headerDataXgAgain = res['XG_against'][0]['header'][0];this.bodyDataXgAgain = res['XG_against'][1]['body'];
+    this.headerDataTirsContre = res['Tirs contre'][0]['header'][0];this.bodyDataTirsContre = res['Tirs contre'][1]['body'];
+    this.headerDataTirsContreCadre = res['Tirs_contre_cadres'][0]['header'][0];this.bodyDataTirsContreCadre = res['Tirs_contre_cadres'][1]['body'];
+    this.headerDataFautes= res['Fautes'][0]['header'][0];this.bodyDataFautes = res['Fautes'][1]['body'];
+    this.headerDataCarteJoune= res['Cartons_jaunes'][0]['header'][0];this.bodyDataCarteJoune = res['Cartons_jaunes'][1]['body'];
+    this.headerDataCarteRouge= res['Cartons_rouges'][0]['header'][0];this.bodyDataCarteRouge = res['Cartons_rouges'][1]['body'];
+    this.headerDataPossession= res['Possession'][0]['header'][0];this.bodyDataPossession = res['Possession'][1]['body'];
+});
+}  
 
-   }
+}
+
+
+
+
+
+   
 

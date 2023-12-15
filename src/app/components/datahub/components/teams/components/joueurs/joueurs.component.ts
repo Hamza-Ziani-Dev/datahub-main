@@ -9,6 +9,7 @@ import { ActivatedRoute } from "@angular/router";
   styleUrls: ["./joueurs.component.css"],
 })
 export class JoueursComponent implements OnInit {
+
   activeLabel: number = 1; // Initially, no label is active
   setActiveLabel(labelNumber: number) {
     this.activeLabel = labelNumber;
@@ -19,8 +20,7 @@ export class JoueursComponent implements OnInit {
     { name: "PM25", index: 2, text: "Tir" },
     { name: "PM10", index: 3, text: "Buts" },
   ];
-  imageUrl: string =
-    "https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--fc106789-60ea-4534-ace7-ee4e3247d853/MODRIC_carita_380x501.app.png?preferwebp=true&width=288&height=384";
+  imageUrl: string ="https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--fc106789-60ea-4534-ace7-ee4e3247d853/MODRIC_carita_380x501.app.png?preferwebp=true&width=288&height=384";
   isLoading: boolean = true;
   URL: string = "https://interface.myteambyfrmf.ma/uploads/datahub/";
   COLORS: string[] = ["#0357A0", "#007934", "#E55C00"];

@@ -18,10 +18,18 @@ export class TeamsService {
   ngOnInit(): void {
   }
  
-  getListAttaques(): Observable<any> {
-    return this.http.get<any>(`${this.link}/${this.API}/${this.endpoint}/list-attaques`);
+  getListTable(): Observable<any> {
+    return this.http.get<any>(`${this.link}/${this.API}/${this.endpoint}/table`);
   }
 
+  getRankingInfo(): Observable<any> {
+    return this.http.get<any>(`${this.link}/${this.API}/${this.endpoint}/team-ranking`);
+  }
+
+  getTeamFormation(): Observable<any> {
+    return this.http.get<any>(`${this.link}/${this.API}/${this.endpoint}/team-statistic`);
+  }
+  
   getGeneralInfo(): Observable<any> {
     return this.http.get<any>(`${this.link}/${this.API}/${this.endpoint}/general-info`);
   }
@@ -36,5 +44,8 @@ export class TeamsService {
 
   getRadarData(): Observable<any> {
     return this.http.get<any>(`${this.link}/${this.API}/${this.endpoint}/radar-data`);
+  }
+  getGraphsEquipe(): Observable<any> {
+    return this.http.get<any>(`${this.link}/${this.API}/${this.endpoint}/graphs-equipe`);
   }
 }

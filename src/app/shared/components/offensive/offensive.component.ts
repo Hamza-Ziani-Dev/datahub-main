@@ -9,111 +9,70 @@ import { TeamsService } from 'src/app/components/datahub/components/teams/servic
 })
 export class OffensiveComponent implements OnInit {
   isLoading: boolean;
-  constructor(private teamService:TeamsService){
-  
-  }
+  constructor(private teamService:TeamsService){}
+  radarAttaking :any;
   ngOnInit() {
-    this.actions("CREATE_CHART");
-    this.actions('GET')
-    console.log('====================================');
-    console.log(this.actions("CREATE_CHART"));
-    console.log('====================================');
+    this.getRadarAttacking();
   }
-
+getRadarAttacking(){
+  this.teamService.getRadarData().subscribe((res)=>{
+    this.radarAttaking = res[1];
+    this.actions("CREATE_CHART_RADAR_ATTACKING");
+  })
+}
 
  actions(CASE: string, RES: any = null) {
   switch (CASE) {
-    case 'CREATE_CHART':
+    case 'CREATE_CHART_RADAR_ATTACKING':
       const myChart = echarts.init(document.getElementById('chart-offensive'));
       const option = {
-          "title": {
-            "text": "Performance for Raja Casablanca (Defending)"
-          },
-          "legend": {
-            "data": [
-              "Raja Casablanca",
-              "Average"
-            ]
-          },
-          "radar": {
-            "indicator": [
+        legend: {
+          data: ["RSB Berkane", "Moyenne de ligue"],
+        },
+        radar: {
+          // shape: 'circle',
+          indicator: [
+            { name: "Buts", max: 6500 },
+            { name: "XContre", max: 16000 },
+            { name: "Tirs", max: 30000 },
+            { name: "Tirs cadre", max: 38000 },
+            { name: "Contre Prise", max: 52000 },
+            { name: "Passes Complete", max: 25000 },
+            { name: "Duels Offensive ", max: 25000 },
+          ],
+          radius: 100,
+          center: ["45%", "60%"],
+        },
+        series: [
+          {
+            type: "radar",
+            areaStyle: {},
+            data: [
               {
-                "name": "Buts concédés",
-                "max": 78
-              },
-              {
-                "name": "xG",
-                "max": 89.05
-              },
-              {
-                "name": "Tacles glissés",
-                "max": 418
-              },
-              {
-                "name": "Duels défensifs gagnés, %",
-                "max": 65.18963636363637
-              },
-              {
-                "name": "Interceptions",
-                "max": 2434
-              },
-              {
-                "name": "Dégagements",
-                "max": 1061
-              },
-              {
-                "name": "Fautes",
-                "max": 889
-              }
-            ]
-          },
-          "series": [
-            {
-              "name": " ",
-              "type": "radar",
-              "data": [
-                {
-                  "value": [
-                    49,
-                    77.4,
-                    332,
-                    62.28660714285714,
-                    1953,
-                    625,
-                    862
-                  ],
-                  "name": "Raja Casablanca"
+                value: [4200, 3000, 20000, 35000, 50000, 18000, 20000, 35000],
+                name: "RSB Berkane",
+                itemStyle: {
+                  color: "#E55C00",
                 },
-                {
-                  "value": [
-                    49,
-                    77.4,
-                    332,
-                    62.29,
-                    1953,
-                    625,
-                    862
-                  ],
-                  "name": "Average"
-                }
-              ]
-            }
-          ]
-        }
-        myChart.setOption(option);
+              },
+              {
+                value: [
+                  5000, 14000, 28000, 26000, 42000, 21000, 20000, 35000,
+                ],
+                name: "Moyenne de ligue",
+                itemStyle: {
+                  color: "#fbb034",
+                },
+              },
+            ],
+          },
+        ],
+      };
+      myChart.setOption(option);
+        // myChart.setOption(this.radarAttaking);
       break;
     case 'GET':
-      // this.teamService.getRadarData().subscribe(
-      //   (RES: any) => {
-      //     console.log("this.radarDataArray", RES);
-      //     this.isLoading = false;
-      //     this.actions('CREATE_CHART',RES)
-          
-      //   },
-      //   (ERROR: HttpErrorResponse) => {
-      //     this.isLoading = false;
-      //   }
-      // )
+
       break;
     case 'DO_FILTER':
 

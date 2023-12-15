@@ -50,6 +50,13 @@
 
 
 @media screen and (max-width: 768px) {
+    .mat-dialog{
+        padding: 0px;
+        margin: 0px;
+       }
+    .box2{
+        margin-bottom: 10px;
+    }   
     .container-content{
         padding-right: 0px;
         padding-left: 22px;

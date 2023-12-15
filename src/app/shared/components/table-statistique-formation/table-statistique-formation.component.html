@@ -2,47 +2,49 @@
     <div class="row justify-content-center align-content-center mb-2">
         <div class="title justify-content-center align-content-center">
                   <h4 mat-dialog-title>Formation Statistique</h4>
-                  
-                  
         </div>
-          <!-- table -->
-          <div>
-          </div>
-            <table class="table table-striped">
+  <!-- table -->
+      <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th scope="col">Formation utilisée</th>
+                    <th scope="col">Formation</th>
                     <th scope="col">N matches</th>
-                    <th scope="col">Buts marqués (Moy)</th>
-                    <th scope="col">Buts concédés (Moy)</th>
+                    <th scope="col">Buts M</th>
+                    <th scope="col">Buts M</th>
+                    <th scope="col">xG</th>
+                    <th scope="col">xGA</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>2-3-4-1</td>
-                    <td>4</td>
-                    <td>2-3-1-1</td>
-                    <td>4</td>
+                  <tr >
+                    <td>{{teamFormation[0]['Formation']}}</td>
+                    <td> {{teamFormation[0]['N_matchs']}}</td>
+                    <td> {{teamFormation[0]['Buts_marqués']}}</td>
+                    <td> {{teamFormation[0]['Buts_encaissés']}}</td>
+                    <td> {{teamFormation[0]['xG_en_moyenne']}}</td>
+                    <td> {{teamFormation[0]['xGA_en_moyenne']}}</td>
                   </tr>
-                  <tr>
-                    <td>2-3-4-1</td>
-                    <td>4</td>
-                    <td>2-3-1-1</td>
-                    <td>4</td>
+                  <tr >
+                    <td>{{teamFormation[1]['Formation']}}</td>
+                    <td> {{teamFormation[1]['N_matchs']}}</td>
+                    <td> {{teamFormation[1]['Buts_marqués']}}</td>
+                    <td> {{teamFormation[1]['Buts_encaissés']}}</td>
+                    <td> {{teamFormation[1]['xG_en_moyenne']}}</td>
+                    <td> {{teamFormation[1]['xGA_en_moyenne']}}</td>
                   </tr>
                 </tbody>
-              </table>
-        <!-- end table -->
+      </table>
+  <!-- end table -->
   </div>
   <div class="row justify-content-center align-content-center ">
        <!-- table -->
      <table class="table table-striped">
       <thead>
         <tr>
-          <th scope="col">Formation confrontée</th>
+          <th scope="col">Formation</th>
           <th scope="col">N matches</th>
-          <th scope="col">Buts marqués (Moy)</th>
-          <th scope="col">Buts concédés (Moy)</th>
+          <th scope="col">Buts M</th>
+          <th scope="col">Buts C</th>
         </tr>
       </thead>
       <tbody>

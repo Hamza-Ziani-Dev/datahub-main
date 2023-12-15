@@ -11,10 +11,14 @@
 }
 
 @media screen and (max-width: 768px) {
-    /* CSS rules for screens with a maximum width of 768px (typical for mobile devices) */
-   .table th{
+   .table th, td{
     padding: 0px;
     margin: 0px;
+    font-size: small;
    }
-   
+  
+   .mat-dialog{
+    padding: 0px 3px;
+    margin: 0px;
+   }
 }

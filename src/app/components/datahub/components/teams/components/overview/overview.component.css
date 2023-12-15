@@ -1,13 +1,47 @@
 .overviewContainer{
-  height: 600px;
+  height: 100%;
+  min-height: 600px;
 }
-.btn-header{
-  width: 211px;
-  height: 40px;
-  margin: 2px;
+.table-classement, .team-ranking{
   border-radius: 10px;
-  background-color: rgb(211, 211, 211);
+  width: 230px;
+  height: 41px;
+  padding: 11px 12px;
+  font-size: small;
+  font-weight: bold;
+  background-color: rgb(11 11 11);
   font-family: "Century Gothic";
+  display: flex;
+  color: white;
+  justify-content: space-around;
+}
+.table-content2{
+  height: 440px;
+  margin-right: 40px;
+  border-radius: 20px;
+  margin-bottom: 20px; 
+  margin-bottom: 14px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  font-family: "Century Gothic";
+}
+
+.text_bold{
+  font-family: "Century Gothic Bold";
+}
+.table thead th {
+  padding: 4px 30px;
+  text-align: start;
+  /* background-color: #dfdfdf; */
+}
+
+#table2 th, td{
+  padding: 0px 3px;
+  font-family: "Century Gothic";
+}
+
+
+.goals-header{
+  padding: 0px 8px;
 }
 .negative-value {
   color: red;
@@ -36,76 +70,38 @@
     align-items: center;
     width: 100%;
   }
-
- 
-.table {
-    padding: 20px;
-}
-.logo{
-  width: 15px;
-  height: 15px;
-  padding: 0px;
-  margin-top: -3px;
-}
-  .table-header{
-    background-color: rgb(222, 222, 222);
-    margin-top: 50px;
-    padding: 6px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    font-family: "Century Gothic Bold";
-    text-transform: uppercase;
-    color: gray;
+  .logo{
+    width: 15px;
+    height: 15px;
+    padding: 0px;
+    margin-top: -3px;
   }
-  th{ 
+ #table1{
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 10px; 
+  overflow: hidden; 
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+ }
+ #table1 th{
+  font-family: "Century Gothic";
+  text-transform: uppercase;
+  text-align: center;
+  justify-content: center;
+  color: #464646;
+  font-size: medium;
+  border-bottom: 1px solid #dee2e6;
+  border-top: 0px solid #dee2e6;
+ }
+ #table1 td{
+  padding: 3px 15px;
+ }
+ #table1  .mat-sort-header{
+    justify-content: center !important;
+    padding: 6px 10px;
     background-color: rgb(211, 205, 87);
-    color: #000;
-    text-align: center;
-    justify-content: center;
-  }
-  th.mat-header-cell{
-    text-align: center;
-    padding: 10px;
-    vertical-align: revert;
-    font-family: "Century Gothic Bold";
-    text-transform: uppercase;
-    color: gray;
-  }
-  tr.mat-header-row{
-    height: 35px;
-    text-align: center;
-    justify-content: center;
-  }
-
-  tr.mat-row{
-    height: 20px;
-    text-align: center;
-    justify-content: center;
-  }
-  td.mat-cell{
-    padding: 8px;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-  }
- 
-  tr.mat-row:nth-child(even){
-    height: 30px;
-    background-color: #f1f1f1;
-  }
-  .mat-table{
-    font-family: "Century Gothic";
-    font-weight: bold;
-    font-size: large;
-    overflow: hidden; 
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-  }
-  .table-content{
-    border-radius: 11px;
-    background-color: gainsboro;
-    padding: 0 1px;
-    margin-bottom: 11px;
-  }
+ }
+  
   .equipe__logo {
     border-radius: 50%;
     overflow: hidden;
@@ -113,21 +109,54 @@
     margin-right: 20px;
   }
   
-
-  
-  
-
-
-  
- 
-  
-
-  
-  
   @media screen and (max-width: 768px) {
     .overviewContainer{
       padding-right: 6px;
       padding-left: 6px;
+      line-height: 1 !important;
+    }
+    .table-classement, .team-ranking{
+    margin: 4px;
+    margin-left: 70px;
+    padding: 12px 22px;
+    display: flex;
+    justify-content: space-around;
+    }
+    #table1 thead{
+      display: none;
+    }
+     #table1 th{
+      font-size: small !important;
+      border-bottom: 1px solid #dee2e6;
+      border-top: 0px solid #dee2e6;
+     }
+     #table1 td{
+      padding: 0px !important;
+      font-size: small !important;
+      vertical-align: middle !important;
+     }
+     #table1 th td .mat-sort-header-arrow{
+      margin: 0px;
+      padding: 0px;
+      display: block;
+    width: 3px !important;
+    min-width: 3px !important;
+     }
+    #table1 .mat-sort-header-container {
+      display: block !important;
+    }
+     #table1 .mat-sort-header {
+      padding: 5px 0px !important;
+     }
+    #table1 .mat-sort-header-arrow{
+      margin: 0px;
+      padding: 0px;
+      display: block;
+    width: 3px !important;
+    min-width: 3px !important;
+    }
+    .d-flex, .demo-table {
+      display: block !important; 
     }
     .btn-header{
       width: 300px !important;
@@ -138,67 +167,15 @@
       padding-right: 0px;
       padding-left: 0px;
     }
-    tr.mat-header-row{
-      height: 10px;
-      text-align: center;
-    }
-  
-    tr.mat-row{
-      height: 10px;
-    }
-    td.mat-cell{
-      padding: 0px;
-      border-bottom-width: 0px !important;
-      border-bottom-style: solid;
-    }
-    .mat-cell{
-      font-size: 10px;
-      padding: 0;
-    }
-    th.mat-header-cell{
-      text-align: center;
-      padding: 0px;
-      vertical-align: revert;
-      font-family: "Century Gothic";
-      text-transform: uppercase;
-    }
-    th.mat-header-cell:last-of-type,th.mat-header-cell:first-of-type{
-      padding: 0px !important
-    }
-    td.mat-cell:first-of-type, td.mat-cell:last-of-type{
-      padding-left: 0px !important;
-      padding: 0px !important
-    }
-    .tr-rows td {
-      font-size: .9rem;
-      height: 45px !important;
-      text-align: center !important;
-    }
-  
-    .th-head {
-      font-size: 1rem;
-      border-bottom: 1px solid;
-         min-width: 150px !important;
-      text-align: center !important;
-  
-    }
-  
     .equipe__logo {
       width: 26px !important;
       margin: 0 20px !important;
-    } */
-     .th-head-lg {
-      min-width: 280px !important;
-    }
+    } 
+
+    .demo-table{
+       margin-right: 5px !important;
+       margin-left: 5px !important;
+    } 
   
-    .th-head-lg:nth-child(1),
-    .tr-rows td:nth-child(1) {
-      text-align: left !important;
-    }
-  
-    .tr-rows td:nth-child(1) {
-      padding-left: 0 !important;
-    }
-  
-    
-  }
+
+}

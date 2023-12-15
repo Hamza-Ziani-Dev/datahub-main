@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import * as echarts from "echarts";
+import { TeamsService } from 'src/app/components/datahub/components/teams/service/teams.service';
 
 @Component({
   selector: 'app-defensive',
@@ -9,72 +10,71 @@ import * as echarts from "echarts";
   styleUrls: ['./defensive.component.css']
 })
 export class DefensiveComponent implements OnInit {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any){
-  }
+  constructor(private teamService:TeamsService){}
+  radarDefending :any;
   ngOnInit() {
-    this.actions("CREATE_CHART_Defensive");
-    console.log('====================================');
-    console.log(this.data);
-    console.log('====================================');
+   this.getRadarAttacking();
   }
-
+  getRadarAttacking(){
+    this.teamService.getRadarData().subscribe((res)=>{
+      this.radarDefending = res[0];
+      console.log('====================================');
+      console.log(this.radarDefending );
+      console.log('====================================');
+      this.actions("CREATE_CHART_DEFENDING");
+    })
+  }
  
 
   actions(CASE: string, RES: any = null) {
     switch (CASE) {
-      case "CREATE_CHART_Defensive":
+      case "CREATE_CHART_DEFENDING":
         const myChart = echarts.init(document.getElementById("chart-defensive"));
-       const option = {
-          legend: {
-            title: ["Man City", "Premier Division Average"],
-            bottom: 0,
-            left: "right",
-           
-          },
-          radar: {
-            // shape: 'circle',
-            indicator: [
-              { name: "Goals per Game", max: 6500 },
-              { name: "Expected Goals per Game", max: 16000 },
-              { name: "Shots per Game", max: 30000 },
-              { name: "Shots On Target Ratio %", max: 38000 },
-              { name: "Dribbles per Game", max: 52000 },
-              { name: "Cross Completion", max: 25000 },
-              { name: "Pass Completion Ratio (%)", max: 25000 },
-               { name: "Fouls Against per Game", max: 39000 },
-            ],
-            // radius: 100,
-            // center: ["50%", "50%"],
-          },
-          series: [
-            {
-              type: "radar",
-              areaStyle: {},
-              // itemStyle: {
-              //   color:"#E55C00",
-              // },
-              data: [
-                {
-                  value: [4200, 3000, 20000, 35000, 50000, 18000, 20000, 35000],
-                  name: "Man City",
-                  itemStyle: {
-                    color: "#E55C00",
-                  },
-                },
-                {
-                  value: [
-                    5000, 14000, 28000, 26000, 42000, 21000, 20000, 35000,
-                  ],
-                  name: "Premier Division Average",
-                  itemStyle: {
-                    color: "#fbb034",
-                  },
-                },
-              ],
-            },
+      const option ={
+        legend: {
+          data: ["RSB Berkane", "Moyenne de ligue"],
+        },
+        radar: {
+          // shape: 'circle',
+          indicator: [
+            { name: "Buts", max: 6500 },
+            { name: "XContre", max: 16000 },
+            { name: "Tirs", max: 30000 },
+            { name: "Tirs cadre", max: 38000 },
+            { name: "Contre Prise", max: 52000 },
+            { name: "Passes Complete", max: 25000 },
+            { name: "Duels Offensive ", max: 25000 },
           ],
-        };
-        myChart.setOption(option);
+          radius: 100,
+          center: ["45%", "60%"],
+        },
+        series: [
+          {
+            type: "radar",
+            areaStyle: {},
+            data: [
+              {
+                value: [4200, 3000, 20000, 35000, 50000, 18000, 20000, 35000],
+                name: "RSB Berkane",
+                itemStyle: {
+                  color: "#E55C00",
+                },
+              },
+              {
+                value: [
+                  5000, 14000, 28000, 26000, 42000, 21000, 20000, 35000,
+                ],
+                name: "Moyenne de ligue",
+                itemStyle: {
+                  color: "#fbb034",
+                },
+              },
+            ],
+          },
+        ],
+      };
+      myChart.setOption(option);
+        // myChart.setOption(this.radarDefending);
       break;
 
       case "UPDATE_CHART":

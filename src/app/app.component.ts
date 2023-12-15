@@ -26,24 +26,6 @@ export class AppComponent {
     this.authService.getUpdatedUser()
       .subscribe(
         (result: User) => {
-          if (result?.id) {
-            this.user = result;
-            console.log(
-              this.user?.type === 'sub_user', this.user?.autoriser == 0
-            );
-            this.authService.getPalettes(result?.id).subscribe(palette => {
-              Object.keys(palette).forEach(key => {
-                if (!environment.production) {
-                  console.log(
-                    `%cUSER ${result?.nom.toUpperCase().trim()}`,
-                    `color: ${palette['--secondary-color'] ?? 'white'}; background-color: ${palette['--primary-color'] ?? '#5F87C1'}; padding: 3px 6px ; border-radius: 3px;`,
-                    result
-                  );
-                }
-                this.charedService.updatePlatformColor(key, palette[key])
-              })
-            })
-          }
         }
       );
     this.authService.getUser();

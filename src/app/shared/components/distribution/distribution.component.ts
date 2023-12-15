@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import * as echarts from "echarts";
+import { TeamsService } from 'src/app/components/datahub/components/teams/service/teams.service';
 @Component({
   selector: 'app-distribution',
   templateUrl: './distribution.component.html',
@@ -9,33 +10,42 @@ import * as echarts from "echarts";
 })
 export class DistributionComponent implements OnInit {
   activeButton: string = 'XG'; // Initially, no button is active
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any){
+  constructor(private teamsService :TeamsService){
   }
-
-  ngOnInit() {
-    this.actions("CREATE_CHART_Distribution");
-    console.log('====================================');
-    console.log(this.data);
-    console.log('====================================');
-  } 
-  
-
+  treeData : any;
   setActiveButton(button: string): void {
     this.activeButton = button;
   }
+  ngOnInit() {
+    
+    this.getRadarTreeMap();
+  } 
+  
+
+  getRadarTreeMap(){
+    this.teamsService.getTreeMapData().subscribe((res)=>{
+     this.treeData = res;
+      this.actions("CREATE_CHART_DISTRIBUTION");
+      console.log('====================================');
+      console.log(this.treeData);
+      console.log('====================================');
+    })
+  }
+
+
 
 
   actions(CASE: string, RES: any = null) {
     switch (CASE) {
-      case "CREATE_CHART_Distribution":
+      case "CREATE_CHART_DISTRIBUTION":
         const myChart1 = echarts.init(document.getElementById("chart-distribution"));
         const option1 ={
           title: {
-            text: 'Distribution XG (joueurs a plus de 400 minutes de jeu)',
+            text: 'Distribution XG (400 minutes de jeu)',
             left: 'center',
             textStyle: {
-              fontWeight: 'bold', // Font weight (e.g., bold, normal, etc.)
-              fontSize: 14 // Font size in pixels
+              fontWeight: 'bold',
+              fontSize: 12,
             }
           },          
           series: [
@@ -98,12 +108,6 @@ export class DistributionComponent implements OnInit {
         };
         myChart1.setOption(option1);
       break;
-
-
-   
-  
-        
-
       case "UPDATE_CHART":
         break;
      

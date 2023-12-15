@@ -32,6 +32,7 @@ import { RankingService } from './components/ranking/service/ranking.service';
 import { CdkTableModule } from '@angular/cdk/table';
 import { TeamsComponent } from './components/teams/teams.component';
 import {MatTableModule } from '@angular/material/table';
+import {MatSortModule } from '@angular/material/sort';
 import { OverviewComponent } from './components/teams/components/overview/overview.component';
 import { JoueursComponent } from './components/teams/components/joueurs/joueurs.component';
 
@@ -48,6 +49,7 @@ import { JoueursComponent } from './components/teams/components/joueurs/joueurs.
     MatInputModule,
     MatTableModule,
     CdkTableModule,
+    MatSortModule
    
   ],
   declarations: [

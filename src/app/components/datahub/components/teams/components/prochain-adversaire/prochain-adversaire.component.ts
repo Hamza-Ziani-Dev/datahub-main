@@ -45,6 +45,8 @@ export class ProchainAdversaireComponent implements OnInit {
     this.getGeneralInfo();
     this.getFixtureInfo();
   }
+
+ 
 getGeneralInfo(){
   this.teamService.getGeneralInfo().subscribe((res)=>{
     this.generalInfoArray = res;
@@ -65,69 +67,12 @@ getTreeMapData(){
   })
 }
 
-// openDialogTable(){
-//     let height = '400px';
-//     let width = '50%';
-//     if (window.innerWidth < 768) { 
-//       height = '500px'; 
-//       width = '80%';
-//     }
-//    const showDialogTable = this.dialogTable.open(TableStatistiqueFormationComponent,{
-//     width:width,
-//     height: height,
-//     panelClass: 'dialog-with-margin'
-//    });
-// }
-
-// openDialogDistribution(){
-//     let height = '360px';
-//     let width = '50%';
-//     if (window.innerWidth < 768) { 
-//       height = '500px'; 
-//       width = '80%';
-//     }
-//     const showDialogDistribution = this.dialogDistribution.open(DistributionComponent,{
-//       width:width,
-//     height: height,
-//     panelClass: 'dialog-with-margin'
-  
-//     });
-// }
-   
-// openDialogDefensive(){
-//     let height = '400px';
-//     let width = '50%';
-//     if (window.innerWidth < 768) { 
-//       height = '500px'; 
-//       width = '80%';
-//     }
-//     const showDialogDeffensive = this.dialogDefensive.open(DefensiveComponent,{
-//       width:width,
-//       height: height,
-//     });
-// }
-
-// openDialogOffensive(){
-//     let height = '400px';
-//     let width = '50%';
-//     if (window.innerWidth < 768) { 
-//       height = '500px'; 
-//       width = '80%';
-//     }
-//     const showDialogOffensive = this.dialogOffensive.open(OffensiveComponent,{
-//       width:width,
-//       height: height,
-//       data:{key:"test"}
-//     });
-
-    
-// }
 actions(CASE: string, RES: any = null) {
-  let height = '400px';
-  let width = '50%';
+  let height = '450px';
+  let width = '60%';
   if (window.innerWidth < 768) { 
-    height = '500px'; 
-    width = '80%';
+    height = '400px'; 
+    width = '100%';
   }
   switch (CASE) {
     case 'CREATE_CHART_RADAR1':
@@ -176,7 +121,7 @@ actions(CASE: string, RES: any = null) {
     case 'UPDATE_CHART_RADAR1':
       break;
     case 'openDialogTable':
-      this.openDialog(this.dialogTable, TableStatistiqueFormationComponent, width, height,'dialog-with-data', { table: 'test' });
+      this.openDialog(this.dialogTable, TableStatistiqueFormationComponent, width, height,'dialog-with-data', { table: 'test',position: '10px' });
       break;
 
     case 'openDialogDistribution':
@@ -199,7 +144,8 @@ openDialog(dialogInstance: any, component: any, width: string, height: string, p
     width: width,
     height: height,
     panelClass: panelClass || '',
-    data: data || null
+    data: data || null,
+    position : {top :'5px'}
   });
 }
 
