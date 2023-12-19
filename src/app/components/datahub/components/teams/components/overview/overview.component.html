@@ -64,24 +64,23 @@
           <table class="table table-striped table-hover" id="table2">
             <thead>
               <tr>
-                <th colspan="3" style="border-radius: 20px; background-color: rgb(25 26 25);color: #fff;">
+                <th colspan="3" class="title_goals">
                   <span class="goals-header text_bold">Goals </span>
-                  <div style="margin-top: 5px;margin-bottom: 15px;padding: 0px 10px;">{{headerDataGoals['\u00c9quipe']}}</div></th>
-                <th scope="col" style="border-radius: 40px;background-color: rgb(25 26 25);color: #fff;">
-                  <div class="demo-goals" style="padding: 4px 19px;">{{headerDataGoals?.Buts}}</div>
-                  <img [src]="headerDataGoals?.image_src" alt="" style="width: 40px;
-                  height: 40px;
-                  margin-left: 11px;">
+                  <div class="title_sub_goals">{{headerDataGoals['\u00c9quipe']}}</div>
+                </th>
+                <th scope="col" class="title_header">
+                  <div class="demo-goals">{{headerDataGoals?.Buts}}</div>
+                  <img class="img_header" [src]="headerDataGoals?.image_src" alt="">
                 </th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let team of bodyDataGoals">
-                <th scope="row" style="border-radius: 5px;color: #fff;">{{team['classment']}}</th>
+                <th scope="row" class="class_body">{{team['classment']}}</th>
                 <td colspan="2">{{team['\u00c9quipe']}}</td>
                 <td>
                   <span class="mr-4 text_bold" >{{team.Buts}}</span>
-                  <span><img [src]="team?.image_src" alt="" style="width: 15px;height: 20px;"></span>
+                  <span><img class="img_body" [src]="team?.image_src" alt=""></span>
                 </td>
               </tr>
         
@@ -93,24 +92,23 @@
           <table class="table table-striped table-hover" id="table2">
             <thead>
               <tr>
-                <th colspan="3" style="border-radius: 20px; background-color: rgb(25 26 25);color: #fff;">
+                <th colspan="3" class="title_goals">
                   <span class="goals-header text_bold">XG</span>
-                  <div style="margin-top: 5px;margin-bottom: 15px;padding: 0px 10px;">{{headerDataXg['\u00c9quipe']}}</div></th>
-                <th scope="col" style="border-radius: 40px;background-color: rgb(25 26 25);color: #fff;">
-                  <div class="demo-goals" style="padding: 4px 19px;">{{headerDataXg?.xG}}</div>
-                  <img [src]="headerDataXg?.image_src" alt="" style="width: 40px;
-                  height: 40px;
-                  margin-left: 11px;">
+                  <div class="title_sub_goals">{{headerDataXg['\u00c9quipe']}}</div>
+                </th>
+                <th scope="col" class="title_header">
+                  <div class="demo-goals">{{headerDataXg?.xG}}</div>
+                  <img class="img_header" [src]="headerDataXg?.image_src" alt="">
                 </th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let xg of bodyDataXg">
-                <th scope="row" style="border-radius: 5px;color: #fff;">{{xg['classment']}}</th>
+                <th scope="row" class="class_body">{{xg['classment']}}</th>
                 <td colspan="2">{{xg['\u00c9quipe']}}</td>
                 <td>
                   <span class="mr-4 text_bold" >{{xg.xG}}</span>
-                  <span><img [src]="xg?.image_src" alt="" style="width: 15px;height: 20px;"></span>
+                  <span><img class="img_body" [src]="xg?.image_src" alt=""></span>
                 </td>
               </tr>
         
@@ -122,24 +120,22 @@
             <table class="table table-striped table-hover" id="table2">
               <thead>
                 <tr>
-                  <th colspan="3" style="border-radius: 20px; background-color: rgb(25 26 25);color: #fff;">
+                  <th colspan="3" class="title_goals">
                     <span class="goals-header text_bold">Tirs</span>
-                    <div style="margin-top: 5px;margin-bottom: 15px;padding: 0px 10px;">{{headerDataTirs['\u00c9quipe']}}</div></th>
-                  <th scope="col" style="border-radius: 40px;background-color: rgb(25 26 25);color: #fff;">
-                    <div class="demo-goals" style="padding: 4px 19px;">{{headerDataTirs.Tirs}}</div>
-                    <img [src]="headerDataTirs?.image_src" alt="" style="width: 40px;
-                    height: 40px;
-                    margin-left: 11px;">
+                    <div class="title_sub_goals">{{headerDataTirs['\u00c9quipe']}}</div></th>
+                  <th scope="col" class="title_header">
+                    <div class="demo-goals">{{headerDataTirs.Tirs}}</div>
+                    <img [src]="headerDataTirs?.image_src" alt="" class="img_header">
                   </th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let tirs of bodyDataTirs">
-                  <th scope="row" style="border-radius: 5px;color: #fff;">{{tirs['classment']}}</th>
+                  <th scope="row" class="class_body">{{tirs['classment']}}</th>
                   <td colspan="2">{{tirs['\u00c9quipe']}}</td>
                   <td>
                     <span class="mr-4 text_bold" >{{tirs.Tirs}}</span>
-                    <span><img [src]="tirs?.image_src" alt="" style="width: 15px;height: 20px;"></span>
+                    <span><img [src]="tirs?.image_src" alt="" class="img_body"></span>
                   </td>
                 </tr>
           
@@ -151,24 +147,22 @@
               <table class="table table-striped table-hover" id="table2">
                 <thead>
                   <tr>
-                    <th colspan="3" style="border-radius: 20px; background-color: rgb(25 26 25);color: #fff;">
+                    <th colspan="3" class="title_goals">
                       <span class="goals-header text_bold">Tirs Cadrés </span>
-                      <div style="margin-top: 5px;margin-bottom: 15px;padding: 0px 10px;">{{headerDataTirCadre['\u00c9quipe']}}</div></th>
-                    <th scope="col" style="border-radius: 40px;background-color: rgb(25 26 25);color: #fff;">
-                      <div class="demo-goals" style="padding: 4px 19px;">{{headerDataTirCadre?.Tirs_cadres}}</div>
-                      <img [src]="headerDataTirCadre?.image_src" alt="" style="width: 40px;
-                      height: 40px;
-                      margin-left: 11px;">
+                      <div class="title_sub_goals">{{headerDataTirCadre['\u00c9quipe']}}</div></th>
+                    <th scope="col" class="title_header">
+                      <div class="demo-goals">{{headerDataTirCadre?.Tirs_cadres}}</div>
+                      <img [src]="headerDataTirCadre?.image_src" alt="" class="img_header">
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let tircardre of bodyDataTirCadre">
-                    <th scope="row" style="border-radius: 5px;color: #fff;">{{tircardre['classment']}}</th>
+                    <th scope="row" class="class_body">{{tircardre['classment']}}</th>
                     <td colspan="2">{{tircardre['\u00c9quipe']}}</td>
                     <td>
                       <span class="mr-4 text_bold" >12.3</span>
-                      <span><img [src]="tircardre?.image_src" alt="" style="width: 15px;height: 20px;"></span>
+                      <span><img [src]="tircardre?.image_src" alt="" class="img_body"></span>
                     </td>
                   </tr>
             
@@ -180,24 +174,22 @@
           <table class="table table-striped table-hover" id="table2">
             <thead>
               <tr>
-                <th colspan="3" style="border-radius: 20px; background-color: rgb(25 26 25);color: #fff;">
+                <th colspan="3" class="title_goals">
                   <span class="goals-header text_bold">Buts Concédés </span>
-                  <div style="margin-top: 5px;margin-bottom: 15px;padding: 0px 10px;">{{headerDataButsCon['\u00c9quipe']}}</div></th>
-                <th scope="col" style="border-radius: 40px;background-color: rgb(25 26 25);color: #fff;">
-                  <div class="demo-goals" style="padding: 4px 19px;">{{headerDataButsCon?.Buts_concedes}}</div>
-                  <img [src]="headerDataButsCon?.image_src" alt="" style="width: 40px;
-                  height: 40px;
-                  margin-left: 11px;">
+                  <div class="title_sub_goals">{{headerDataButsCon['\u00c9quipe']}}</div></th>
+                <th scope="col" class="title_header">
+                  <div class="demo-goals">{{headerDataButsCon?.Buts_concedes}}</div>
+                  <img [src]="headerDataButsCon?.image_src" alt="" class="img_header">
                 </th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let bustCon of bodyDataButsCon">
-                <th scope="row" style="border-radius: 5px;color: #fff;">{{bustCon['classment']}}</th>
+                <th scope="row" class="class_body">{{bustCon['classment']}}</th>
                 <td colspan="2">{{bustCon['\u00c9quipe']}}</td>
                 <td>
                   <span class="mr-4 text_bold">{{bustCon?.Buts_concedes}}</span>
-                  <span><img [src]="bustCon?.image_src" alt="" style="width: 15px;height: 20px;"></span>
+                  <span><img [src]="bustCon?.image_src" alt="" class="img_body"></span>
                 </td>
               </tr>
         
@@ -209,24 +201,22 @@
           <table class="table table-striped table-hover" id="table2">
             <thead>
               <tr>
-                <th colspan="3" style="border-radius: 20px; background-color: rgb(25 26 25);color: #fff;">
+                <th colspan="3" class="title_goals">
                   <span class="goals-header text_bold">XG Aainst</span>
-                  <div style="margin-top: 5px;margin-bottom: 15px;padding: 0px 10px;">{{headerDataXgAgain['\u00c9quipe']}}</div></th>
-                <th scope="col" style="border-radius: 40px;background-color: rgb(25 26 25);color: #fff;">
-                  <div class="demo-goals" style="padding: 4px 19px;">{{headerDataXgAgain.XG_against}}</div>
-                  <img [src]="headerDataXgAgain?.image_src" alt="" style="width: 40px;
-                  height: 40px;
-                  margin-left: 11px;">
+                  <div class="title_sub_goals">{{headerDataXgAgain['\u00c9quipe']}}</div></th>
+                <th scope="col" class="title_header">
+                  <div class="demo-goals">{{headerDataXgAgain.XG_against}}</div>
+                  <img [src]="headerDataXgAgain?.image_src" alt="" class="img_header">
                 </th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let xgAgain of bodyDataXgAgain">
-                <th scope="row" style="border-radius: 5px;color: #fff;">{{xgAgain['classment']}}</th>
+                <th scope="row" class="class_body">{{xgAgain['classment']}}</th>
                 <td colspan="2">{{xgAgain['\u00c9quipe']}}</td>
                 <td>
                   <span class="mr-4 text_bold" >{{xgAgain.XG_against}}</span>
-                  <span><img [src]="xgAgain?.image_src" alt="" style="width: 15px;height: 20px;"></span>
+                  <span><img [src]="xgAgain?.image_src" alt="" class="img_body"></span>
                 </td>
               </tr>
         
@@ -238,24 +228,22 @@
           <table class="table table-striped table-hover" id="table2">
             <thead>
               <tr>
-                <th colspan="3" style="border-radius: 20px; background-color: rgb(25 26 25);color: #fff;">
+                <th colspan="3" class="title_goals">
                   <span class="goals-header text_bold">Tirs Contre</span>
-                  <div style="margin-top: 5px;margin-bottom: 15px;padding: 0px 10px;">{{headerDataTirsContre['\u00c9quipe']}}</div></th>
-                <th scope="col" style="border-radius: 40px;background-color: rgb(25 26 25);color: #fff;">
-                  <div class="demo-goals" style="padding: 4px 19px;">{{headerDataTirsContre.Tirs_contre}}</div>
-                  <img [src]="headerDataTirsContre?.image_src" alt="" style="width: 40px;
-                  height: 40px;
-                  margin-left: 11px;">
+                  <div class="title_sub_goals">{{headerDataTirsContre['\u00c9quipe']}}</div></th>
+                <th scope="col" class="title_header">
+                  <div class="demo-goals">{{headerDataTirsContre.Tirs_contre}}</div>
+                  <img [src]="headerDataTirsContre?.image_src" alt="" class="img_header">
                 </th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let tirsContre of bodyDataTirsContre">
-                <th scope="row" style="border-radius: 5px;color: #fff;">{{tirsContre['classment']}}</th>
+                <th scope="row" class="class_body">{{tirsContre['classment']}}</th>
                 <td colspan="2">{{tirsContre['\u00c9quipe']}}</td>
                 <td>
                   <span class="mr-4 text_bold" >{{tirsContre.Tirs_contre}}</span>
-                  <span><img [src]="tirsContre?.image_src" alt="" style="width: 15px;height: 20px;"></span>
+                  <span><img [src]="tirsContre?.image_src" alt="" class="img_body"></span>
                 </td>
               </tr>
         
@@ -267,24 +255,22 @@
           <table class="table table-striped table-hover" id="table2">
             <thead>
               <tr>
-                <th colspan="3" style="border-radius: 20px; background-color: rgb(25 26 25);color: #fff;">
+                <th colspan="3" class="title_goals">
                   <span class="goals-header text_bold">Tirs Contre Cadre</span>
-                  <div style="margin-top: 5px;margin-bottom: 15px;padding: 0px 10px;">{{headerDataTirsContreCadre['\u00c9quipe']}}</div></th>
-                <th scope="col" style="border-radius: 40px;background-color: rgb(25 26 25);color: #fff;">
-                  <div class="demo-goals" style="padding: 4px 19px;">{{headerDataTirsContreCadre.Tirs_contre_cadres}}</div>
-                  <img [src]="headerDataTirsContreCadre?.image_src" alt="" style="width: 40px;
-                  height: 40px;
-                  margin-left: 11px;">
+                  <div class="title_sub_goals">{{headerDataTirsContreCadre['\u00c9quipe']}}</div></th>
+                <th scope="col" class="title_header">
+                  <div class="demo-goals">{{headerDataTirsContreCadre.Tirs_contre_cadres}}</div>
+                  <img [src]="headerDataTirsContreCadre?.image_src" alt="" class="img_header">
                 </th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let tirsContreCadre of bodyDataTirsContreCadre">
-                <th scope="row" style="border-radius: 5px;color: #fff;">{{tirsContreCadre['classment']}}</th>
+                <th scope="row" class="class_body">{{tirsContreCadre['classment']}}</th>
                 <td colspan="2">{{tirsContreCadre['\u00c9quipe']}}</td>
                 <td>
                   <span class="mr-4 text_bold" >{{tirsContreCadre.Tirs_contre_cadres}}</span>
-                  <span><img [src]="tirsContreCadre?.image_src" alt="" style="width: 15px;height: 20px;"></span>
+                  <span><img [src]="tirsContreCadre?.image_src" alt="" class="img_body"></span>
                 </td>
               </tr>
         
@@ -296,24 +282,22 @@
           <table class="table table-striped table-hover" id="table2">
             <thead>
               <tr>
-                <th colspan="3" style="border-radius: 20px; background-color: rgb(25 26 25);color: #fff;">
+                <th colspan="3" class="title_goals">
                   <span class="goals-header text_bold">Fautes</span>
-                  <div style="margin-top: 5px;margin-bottom: 15px;padding: 0px 10px;">{{headerDataFautes['\u00c9quipe']}}</div></th>
-                <th scope="col" style="border-radius: 40px;background-color: rgb(25 26 25);color: #fff;">
-                  <div class="demo-goals" style="padding: 4px 19px;">{{headerDataFautes.Fautes}}</div>
-                  <img [src]="headerDataFautes?.image_src" alt="" style="width: 40px;
-                  height: 40px;
-                  margin-left: 11px;">
+                  <div class="title_sub_goals">{{headerDataFautes['\u00c9quipe']}}</div></th>
+                <th scope="col" class="title_header">
+                  <div class="demo-goals">{{headerDataFautes.Fautes}}</div>
+                  <img [src]="headerDataFautes?.image_src" alt="" class="img_header">
                 </th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let fautes of bodyDataFautes">
-                <th scope="row" style="border-radius: 5px;color: #fff;">{{fautes['classment']}}</th>
+                <th scope="row" class="class_body">{{fautes['classment']}}</th>
                 <td colspan="2">{{fautes['\u00c9quipe']}}</td>
                 <td>
                   <span class="mr-4 text_bold" >{{fautes.Fautes}}</span>
-                  <span><img [src]="fautes?.image_src" alt="" style="width: 15px;height: 20px;"></span>
+                  <span><img [src]="fautes?.image_src" alt="" class="img_body"></span>
                 </td>
               </tr>
         
@@ -325,24 +309,22 @@
           <table class="table table-striped table-hover" id="table2">
             <thead>
               <tr>
-                <th colspan="3" style="border-radius: 20px; background-color: rgb(25 26 25);color: #fff;">
+                <th colspan="3" class="title_goals">
                   <span class="goals-header text_bold">Cartons Jaunes</span>
-                  <div style="margin-top: 5px;margin-bottom: 15px;padding: 0px 10px;">{{headerDataCarteJoune['\u00c9quipe']}}</div></th>
-                <th scope="col" style="border-radius: 40px;background-color: rgb(25 26 25);color: #fff;">
-                  <div class="demo-goals" style="padding: 4px 19px;">{{headerDataCarteJoune.Cartons_jaunes}}</div>
-                  <img [src]="headerDataCarteJoune?.image_src" alt="" style="width: 40px;
-                  height: 40px;
-                  margin-left: 11px;">
+                  <div class="title_sub_goals">{{headerDataCarteJoune['\u00c9quipe']}}</div></th>
+                <th scope="col" class="title_header">
+                  <div class="demo-goals">{{headerDataCarteJoune.Cartons_jaunes}}</div>
+                  <img [src]="headerDataCarteJoune?.image_src" alt="" class="img_header">
                 </th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let joune of bodyDataCarteJoune">
-                <th scope="row" style="border-radius: 5px;color: #fff;">{{joune['classment']}}</th>
+                <th scope="row" class="class_body">{{joune['classment']}}</th>
                 <td colspan="2">{{joune['\u00c9quipe']}}</td>
                 <td>
                   <span class="mr-4 text_bold" >{{joune.Cartons_jaunes}}</span>
-                  <span><img [src]="joune?.image_src" alt="" style="width: 15px;height: 20px;"></span>
+                  <span><img [src]="joune?.image_src" alt="" class="img_body"></span>
                 </td>
               </tr>
         
@@ -354,24 +336,22 @@
           <table class="table table-striped table-hover" id="table2">
             <thead>
               <tr>
-                <th colspan="3" style="border-radius: 20px; background-color: rgb(25 26 25);color: #fff;">
+                <th colspan="3" class="title_goals">
                   <span class="goals-header text_bold">Cartons Rouge</span>
-                  <div style="margin-top: 5px;margin-bottom: 15px;padding: 0px 10px;">{{headerDataCarteRouge['\u00c9quipe']}}</div></th>
-                <th scope="col" style="border-radius: 40px;background-color: rgb(25 26 25);color: #fff;">
-                  <div class="demo-goals" style="padding: 4px 19px;">{{headerDataCarteRouge.Cartons_rouges}}</div>
-                  <img [src]="headerDataCarteRouge?.image_src" alt="" style="width: 40px;
-                  height: 40px;
-                  margin-left: 11px;">
+                  <div class="title_sub_goals">{{headerDataCarteRouge['\u00c9quipe']}}</div></th>
+                <th scope="col" class="title_header">
+                  <div class="demo-goals">{{headerDataCarteRouge.Cartons_rouges}}</div>
+                  <img [src]="headerDataCarteRouge?.image_src" alt="" class="img_header">
                 </th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let rouge of bodyDataCarteRouge">
-                <th scope="row" style="border-radius: 5px;color: #fff;">{{rouge['classment']}}</th>
+                <th scope="row" class="class_body">{{rouge['classment']}}</th>
                 <td colspan="2">{{rouge['\u00c9quipe']}}</td>
                 <td>
                   <span class="mr-4 text_bold" >{{rouge.Cartons_rouges}}</span>
-                  <span><img [src]="rouge?.image_src" alt="" style="width: 15px;height: 20px;"></span>
+                  <span><img [src]="rouge?.image_src" alt="" class="img_body"></span>
                 </td>
               </tr>
         
@@ -383,24 +363,22 @@
             <table class="table table-striped table-hover" id="table2">
               <thead>
                 <tr>
-                  <th colspan="3" style="border-radius: 20px; background-color: rgb(25 26 25);color: #fff;">
+                  <th colspan="3" class="title_goals">
                     <span class="goals-header text_bold">Possession %</span>
-                    <div style="margin-top: 5px;margin-bottom: 15px;padding: 0px 10px;">{{headerDataPossession['\u00c9quipe']}}</div></th>
-                  <th scope="col" style="border-radius: 40px;background-color: rgb(25 26 25);color: #fff;">
-                    <div class="demo-goals" style="padding: 4px 19px;">{{headerDataPossession.Possession}}</div>
-                    <img [src]="headerDataPossession?.image_src" alt="" style="width: 40px;
-                    height: 40px;
-                    margin-left: 11px;">
+                    <div class="title_sub_goals">{{headerDataPossession['\u00c9quipe']}}</div></th>
+                  <th scope="col" class="title_header">
+                    <div class="demo-goals">{{headerDataPossession.Possession}}</div>
+                    <img [src]="headerDataPossession?.image_src" alt="" class="img_header">
                   </th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let possession of bodyDataPossession">
-                  <th scope="row" style="border-radius: 5px;color: #fff;">{{possession['classment']}}</th>
+                  <th scope="row" class="class_body">{{possession['classment']}}</th>
                   <td colspan="2">{{possession['\u00c9quipe']}}</td>
                   <td>
                     <span class="mr-4 text_bold" >{{possession.Possession}}</span>
-                    <span><img [src]="possession?.image_src" alt="" style="width: 15px;height: 20px;"></span>
+                    <span><img [src]="possession?.image_src" alt="" class="img_body"></span>
                   </td>
                 </tr>
           
@@ -412,24 +390,22 @@
         <table class="table table-striped table-hover" id="table2">
           <thead>
             <tr>
-              <th colspan="3" style="border-radius: 20px; background-color: rgb(25 26 25);color: #fff;">
+              <th colspan="3" class="title_goals">
                 <span class="goals-header text_bold">Goals </span>
-                <div style="margin-top: 5px;margin-bottom: 15px;padding: 0px 10px;">{{headerData['Équipe']}}</div></th>
-              <th scope="col" style="border-radius: 40px;background-color: rgb(25 26 25);color: #fff;">
-                <div class="demo-goals" style="padding: 4px 19px;">{{headerData?.Buts}}</div>
-                <img [src]="headerData?.image_src" alt="" style="width: 40px;
-                height: 40px;
-                margin-left: 11px;">
+                <div class="title_sub_goals">{{headerData['Équipe']}}</div></th>
+              <th scope="col" class="title_header">
+                <div class="demo-goals">{{headerData?.Buts}}</div>
+                <img [src]="headerData?.image_src" alt="" class="img_header">
               </th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let team of bodyData; let i = index">
-              <th scope="row" style="border-radius: 5px;color: #fff;">{{i}}</th>
+              <th scope="row" class="class_body">{{i}}</th>
               <td colspan="2">{{team['Équipe']}}</td>
               <td>
                 <span class="mr-4 text_bold" >{{team.Buts}}</span>
-                <span><img [src]="team?.image_src" alt="" style="width: 15px;height: 20px;"></span>
+                <span><img [src]="team?.image_src" alt="" class="img_body"></span>
               </td>
             </tr>
       
@@ -445,14 +421,12 @@
           <table class="table table-striped" id="table2">
             <thead>
               <tr>
-                <th colspan="3">
+                <th colspan="3" class="title_goals">
                   <span class="goals-header text_bold">Goals </span>
-                  <div style="margin-top: 5px;margin-bottom: 15px;padding: 0px 10px;">RAJA CASABLANCA</div></th>
+                  <div class="title_sub_goals">RAJA CASABLANCA</div></th>
                 <th scope="col">
-                  <div class="demo-goals" style="padding: 4px 19px;">30</div>
-                  <img src="https://seeklogo.com/images/R/raja-club-athletic-rca-logo-2C8B83D406-seeklogo.com.png" alt="" style="width: 40px;
-                  height: 40px;
-                  margin-left: 11px;">
+                  <div class="demo-goals">30</div>
+                  <img src="https://seeklogo.com/images/R/raja-club-athletic-rca-logo-2C8B83D406-seeklogo.com.png" alt="" class="img_header">
                 </th>
               </tr>
             </thead>

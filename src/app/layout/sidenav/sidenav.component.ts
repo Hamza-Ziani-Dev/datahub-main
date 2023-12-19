@@ -90,14 +90,15 @@ export class SidenavComponent implements OnInit {
                   label: 'HEADER.DATA_HUB',
                   icon: 'fas fa-chart-pie',
                   display: false,
-                  permission: this.user?.type == 'owner' && this.user?.pack != 'pack_starter',
+                  // permission: this.user?.type == 'owner' && this.user?.pack != 'pack_starter',
+                  permission: true,
                   items: [
                   
                     {
                       label: 'HEADER.PLAYERS',
                       icon: 'fas fa-street-view',
                       // permission: this.user?.type == 'owner',
-                      permission: false,
+                      // permission: true,
                       routerLink: '/datahub/players',
                       items: []
                     },
@@ -105,27 +106,62 @@ export class SidenavComponent implements OnInit {
                     {
                       label: 'Base de données',
                       icon: 'fas fa-users',
-                      permission: this.user?.type == 'owner',
+                      // permission: this.user?.type == 'owner',
+                      permission: true,
                       routerLink: '/datahub/database/list-players-post',
                       items: []
                     },
                     {
                       label: 'Botola data hub',
                       icon: 'fas fa-users',
-                      permission: this.user?.type == 'owner',
+                      // permission: this.user?.type == 'owner',
+                      permission: true,
                       routerLink: '/datahub/ranking',
                       items: []
                     },
                     {
                       label: 'HEADER.TEAMS',
                       icon: 'fas fa-users-cog',
-                      permission: this.user?.type == 'owner',
-                      //permission: false,
+                      // permission: this.user?.type == 'owner',
+                      permission: true,
                       routerLink: '/datahub/teams',
+                      items: []
+                    },
+                    {
+                      label: 'HEADER.COMPETITION',
+                      icon: 'fas fa-users-cog',
+                      // permission: this.user?.type == 'owner',
+                      permission: true,
+                      routerLink: '/datahub/competition',
                       items: []
                     },
                   ]
                 },
+                // {
+                //   label: 'HEADER.CONPETITIONS',
+                //   icon: 'fas fa-chart-pie',
+                //   display: false,
+                //   // permission: this.user?.type == 'owner' && this.user?.pack != 'pack_starter',
+                //   permission: true,
+                //   items: [
+                //     {
+                //       label: 'HEADER.CLASSEMENT',
+                //       icon: 'fas fa-users-cog',
+                //       // permission: this.user?.type == 'owner',
+                //       permission: true,
+                //       routerLink: '/datahub/classement',
+                //       items: []
+                //     },
+                //     {
+                //       label: 'HEADER.RESULTATS',
+                //       icon: 'fas fa-users-cog',
+                //       // permission: this.user?.type == 'owner',
+                //       permission: true,
+                //       routerLink: '/datahub/resultats',
+                //       items: []
+                //     },
+                //   ]
+                // },
 
               ]
 

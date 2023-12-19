@@ -2,9 +2,8 @@ export const environment = {
   production: false,
   access_token: "",
   version: "5.0.3",
-  //type: "frmf",
+  // type: "frmf",
   type: "pro",
-
   // link: "http://localhost:3000",
   link: 'https://preprod-api.myteam.solutions',
   football_api: "https://api-football-v1.p.rapidapi.com/v2/",

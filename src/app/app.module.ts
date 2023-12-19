@@ -57,8 +57,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       HeaderComponent,
       BodyComponent,
       SublevelMenuComponent,
-      MainNavMobileComponent,
-    
+      MainNavMobileComponent, 
     ],
   imports: [
     MatTableModule,

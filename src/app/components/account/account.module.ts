@@ -15,7 +15,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { CompetitionsComponent } from './competitions/competitions.component';
 import { LoadingModule } from 'src/app/custom-component/loading/loading.module';
 
 @NgModule({
@@ -24,8 +23,7 @@ import { LoadingModule } from 'src/app/custom-component/loading/loading.module';
     AccountDashboardComponent,
     AccountClubsComponent,
     EditClubComponent,
-    AddClubComponent,
-    CompetitionsComponent
+    AddClubComponent
   ],
   imports: [
     CommonModule,

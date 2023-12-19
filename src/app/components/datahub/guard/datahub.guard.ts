@@ -22,9 +22,11 @@ export class DatahubGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     // this.authService.isNewsVersion();
-    if (this.user?.type == 'owner') {
-      return true;
-    }
+    // if (this.user?.type == 'owner') {
+    //   return true;
+    // }
+
+    return true;
     return this.authService.goToDefaultNavigate();
   }
 

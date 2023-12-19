@@ -74,8 +74,8 @@ import { JoueursComponent } from './components/teams/components/joueurs/joueurs.
     SimilarComponent,
     ComparisonComponent,
     RangeslideDirective,
-    TeamsComponent
-  ],
+    TeamsComponent,
+    ],
   providers: [
     DatabaseService,
     RankingService,

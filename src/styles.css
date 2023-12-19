@@ -9,6 +9,7 @@ body {
 
 /* FRMF */
 :root {
+  --primary-color-green:#2AA376;
   --primary-color: #155928;
   --primary-1-color: #353232;
   --primary-linear-gradient-one-color: #1e4c29;
