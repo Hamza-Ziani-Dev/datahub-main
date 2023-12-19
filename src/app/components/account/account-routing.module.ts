@@ -6,7 +6,6 @@ import { AccountDashboardComponent } from './account-dashboard/account-dashboard
 import { AccountClubsComponent } from './account-clubs/account-clubs.component';
 import { EditClubComponent } from './edit-club/edit-club.component';
 import { AddClubComponent } from './add-club/add-club.component';
-import { CompetitionsComponent } from './competitions/competitions.component';
 
 const routes: Routes = [
   {
@@ -15,7 +14,6 @@ const routes: Routes = [
       { path: 'clubs', component: AccountClubsComponent },
       { path: 'editClub/:id', component: EditClubComponent },
       { path: 'addClub', component: AddClubComponent },
-      { path: 'competitions', component: CompetitionsComponent }
 
     ]
   }

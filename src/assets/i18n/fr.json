@@ -44,7 +44,10 @@
         "GESTION_STAFF": "Gestion Staff",
         "MEDIA_CENTER": "Media Center",
         "TEAMS": "TEAMS",
-        "BASE DE DONNEES":"Base de données"
-        
+        "BASE DE DONNEES":"Base de données",
+        "COMPETITIONS":"COMPETITIONS",
+        "CONPE_TITIONS":"COMPETITIONS",
+        "CLASSEMENT":"CLASSEMENT",
+        "RESULTATS":"RESULTATS"
     }
 }

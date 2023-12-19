@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   // Wildcard route to redirect to the default route if no matching route is found
   { path: 'datahub', loadChildren: './components/datahub/datahub.module#DatahubModule' },
+  { path: 'competitions', loadChildren: './components/competitions/competitions.module#CompetitionsModule' },
 
   { path: '**', redirectTo: '/dashboard', pathMatch: 'full' },
 

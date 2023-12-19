@@ -85,7 +85,6 @@ export class SidenavComponent implements OnInit {
             this.version = this.user?.version;
             if (this.MENUS.length == 0)
               this.navData = [
-
                 {
                   label: 'HEADER.DATA_HUB',
                   icon: 'fas fa-chart-pie',
@@ -126,42 +125,34 @@ export class SidenavComponent implements OnInit {
                       permission: true,
                       routerLink: '/datahub/teams',
                       items: []
-                    },
+                    }
+                  ]
+                },
+                {
+                  label: 'HEADER.CONPE_TITIONS',
+                  icon: 'fas fa-trophy',
+                  display: false,
+                  // permission: this.user?.type == 'owner' && this.user?.pack != 'pack_starter',
+                  permission: true,
+                  items: [
                     {
-                      label: 'HEADER.COMPETITION',
-                      icon: 'fas fa-users-cog',
+                      label: 'HEADER.CLASSEMENT',
+                      icon: 'fas fa-sort-numeric-up',
                       // permission: this.user?.type == 'owner',
                       permission: true,
-                      routerLink: '/datahub/competition',
+                      routerLink: '/competitions/classement',
+                      items: []
+                    },
+                    {
+                      label: 'HEADER.RESULTATS',
+                      icon: 'fas fa-star',
+                      // permission: this.user?.type == 'owner',
+                      permission: true,
+                      routerLink: '/competitions/resultats',
                       items: []
                     },
                   ]
                 },
-                // {
-                //   label: 'HEADER.CONPETITIONS',
-                //   icon: 'fas fa-chart-pie',
-                //   display: false,
-                //   // permission: this.user?.type == 'owner' && this.user?.pack != 'pack_starter',
-                //   permission: true,
-                //   items: [
-                //     {
-                //       label: 'HEADER.CLASSEMENT',
-                //       icon: 'fas fa-users-cog',
-                //       // permission: this.user?.type == 'owner',
-                //       permission: true,
-                //       routerLink: '/datahub/classement',
-                //       items: []
-                //     },
-                //     {
-                //       label: 'HEADER.RESULTATS',
-                //       icon: 'fas fa-users-cog',
-                //       // permission: this.user?.type == 'owner',
-                //       permission: true,
-                //       routerLink: '/datahub/resultats',
-                //       items: []
-                //     },
-                //   ]
-                // },
 
               ]
 
