@@ -6,15 +6,10 @@ const routes: Routes = [
   // { path: '', loadChildren: './components/presentation/dashboard.module#DashboardModule', pathMatch: 'full' },
   // { path: '**', redirectTo: '/dashboard', pathMatch: 'full' },
   // Add more routes as needed
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+ //  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   // Wildcard route to redirect to the default route if no matching route is found
   { path: 'datahub', loadChildren: './components/datahub/datahub.module#DatahubModule' },
   { path: 'competitions', loadChildren: './components/competitions/competitions.module#CompetitionsModule' },
-
-  { path: '**', redirectTo: '/dashboard', pathMatch: 'full' },
-
-  { path: '**', redirectTo: '/dashboard', pathMatch: 'full' },
-
 ];
 
 @NgModule({

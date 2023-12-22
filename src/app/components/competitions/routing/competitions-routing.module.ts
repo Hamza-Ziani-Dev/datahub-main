@@ -3,11 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { CompetitionsComponent } from '../competitions.component';
 import { ClassementComponent } from '../components/classement/classement.component';
 import { ResultatsComponent } from '../components/resultats/resultats.component';
+import { MatchesComponent } from '../components/matches/matches.component';
 
 
 const routes: Routes = [
   {
-    path: "competitions",component: CompetitionsComponent, children: [
+    path: "",component: CompetitionsComponent, children: [
       { path: "", component: ClassementComponent },
       {
         path: "classement",
@@ -16,6 +17,10 @@ const routes: Routes = [
       {
         path: "resultats",
         component: ResultatsComponent,
+      },
+      {
+        path: "matches",
+        component: MatchesComponent,
       },
     ],
   },

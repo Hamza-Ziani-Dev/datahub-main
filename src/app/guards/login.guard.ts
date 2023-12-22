@@ -10,10 +10,10 @@ export class LoginGuard implements CanActivate {
     constructor(private authService: authService, private router: Router) { }
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
         if (this.authService.isTokenExpired()) {
-            console.log("cccc");
+            // console.log("cccc");
             return true;
         }
-        this.router.navigate(['/dashboard']);
+       this.router.navigate(['/']);
         return false;
     }
 

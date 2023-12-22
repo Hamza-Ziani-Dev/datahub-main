@@ -38,7 +38,8 @@ import { BodyComponent } from './layout/body/body.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { MainNavMobileComponent } from './components/main-nav-mobile/main-nav-mobile.component';
 import { MatTableModule } from '@angular/material/table';
-
+import { MatChipsModule } from '@angular/material/chips';
+import { MatSliderModule } from '@angular/material/slider';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -61,6 +62,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ],
   imports: [
     MatTableModule,
+    MatChipsModule,
     MatDatepickerModule,
     MatNativeDateModule,
     BrowserModule,
@@ -80,6 +82,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     NgbModalModule,
     MatSnackBarModule,
     MatMenuModule,
+    MatSliderModule,
     FormsModule, MatDialogModule,
     StoreModule.forRoot({}),
     // StoreDevtoolsModule.instrument({

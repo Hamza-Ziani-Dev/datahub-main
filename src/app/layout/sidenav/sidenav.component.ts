@@ -151,6 +151,14 @@ export class SidenavComponent implements OnInit {
                       routerLink: '/competitions/resultats',
                       items: []
                     },
+                    {
+                      label: 'HEADER.MATCHES',
+                      icon: 'fas fa-futbol',
+                      // permission: this.user?.type == 'owner',
+                      permission: true,
+                      routerLink: '/competitions/matches',
+                      items: []
+                    },
                   ]
                 },
 

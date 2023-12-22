@@ -148,7 +148,7 @@ mat-label {
     width: 20%;
     height: 26px;
     position: absolute;
-    top:400px;
+    top:100%;
 }
 
 ::ng-deep #login-form {

@@ -1,1 +1,70 @@
-<p>resultats works!</p>
+<div class="resultatsContainer">
+    <div class="container-fluid mx-0">
+      <div class="row justify-content-center align-items-center mx-0 p-0">
+        <div class="header col-12 col-md-12 justify-content-center align-content-center">
+          <div class="row col-12 col-md-10 justify-content-center align-items-center">
+            <div class="image-background-header w-100">
+                <div class="title">
+                    RESULTATS
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="sub_header col-12 col-md-3 d-flex mt-4 justify-content-around align-content-around">
+              <mat-form-field>
+                <mat-label>2023/2024</mat-label>
+                <mat-select>
+                  <mat-option value="option1">2022/2023</mat-option>
+                  <mat-option value="option2">2021/2022</mat-option>
+                </mat-select>
+              </mat-form-field>
+      </div>
+      <div class="journee">
+        <mat-chip-list aria-label="Fish selection">
+          <i class="btn-icon left-icon fas fa-chevron-left" (click)="previousPage()"></i>
+          <mat-chip *ngFor="let chip of visibleChips; let i = index"
+            [ngClass]="{
+              'mat-standard-chip': true,
+              'mdc-evolution-chip--disabled': false,
+              'active': isActive(i),
+              'clicked': i === activeIndex
+            }"
+            (click)="setActive(i)">
+            {{ chip }}
+          </mat-chip>
+          <i class="btn-icon right-icon fas fa-chevron-right" (click)="nextPage()"></i>
+        </mat-chip-list>
+      </div>
+      <div class="table-container mt-4">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col" >Equipe Domicile</th>
+              <th scope="col"></th>
+              <th scope="col" ></th>
+              <th scope="col" >Equipe Visiteuse</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of Resultats">
+              <th>
+                <!-- <img src="https://seeklogo.com/images/R/raja-club-athletic-rca-logo-2C8B83D406-seeklogo.com.png" alt="" class="logo"> -->
+                {{item['equipe_domicile']}}
+              </th>
+              <td>{{item['buts_domicile']}}</td>
+              <td>{{item['buts_visiteuse']}}</td>
+              <td>
+                <!-- <img src="https://seeklogo.com/images/W/wac-wydad-athletic-club-2019-logo-688D9EEE95-seeklogo.com.png" alt="" class="logo"> -->
+                {{item['equipe_visiteuse']}}
+              </td>
+            </tr>
+          
+          </tbody>
+        </table>
+      </div>
+      
+      </div>
+      <router-outlet></router-outlet>
+</div>

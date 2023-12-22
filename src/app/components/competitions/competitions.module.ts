@@ -11,13 +11,18 @@ import { ClassementComponent } from './components/classement/classement.componen
 import { ResultatsComponent } from './components/resultats/resultats.component';
 import { CompetitionsComponent } from './competitions.component';
 import { CompetitionsRoutingModule } from './routing/competitions-routing.module';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatTableModule } from '@angular/material/table';
+import { MatchesComponent } from './components/matches/matches.component';
 
 
 @NgModule({
   declarations: [
     ClassementComponent,
     ResultatsComponent,
-    CompetitionsComponent
+    CompetitionsComponent,
+    MatchesComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -28,6 +33,9 @@ import { CompetitionsRoutingModule } from './routing/competitions-routing.module
     MatSliderModule,
     MatFormFieldModule,
     MatInputModule,
+    MatChipsModule,
+    MatTableModule,
+    MatSliderModule
     
    
   ]

@@ -1,0 +1,19 @@
+<div class="matchesContainer">
+    <div class="container-fluid mx-0">
+      <div class="row justify-content-center align-items-center mx-0 p-0">
+        <div class="header col-12 col-md-12 justify-content-center align-content-center">
+          <div class="row col-12 col-md-10 justify-content-center align-items-center">
+            <div class="image-background-header w-100">
+                <div class="title">
+                    MATCHES
+                </div>
+            </div>
+          </div>
+      </div>
+      <div class="fileMatches">
+        <label for="title_file">CSV Resultats </label>
+        <input type="file" (change)="onFileSelected($event)" accept=".csv">
+        <button (click)="onUpload()">Upload CSV</button>
+      </div>
+      <router-outlet></router-outlet>
+</div>

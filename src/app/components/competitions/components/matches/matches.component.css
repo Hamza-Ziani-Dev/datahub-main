@@ -1,4 +1,4 @@
-.resultatsContainer {
+.matchesContainer {
     background-color: hsl(0, 0%, 97%);
     background-image: url(../../../../../assets/images/bg-image.png);
     background-repeat: no-repeat;
@@ -36,7 +36,6 @@
   }
   .sub_header{
         /* background-color: #4633c6; */
-        margin-left: 70%;
         color: #fff;
         border-radius: 23px;
         font-family: "Century Gothic";
@@ -51,34 +50,32 @@
         border-radius: 73px;
   }
 
-  .btn-icon {
+    .btn-icon {
         cursor: pointer;
         border: none;
         background: none;
         padding: 0;
         font-size: 1.5em; 
         color: #000; 
-  }
-  .left-icon {
-     margin-right: auto;
-   }
-  .right-icon {
-      margin-left: auto;
-  }
-   .btn-icon:hover {
-        color: #FFF; 
-    }
+      }
+      .left-icon {
+        margin-right: auto;
+      }
+      
+      .right-icon {
+        margin-left: auto;
+      }
+      
+      .btn-icon:hover {
+        color: #223bde; 
+      }
       .mat-standard-chip{
         padding: 15px 25px;
         font-size: 18px;
         font-family: "Century Gothic Bold";
       }
-      .mat-standard-chip:not(.mdc-evolution-chip--disabled){
-        /* background-color: #FFF; */
-        color: #000;
-      }
       .mat-standard-chip:hover {
-        background-color: rgb(183, 231, 53);
+        background-color: greenyellow;
       }
       .active {
         background-color: #e3c728; 
@@ -90,76 +87,46 @@
       }
       /* End Header */
 
-      /* Table */
-      .table-container {
-        display: flex;
-        justify-content: center;
+      /* File Css */
+      .fileMatches {
+        /* Your styles for the container div */
+        /* For example: */
+        margin: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
       }
-
-      .table-container {
-        display: flex;
-        justify-content: center;
+      
+      /* Style for the label */
+      .fileMatches label {
+        /* Your styles for the label */
+        /* For example: */
+        font-weight: bold;
       }
-      .table {
-        width: 75%;
-        text-align: center; /* Center align all table content */
-        border-collapse: collapse; /* Ensure border-radius works properly */
-        border-radius: 10px; /* Adding border-radius */
-        overflow: hidden; 
-        background-color: #dadada;
+      
+      /* Style for the input[type="file"] */
+      .fileMatches input[type="file"] {
+        /* Your styles for the file input */
+        /* For example: */
+        margin-top: 5px;
       }
-       .logo{
-        width: 30px;
-        height: 30px;
-        padding: 0px;
+      
+      /* Style for the button */
+      .fileMatches button {
+        /* Your styles for the button */
+        /* For example: */
+        margin-top: 10px;
+        padding: 8px 15px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
       }
-      thead {
-        background-color: rgb(43, 34, 25);
-        background: linear-gradient(238deg, #b15db5, rgb(181, 87, 202));
-        color: #FFF;
+      
+      .fileMatches button:hover {
+        /* Your styles for button hover */
+        /* For example: */
+        background-color: #0056b3;
       }
-      tbody td:nth-child(2),tbody td:nth-child(3) {
-      background-color: #000207; 
-      color: #FFF;
-      }
-  
-      th.text-center {
-        display: flex;
-        justify-content: center;
-      }
-      td{
-        font-family: "Century Gothic Bold";
-      }
-      th.text-right {
-        justify-content: flex-end;
-      }
-      th.text-left {
-        justify-content: flex-start;
-      }
-
-      /* End Table */
-
-
-
-
-
-
-
-
-
-
-      @media screen and (max-width: 768px){
-        .title{
-          left: 36%;
-        }
-        .journee{
-          padding: 7px 7px;
-        }
-        .mat-standard-chip:not(.mdc-evolution-chip--disabled){
-          margin: 1px;
-          border-radius: 6px;
-          padding: 4px !important;
-          font-size: 14px !important;
-          /* font-family: "Century Gothic"; */
-        }
-        }  
+      
+      /* And  File Css */
