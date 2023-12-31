@@ -13,23 +13,28 @@
       </div>
       
       <div class="sub_header col-12 col-md-3 d-flex mt-4 justify-content-around align-content-around">
-              <mat-form-field>
+              <mat-form-field color="primary" appearance="outline">
                 <mat-label>2023/2024</mat-label>
-                <mat-select>
+                <mat-select class="custom-mat-select">
                   <mat-option value="option1">2022/2023</mat-option>
                   <mat-option value="option2">2021/2022</mat-option>
                 </mat-select>
               </mat-form-field>
       </div>
+      <!-- <div class="journee">
+        <mat-chip-list aria-label="Fish selection">
+          <i class="btn-icon left-icon fas fa-chevron-left" (click)="previousPage()"></i>
+          <mat-chip *ngFor="let chip of visibleChips">{{ chip }}</mat-chip>
+          <i class="btn-icon right-icon fas fa-chevron-right" (click)="nextPage()"></i>
+        </mat-chip-list>
+      </div> -->
       <div class="journee">
         <mat-chip-list aria-label="Fish selection">
           <i class="btn-icon left-icon fas fa-chevron-left" (click)="previousPage()"></i>
           <mat-chip *ngFor="let chip of visibleChips; let i = index"
             [ngClass]="{
               'mat-standard-chip': true,
-              'mdc-evolution-chip--disabled': false,
-              'active': isActive(i),
-              'clicked': i === activeIndex
+              'active': i === activeIndex
             }"
             (click)="setActive(i)">
             {{ chip }}
@@ -45,20 +50,22 @@
               <th scope="col"></th>
               <th scope="col" ></th>
               <th scope="col" >Equipe Visiteuse</th>
+              <!-- <th scope="col" >journnee</th> -->
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of Resultats">
+            <tr *ngFor="let item of filteredMatches">
               <th>
-                <!-- <img src="https://seeklogo.com/images/R/raja-club-athletic-rca-logo-2C8B83D406-seeklogo.com.png" alt="" class="logo"> -->
+                <img src="https://seeklogo.com/images/R/raja-club-athletic-rca-logo-2C8B83D406-seeklogo.com.png" alt="" class="logo">
                 {{item['equipe_domicile']}}
               </th>
               <td>{{item['buts_domicile']}}</td>
               <td>{{item['buts_visiteuse']}}</td>
               <td>
-                <!-- <img src="https://seeklogo.com/images/W/wac-wydad-athletic-club-2019-logo-688D9EEE95-seeklogo.com.png" alt="" class="logo"> -->
+                <img src="https://seeklogo.com/images/W/wac-wydad-athletic-club-2019-logo-688D9EEE95-seeklogo.com.png" alt="" class="logo">
                 {{item['equipe_visiteuse']}}
               </td>
+              <!-- <td>{{item['journee']}}</td> -->
             </tr>
           
           </tbody>

@@ -28,7 +28,7 @@
   font-family: "Century Gothic Bold";
 }
 .table thead {
-  background-color: #B78F1D;
+  background-color: #0c381f;
   
 }
 #table2  thead tr th{
@@ -105,10 +105,9 @@
     margin-top: -3px;
   }
  #table1{
-  border-collapse: collapse;
   border-spacing: 0;
   border-radius: 10px; 
-  /* overflow: hidden;  */
+  overflow: hidden; 
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
  }
  #table1 th{
@@ -122,12 +121,13 @@
   border-top: 0px solid #dee2e6;
  }
  #table1 td{
-  padding: 3px 15px;
+  padding: 7px 4px;
  }
  #table1  .mat-sort-header{
     justify-content: center !important;
-    padding: 6px 10px;
-    background-color: rgb(211, 205, 87);
+    padding: 10px 10px;
+    background-color: rgb(0, 48, 11);
+    color: #FFF;
  }
   
   .equipe__logo {
@@ -150,8 +150,8 @@
     display: flex;
     justify-content: space-around;
     }
-    #table1 thead{
-      display: none;
+    #table1 .hide-on-mobile {
+      display: none !important;
     }
      #table1 th{
       font-size: small !important;
@@ -176,7 +176,7 @@
       padding: 0px;
     }
      #table1 .mat-sort-header {
-      padding: 5px 0px !important;
+      padding: 8px 0px !important;
      }
     #table1 .mat-sort-header-arrow{
       margin: 0px;
@@ -184,6 +184,18 @@
       display: block;
     width: 3px !important;
     min-width: 3px !important;
+    }
+    .table-content  {
+        border-collapse: collapse;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+    .mat-table {
+      width: 100%; 
+      border-collapse: collapse;
+    }
+    .mat-header-cell,.mat-cell {
+      padding: 8px; 
     }
     .d-flex, .demo-table {
       display: block !important; 

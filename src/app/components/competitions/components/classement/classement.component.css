@@ -1,211 +1,269 @@
-
 .classmentContainer {
-    background-color: hsl(0, 0%, 97%);
-    background-image: url(../../../../../assets/images/bg-image.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
-    min-height: 1000px;
-    font-family: 'Century Gothic' !important;
-  }
-  .image-background-header {
-    position: relative;
-    background-image: url(../../../../../assets/images/bg-image-black-player.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 0 96px;
-  }
-  /* Header */
-  .header{
-      position: relative;
-      overflow: hidden;
-      border-bottom-right-radius: 50px;
-      border-bottom-left-radius: 50px;
-      height: 60px;
-      font-size: 1rem;
-      font-family: 'Century Gothic' !important;
-      background: linear-gradient(238deg, #1a561d, rgb(12, 74, 17));
-      box-shadow: rgba(112, 120, 114, 0.25) 0px 2px 5px -1px, rgba(126, 121, 121, 0.3) 0px 1px 3px -1px;
-  }   
-  .title {
-    position: absolute;
-    left: 55%;
-    color: #fff;
-    top: auto;
-    padding: 15px;
-    font-family: 'Century Gothic Bold' !important;
-    }
-    .sub_header{
-        /* background-color: #4633c6; */
-        color: #fff;
-        border-radius: 23px;
-        font-family: "Century Gothic";
-        box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
-        background: linear-gradient(238deg, #086556, #7cc2b9);
+  background-color: hsl(0, 0%, 97%);
+  background-image: url(../../../../../assets/images/bg-image.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  min-height: 1000px;
+  font-family: 'Century Gothic' !important;
+}
 
-    }
-    .journee{
-        padding: 10px 30px;
-        background: linear-gradient(238deg, #d1d6d1, #7b868a);
-        margin-top: 22px;
-        border-radius: 73px;
-    }
-    .active {
-      background-color: #e3c728; 
-      color: #FFF;
-    }
-    .btn-icon {
-      cursor: pointer;
-      border: none;
-      background: none;
-      padding: 0;
-      font-size: 1.5em; 
-      color: #2f0f0f; 
-    }
-    .left-icon {
-      margin-right: auto;
-    }
-    
-    .right-icon {
-      margin-left: auto;
-    }
-    
-    .btn-icon:hover {
-      color: #FFF; 
-    }
-    .mat-standard-chip{
-      padding: 15px 25px;
-      font-size: 18px;
-      font-family: "Century Gothic Bold";
-    }
-    .mat-standard-chip:not(.mdc-evolution-chip--disabled){
-      color: #000;
-    }
-  /* End Header  */
-  /* Table  */
-      .table1 {
-        padding: 20px;
-    }
-     
-    .table1 .logo{
-      width: 33px;
-      height: 33px;
-      padding: 0px;
-    
-    }
-     
-     .table-header{
-        background-color: rgb(222, 222, 222);
-        margin-top: 50px;
-        padding: 6px;
-        border-radius: 9px;
-        font-family: "Century Gothic Bold";
-        text-transform: uppercase;
-      }
-      .table1  th{ 
-        color: #fff;
-        text-align: center;
-        justify-content: center;
-        background-color: #172d35;
-      }
-      .table1 th.mat-header-cell{
-        text-align: center;
-        padding: 14px;
-        vertical-align: revert;
-        font-family: "Century Gothic Bold";
-        text-transform: uppercase;
-        color: rgb(255, 255, 255);
-      }
-      .table1 tr.mat-header-row{
-        height: 40px;
-        text-align: center;
-        justify-content: center;
-      }
-       
-      .table1 tr.mat-row{
-        height: 20px;
-        text-align: center;
-        justify-content: center;
-      }
-      .table1 td.mat-cell{
-        padding: 12px;
-        border-bottom-width: 1px;
-        border-bottom-style: solid;
-      }
-       
-      tr.mat-row:nth-child(even){
-        height: 30px;
-        background-color: #f1f1f1;
-      }
-      .th-head tr:first-child {
-        background: linear-gradient(238deg, #0e3fa0, rgb(4, 81, 158));
-        color: #fff;
-      }
-      .mat-table{
-        font-family: "Century Gothic";
-        font-weight: bold;
-        font-size: large;
-        border-radius: 10px;
-        overflow: hidden; 
-      }
-      /* End Table 1 */
+.image-background-header {
+  position: relative;
+  background-image: url(../../../../../assets/images/bg-image-black-player.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0 96px;
+}
 
-      /* Table 2*/
-      .table2 .table-container {
-        display: flex;
-        justify-content: center;
-      }
+/* Header */
+.header {
+  position: relative;
+  overflow: hidden;
+  border-bottom-right-radius: 50px;
+  border-bottom-left-radius: 50px;
+  height: 60px;
+  font-size: 1rem;
+  font-family: 'Century Gothic' !important;
+  background: linear-gradient(238deg, #1a561d, rgb(12, 74, 17));
+  box-shadow: rgba(112, 120, 114, 0.25) 0px 2px 5px -1px, rgba(126, 121, 121, 0.3) 0px 1px 3px -1px;
+}
 
-      .table2 .table-container {
-        display: flex;
-        justify-content: center;
-      }
-       .table2 {
-        width: 100%;
-        text-align: center;
-        border-collapse: collapse; 
-        border-radius: 10px; 
-        overflow: hidden; 
-        background-color: #dadada;
-      }
-      .table2 .logo{
-        width: 30px;
-        height: 30px;
-        padding: 0px;
-        margin-top: -3px;
-      }
-      .table2 thead {
-        background-color: rgb(43, 34, 25);
-        background: linear-gradient(238deg, #b15db5, rgb(181, 87, 202));
-        color: #FFF;
-      }
-      .table2 tbody td:nth-child(2),tbody td:nth-child(3) {
-      background-color: #000207; 
-      color: #FFF;
-      }
-  
-      .table2  th.text-center {
-        display: flex;
-        justify-content: center;
-      }
-      .table2 td{
-        font-family: "Century Gothic Bold";
-      }
-      .table2 th.text-right {
-        justify-content: flex-end;
-      }
-      .table2 th.text-left {
-        justify-content: flex-start;
-      }
-      /* End Table 2*/
-    
+.title {
+  position: absolute;
+  left: 55%;
+  color: #fff;
+  top: auto;
+  padding: 15px;
+  font-family: 'Century Gothic Bold' !important;
+}
+
+.journee {
+  padding: 10px 30px;
+  background: linear-gradient(238deg, #d1d6d1, #7b868a);
+  margin-top: 22px;
+  border-radius: 73px;
+}
+
+.active {
+  background-color: #e3c728;
+  color: #FFF;
+}
+
+.btn-icon {
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: 1.5em;
+  color: #2f0f0f;
+}
+
+.left-icon {
+  margin-right: auto;
+}
+
+.right-icon {
+  margin-left: auto;
+}
+
+.btn-icon:hover {
+  color: #FFF;
+}
+
+.mat-standard-chip {
+  padding: 15px 25px;
+  font-size: 18px;
+  font-family: "Century Gothic Bold";
+}
+
+.mat-standard-chip:not(.mdc-evolution-chip--disabled) {
+  color: #000;
+}
+
+/* End Header  */
+/* Select  */
+::ng-deep .custom-mat-select .mat-select-arrow {
+  color: #04fd42 !important;
+}
+
+::ng-deep .mat-primary .mat-option:hover:not(.-list-item--disabled),
+::ng-deep .mat-primary .mat-option:focus:not(.list-item--disabled) {
+  background-color: #014501;
+}
+
+/* End Select */
 
 
 
+/* Table  */
+.table1 {
+  padding: 20px;
+}
+
+.table1 .logo {
+  width: 33px;
+  height: 33px;
+  padding: 0px;
+
+}
+
+.table-header {
+  background-color: rgb(222, 222, 222);
+  margin-top: 50px;
+  padding: 6px;
+  border-radius: 9px;
+  font-family: "Century Gothic Bold";
+  text-transform: uppercase;
+}
+
+.table1 th {
+  color: #fff;
+  text-align: center;
+  justify-content: center;
+  background-color: #173520;
+}
+
+.table1 .mat-row:first-child .mat-cell {
+  background-color: #f39100;
+  font-weight: bold;
+  color: #fff;
+}
+
+.table1 th.mat-header-cell {
+  text-align: center;
+  padding: 14px;
+  vertical-align: revert;
+  font-family: "Century Gothic Bold";
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+}
+
+.table1 tr.mat-header-row {
+  height: 40px;
+  text-align: center;
+  justify-content: center;
+
+}
+
+.table1 tr.mat-row {
+  height: 20px;
+  text-align: center;
+  justify-content: center;
+}
+
+.table1 td.mat-cell {
+  padding: 12px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.icon {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.win {
+  background-color: green;
+  /* Color for win */
+}
+
+.lose {
+  background-color: red;
+  /* Color for lose */
+}
+
+.null {
+  background-color: gray;
+  /* Color for null state */
+}
+
+tr.mat-row:nth-child(even) {
+  height: 30px;
+  background-color: #f1f1f1;
+}
+
+.mat-table {
+  font-family: "Century Gothic";
+  font-weight: bold;
+  font-size: large;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* End Table 1 */
+
+/* Table 2*/
+.table2 .table-container {
+  display: flex;
+  justify-content: center;
+}
+
+.table2 .table-container {
+  display: flex;
+  justify-content: center;
+}
+
+.table2 {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #dadada;
+}
+
+.table2 .logo {
+  width: 30px;
+  height: 30px;
+  padding: 0px;
+  margin-top: -3px;
+}
+
+.table2 thead {
+  background-color: rgb(43, 34, 25);
+  background: linear-gradient(238deg, #b15db5, rgb(181, 87, 202));
+  color: #FFF;
+}
+
+.table2 tbody td:nth-child(2), tbody td:nth-child(3) {
+  background-color: #000207;
+  color: #FFF;
+}
+
+.table2 th.text-center {
+  display: flex;
+  justify-content: center;
+}
+
+.table2 td {
+  font-family: "Century Gothic Bold";
+}
+
+.table1 td {
+  vertical-align: middle !important;
+}
+
+.table2 th.text-right {
+  justify-content: flex-end;
+}
+
+.table2 th.text-left {
+  justify-content: flex-start;
+}
+
+/* End Table 2*/
 
 
-@media screen and (max-width: 768px){
-  .classmentContainer{
+
+
+
+
+@media screen and (max-width: 768px) {
+  .classmentContainer {
     width: 100%;
     padding-right: 2px !important;
     padding-left: 0px !important;
@@ -213,38 +271,50 @@
     margin-left: auto;
     min-height: 900px;
   }
+
   /* Table 1 */
-  .table1 tr.mat-header-row{
+  .table1 tr.mat-header-row {
     height: 30px;
     text-align: center;
   }
 
-  .table1 tr.mat-row{
+  .table1 tr.mat-row {
     height: 30px;
   }
-  .table1 td.mat-cell{
+
+  .table1 td .mat-cell {
     padding: 0px;
     border-bottom-width: 0px;
     border-bottom-style: solid;
+    vertical-align: middle;
+
   }
-  .table1 .mat-cell{
+
+  .table1 .mat-cell {
     font-size: 8px;
     padding: 0;
+
   }
-  .table1 th.mat-header-cell{
+
+  .table1 th.mat-header-cell {
     font-size: 8px;
     padding: 0px;
     vertical-align: middle;
     margin: 0px;
   }
-  .table1 th.mat-header-cell:last-of-type, th.mat-header-cell:first-of-type{
+
+  .table1 th.mat-header-cell:last-of-type, th.mat-header-cell:first-of-type {
     padding: 0px;
   }
-  .table1 td.mat-cell:first-of-type,td.mat-cell:last-of-type{
+
+  .table1 td.mat-cell:first-of-type, td.mat-cell:last-of-type {
     padding-left: 0px;
     padding-right: 0px;
     font-size: 8px;
+    vertical-align: middle;
+
   }
+
   .table1 .tr-rows td {
     font-size: .9rem;
     height: 45px !important;
@@ -256,9 +326,6 @@
     border-bottom: 1px solid;
 
   }
-  .table1  td{
-    vertical-align: middle;
-  }
 
 
   .table1 .th-head {
@@ -269,7 +336,8 @@
   .table1 .equipe__logo {
     width: 26px !important;
     margin: 0 20px !important;
-  } 
+  }
+
   .table1 .th-head-lg {
     min-width: 280px !important;
   }
@@ -282,42 +350,51 @@
   .tr-rows td:nth-child(1) {
     padding-left: 0 !important;
   }
-  
-.title{
-  left: 36%;
-}
-.journee{
-  padding: 7px 7px;
-}
-.mat-standard-chip:not(.mdc-evolution-chip--disabled){
-  margin: 1px;
-  border-radius: 6px;
-  padding: 4px !important;
-  font-size: 14px !important;
-}
-.sub_header .mat-form-field-infix .mat-form-field{
-  width: 100px !important;
-}
-.sub_header .custom-field {
-  display: block;
-  width: 100px !important;
-}
-.table1 .logo{
-  width: 15px;
-  height: 20px;
-}
-/* End Table 1 */
-/* Table 2 */
 
-.table2  thead th{
-  vertical-align: middle;
-  padding: 0px;
-}
-.table2 .logo{
-  width: 20px;
-  height: 20px;
-}
-/* end Table 2 */
+  .title {
+    left: 36%;
+  }
 
-  
-}       
+  .journee {
+    padding: 7px 7px;
+  }
+
+  .mat-standard-chip:not(.mdc-evolution-chip--disabled) {
+    margin: 1px;
+    border-radius: 6px;
+    padding: 4px !important;
+    font-size: 14px !important;
+  }
+
+  .mat-form-field-infix .mat-form-field {
+    width: 90% !important;
+  }
+
+  /* .select-box {
+  width: 100%;
+} */
+
+  .table1 .logo {
+    width: 15px;
+    height: 20px;
+  }
+
+  /* End Table 1 */
+  /* Table 2 */
+
+  .table2 thead th {
+    vertical-align: middle;
+    padding: 0px;
+  }
+
+  .table2 .logo {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* end Table 2 */
+  .hide-on-mobile {
+    display: none !important;
+  }
+
+}

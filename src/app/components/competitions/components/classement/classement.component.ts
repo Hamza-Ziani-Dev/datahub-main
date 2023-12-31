@@ -12,31 +12,31 @@ export class ClassementComponent implements OnInit {
   selectedItem: string | null = null;
   // isActive: boolean = false;
   selectedOption: string = 'classment'; 
-  displayedColumns: string[] = ['ID', 'equipe','matches','v','d','n','bp','bc'];
+  displayedColumns: string[] = ['possition', 'equipe','points','matches','gagnes','n','p','bp','bc','diff','forme'];
   constructor() { }
 
   ngOnInit(): void {
     const data = [
-      { ID: '1', equipe: 'RCA CASA',matches:'3',v: '2',d:'2' ,n:'U16',
-      bp:'9.65',bc:'3'},
-      { ID: '2', equipe: 'RCA CASA',matches:'3',v: '2',d:'1' ,n:'U16',
-      bp:'9.65',bc:'3'},
-      { ID: '3', equipe: 'RCA CASA',matches:'3',v: '2',d:'2' ,n:'U16',
-      bp:'9.65',bc:'3'},
-      { ID: '4', equipe: 'RCA CASA',matches:'3',v: '2',d:'1' ,n:'U16',
-      bp:'9.65',bc:'3'},
-      { ID: '5', equipe: 'RCA CASA',matches:'3',v: '1',d:'4' ,n:'U16',
-      bp:'9.65',bc:'3'},
-      { ID: '6', equipe: 'RCA CASA',matches:'3',v: '2',d:'1' ,n:'U16',
-      bp:'9.65',bc:'3'},
-      { ID: '7', equipe: 'RCA CASA',matches:'3',v: '2',d:'1' ,n:'U16',
-      bp:'9.65',bc:'3'},
-      { ID: '8', equipe: 'RCA CASA',matches:'3',v: '2',d:'3' ,n:'U16',
-      bp:'9.65',bc:'3'},
-      { ID: '9', equipe: 'RCA CASA',matches:'3',v: '2',d:'1' ,n:'U16',
-      bp:'9.65',bc:'3'},
-      { ID: '10', equipe: 'RCA CASA',matches:'3',v: '2',d:'2' ,n:'U16',
-      bp:'9.65',bc:'3'},
+      { possition: '1', equipe: 'RCA CASA',points:'50',matches:'3',gagnes: '2',n:'2' ,p:'16',
+      bp:'9.65',bc:'3',diff:'+28',forme:'',},
+      { possition: '2', equipe: 'RCA CASA',points:'49',matches:'3',gagnes: '2',n:'1' ,p:'13',
+      bp:'9.65',bc:'3',diff:'+28',forme:'',},
+      { possition: '3', equipe: 'RCA CASA',points:'40',matches:'3',gagnes: '2',n:'2' ,p:'10',
+      bp:'9.65',bc:'3',diff:'+28',forme:'',},
+      { possition: '4', equipe: 'RCA CASA',points:'30',matches:'3',gagnes: '2',n:'1' ,p:'11',
+      bp:'9.65',bc:'3',diff:'+28',forme:'',},
+      { possition: '5', equipe: 'RCA CASA',points:'30',matches:'3',gagnes: '1',n:'4' ,p:'16',
+      bp:'9.65',bc:'3',diff:'+28',forme:'',},
+      { possition: '6', equipe: 'RCA CASA',points:'30',matches:'3',gagnes: '2',n:'1' ,p:'16',
+      bp:'9.65',bc:'3',diff:'+28',forme:'',},
+      { possition: '7', equipe: 'RCA CASA',points:'30',matches:'3',gagnes: '2',n:'1' ,p:'16',
+      bp:'9.65',bc:'3',diff:'+28',forme:'',},
+      { possition: '8', equipe: 'RCA CASA',points:'30',matches:'3',gagnes: '2',n:'3' ,p:'16',
+      bp:'9.65',bc:'3',diff:'+28',forme:'',},
+      { possition: '9', equipe: 'RCA CASA',points:'30',matches:'3',gagnes: '2',n:'1' ,p:'16',
+      bp:'9.65',bc:'3',diff:'+28',forme:'',},
+      { possition: '10', equipe: 'RCA CASA',points:'30',matches:'3',gagnes: '2',n:'2' ,p:'16',
+      bp:'9.65',bc:'3',diff:'+28',forme:'',},
     ];
     this.dataSource = new MatTableDataSource(data);
   }

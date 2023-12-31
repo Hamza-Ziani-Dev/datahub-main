@@ -1,165 +1,194 @@
 .resultatsContainer {
-    background-color: hsl(0, 0%, 97%);
-    background-image: url(../../../../../assets/images/bg-image.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
-    min-height: 900px;
-    font-family: 'Century Gothic' !important;
-  }
-  .image-background-header {
-    position: relative;
-    background-image: url(../../../../../assets/images/bg-image-black-player.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 0 96px;
-  }
-  /* Header */
-  .header{
-      position: relative;
-      overflow: hidden;
-      border-bottom-right-radius: 50px;
-      border-bottom-left-radius: 50px;
-      height: 60px;
-      font-size: 1rem;
-      font-family: 'Century Gothic' !important;
-      background: linear-gradient(238deg, #1a561d, rgb(12, 74, 17));
-      box-shadow: rgba(112, 120, 114, 0.25) 0px 2px 5px -1px, rgba(126, 121, 121, 0.3) 0px 1px 3px -1px;
-  }   
+  background-color: hsl(0, 0%, 97%);
+  background-image: url(../../../../../assets/images/bg-image.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  min-height: 900px;
+  font-family: 'Century Gothic' !important;
+}
+
+.image-background-header {
+  position: relative;
+  background-image: url(../../../../../assets/images/bg-image-black-player.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0 96px;
+}
+
+/* Header */
+.header {
+  position: relative;
+  overflow: hidden;
+  border-bottom-right-radius: 50px;
+  border-bottom-left-radius: 50px;
+  height: 60px;
+  font-size: 1rem;
+  font-family: 'Century Gothic' !important;
+  background: linear-gradient(238deg, #1a561d, rgb(12, 74, 17));
+  box-shadow: rgba(112, 120, 114, 0.25) 0px 2px 5px -1px, rgba(126, 121, 121, 0.3) 0px 1px 3px -1px;
+}
+
+.title {
+  position: absolute;
+  left: 55%;
+  color: #fff;
+  top: auto;
+  padding: 15px;
+  font-family: 'Century Gothic Bold' !important;
+}
+
+.journee {
+  padding: 10px 30px;
+  background: linear-gradient(238deg, #d1d6d1, #7b868a);
+  margin-top: 22px;
+  border-radius: 73px;
+}
+
+.btn-icon {
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: 1.5em;
+  color: #000;
+}
+
+.left-icon {
+  margin-right: auto;
+}
+
+.right-icon {
+  margin-left: auto;
+}
+
+.btn-icon:hover {
+  color: #FFF;
+}
+
+.mat-standard-chip {
+  padding: 15px 25px;
+  font-size: 18px;
+  font-family: "Century Gothic Bold";
+}
+
+.mat-standard-chip:not(.mdc-evolution-chip--disabled) {
+  color: #000;
+}
+
+/* .mat-standard-chip:hover {
+        background-color: rgb(210, 210, 209);
+      } */
+.active {
+  background-color: #fbd500;
+  color: #333;
+}
+
+.mat-label {
+  color: #fff;
+}
+
+/* End Header */
+/* Select  */
+::ng-deep .custom-mat-select .mat-select-arrow {
+  color: #04fd42 !important;
+}
+
+::ng-deep .mat-primary .mat-option:hover:not(.-list-item--disabled),
+::ng-deep .mat-primary .mat-option:focus:not(.list-item--disabled) {
+  background-color: #014501;
+}
+
+/* End Select */
+/* Table */
+.table-container {
+  display: flex;
+  justify-content: center;
+}
+
+.table-container {
+  display: flex;
+  justify-content: center;
+}
+
+.table {
+  width: 75%;
+  text-align: center;
+  /* Center align all table content */
+  border-collapse: collapse;
+  /* Ensure border-radius works properly */
+  border-radius: 10px;
+  /* Adding border-radius */
+  overflow: hidden;
+  background-color: #dadada;
+}
+
+.logo {
+  width: 30px;
+  height: 30px;
+  padding: 0px;
+}
+
+thead {
+  background-color: rgb(43, 34, 25);
+  background: linear-gradient(238deg, #b15db5, rgb(181, 87, 202));
+  color: #FFF;
+}
+
+tbody td:nth-child(2), tbody td:nth-child(3) {
+  background-color: #000207;
+  color: #FFF;
+}
+
+th.text-center {
+  display: flex;
+  justify-content: center;
+}
+
+td {
+  font-family: "Century Gothic Bold";
+}
+
+th.text-right {
+  justify-content: flex-end;
+}
+
+th.text-left {
+  justify-content: flex-start;
+}
+
+/* End Table */
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 768px) {
   .title {
-    position: absolute;
-    left: 55%;
-    color: #fff;
-    top: auto;
-    padding: 15px;
-    font-family: 'Century Gothic Bold' !important;
-  }
-  .sub_header{
-        /* background-color: #4633c6; */
-        margin-left: 70%;
-        color: #fff;
-        border-radius: 23px;
-        font-family: "Century Gothic";
-        box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
-        background: linear-gradient(238deg, #086556, #7cc2b9);
-
-  }
-  .journee{
-        padding: 10px 30px;
-        background: linear-gradient(238deg, #d1d6d1, #7b868a);
-        margin-top: 22px;
-        border-radius: 73px;
+    left: 36%;
   }
 
-  .btn-icon {
-        cursor: pointer;
-        border: none;
-        background: none;
-        padding: 0;
-        font-size: 1.5em; 
-        color: #000; 
+  .journee {
+    padding: 7px 7px;
   }
-  .left-icon {
-     margin-right: auto;
-   }
-  .right-icon {
-      margin-left: auto;
+
+  .mat-standard-chip:not(.mdc-evolution-chip--disabled) {
+    margin: 1px;
+    border-radius: 6px;
+    padding: 4px !important;
+    font-size: 14px !important;
   }
-   .btn-icon:hover {
-        color: #FFF; 
-    }
-      .mat-standard-chip{
-        padding: 15px 25px;
-        font-size: 18px;
-        font-family: "Century Gothic Bold";
-      }
-      .mat-standard-chip:not(.mdc-evolution-chip--disabled){
-        /* background-color: #FFF; */
-        color: #000;
-      }
-      .mat-standard-chip:hover {
-        background-color: rgb(183, 231, 53);
-      }
-      .active {
-        background-color: #e3c728; 
-        color: #333; 
-      }
 
-      .mat-label{
-        color: #fff;
-      }
-      /* End Header */
+  .mat-form-field-infix .mat-form-field {
+    width: 90% !important;
+  }
 
-      /* Table */
-      .table-container {
-        display: flex;
-        justify-content: center;
-      }
-
-      .table-container {
-        display: flex;
-        justify-content: center;
-      }
-      .table {
-        width: 75%;
-        text-align: center; /* Center align all table content */
-        border-collapse: collapse; /* Ensure border-radius works properly */
-        border-radius: 10px; /* Adding border-radius */
-        overflow: hidden; 
-        background-color: #dadada;
-      }
-       .logo{
-        width: 30px;
-        height: 30px;
-        padding: 0px;
-      }
-      thead {
-        background-color: rgb(43, 34, 25);
-        background: linear-gradient(238deg, #b15db5, rgb(181, 87, 202));
-        color: #FFF;
-      }
-      tbody td:nth-child(2),tbody td:nth-child(3) {
-      background-color: #000207; 
-      color: #FFF;
-      }
-  
-      th.text-center {
-        display: flex;
-        justify-content: center;
-      }
-      td{
-        font-family: "Century Gothic Bold";
-      }
-      th.text-right {
-        justify-content: flex-end;
-      }
-      th.text-left {
-        justify-content: flex-start;
-      }
-
-      /* End Table */
-
-
-
-
-
-
-
-
-
-
-      @media screen and (max-width: 768px){
-        .title{
-          left: 36%;
-        }
-        .journee{
-          padding: 7px 7px;
-        }
-        .mat-standard-chip:not(.mdc-evolution-chip--disabled){
-          margin: 1px;
-          border-radius: 6px;
-          padding: 4px !important;
-          font-size: 14px !important;
-          /* font-family: "Century Gothic"; */
-        }
-        }  
+  .table {
+    width: 100%;
+  }
+}
