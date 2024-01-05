@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import * as echarts from "echarts";
 import { TeamsService } from 'src/app/components/datahub/components/teams/service/teams.service';
 @Component({
@@ -9,7 +10,10 @@ import { TeamsService } from 'src/app/components/datahub/components/teams/servic
 })
 export class OffensiveComponent implements OnInit {
   isLoading: boolean;
-  constructor(private teamService:TeamsService){}
+  constructor(
+    private teamService:TeamsService,
+    private dialogRef: MatDialogRef<OffensiveComponent> 
+    ){}
   radarAttaking :any;
   ngOnInit() {
     this.getRadarAttacking();
@@ -20,7 +24,9 @@ getRadarAttacking(){
     this.actions("CREATE_CHART_RADAR_ATTACKING");
   })
 }
-
+closeDialog(): void {
+  this.dialogRef.close();
+}
  actions(CASE: string, RES: any = null) {
   switch (CASE) {
     case 'CREATE_CHART_RADAR_ATTACKING':

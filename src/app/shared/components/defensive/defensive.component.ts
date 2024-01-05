@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import * as echarts from "echarts";
 import { TeamsService } from 'src/app/components/datahub/components/teams/service/teams.service';
@@ -10,7 +10,10 @@ import { TeamsService } from 'src/app/components/datahub/components/teams/servic
   styleUrls: ['./defensive.component.css']
 })
 export class DefensiveComponent implements OnInit {
-  constructor(private teamService:TeamsService){}
+  constructor(
+    private teamService:TeamsService,
+    private dialogRef: MatDialogRef<DefensiveComponent> 
+    ){}
   radarDefending :any;
   ngOnInit() {
    this.getRadarAttacking();
@@ -24,7 +27,9 @@ export class DefensiveComponent implements OnInit {
       this.actions("CREATE_CHART_DEFENDING");
     })
   }
- 
+  closeDialog(): void {
+    this.dialogRef.close();
+  }
 
   actions(CASE: string, RES: any = null) {
     switch (CASE) {

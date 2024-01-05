@@ -47,7 +47,14 @@
     box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
 }
 
-
+::ng-deep .mat-dialog-container {
+    padding: 10px; 
+  } 
+.closeDialog{
+    position: relative;
+    left: 95%;
+    margin-bottom: 10px;
+}  
 
 @media screen and (max-width: 768px) {
     .mat-dialog{
@@ -82,7 +89,15 @@
         padding-right: 0px;
         padding-left: 0px;
     }
-    
+    ::ng-deep .mat-dialog-container {
+        padding: 4px; 
+        height: 180%;
+        min-height: auto;
+        max-height: initial;
+      }
+    .closeDialog{
+        left: 85%;
+    }
     
     }
     

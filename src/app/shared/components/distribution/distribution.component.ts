@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import * as echarts from "echarts";
 import { TeamsService } from 'src/app/components/datahub/components/teams/service/teams.service';
@@ -9,8 +9,11 @@ import { TeamsService } from 'src/app/components/datahub/components/teams/servic
   styleUrls: ['./distribution.component.css']
 })
 export class DistributionComponent implements OnInit {
-  activeButton: string = 'XG'; // Initially, no button is active
-  constructor(private teamsService :TeamsService){
+  activeButton: string = 'XG'; 
+  constructor(
+    private teamsService :TeamsService,
+    private dialogRef: MatDialogRef<DistributionComponent> 
+    ){
   }
   treeData : any;
   setActiveButton(button: string): void {
@@ -26,12 +29,14 @@ export class DistributionComponent implements OnInit {
     this.teamsService.getTreeMapData().subscribe((res)=>{
      this.treeData = res;
       this.actions("CREATE_CHART_DISTRIBUTION");
-      console.log('====================================');
-      console.log(this.treeData);
-      console.log('====================================');
+      // console.log('====================================');
+      // console.log(this.treeData);
+      // console.log('====================================');
     })
   }
-
+  closeDialog(): void {
+    this.dialogRef.close();
+  }
 
 
 

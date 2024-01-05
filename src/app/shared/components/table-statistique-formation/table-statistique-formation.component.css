@@ -9,16 +9,32 @@
     border-radius: 10px;
     box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
 }
-
+::ng-deep .mat-dialog-container {
+    padding: 10px; 
+}
+.closeDialog{
+    position: relative;
+    left: 95%;
+    margin-bottom: 10px;
+} 
 @media screen and (max-width: 768px) {
    .table th, td{
     padding: 0px;
     margin: 0px;
     font-size: small;
-   }
+   }    
   
    .mat-dialog{
     padding: 0px 3px;
     margin: 0px;
+   }
+   ::ng-deep .mat-dialog-container {
+    padding: 4px;
+   height: 116%;
+   min-height: auto;
+   max-height: initial;
+  }
+   .closeDialog{
+    left: 85%;
    }
 }

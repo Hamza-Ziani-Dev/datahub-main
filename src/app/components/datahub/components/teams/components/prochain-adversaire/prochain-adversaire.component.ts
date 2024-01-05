@@ -122,7 +122,7 @@ actions(CASE: string, RES: any = null) {
       break;
     case 'openDialogTable':
       this.openDialog(this.dialogTable, TableStatistiqueFormationComponent, width, height,'dialog-with-data', { table: 'test',position: '10px' });
-      break;
+    break;
 
     case 'openDialogDistribution':
       this.openDialog(this.dialogDistribution, DistributionComponent, width, height,'dialog-with-data', { distribution: 'test' });
@@ -143,7 +143,7 @@ openDialog(dialogInstance: any, component: any, width: string, height: string, p
   const dialogRef = dialogInstance.open(component, {
     width: width,
     height: height,
-    panelClass: panelClass || '',
+    panelClass: 'custom-dialog',
     data: data || null,
     position : {top :'5px'}
   });

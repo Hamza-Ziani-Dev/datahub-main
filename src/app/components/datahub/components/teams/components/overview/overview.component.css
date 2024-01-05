@@ -121,6 +121,7 @@
   border-top: 0px solid #dee2e6;
  }
  #table1 td{
+  text-align: center;
   padding: 7px 4px;
  }
  #table1  .mat-sort-header{
@@ -182,8 +183,8 @@
       margin: 0px;
       padding: 0px;
       display: block;
-    width: 3px !important;
-    min-width: 3px !important;
+      width: 3px !important;
+      min-width: 3px !important;
     }
     .table-content  {
         border-collapse: collapse;

@@ -1,5 +1,8 @@
+<button type="button" class="closeDialog btn btn-danger" (click)="closeDialog()">
+   <span aria-hidden="true">&times;</span>
+</button>
 <div class="row justify-content-center align-content-center">
-    <div class="mb-2 ">
+    <div class="mt-2 mb-2">
       <div class="navbar">
          <div class="nav-btn" [class.active]="activeButton === 'XG'" (click)="setActiveButton('XG')">XG</div>
          <div class="nav-btn" [class.active]="activeButton === 'B'" (click)="setActiveButton('B')">B</div>
@@ -7,12 +10,13 @@
          <div class="nav-btn" [class.active]="activeButton === 'D'" (click)="setActiveButton('D')">D</div>
          <div class="nav-btn" [class.active]="activeButton === 'E'" (click)="setActiveButton('E')">E</div>
          <div class="nav-btn" [class.active]="activeButton === 'F'" (click)="setActiveButton('F')">F</div>
-         <div class="nav-btn" [class.active]="activeButton === 'G'" (click)="setActiveButton('G')">G</div>
+         <!-- <div class="nav-btn" [class.active]="activeButton === 'G'" (click)="setActiveButton('G')">G</div> -->
        </div>
     </div>
     <div class="distribution">
        <div class="chart-distribution">
-          <div id="chart-distribution" style="width: 100%; height:300px;" ></div>
+          <div id="chart-distribution" style="width: 100%; height:244px;" ></div>
        </div>
     </div>
+   
 </div>

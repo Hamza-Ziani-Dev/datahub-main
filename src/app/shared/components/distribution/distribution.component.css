@@ -1,5 +1,5 @@
 .distribution{
-    width: 100%;
+    width: 90%;
     height: 300px;
     border-radius: 10px;
     background-color: rgb(243, 243, 243);
@@ -25,14 +25,24 @@
     cursor: pointer;
     border-radius: 4px;
 }
-
 .active {
     background-color: rgb(240, 218, 93);
 }
+::ng-deep .mat-dialog-container {
+    padding: 10px; 
+  } 
+.closeDialog{
+    position: relative;
+    left: 95%;
+    margin-bottom: 10px;
+}
 @media screen and (max-width: 768px) {
+.distribution{
+    height: 255px;
+}
 .mat-dialog{
-        padding: 0px;
-        margin: 0px;
+    padding: 0px;
+    margin: 0px;
 }
 .navbar{
     padding: 0px;
@@ -40,5 +50,16 @@
     justify-content: center;
     align-content: center;
     align-items: baseline;
+}
+.nav-btn {
+    padding: 0px 13px;
+    margin: 5px;
+}
+::ng-deep .mat-dialog-container {
+    padding: 4px; 
+    height: 195%;
+  } 
+.closeDialog{
+    left: 85%;
 }
 }
