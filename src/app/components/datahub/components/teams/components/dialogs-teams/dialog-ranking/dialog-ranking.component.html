@@ -1,0 +1,315 @@
+<button class="btn btn-danger closeDialog" (click)="closeDialog()" matDialogClose>Close</button>
+<div class="table-content2 col-12 col-md-12 justify-content-center align-content-center">
+  <!-- Goals -->
+    <table class="table" id="table2" *ngIf="data.type === 'Goals'">
+    <thead>
+      <tr>
+        <th colspan="3" class="title_goals">
+          <span class="goals-header text_bold">Goals </span>
+          <div class="title_sub_goals">{{headerDataGoals['\u00c9quipe']}}</div>
+        </th>
+        <th scope="col" class="title_header">
+          <div class="demo-goals">{{headerDataGoals?.Buts}}</div>
+          <img class="img_header" [src]="headerDataGoals?.image_src" alt="">
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let team of bodyDataGoals">
+        <th scope="row" class="class_body">{{team['classment']}}</th>
+        <td colspan="2">{{team['\u00c9quipe']}}</td>
+        <td>
+          <span class="mr-4 text_bold" >{{team.Buts}}</span>
+          <span><img class="img_body" [src]="team?.image_src" alt=""></span>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+  <!-- 2XG -->
+  <table class="table " id="table2" *ngIf="data.type === 'XG'" >
+    <thead>
+      <tr>
+        <th colspan="3" class="title_goals">
+          <span class="goals-header text_bold">XG </span>
+          <div class="title_sub_goals">{{headerDataXG['\u00c9quipe']}}</div>
+        </th>
+        <th scope="col" class="title_header">
+          <div class="demo-goals">{{headerDataXG?.xG}}</div>
+          <img class="img_header" [src]="headerDataXG?.image_src" alt="">
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let team of bodyDataXG">
+        <th scope="row" class="class_body">{{team['classment']}}</th>
+        <td colspan="2">{{team['\u00c9quipe']}}</td>
+        <td>
+          <span class="text_bold" >{{team.xG}}</span>
+          <span><img class="img_body ml-2" [src]="team?.image_src" alt=""></span>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+  <!-- 3 TIRS -->
+  <table class="table " id="table2" *ngIf="data.type === 'Tirs'">
+          <thead>
+            <tr>
+              <th colspan="3" class="title_goals">
+                <span class="goals-header text_bold">TIRS </span>
+                <div class="title_sub_goals">{{headerDataTirs['\u00c9quipe']}}</div>
+              </th>
+              <th scope="col" class="title_header">
+                <div class="demo-goals">{{headerDataTirs?.Tirs}}</div>
+                <img class="img_header" [src]="headerDataTirs?.image_src" alt="">
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let team of bodyDataTirs">
+              <th scope="row" class="class_body">{{team['classment']}}</th>
+              <td colspan="2">{{team['\u00c9quipe']}}</td>
+              <td>
+                <span class="text_bold" >{{team.Tirs}}</span>
+                <span><img class="img_body ml-2" [src]="team?.image_src" alt=""></span>
+              </td>
+            </tr>
+          </tbody>
+  </table>
+  <!-- 4 Tirs Cadres -->
+  <table class="table " id="table2" *ngIf="data.type === 'TirsCadres'">
+    <thead>
+      <tr>
+        <th colspan="3" class="title_goals">
+          <span class="goals-header text_bold">TIRS CADRES </span>
+          <div class="title_sub_goals">{{headerDataTirCadre['\u00c9quipe']}}</div>
+        </th>
+        <th scope="col" class="title_header">
+          <div class="demo-goals">{{headerDataTirCadre?.Tirs_cadres}}</div>
+          <img class="img_header" [src]="headerDataTirs?.image_src" alt="">
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let team of bodyDataTirCadre">
+        <th scope="row" class="class_body">{{team['classment']}}</th>
+        <td colspan="2">{{team['\u00c9quipe']}}</td>
+        <td>
+          <span class="text_bold" >{{team.Tirs_cadres}}</span>
+          <span><img class="img_body ml-2" [src]="team?.image_src" alt=""></span>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+  <!-- 5 Buts concédés -->
+  <table class="table " id="table2" *ngIf="data.type === 'ButsConcedes'">
+    <thead>
+      <tr>
+        <th colspan="3" class="title_goals">
+          <span class="goals-header text_bold">BUTS CONCEDES</span>
+          <div class="title_sub_goals">{{headerDataButsCon['\u00c9quipe']}}</div>
+        </th>
+        <th scope="col" class="title_header">
+          <div class="demo-goals">{{headerDataButsCon?.Buts_concedes}}</div>
+          <img class="img_header" [src]="headerDataButsCon?.image_src" alt="">
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let team of bodyDataButsCon">
+        <th scope="row" class="class_body">{{team['classment']}}</th>
+        <td colspan="2">{{team['\u00c9quipe']}}</td>
+        <td>
+          <span class="text_bold" >{{team.Buts_concedes}}</span>
+          <span><img class="img_body ml-2" [src]="team?.image_src" alt=""></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- 6 XG_against -->
+  <table class="table " id="table2" *ngIf="data.type === 'XG_Again'">
+    <thead>
+      <tr>
+        <th colspan="3" class="title_goals">
+          <span class="goals-header text_bold">XG AGAINST </span>
+          <div class="title_sub_goals">{{headerDataXgAgain['\u00c9quipe']}}</div>
+        </th>
+        <th scope="col" class="title_header">
+          <div class="demo-goals">{{headerDataXgAgain?.XG_against}}</div>
+          <img class="img_header" [src]="headerDataXgAgain?.image_src" alt="">
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let team of bodyDataXgAgain">
+        <th scope="row" class="class_body">{{team['classment']}}</th>
+        <td colspan="2">{{team['\u00c9quipe']}}</td>
+        <td>
+          <span class="text_bold" >{{team.XG_against}}</span>
+          <span><img class="img_body ml-2" [src]="team?.image_src" alt=""></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- 7 Tirs Contre -->
+  <table class="table " id="table2" *ngIf="data.type === 'TirsContre'">
+    <thead>
+      <tr>
+        <th colspan="3" class="title_goals">
+          <span class="goals-header text_bold">Tire Contre </span>
+          <div class="title_sub_goals">{{headerDataTirsContre['\u00c9quipe']}}</div>
+        </th>
+        <th scope="col" class="title_header">
+          <div class="demo-goals">{{headerDataTirsContre?.Tirs_contre}}</div>
+          <img class="img_header" [src]="headerDataTirsContre?.image_src" alt="">
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let team of bodyDataTirsContre">
+        <th scope="row" class="class_body">{{team['classment']}}</th>
+        <td colspan="2">{{team['\u00c9quipe']}}</td>
+        <td>
+          <span class="text_bold" >{{team.Tirs_contre}}</span>
+          <span><img class="img_body ml-2" [src]="team?.image_src" alt=""></span>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+  <!-- 8 Tirs Contre Cadre -->
+  <table class="table " id="table2" *ngIf="data.type === 'TirsContreCadre'">
+    <thead>
+      <tr>
+        <th colspan="3" class="title_goals">
+          <span class="goals-header text_bold">TIRE CONTRE CADRE </span>
+          <div class="title_sub_goals">{{headerDataTirsContreCadre['\u00c9quipe']}}</div>
+        </th>
+        <th scope="col" class="title_header">
+          <div class="demo-goals">{{headerDataTirsContreCadre?.Tirs_contre_cadres}}</div>
+          <img class="img_header" [src]="headerDataTirsContreCadre?.image_src" alt="">
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let team of bodyDataTirsContreCadre">
+        <th scope="row" class="class_body">{{team['classment']}}</th>
+        <td colspan="2">{{team['\u00c9quipe']}}</td>
+        <td>
+          <span class="text_bold" >{{team.Tirs_contre_cadres}}</span>
+          <span><img class="img_body ml-2" [src]="team?.image_src" alt=""></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- 9 Fautes --> 
+  <table class="table " id="table2" *ngIf="data.type === 'Fautes'">
+    <thead>
+      <tr>
+        <th colspan="3" class="title_goals">
+          <span class="goals-header text_bold">FAUTES </span>
+          <div class="title_sub_goals">{{headerDataFautes['\u00c9quipe']}}</div>
+        </th>
+        <th scope="col" class="title_header">
+          <div class="demo-goals">{{headerDataFautes?.Fautes}}</div>
+          <img class="img_header" [src]="headerDataFautes?.image_src" alt="">
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let team of bodyDataFautes">
+        <th scope="row" class="class_body">{{team['classment']}}</th>
+        <td colspan="2">{{team['\u00c9quipe']}}</td>
+        <td>
+          <span class="text_bold" >{{team.Fautes}}</span>
+          <span><img class="img_body ml-2" [src]="team?.image_src" alt=""></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- 10 Cartons_Jaunes -->
+  <table class="table " id="table2" *ngIf="data.type === 'CartonsJaunes'">
+    <thead>
+      <tr>
+        <th colspan="3" class="title_goals">
+          <span class="goals-header text_bold">CARTES JOUNES </span>
+          <div class="title_sub_goals">{{headerDataCarteJoune['\u00c9quipe']}}</div>
+        </th>
+        <th scope="col" class="title_header">
+          <div class="demo-goals">{{headerDataCarteJoune?.Cartons_jaunes}}</div>
+          <img class="img_header" [src]="headerDataCarteJoune?.image_src" alt="">
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let team of bodyDataCarteJoune">
+        <th scope="row" class="class_body">{{team['classment']}}</th>
+        <td colspan="2">{{team['\u00c9quipe']}}</td>
+        <td>
+          <span class="text_bold" >{{team.Cartons_jaunes}}</span>
+          <span><img class="img_body ml-2" [src]="team?.image_src" alt=""></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+   <!-- 10 Cartons_Rouges -->
+   <table class="table " id="table2" *ngIf="data.type === 'CartonsRouges'">
+    <thead>
+      <tr>
+        <th colspan="3" class="title_goals">
+          <span class="goals-header text_bold">CARTES ROUGES </span>
+          <div class="title_sub_goals">{{headerDataCarteRouge['\u00c9quipe']}}</div>
+        </th>
+        <th scope="col" class="title_header">
+          <div class="demo-goals">{{headerDataCarteRouge?.Cartons_rouges}}</div>
+          <img class="img_header" [src]="headerDataCarteRouge?.image_src" alt="">
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let team of bodyDataCarteRouge">
+        <th scope="row" class="class_body">{{team['classment']}}</th>
+        <td colspan="2">{{team['\u00c9quipe']}}</td>
+        <td>
+          <span class="text_bold" >{{team.Cartons_rouges}}</span>
+          <span><img class="img_body ml-2" [src]="team?.image_src" alt=""></span>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+  <!-- 12 Possession-->
+  <table class="table " id="table2" *ngIf="data.type === 'Possession'">
+    <thead>
+      <tr>
+        <th colspan="3" class="title_goals">
+          <span class="goals-header text_bold">POSSESSION </span>
+          <div class="title_sub_goals">{{headerDataPossession['\u00c9quipe']}}</div>
+        </th>
+        <th scope="col" class="title_header">
+          <div class="demo-goals">{{headerDataPossession?.Possession}}</div>
+          <img class="img_header" [src]="headerDataPossession?.image_src" alt="">
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let team of bodyDataPossession">
+        <th scope="row" class="class_body">{{team['classment']}}</th>
+        <td colspan="2">{{team['\u00c9quipe']}}</td>
+        <td>
+          <span class="text_bold" >{{team.Possession}}</span>
+          <span><img class="img_body ml-2" [src]="team?.image_src" alt=""></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+<!-- 
+   
+ -->

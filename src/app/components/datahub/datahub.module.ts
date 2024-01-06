@@ -35,7 +35,8 @@ import {MatTableModule } from '@angular/material/table';
 import {MatSortModule } from '@angular/material/sort';
 import { OverviewComponent } from './components/teams/components/overview/overview.component';
 import { JoueursComponent } from './components/teams/components/joueurs/joueurs.component';
-
+import { MatIconModule } from '@angular/material/icon';
+import { DialogRankingComponent } from './components/teams/components/dialogs-teams/dialog-ranking/dialog-ranking.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -49,7 +50,9 @@ import { JoueursComponent } from './components/teams/components/joueurs/joueurs.
     MatInputModule,
     MatTableModule,
     CdkTableModule,
-    MatSortModule
+    MatSortModule,
+    MatInputModule,
+    MatIconModule
    
   ],
   declarations: [
@@ -75,6 +78,7 @@ import { JoueursComponent } from './components/teams/components/joueurs/joueurs.
     ComparisonComponent,
     RangeslideDirective,
     TeamsComponent,
+    DialogRankingComponent,
     ],
   providers: [
     DatabaseService,

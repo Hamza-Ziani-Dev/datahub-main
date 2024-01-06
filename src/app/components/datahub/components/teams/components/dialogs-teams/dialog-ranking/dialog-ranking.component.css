@@ -1,0 +1,71 @@
+.table-content2{
+    height: 450px;
+    margin-right: 60px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    background-color:  #00242b;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    font-family: "Century Gothic";
+  }
+  .text_bold{
+    font-family: "Century Gothic Bold";
+  }
+  
+  .th-flex {
+    display: flex;
+  }
+  
+  .table thead {
+    background-color: #012125;
+    
+  }
+  #table2  tbody ,thead{
+    color: #fcfdfe;
+  }
+  /* #table2  thead tr th{
+    border-radius: 30px;
+  } */
+  
+  #table2 th, td{
+    padding: 0px 3px;
+    font-family: "Century Gothic";
+  }
+   .title_goals{
+    color: #fff;
+  }
+  .title_sub_goals{
+    margin-top: 5px;
+    margin-bottom: 15px;
+    padding: 0px 10px;
+  }
+  .title_header{
+    padding: 0px 7px;
+  }
+  .goals-header{
+    padding: 0px 7px;
+    margin-left: 4px;
+   
+  }
+  .demo-goals{
+    padding: 4px 15px;
+    color: #fff;
+  }
+  .img_header{
+    width: 45px;
+    height: 45px;
+    margin-left: 10px;
+  }
+  .class_body{
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+  }
+  .img_body{
+    width: 15px;
+    height: 20px;
+  }
+  
+  .closeDialog{
+    position: relative;
+    left: 272px;
+    top: -10px;
+  }
