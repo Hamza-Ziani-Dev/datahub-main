@@ -37,6 +37,12 @@ import { OverviewComponent } from './components/teams/components/overview/overvi
 import { JoueursComponent } from './components/teams/components/joueurs/joueurs.component';
 import { MatIconModule } from '@angular/material/icon';
 import { DialogRankingComponent } from './components/teams/components/dialogs-teams/dialog-ranking/dialog-ranking.component';
+import { DialogEquipeComponent } from './components/teams/components/dialogs-teams/dialog-equipe/dialog-equipe.component';
+import { DialogJoueurComponent } from './components/teams/components/dialogs-teams/dialog-joueur/dialog-joueur.component';
+import { DialogDistributionComponent } from './components/teams/components/dialogs-teams/dialog-distribution/dialog-distribution.component';
+import { DialogOffensiveComponent } from './components/teams/components/dialogs-teams/dialog-offensive/dialog-offensive.component';
+import { DialogDeffensiveComponent } from './components/teams/components/dialogs-teams/dialog-deffensive/dialog-deffensive.component';
+import { DialogStatistiqueFormationComponent } from './components/teams/components/dialogs-teams/dialog-statistique-formation/dialog-statistique-formation.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -79,6 +85,12 @@ import { DialogRankingComponent } from './components/teams/components/dialogs-te
     RangeslideDirective,
     TeamsComponent,
     DialogRankingComponent,
+    DialogEquipeComponent,
+    DialogJoueurComponent,
+    DialogDistributionComponent,
+    DialogOffensiveComponent,
+    DialogDeffensiveComponent,
+    DialogStatistiqueFormationComponent,
     ],
   providers: [
     DatabaseService,

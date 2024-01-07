@@ -1,0 +1,59 @@
+<button type="button" class="closeDialog btn btn-danger" aria-label="Close" (click)="closeDialog()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <div class="container statistique-formation">
+      <div class="row justify-content-center align-content-center">
+          <div class="title justify-content-center align-content-center">
+                    <h4 mat-dialog-title>Formation Statistique</h4>
+          </div>
+    <!-- table -->
+        <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">Formation</th>
+                      <th scope="col">N matches</th>
+                      <th scope="col">Buts Marques</th>
+                      <th scope="col">Buts Encaisses</th>
+                      <th scope="col">xG</th>
+                      <th scope="col">xGA</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of teamFormation">
+                        <td>{{item['Formation']}}</td>
+                        <td> {{item['N_matchs']}}</td>
+                        <td> {{item['Buts_marqués']}}</td>
+                        <td> {{item['Buts_encaissés']}}</td>
+                        <td> {{item['xG_en_moyenne']}}</td>
+                        <td> {{item['xGA_en_moyenne']}}</td>
+                    </tr>
+                  </tbody>
+        </table>
+    <!-- end table -->
+    </div>
+    <div class="row justify-content-center align-content-center ">
+         <!-- table -->
+       <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Formation</th>
+            <th scope="col">N matches</th>
+            <th scope="col">Buts Marques</th>
+            <th scope="col">Buts Encaisses</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of teamFormation">
+                <td>{{item['Formation']}}</td>
+                <td> {{item['N_matchs']}}</td>
+                <td> {{item['Buts_marqués']}}</td>
+                <td> {{item['Buts_encaissés']}}</td>
+            </tr>
+        </tbody>
+      </table>
+       <!-- end table -->
+       <div class="desc-match">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, ipsam, esse ullam at saepe repudiandae fugiat illum blanditiis quod temporibus labore officiis, facilis quibusdam mollitia enim ad suscipit beatae. Ipsam.
+       </div>
+   </div> 
+  </div>

@@ -7,6 +7,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./dialog-ranking.component.css']
 })
 export class DialogRankingComponent implements OnInit {
+
   headerDataGoals :any = [];bodyDataGoals :any = [];
   headerDataXG :any = [];bodyDataXG :any = [];
   headerDataTirs : any = [];bodyDataTirs : any =[];
@@ -19,11 +20,20 @@ export class DialogRankingComponent implements OnInit {
   headerDataCarteJoune :any=[]; bodyDataCarteJoune :any=[];
   headerDataCarteRouge :any=[]; bodyDataCarteRouge :any=[];
   headerDataPossession :any=[]; bodyDataPossession :any=[];
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data:any,
     public dialogRef: MatDialogRef<DialogRankingComponent>
  ){}
   ngOnInit(): void {
+    const categories = [
+      'Goals', 'XG', 'Tirs', 'TirCadre', 'ButsCon', 'XgAgain',
+      'TirsContre', 'TirsContreCadre', 'Fautes', 'CarteJoune',
+      'CarteRouge', 'Possession'
+    ];
+
+    
+
       this.headerDataGoals =this.data.data[0]['header'][0];
       this.bodyDataGoals = this.data.data[1]['body'];
    

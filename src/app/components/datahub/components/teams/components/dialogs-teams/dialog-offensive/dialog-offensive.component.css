@@ -1,22 +1,23 @@
-.box1{
+
+.demo{
     width: 100%;
     height: 390px;
     border-radius: 10px;
     box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
 }
-.box2{
+.demo2{
     width: 100%;
-    height: 390px;
+    height: 100%;
 }
 
-.performance-offensive{
+.performance-deffensive{
     width: 100%;
-    height: 390px;
+    height: 400px;
     background-color: rgba(240, 239, 239, 0.918);
     border-radius: 24px;
     box-shadow: rgba(247, 247, 248, 0.25) 0px 30px 60px -12px inset, rgba(234, 230, 230, 0.3) 0px 18px 36px -18px inset;
 }
-.offensive-header{
+.deffensive-header{
     width: 100%;
     height: 47px;
     padding: 2px 17px;
@@ -40,28 +41,27 @@
     font-size: small;
 }
 
-.offensive-body{
+.deffensive-body{
     width: 100%;
     height: 300px;
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
 }
-
-::ng-deep .mat-dialog-container {
+   ::ng-deep .mat-dialog-container {
     padding: 10px; 
   } 
-.closeDialog{
+  .closeDialog{
     position: relative;
     left: 95%;
     margin-bottom: 10px;
-}  
+}
 
 @media screen and (max-width: 768px) {
     .mat-dialog{
         padding: 0px;
         margin: 0px;
        }
-    .box2{
+    .demo2{
         margin-bottom: 10px;
     }   
     .container-content{
@@ -76,22 +76,22 @@
         padding-left: 0px;
         display: contents;
     }
-    .box1{
-    margin-bottom: 20px;
-    padding-right: 0px;
-    padding-left: 0px;
-    line-height: initial;
-    height: 240px;
-    padding: 3px 12px;
+    .demo{
+        margin-bottom: 20px;
+        padding-right: 0px;
+        padding-left: 0px;
+        line-height: initial;
+        height: 300px;
+        padding: 0px 14px;
     }
 
-    .box2{
+    .demo2{
         padding-right: 0px;
         padding-left: 0px;
     }
     ::ng-deep .mat-dialog-container {
         padding: 4px; 
-        height: 180%;
+        height: 197%;
         min-height: auto;
         max-height: initial;
       }
@@ -100,6 +100,3 @@
     }
     
     }
-    
-   
-    

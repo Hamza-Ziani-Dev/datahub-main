@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import * as echarts from "echarts";
 import { TeamsService } from '../../service/teams.service';
-import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { TableStatistiqueFormationComponent } from 'src/app/shared/components/table-statistique-formation/table-statistique-formation.component';
-import { DistributionComponent } from 'src/app/shared/components/distribution/distribution.component';
-import { DefensiveComponent } from 'src/app/shared/components/defensive/defensive.component';
-import { OffensiveComponent } from 'src/app/shared/components/offensive/offensive.component';
-import { HttpErrorResponse } from '@angular/common/http';
+import { DialogDistributionComponent } from '../dialogs-teams/dialog-distribution/dialog-distribution.component';
+import { DialogDeffensiveComponent } from '../dialogs-teams/dialog-deffensive/dialog-deffensive.component';
+import { DialogOffensiveComponent } from '../dialogs-teams/dialog-offensive/dialog-offensive.component';
+import { DialogStatistiqueFormationComponent } from '../dialogs-teams/dialog-statistique-formation/dialog-statistique-formation.component';
 
 @Component({
   selector: 'app-prochain-adversaire',
@@ -33,19 +31,35 @@ export class ProchainAdversaireComponent implements OnInit {
   dataSource: any[] = [];
   constructor(
     private teamService: TeamsService,
-    private route: ActivatedRoute,
     private dialogTable : MatDialog,
-    private dialogDistribution : MatDialog,
+    private dialog : MatDialog,
     private dialogDefensive : MatDialog,
     private dialogOffensive : MatDialog,
   ) {}
-
-  ngOnInit() {
+  radarDefending :any;
+  radarAttaking :any;
+  teamFormation : any;
+ngOnInit() {
+  this.getTeamFormation();
+    this.getRadarAttacking();
+    this.getTreeMapData();
     this.actions("CREATE_CHART_RADAR1");
     this.getGeneralInfo();
     this.getFixtureInfo();
-  }
+}
 
+getTeamFormation(){
+this.teamService.getTeamFormation().subscribe((res)=>{
+  this.teamFormation = res;
+})
+}
+getRadarAttacking(){
+  this.teamService.getRadarData().subscribe((res)=>{
+    this.radarDefending = res[0];
+    this.radarAttaking = res[1];
+    this.actions("CREATE_CHART_DEFENDING");
+  })
+}
  
 getGeneralInfo(){
   this.teamService.getGeneralInfo().subscribe((res)=>{
@@ -120,20 +134,23 @@ actions(CASE: string, RES: any = null) {
             break;
     case 'UPDATE_CHART_RADAR1':
       break;
-    case 'openDialogTable':
-      this.openDialog(this.dialogTable, TableStatistiqueFormationComponent, width, height,'dialog-with-data', { table: 'test',position: '10px' });
-    break;
 
-    case 'openDialogDistribution':
-      this.openDialog(this.dialogDistribution, DistributionComponent, width, height,'dialog-with-data', { distribution: 'test' });
+    // Dialog Responsibilites
+    case 'openDialogResponsibilities':
+      this.openDialog(this.dialog, DialogDistributionComponent, width, height,'dialog-with-data', { distribution: this.treeMapArray });
       break;
-
+  
+    // Dialog Deffensive
     case 'openDialogDefensive':
-      this.openDialog(this.dialogDefensive, DefensiveComponent, width, height ,'dialog-with-data', { defensive: 'test' });
+      this.openDialog(this.dialog, DialogDeffensiveComponent, width, height ,'dialog-with-data', { deffensive: this.radarDefending });
       break;
-
+    // Dialog Offensive
     case 'openDialogOffensive':
-      this.openDialog(this.dialogOffensive, OffensiveComponent, width, height, 'dialog-with-data',{ data: this.radarDataArray });
+      this.openDialog(this.dialog, DialogOffensiveComponent, width, height, 'dialog-with-data',{ offensive: this.radarAttaking });
+      break;
+      // Dialog Statistique Formation
+      case 'openDialogStatistiqueFormation':
+        this.openDialog(this.dialogTable, DialogStatistiqueFormationComponent, width, height,'dialog-with-data',{ statistiqueFormation: this.teamFormation });
       break;
     default:
       break;

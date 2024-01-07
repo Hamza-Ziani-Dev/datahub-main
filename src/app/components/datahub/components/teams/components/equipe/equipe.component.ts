@@ -3,6 +3,8 @@ import { Component, OnInit } from "@angular/core";
 import * as echarts from "echarts";
 import { TeamsService } from "../../service/teams.service";
 import { ActivatedRoute } from "@angular/router";
+import { DialogEquipeComponent } from "../dialogs-teams/dialog-equipe/dialog-equipe.component";
+import { MatDialog } from "@angular/material/dialog";
 
 @Component({
   selector: "app-equipe",
@@ -29,25 +31,80 @@ export class EquipeComponent implements OnInit {
   };
   dataSource: any[] = [];
   attackingData : any;
+  dataOffensive :any;
+  dataDeffensive :any;
+  dataGenerale :any;
+  dataEfficacite_Offensive :any;
+  dataEfficacite_Deffensive :any;
+  dataPasses :any;
   constructor(
     private teamService: TeamsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {
+    this.getGraphOffensive();
     this.actions("CREATE_CHART_SCATTER1");
     this.actions("CREATE_CHART_SCATTER2");
     this.actions("CREATE_CHART_SCATTER3");
-    this.getGraphOffensive();
   }
 getGraphOffensive(){
   this.teamService.getGraphsEquipe().subscribe((res)=>{
     this.attackingData = res;
+    // console.log(this.attackingData);
+    
     this.actions("CREATE_CHART_RADAR1");
     this.actions("CREATE_CHART_RADAR2");
     this.actions("CREATE_CHART_RADAR3");
   })
 }
+
+openDialogWithDataType(data: any, type: string) {
+  const dialogRef = this.dialog.open(DialogEquipeComponent, {
+    height: "520px",
+    data: {
+      type: type,
+      data: this.attackingData,
+    },
+    disableClose: true,
+  });
+
+  dialogRef.afterClosed().subscribe((result) => {
+    if (result) {
+      // Handle the result if needed
+    }
+  });
+}
+
+openDialogWithType(type: string) {
+  let data;
+  switch (type) {
+    case "Offensive":
+      data = this.dataOffensive;
+      break;
+      case "Deffensive":
+      data = this.dataDeffensive;
+      break;
+      case "Generale":
+      data = this.dataGenerale;
+      break;
+      case "Efficacite_Offensive":
+      data = this.dataEfficacite_Offensive;
+      break;
+      case "Efficacite_Deffensive":
+      data = this.dataEfficacite_Deffensive;
+      break;
+      case "Passes":
+      data = this.dataPasses;
+      break;
+    default:
+      break;
+  }
+
+  this.openDialogWithDataType(data, type);
+}
+
   actions(CASE: string, RES: any = null) {
     switch (CASE) {
       case "CREATE_CHART_RADAR1":
@@ -63,55 +120,63 @@ getGraphOffensive(){
        
         myChart2.setOption(this.attackingData?.defending);
         break;
-      case "CREATE_CHART_RADAR3":
-        const myChart3 = echarts.init(
-          document.getElementById("chart-generale")
-        );
-       const option3 = {
-          legend: {
-            data: ["RSB Berkane", "Moyenne de ligue"],
-          },
-          radar: {
-            // shape: 'circle',
-            indicator: [
-              { name: "Buts", max: 6500 },
-              { name: "XContre", max: 16000 },
-              { name: "Tirs", max: 30000 },
-              { name: "Tirs cadre", max: 38000 },
-              { name: "Contre Prise", max: 52000 },
-              { name: "Passes Complete", max: 25000 },
-              { name: "Duels Offensive ", max: 25000 },
-            ],
-            radius: 85,
-            center: ["42%", "60%"],
-          },
-          series: [
-            {
-              type: "radar",
-              areaStyle: {},
-              data: [
-                {
-                  value: [4200, 3000, 20000, 35000, 50000, 18000, 20000, 35000],
-                  name: "RSB Berkane",
-                  itemStyle: {
-                    color: "#E55C00",
-                  },
-                },
-                {
-                  value: [
-                    5000, 14000, 28000, 26000, 42000, 21000, 20000, 35000,
-                  ],
-                  name: "Moyenne de ligue",
-                  itemStyle: {
-                    color: "#fbb034",
-                  },
-                },
-              ],
-            },
-          ],
-        };
-        myChart3.setOption(option3);
-        break;
+        case "CREATE_CHART_RADAR3":
+          const myChart3 = echarts.init(
+            document.getElementById("chart-generale")
+          );
+          myChart3.setOption(this.attackingData?.general);
+          break;  
+      
+      
+      //   case "CREATE_CHART_RADAR3":
+      //   const myChart3 = echarts.init(
+      //     document.getElementById("chart-generale")
+      //   );
+      //  const option3 = {
+      //     legend: {
+      //       data: ["RSB Berkane", "Moyenne de ligue"],
+      //     },
+      //     radar: {
+      //       // shape: 'circle',
+      //       indicator: [
+      //         { name: "Buts", max: 6500 },
+      //         { name: "XContre", max: 16000 },
+      //         { name: "Tirs", max: 30000 },
+      //         { name: "Tirs cadre", max: 38000 },
+      //         { name: "Contre Prise", max: 52000 },
+      //         { name: "Passes Complete", max: 25000 },
+      //         { name: "Duels Offensive ", max: 25000 },
+      //       ],
+      //       radius: 85,
+      //       center: ["42%", "60%"],
+      //     },
+      //     series: [
+      //       {
+      //         type: "radar",
+      //         areaStyle: {},
+      //         data: [
+      //           {
+      //             value: [4200, 3000, 20000, 35000, 50000, 18000, 20000, 35000],
+      //             name: "RSB Berkane",
+      //             itemStyle: {
+      //               color: "#E55C00",
+      //             },
+      //           },
+      //           {
+      //             value: [
+      //               5000, 14000, 28000, 26000, 42000, 21000, 20000, 35000,
+      //             ],
+      //             name: "Moyenne de ligue",
+      //             itemStyle: {
+      //               color: "#fbb034",
+      //             },
+      //           },
+      //         ],
+      //       },
+      //     ],
+      //   };
+      //   myChart3.setOption(option3);
+      //   break;
       case "CREATE_CHART_SCATTER1":
         const myChart4 = echarts.init(
           document.getElementById("chart-efficacite")
@@ -412,4 +477,9 @@ getGraphOffensive(){
         break;
     }
   }
+
+
+
+
+
 }
