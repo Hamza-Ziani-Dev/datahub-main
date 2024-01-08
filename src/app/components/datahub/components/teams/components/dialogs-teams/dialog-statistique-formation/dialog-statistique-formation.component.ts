@@ -7,7 +7,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./dialog-statistique-formation.component.css']
 })
 export class DialogStatistiqueFormationComponent implements OnInit {
-
+  teamFormationAgainst: any;
+  teamFormationFor :any;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data:any,
     private dialogRef: MatDialogRef<DialogStatistiqueFormationComponent> 
@@ -15,8 +16,10 @@ export class DialogStatistiqueFormationComponent implements OnInit {
  teamFormation : any;
   
   ngOnInit(): void {
-    this.teamFormation = this.data?.statistiqueFormation
-    console.log(this.teamFormation);
+    // this.teamFormation = this.data?.statistiqueFormation
+    this.teamFormationFor = this.data?.statistiqueFormation?.for
+    this.teamFormationAgainst= this.data?.statistiqueFormation?.against
+    // console.log(this.teamFormation);
   
   }
 

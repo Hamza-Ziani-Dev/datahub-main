@@ -1,4 +1,5 @@
-import { Component, Inject, OnInit } from "@angular/core";
+import { Component, ElementRef, Inject, OnInit, ViewChild } from "@angular/core";
+import { TeamsService } from "../../../service/teams.service";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import * as echarts from "echarts";
 @Component({
@@ -26,11 +27,16 @@ export class DialogEquipeComponent implements OnInit {
   URL9: string =
     "https://seeklogo.com/images/M/maghreb-association-sportive-de-fez-mas-logo-D6AA7B92EB-seeklogo.com.png";
   URL: string = "https://interface.myteambyfrmf.ma/uploads/datahub/";
+  @ViewChild('echartsContainer') echartsContainer: ElementRef;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dialogRef: MatDialogRef<DialogEquipeComponent>
   ) {}
   ngOnInit() {
+    console.log(this.data);
+    
+   this.renderECharts();
+    console.log(this.data);
     console.log(this.data?.data?.attacking);
     this.actions("CREATE_CHART_RADAR1");
     this.actions("CREATE_CHART_RADAR2");
@@ -43,7 +49,19 @@ export class DialogEquipeComponent implements OnInit {
   closeDialog(): void {
     this.dialogRef.close();
   }
+  renderECharts() {
+    // Access the DOM element using ViewChild and ElementRef
+    const chartElement = this.echartsContainer.nativeElement;
 
+    // Initialize ECharts with your data
+    const myChart = echarts.init(chartElement);
+
+    // Assuming this.data.data contains the ECharts configuration
+    const options = this.data.data;
+
+    // Set options and render the chart
+    myChart.setOption(options);
+  }
   actions(CASE: string, RES: any = null) {
     switch (CASE) {
       case "CREATE_CHART_RADAR1":

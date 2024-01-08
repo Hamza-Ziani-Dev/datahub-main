@@ -17,7 +17,10 @@ export class DialogDistributionComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    console.log(this.data?.distribution[0]?.data[0]);
+    console.log(this.data?.distribution[0]?.metric);
+    console.log(this.data?.distribution[1]?.metric);
+    
+    console.log(this.data?.distribution[0]);
     this.actions("CREATE_CHART_DISTRIBUTION");
   }
 
@@ -34,75 +37,7 @@ export class DialogDistributionComponent implements OnInit {
     switch (CASE) {
       case "CREATE_CHART_DISTRIBUTION":
         const myChart1 = echarts.init(document.getElementById("chart-distribution"));
-        // const option1 ={
-        //   title: {
-        //     text: 'Distribution XG (400 minutes de jeu)',
-        //     left: 'center',
-        //     textStyle: {
-        //       fontWeight: 'bold',
-        //       fontSize: 12,
-        //     }
-        //   },          
-        //   series: [
-        //     {
-        //       type: 'treemap',
-        //       data: [
-        //         {
-        //           name: 'A',
-        //           value: 10,
-        //           children: [
-        //             {
-        //               name: 'E.El Bassil',
-        //               value: 10
-        //             },
-        //             {
-        //               name: 'Herve Guy',
-        //               value: 20
-        //             }
-        //           ]
-        //         },
-        //         {
-        //           name: 'B',
-        //           value: 20,
-        //           children: [
-        //             {
-        //               name: 'J.Kameni',
-        //               value: 20,
-        //             },
-        //             {
-        //                   name: 'H.Reda',
-        //                   value: 20
-        //             },
-        //             {
-        //                   name: 'H.Hedraf',
-        //                   value: 20
-        //             },
-        //             {
-        //                   name: 'M.Metwali',
-        //                   value: 90
-        //             },
-        //           ]
-        //         },
-        //         {
-        //           name: 'C',
-        //           value: 50,
-        //           children: [
-        //             {
-        //               name: 'M.Louadni',
-        //               value: 10,
-        //             },
-        //             {
-        //               name: 'A.Karnass',
-        //                value: 20
-        //             }
-        //           ]
-        //         }
-        //       ]
-        //     }
-        //   ]
-        // };
-        // myChart1.setOption(option1);
-        myChart1.setOption(this.data?.distribution[0]?.data[0]);
+        myChart1.setOption(this.data?.distribution[0]);
       break;
       case "UPDATE_CHART":
         break;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import * as echarts from "echarts";
 import { TeamsService } from '../../service/teams.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -15,9 +15,10 @@ import { DialogStatistiqueFormationComponent } from '../dialogs-teams/dialog-sta
 export class ProchainAdversaireComponent implements OnInit {
   fixtureInfoArray: any;
   generalInfoArray: any;
+
   playersOne : any;
   playersTwo : any;
-  treeMapArray: any;
+  treeMapData: any;
   radarDataArray :any;
   isLoading: boolean = true;
   URL: string = "https://interface.myteambyfrmf.ma/uploads/datahub/";
@@ -29,34 +30,39 @@ export class ProchainAdversaireComponent implements OnInit {
   };
   PLAYER_ID: number = null;
   dataSource: any[] = [];
+  @ViewChild('chartGeneraleElement', { static: true }) chartGeneraleElement!: ElementRef;
   constructor(
     private teamService: TeamsService,
     private dialogTable : MatDialog,
     private dialog : MatDialog,
-    private dialogDefensive : MatDialog,
-    private dialogOffensive : MatDialog,
   ) {}
   radarDefending :any;
   radarAttaking :any;
+  radarGenerale : any;
   teamFormation : any;
 ngOnInit() {
-  this.getTeamFormation();
-    this.getRadarAttacking();
+    this.getTeamFormation();
     this.getTreeMapData();
-    this.actions("CREATE_CHART_RADAR1");
     this.getGeneralInfo();
     this.getFixtureInfo();
+    this.getRadarProchain();
+    this.actions('CREATE_CHART_RADAR1');
 }
 
 getTeamFormation(){
 this.teamService.getTeamFormation().subscribe((res)=>{
-  this.teamFormation = res;
+  this.teamFormation = res[0];
+  // console.log(this.teamFormation);
+  
 })
 }
-getRadarAttacking(){
+getRadarProchain(){
   this.teamService.getRadarData().subscribe((res)=>{
-    this.radarDefending = res[0];
-    this.radarAttaking = res[1];
+    this.radarAttaking = res[0]?.attacking;
+    this.radarDefending = res[0]?.defending;
+    this.radarGenerale = res[0]?.general;
+    // console.log(this.radarGenerale);
+    
     this.actions("CREATE_CHART_DEFENDING");
   })
 }
@@ -77,7 +83,7 @@ getFixtureInfo(){
 
 getTreeMapData(){
   this.teamService.getTreeMapData().subscribe((res)=>{
-    this.treeMapArray = res;
+    this.treeMapData = res;
   })
 }
 
@@ -90,54 +96,15 @@ actions(CASE: string, RES: any = null) {
   }
   switch (CASE) {
     case 'CREATE_CHART_RADAR1':
-              const myChart1 = echarts.init(document.getElementById("chart-general"));
-              const option1 ={
-                title: {
-                  text: 'Prestation générale.',
-                  left: 'center'
-                },
-                legend: {
-                  data: ['RSB Berkane', 'Moyenne de ligne'],
-                  // left: 10,
-                },
-                radar: {
-                  // shape: 'circle',
-                  indicator: [
-                    { name: 'Buts', max: 6500 },
-                    { name: 'XContre', max: 16000 },
-                    { name: 'Tirs', max: 30000 },
-                    { name: 'Tirs cadre', max: 38000 },
-                    { name: 'Contre Prise', max: 52000 },
-                    { name: 'Degagements', max: 24000 },
-                    { name: 'Foutes', max: 23000 }
-                  ],
-                  // radius: 100,
-                  center: ['50%', '50%'],
-                },
-                series: [
-                  {
-                    type: 'radar',
-                    data: [
-                      {
-                        value: [4200, 3000, 20000, 35000, 50000, 18000],
-                        // name: 'RSB Berkane'
-                      },
-                      {
-                        value: [5000, 14000, 28000, 26000, 42000, 21000],
-                        // name: 'Moyenne de ligne'
-                      }
-                    ]
-                  }
-                ]
-              };
-              myChart1.setOption(option1);
-            break;
-    case 'UPDATE_CHART_RADAR1':
+      setTimeout(() => {
+        const myChart = echarts.init(document.getElementById('chartGeneraleElement'));
+        myChart.setOption(this.radarGenerale);
+      }, 1000); // Adjust the time delay (in milliseconds) as needed
       break;
 
     // Dialog Responsibilites
     case 'openDialogResponsibilities':
-      this.openDialog(this.dialog, DialogDistributionComponent, width, height,'dialog-with-data', { distribution: this.treeMapArray });
+      this.openDialog(this.dialog, DialogDistributionComponent, width, height,'dialog-with-data', { distribution: this.treeMapData });
       break;
   
     // Dialog Deffensive

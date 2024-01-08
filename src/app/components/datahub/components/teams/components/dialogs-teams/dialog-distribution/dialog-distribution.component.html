@@ -4,16 +4,13 @@
  <div class="row justify-content-center align-content-center">
      <div class="mt-2 mb-2">
        <div class="navbar">
-          <div class="nav-btn" [class.active]="activeButton === 'XG'" (click)="setActiveButton('XG')">XG</div>
-          <div class="nav-btn" [class.active]="activeButton === 'B'" (click)="setActiveButton('B')">B</div>
-          <div class="nav-btn" [class.active]="activeButton === 'C'" (click)="setActiveButton('C')">C</div>
-          <div class="nav-btn" [class.active]="activeButton === 'D'" (click)="setActiveButton('D')">D</div>
-          <div class="nav-btn" [class.active]="activeButton === 'E'" (click)="setActiveButton('E')">E</div>
-          <div class="nav-btn" [class.active]="activeButton === 'F'" (click)="setActiveButton('F')">F</div>
+         <div class="nav-btn" [class.active]="activeButton === 'XG'" (click)="setActiveButton('xG')">XG</div>
+         <div class="nav-btn" [class.active]="activeButton === 'xA'" (click)="setActiveButton('xA')">xA</div>
+         <div class="nav-btn" [class.active]="activeButton === 'Dribbles'" (click)="setActiveButton('Dribbles')">Dribbles</div>
           <!-- <div class="nav-btn" [class.active]="activeButton === 'G'" (click)="setActiveButton('G')">G</div> -->
         </div>
      </div>
-     <div class="distribution">
+     <div class="distribution" >
         <div class="chart-distribution">
            <div id="chart-distribution" style="width: 100%; height:244px;" ></div>
         </div>
