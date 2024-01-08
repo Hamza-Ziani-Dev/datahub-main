@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import * as echarts from "echarts";
 import { TeamsService } from "../../service/teams.service";
 import { ActivatedRoute } from "@angular/router";
+import { DialogJoueurComponent } from "../dialogs-teams/dialog-joueur/dialog-joueur.component";
+import { MatDialog } from "@angular/material/dialog";
 
 @Component({
   selector: "app-joueurs",
@@ -9,7 +11,8 @@ import { ActivatedRoute } from "@angular/router";
   styleUrls: ["./joueurs.component.css"],
 })
 export class JoueursComponent implements OnInit {
-
+  Data_Efficacite:any;
+  Indice_Créativite:any;
   activeLabel: number = 1; // Initially, no label is active
   setActiveLabel(labelNumber: number) {
     this.activeLabel = labelNumber;
@@ -21,25 +24,15 @@ export class JoueursComponent implements OnInit {
     { name: "PM10", index: 3, text: "Buts" },
   ];
   imageUrl: string ="https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--fc106789-60ea-4534-ace7-ee4e3247d853/MODRIC_carita_380x501.app.png?preferwebp=true&width=288&height=384";
-  isLoading: boolean = true;
   URL: string = "https://interface.myteambyfrmf.ma/uploads/datahub/";
-  COLORS: string[] = ["#0357A0", "#007934", "#E55C00"];
-  ID: number = null;
-  chart: any = {
-    title: null,
-    legend: [],
-  };
-  PLAYER_ID: number = null;
   dataSource: any[] = [];
   constructor(
     private TeamService: TeamsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {
-    this.ID = this.route.snapshot.parent?.params.id;
-    this.PLAYER_ID = this.route.snapshot.parent?.params.player_id;
-    console.log(this.ID, this.PLAYER_ID);
     this.actions("CREATE_CHART_SCATTER1");
     this.actions("CREATE_CHART_SCATTER2");
     this.actions("CREATE_CHART_SCATTER3");
@@ -57,6 +50,47 @@ export class JoueursComponent implements OnInit {
     this.actions("CREATE_CHART_SCATTER15");
     this.actions("CREATE_CHART_SCATTER16");
   }
+
+
+  openDialogWithDataType(data: any, type: string) {
+    // console.log("type Dialog");
+    
+    const dialogRef = this.dialog.open(DialogJoueurComponent, {
+      height: "520px",
+      data: {
+        type: type,
+        data: data,
+      },
+      disableClose: true,
+    });
+  
+    dialogRef.afterClosed().subscribe((result) => {
+    });
+  }
+  
+  openDialogWithType(type: string) {
+    let data;
+    switch (type) {
+      case "Efficacite_Dribbleur":
+        data = this.Data_Efficacite;
+        break;
+        case "Indice_Créativité":
+          data = this.Indice_Créativite;
+        break;
+       
+      default:
+        break;
+    }
+    if (data) {
+      this.openDialogWithDataType(data, type);
+    } else {
+      console.log('No Data In Dialog');
+      
+    }
+    // console.log(data,type,'A')
+    // if(Object.keys(data)) this.openDialogWithDataType(data, type);
+  }
+
   actions(CASE: string, RES: any = null) {
     switch (CASE) {
       case "CREATE_CHART_SCATTER1":

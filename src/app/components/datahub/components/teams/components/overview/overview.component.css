@@ -157,7 +157,7 @@
     width: 38px;
     margin-right: 20px;
   }
-  
+ 
   @media screen and (max-width: 768px) {
     .overviewContainer{
       padding-right: 0px;

@@ -1,5 +1,4 @@
 import { Component, Inject, OnInit } from "@angular/core";
-import { TeamsService } from "../../../service/teams.service";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import * as echarts from "echarts";
 @Component({
@@ -28,20 +27,18 @@ export class DialogEquipeComponent implements OnInit {
     "https://seeklogo.com/images/M/maghreb-association-sportive-de-fez-mas-logo-D6AA7B92EB-seeklogo.com.png";
   URL: string = "https://interface.myteambyfrmf.ma/uploads/datahub/";
   constructor(
-    private teamService: TeamsService,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dialogRef: MatDialogRef<DialogEquipeComponent>
   ) {}
   ngOnInit() {
-    console.log(this.data?.type);
-    console.log(this.data.data?.attacking);
-    
-    this.actions("CREATE_CHART_SCATTER1");
-    this.actions("CREATE_CHART_SCATTER2");
-    this.actions("CREATE_CHART_SCATTER3");
+    console.log(this.data?.data?.attacking);
     this.actions("CREATE_CHART_RADAR1");
     this.actions("CREATE_CHART_RADAR2");
     this.actions("CREATE_CHART_RADAR3");
+    this.actions("CREATE_CHART_SCATTER1");
+    this.actions("CREATE_CHART_SCATTER2");
+    this.actions("CREATE_CHART_SCATTER3");
+   
   }
   closeDialog(): void {
     this.dialogRef.close();
@@ -50,315 +47,312 @@ export class DialogEquipeComponent implements OnInit {
   actions(CASE: string, RES: any = null) {
     switch (CASE) {
       case "CREATE_CHART_RADAR1":
-        const myChart1 = echarts.init(
-          document.getElementById("chart-offensive"),{width:100 , height:100}
-        );
-        myChart1.setOption(this.data.data?.attacking);
+        const myChart1 = echarts.init(document.getElementById("chart-offensive"));
+        myChart1.setOption(this.data?.data?.attacking);
         break;
       case "CREATE_CHART_RADAR2":
         const myChart2 = echarts.init(
           document.getElementById("chart-deffensive")
         );
-        myChart2.setOption(this.data.data?.defending);
+        myChart2.setOption(this.data?.data?.defending);
         break;
       case "CREATE_CHART_RADAR3":
         const myChart3 = echarts.init(
           document.getElementById("chart-generale")
         );
-        myChart3.setOption(this.data.data?.general);
+        myChart3.setOption(this.data?.data?.general);
         break;
-      // case "CREATE_CHART_SCATTER1":
-      //   const myChart4 = echarts.init(
-      //     document.getElementById("chart-efficacite")
-      //   );
-      //   const option4 = {
-      //     xAxis: {},
-      //     yAxis: {},
-      //     title: {
-      //       text: "Aerial Duel Win Ratio %",
-      //       left: "center",
-      //       bottom: 10,
-      //       textStyle: {
-      //         fontWeight: "bold", // Font weight
-      //         fontSize: 14, // Font size in pixels
-      //       },
-      //     },
-      //     tooltip: {
-      //       formatter: function (params) {
-      //         // return `
-      //         //       <div style="width: 10px" >
-      //         //       <div class="mt-2 d-flex flex-column justify-content-center align-items-center ">
-      //         //        Logo
-      //         //       </div>
-      //         //       </div>
-      //         // `;
-      //       },
-      //     },
-      //     series: [
-      //       {
-      //         data: [
-      //           {
-      //             value: [90, 90, "RCA"],
-      //             name: "RCA",
-      //             symbol: `image://${this.URL1}`,
-      //             symbolSize: [20, 20],
-      //           },
-      //           {
-      //             value: [80, 86, "RSB"],
-      //             name: "RSB",
-      //             symbol: `image://${this.URL2}`,
-      //             symbolSize: [20, 20],
-      //           },
+      case "CREATE_CHART_SCATTER1":
+        const myChart4 = echarts.init(document.getElementById("chart_efficacite_offensive")
+        );
+        const option4 = {
+          xAxis: {},
+          yAxis: {},
+          title: {
+            text: "Aerial Duel Win Ratio %",
+            left: "center",
+            bottom: 10,
+            textStyle: {
+              fontWeight: "bold", // Font weight
+              fontSize: 14, // Font size in pixels
+            },
+          },
+          tooltip: {
+            formatter: function (params) {
+              // return `
+              //       <div style="width: 10px" >
+              //       <div class="mt-2 d-flex flex-column justify-content-center align-items-center ">
+              //        Logo
+              //       </div>
+              //       </div>
+              // `;
+            },
+          },
+          series: [
+            {
+              data: [
+                {
+                  value: [90, 90, "RCA"],
+                  name: "RCA",
+                  symbol: `image://${this.URL1}`,
+                  symbolSize: [20, 20],
+                },
+                {
+                  value: [80, 86, "RSB"],
+                  name: "RSB",
+                  symbol: `image://${this.URL2}`,
+                  symbolSize: [20, 20],
+                },
 
-      //           {
-      //             value: [40, 40, "IRT"],
-      //             name: "IRT",
-      //             symbol: `image://${this.URL3}`,
-      //             symbolSize: [20, 20],
-      //           },
-      //           {
-      //             value: [83, 87, "WAC"],
-      //             name: "WAC",
-      //             symbol: `image://${this.URL4}`,
-      //             symbolSize: [20, 20],
-      //           },
-      //           {
-      //             value: [10, 20, "KAC"],
-      //             name: "KAC",
-      //             symbol: `image://${this.URL5}`,
-      //             symbolSize: [20, 20],
-      //           },
-      //           {
-      //             value: [49, 43, "FUS"],
-      //             name: "FUS",
-      //             symbol: `image://${this.URL6}`,
-      //             symbolSize: [20, 20],
-      //           },
-      //           {
-      //             value: [59, 26, "FAR"],
-      //             name: "FAR",
-      //             symbol: `image://${this.URL7}`,
-      //             symbolSize: [20, 20],
-      //           },
-      //           {
-      //             value: [14, 40, "MAT"],
-      //             name: "MAT",
-      //             symbol: `image://${this.URL8}`,
-      //             symbolSize: [20, 20],
-      //           },
-      //           {
-      //             value: [32, 70, "MAS"],
-      //             name: "MAS",
-      //             symbol: `image://${this.URL9}`,
-      //             symbolSize: [20, 20],
-      //           },
-      //         ],
-      //         type: "scatter",
-      //         name: "Title",
-      //         stack: "Total",
-      //         itemStyle: {},
-      //         emphasis: {
-      //           focus: "self",
-      //         },
-      //       },
-      //     ],
-      //   };
-      //   myChart4.setOption(option4);
-      //   break;
-      // case "CREATE_CHART_SCATTER2":
-      //   const myChart5 = echarts.init(
-      //     document.getElementById("chart-defensive")
-      //   );
-      //   const option5 = {
-      //     xAxis: {},
-      //     yAxis: {},
-      //     title: {
-      //       text: "Aerial Duel Win Ratio %",
-      //       left: "center",
-      //       bottom: 10,
-      //       textStyle: {
-      //         fontWeight: "bold", // Font weight
-      //         fontSize: 14, // Font size in pixels
-      //       },
-      //     },
-      //     tooltip: {
-      //       formatter: function (params) {
-      //         // return `
-      //         //       <div style="width: 120px" >
-      //         //       <div class="mt-2 d-flex flex-column justify-content-center align-items-center ">
-      //         //        Logo
-      //         //       </div>
-      //         //       </div>
-      //         // `;
-      //       },
-      //     },
-      //     series: [
-      //       {
-      //         data: [
-      //           {
-      //             value: [90, 90, "RCA"],
-      //             name: "RCA",
-      //             symbol: `image://${this.URL1}`,
-      //             symbolSize: [20, 20],
-      //           },
-      //           {
-      //             value: [80, 86, "RSB"],
-      //             name: "RSB",
-      //             symbol: `image://${this.URL2}`,
-      //             symbolSize: [20, 20],
-      //           },
+                {
+                  value: [40, 40, "IRT"],
+                  name: "IRT",
+                  symbol: `image://${this.URL3}`,
+                  symbolSize: [20, 20],
+                },
+                {
+                  value: [83, 87, "WAC"],
+                  name: "WAC",
+                  symbol: `image://${this.URL4}`,
+                  symbolSize: [20, 20],
+                },
+                {
+                  value: [10, 20, "KAC"],
+                  name: "KAC",
+                  symbol: `image://${this.URL5}`,
+                  symbolSize: [20, 20],
+                },
+                {
+                  value: [49, 43, "FUS"],
+                  name: "FUS",
+                  symbol: `image://${this.URL6}`,
+                  symbolSize: [20, 20],
+                },
+                {
+                  value: [59, 26, "FAR"],
+                  name: "FAR",
+                  symbol: `image://${this.URL7}`,
+                  symbolSize: [20, 20],
+                },
+                {
+                  value: [14, 40, "MAT"],
+                  name: "MAT",
+                  symbol: `image://${this.URL8}`,
+                  symbolSize: [20, 20],
+                },
+                {
+                  value: [32, 70, "MAS"],
+                  name: "MAS",
+                  symbol: `image://${this.URL9}`,
+                  symbolSize: [20, 20],
+                },
+              ],
+              type: "scatter",
+              name: "Title",
+              stack: "Total",
+              itemStyle: {},
+              emphasis: {
+                focus: "self",
+              },
+            },
+          ],
+        };
+        myChart4.setOption(option4);
+        break;
+      case "CREATE_CHART_SCATTER2":
+        const myChart5 = echarts.init(
+          document.getElementById("chart_efficacite_deffensive")
+        );
+        const option5 = {
+          xAxis: {},
+          yAxis: {},
+          title: {
+            text: "Aerial Duel Win Ratio %",
+            left: "center",
+            bottom: 10,
+            textStyle: {
+              fontWeight: "bold", // Font weight
+              fontSize: 14, // Font size in pixels
+            },
+          },
+          tooltip: {
+            formatter: function (params) {
+              // return `
+              //       <div style="width: 120px" >
+              //       <div class="mt-2 d-flex flex-column justify-content-center align-items-center ">
+              //        Logo
+              //       </div>
+              //       </div>
+              // `;
+            },
+          },
+          series: [
+            {
+              data: [
+                {
+                  value: [90, 90, "RCA"],
+                  name: "RCA",
+                  symbol: `image://${this.URL1}`,
+                  symbolSize: [20, 20],
+                },
+                {
+                  value: [80, 86, "RSB"],
+                  name: "RSB",
+                  symbol: `image://${this.URL2}`,
+                  symbolSize: [20, 20],
+                },
 
-      //           {
-      //             value: [40, 40, "IRT"],
-      //             name: "IRT",
-      //             symbol: `image://${this.URL3}`,
-      //             symbolSize: [20, 20],
-      //           },
-      //           {
-      //             value: [83, 87, "WAC"],
-      //             name: "WAC",
-      //             symbol: `image://${this.URL4}`,
-      //             symbolSize: [20, 20],
-      //           },
-      //           {
-      //             value: [10, 20, "KAC"],
-      //             name: "KAC",
-      //             symbol: `image://${this.URL5}`,
-      //             symbolSize: [20, 20],
-      //           },
-      //           {
-      //             value: [49, 43, "FUS"],
-      //             name: "FUS",
-      //             symbol: `image://${this.URL6}`,
-      //             symbolSize: [20, 20],
-      //           },
-      //           {
-      //             value: [59, 26, "FAR"],
-      //             name: "FAR",
-      //             symbol: `image://${this.URL7}`,
-      //             symbolSize: [20, 20],
-      //           },
-      //           {
-      //             value: [14, 40, "MAT"],
-      //             name: "MAT",
-      //             symbol: `image://${this.URL8}`,
-      //             symbolSize: [20, 20],
-      //           },
-      //           {
-      //             value: [32, 70, "MAS"],
-      //             name: "MAS",
-      //             symbol: `image://${this.URL9}`,
-      //             symbolSize: [20, 20],
-      //           },
-      //         ],
-      //         type: "scatter",
-      //         name: "Title",
-      //         stack: "Total",
-      //         itemStyle: {},
-      //         emphasis: {
-      //           focus: "self",
-      //         },
-      //       },
-      //     ],
-      //   };
-      //   myChart5.setOption(option5);
-      //   break;
-      // case "CREATE_CHART_SCATTER3":
-      //   const myChart6 = echarts.init(document.getElementById("chart-passes"));
-      //   const option6 = {
-      //     xAxis: {},
-      //     yAxis: {},
-      //     title: {
-      //       text: "Aerial Duel Win Ratio %",
-      //       left: "center",
-      //       bottom: 10,
-      //       textStyle: {
-      //         fontWeight: "bold", // Font weight
-      //         fontSize: 14, // Font size in pixels
-      //       },
-      //     },
-      //     tooltip: {
-      //       formatter: function (params) {
-      //         // return `
-      //         //       <div style="width: 120px" >
-      //         //       <div class="mt-2 d-flex flex-column justify-content-center align-items-center ">
-      //         //        Logo
-      //         //       </div>
-      //         //       </div>
-      //         // `;
-      //       },
-      //     },
-      //     series: [
-      //       {
-      //         data: [
-      //           {
-      //             value: [90, 90, "RCA"],
-      //             name: "RCA",
-      //             symbol: `image://${this.URL1}`,
-      //             symbolSize: [20, 20],
-      //           },
-      //           {
-      //             value: [80, 86, "RSB"],
-      //             name: "RSB",
-      //             symbol: `image://${this.URL2}`,
-      //             symbolSize: [20, 20],
-      //           },
+                {
+                  value: [40, 40, "IRT"],
+                  name: "IRT",
+                  symbol: `image://${this.URL3}`,
+                  symbolSize: [20, 20],
+                },
+                {
+                  value: [83, 87, "WAC"],
+                  name: "WAC",
+                  symbol: `image://${this.URL4}`,
+                  symbolSize: [20, 20],
+                },
+                {
+                  value: [10, 20, "KAC"],
+                  name: "KAC",
+                  symbol: `image://${this.URL5}`,
+                  symbolSize: [20, 20],
+                },
+                {
+                  value: [49, 43, "FUS"],
+                  name: "FUS",
+                  symbol: `image://${this.URL6}`,
+                  symbolSize: [20, 20],
+                },
+                {
+                  value: [59, 26, "FAR"],
+                  name: "FAR",
+                  symbol: `image://${this.URL7}`,
+                  symbolSize: [20, 20],
+                },
+                {
+                  value: [14, 40, "MAT"],
+                  name: "MAT",
+                  symbol: `image://${this.URL8}`,
+                  symbolSize: [20, 20],
+                },
+                {
+                  value: [32, 70, "MAS"],
+                  name: "MAS",
+                  symbol: `image://${this.URL9}`,
+                  symbolSize: [20, 20],
+                },
+              ],
+              type: "scatter",
+              name: "Title",
+              stack: "Total",
+              itemStyle: {},
+              emphasis: {
+                focus: "self",
+              },
+            },
+          ],
+        };
+        myChart5.setOption(option5);
+        break;
+      case "CREATE_CHART_SCATTER3":
+        const myChart6 = echarts.init(document.getElementById("chart_efficacite_passes"));
+        const option6 = {
+          xAxis: {},
+          yAxis: {},
+          title: {
+            text: "Aerial Duel Win Ratio %",
+            left: "center",
+            bottom: 10,
+            textStyle: {
+              fontWeight: "bold", // Font weight
+              fontSize: 14, // Font size in pixels
+            },
+          },
+          tooltip: {
+            formatter: function (params) {
+              // return `
+              //       <div style="width: 120px" >
+              //       <div class="mt-2 d-flex flex-column justify-content-center align-items-center ">
+              //        Logo
+              //       </div>
+              //       </div>
+              // `;
+            },
+          },
+          series: [
+            {
+              data: [
+                {
+                  value: [90, 90, "RCA"],
+                  name: "RCA",
+                  symbol: `image://${this.URL1}`,
+                  symbolSize: [20, 20],
+                },
+                {
+                  value: [80, 86, "RSB"],
+                  name: "RSB",
+                  symbol: `image://${this.URL2}`,
+                  symbolSize: [20, 20],
+                },
 
-      //           {
-      //             value: [40, 40, "IRT"],
-      //             name: "IRT",
-      //             symbol: `image://${this.URL3}`,
-      //             symbolSize: [20, 20],
-      //           },
-      //           {
-      //             value: [83, 87, "WAC"],
-      //             name: "WAC",
-      //             symbol: `image://${this.URL4}`,
-      //             symbolSize: [20, 20],
-      //           },
-      //           {
-      //             value: [10, 20, "KAC"],
-      //             name: "KAC",
-      //             symbol: `image://${this.URL5}`,
-      //             symbolSize: [20, 20],
-      //           },
-      //           {
-      //             value: [49, 43, "FUS"],
-      //             name: "FUS",
-      //             symbol: `image://${this.URL6}`,
-      //             symbolSize: [20, 20],
-      //           },
-      //           {
-      //             value: [59, 26, "FAR"],
-      //             name: "FAR",
-      //             symbol: `image://${this.URL7}`,
-      //             symbolSize: [20, 20],
-      //           },
-      //           {
-      //             value: [14, 40, "MAT"],
-      //             name: "MAT",
-      //             symbol: `image://${this.URL8}`,
-      //             symbolSize: [20, 20],
-      //           },
-      //           {
-      //             value: [32, 70, "MAS"],
-      //             name: "MAS",
-      //             symbol: `image://${this.URL9}`,
-      //             symbolSize: [20, 20],
-      //           },
-      //         ],
-      //         type: "scatter",
-      //         name: "Title",
-      //         stack: "Total",
-      //         itemStyle: {},
-      //         emphasis: {
-      //           focus: "self",
-      //         },
-      //       },
-      //     ],
-      //   };
-      //   myChart6.setOption(option6);
-      //   break;
+                {
+                  value: [40, 40, "IRT"],
+                  name: "IRT",
+                  symbol: `image://${this.URL3}`,
+                  symbolSize: [20, 20],
+                },
+                {
+                  value: [83, 87, "WAC"],
+                  name: "WAC",
+                  symbol: `image://${this.URL4}`,
+                  symbolSize: [20, 20],
+                },
+                {
+                  value: [10, 20, "KAC"],
+                  name: "KAC",
+                  symbol: `image://${this.URL5}`,
+                  symbolSize: [20, 20],
+                },
+                {
+                  value: [49, 43, "FUS"],
+                  name: "FUS",
+                  symbol: `image://${this.URL6}`,
+                  symbolSize: [20, 20],
+                },
+                {
+                  value: [59, 26, "FAR"],
+                  name: "FAR",
+                  symbol: `image://${this.URL7}`,
+                  symbolSize: [20, 20],
+                },
+                {
+                  value: [14, 40, "MAT"],
+                  name: "MAT",
+                  symbol: `image://${this.URL8}`,
+                  symbolSize: [20, 20],
+                },
+                {
+                  value: [32, 70, "MAS"],
+                  name: "MAS",
+                  symbol: `image://${this.URL9}`,
+                  symbolSize: [20, 20],
+                },
+              ],
+              type: "scatter",
+              name: "Title",
+              stack: "Total",
+              itemStyle: {},
+              emphasis: {
+                focus: "self",
+              },
+            },
+          ],
+        };
+        myChart6.setOption(option6);
+        break;
 
       case "UPDATE_CHART":
         break;
