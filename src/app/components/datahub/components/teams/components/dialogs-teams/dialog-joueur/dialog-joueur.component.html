@@ -1,541 +1,630 @@
-
-<div class="row justify-content-center align-content-center">
-    <!-- 1 Efficacite_Dribbleur -->
-    <div class="performance" *ngIf="data.type === 'Efficacite_Dribbleur'">
-        <div class="performance-header">
-          <div class="d-flex justify-content-between align-content-between ">
-            <span class="title-header justify-content-end align-content-end">
-              Efficacité dribbleur <span class="sub-des"> </span>
-            </span>
-            <div class="logo-club ml-4">
-              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                width="24px" height="24px" viewBox="0,0,256,256">
-                <g fill="#1b1b19" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                  stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                  font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                  style="mix-blend-mode: normal">
-                  <g transform="scale(10.66667,10.66667)">
-                    <path
-                      d="M23.04,9.021l-8.27,-0.225l-2.77,-7.796l-2.77,7.796l-8.27,0.225l6.559,5.043l-2.342,7.936l6.823,-4.679l6.823,4.679l-2.342,-7.935zM12,14.896l-3.312,2.271l1.137,-3.851l-3.183,-2.448l4.014,-0.109l1.344,-3.785l1.344,3.784l4.014,0.109l-3.183,2.448l1.137,3.851z">
-                    </path>
-                  </g>
-                </g>
-              </svg>
-            </div>
-          </div>
-
-        </div>
-        <div class="performance-body">
-          <div id="chart-efficacite" style="width: 100%; height:300px"></div>
-        </div>
-    </div>
-    <!-- End Efficacite_Dribbleur -->
-     <!-- 1 Efficacite_Dribbleur -->
-     <div class="performance" *ngIf="data.type === 'Indice_Créativité'">
-        <div class="performance-header">
-          <div class="d-flex justify-content-between align-content-between ">
-            <span class="title-header justify-content-end align-content-end">
-              Efficacité dribbleur <span class="sub-des"> </span>
-            </span>
-            <div class="logo-club ml-4">
-              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                width="24px" height="24px" viewBox="0,0,256,256">
-                <g fill="#1b1b19" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                  stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                  font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                  style="mix-blend-mode: normal">
-                  <g transform="scale(10.66667,10.66667)">
-                    <path
-                      d="M23.04,9.021l-8.27,-0.225l-2.77,-7.796l-2.77,7.796l-8.27,0.225l6.559,5.043l-2.342,7.936l6.823,-4.679l6.823,4.679l-2.342,-7.935zM12,14.896l-3.312,2.271l1.137,-3.851l-3.183,-2.448l4.014,-0.109l1.344,-3.785l1.344,3.784l4.014,0.109l-3.183,2.448l1.137,3.851z">
-                    </path>
-                  </g>
-                </g>
-              </svg>
-            </div>
-          </div>
-
-        </div>
-        <div class="performance-body">
-          <div id="chart-creativite" style="width: 100%; height:300px"></div>
-        </div>
-    </div>
-    <!-- End Efficacite_Dribbleur -->
-
-
-
-
-
-
-    <!-- content -->
-    <!-- <div class="content1 d-flex row col-12 col-md-12 justify-content-center align-content-center mt-4 mb-4 "> -->
-      <!-- 1 -->
-      
-      <!-- 2 -->
-      <!-- <div id="creativite" class="creativite col-12 col-md-4 mt-4 justify-content-center align-content-center">
-        <div class="performance">
-          <div class="performance-header">
-            <div class="d-flex justify-content-between align-content-between ">
-              <span class="title-header justify-content-end align-content-end">
-                Indice créativité<span class="sub-des"></span>
-              </span>
-              <div class="logo-club ml-4">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                  width="24px" height="24px" viewBox="0,0,256,256">
-                  <g fill="#1b1b19" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                    stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                    font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                    style="mix-blend-mode: normal">
-                    <g transform="scale(10.66667,10.66667)">
-                      <path
-                        d="M23.04,9.021l-8.27,-0.225l-2.77,-7.796l-2.77,7.796l-8.27,0.225l6.559,5.043l-2.342,7.936l6.823,-4.679l6.823,4.679l-2.342,-7.935zM12,14.896l-3.312,2.271l1.137,-3.851l-3.183,-2.448l4.014,-0.109l1.344,-3.785l1.344,3.784l4.014,0.109l-3.183,2.448l1.137,3.851z">
-                      </path>
-                    </g>
-                  </g>
-                </svg>
-              </div>
-            </div>
-          </div>
-  
-          <div class="performance-body">
-            <div id="chart-creativite" style="width: 100%; height:300px"></div>
-          </div>
-        </div>
-      </div> -->
-      <!-- 3 -->
-      <!-- <div id="presence-tir" class="presence-tir col-12 col-md-4 mt-4 justify-content-center align-content-center">
-        <div class="performance">
-          <div class="performance-header">
-            <div class="d-flex justify-content-between align-content-between ">
-              <span class="title-header justify-content-end align-content-end">
-                Présence au Tir<span class="sub-des"></span>
-              </span>
-              <div class="logo-club ml-4">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                  width="24px" height="24px" viewBox="0,0,256,256">
-                  <g fill="#1b1b19" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                    stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                    font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                    style="mix-blend-mode: normal">
-                    <g transform="scale(10.66667,10.66667)">
-                      <path
-                        d="M23.04,9.021l-8.27,-0.225l-2.77,-7.796l-2.77,7.796l-8.27,0.225l6.559,5.043l-2.342,7.936l6.823,-4.679l6.823,4.679l-2.342,-7.935zM12,14.896l-3.312,2.271l1.137,-3.851l-3.183,-2.448l4.014,-0.109l1.344,-3.785l1.344,3.784l4.014,0.109l-3.183,2.448l1.137,3.851z">
-                      </path>
-                    </g>
-                  </g>
-                </svg>
-              </div>
-            </div>
-          </div>
-  
-          <div class="performance-body">
-            <div id="chart-presence-tir" style="width: 100%; height:300px"></div>
-          </div>
-        </div>
-      </div> -->
-      <!-- 4 -->
-      <!-- <div id="qualite-tir" class="qualite-tir col-12 col-md-4 mt-4 justify-content-center align-content-center">
-        <div class="performance">
-          <div class="performance-header">
-            <div class="d-flex justify-content-between align-content-between ">
-              <span class="title-header justify-content-end align-content-end">
-                Qualité de Tir <span class="sub-des"></span>
-              </span>
-              <div class="logo-club ml-4">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                  width="24px" height="24px" viewBox="0,0,256,256">
-                  <g fill="#1b1b19" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                    stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                    font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                    style="mix-blend-mode: normal">
-                    <g transform="scale(10.66667,10.66667)">
-                      <path
-                        d="M23.04,9.021l-8.27,-0.225l-2.77,-7.796l-2.77,7.796l-8.27,0.225l6.559,5.043l-2.342,7.936l6.823,-4.679l6.823,4.679l-2.342,-7.935zM12,14.896l-3.312,2.271l1.137,-3.851l-3.183,-2.448l4.014,-0.109l1.344,-3.785l1.344,3.784l4.014,0.109l-3.183,2.448l1.137,3.851z">
-                      </path>
-                    </g>
-                  </g>
-                </svg>
-              </div>
-            </div>
-  
-          </div>
-  
-          <div class="performance-body">
-            <div id="chart-qualite-tir" style="width: 100%; height:300px"></div>
-          </div>
-        </div>
-      </div> -->
-      <!-- 5 -->
-      <!-- <div id="contribution-jeu" class="contribution-jeu col-12 col-md-4 mt-4 justify-content-center align-content-center">
-        <div class="performance">
-          <div class="performance-header">
-            <div class="d-flex justify-content-between align-content-between ">
-              <span class="title-header justify-content-end align-content-end">
-                Contribution de Jeu<span class="sub-des"></span>
-              </span>
-              <div class="logo-club ml-4">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                  width="24px" height="24px" viewBox="0,0,256,256">
-                  <g fill="#1b1b19" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                    stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                    font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                    style="mix-blend-mode: normal">
-                    <g transform="scale(10.66667,10.66667)">
-                      <path
-                        d="M23.04,9.021l-8.27,-0.225l-2.77,-7.796l-2.77,7.796l-8.27,0.225l6.559,5.043l-2.342,7.936l6.823,-4.679l6.823,4.679l-2.342,-7.935zM12,14.896l-3.312,2.271l1.137,-3.851l-3.183,-2.448l4.014,-0.109l1.344,-3.785l1.344,3.784l4.014,0.109l-3.183,2.448l1.137,3.851z">
-                      </path>
-                    </g>
-                  </g>
-                </svg>
-              </div>
-            </div>
-          </div>
-  
-          <div class="performance-body">
-            <div id="chart-contribution-jeu" style="width: 100%; height:300px"></div>
-          </div>
-        </div>
-      </div> -->
-      <!-- 6 -->
-      <!-- <div id="polyvalence-defensive" class="polyvalence-defensive  col-12 col-md-4 mt-4 justify-content-center align-content-center">
-        <div class="performance">
-          <div class="performance-header">
-            <div class="d-flex justify-content-between align-content-between ">
-              <span class="title-header justify-content-end align-content-end">
-                Polyvalence defensive <span class="sub-des"></span>
-              </span>
-              <div class="logo-club ml-4">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                  width="24px" height="24px" viewBox="0,0,256,256">
-                  <g fill="#1b1b19" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                    stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                    font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                    style="mix-blend-mode: normal">
-                    <g transform="scale(10.66667,10.66667)">
-                      <path
-                        d="M23.04,9.021l-8.27,-0.225l-2.77,-7.796l-2.77,7.796l-8.27,0.225l6.559,5.043l-2.342,7.936l6.823,-4.679l6.823,4.679l-2.342,-7.935zM12,14.896l-3.312,2.271l1.137,-3.851l-3.183,-2.448l4.014,-0.109l1.344,-3.785l1.344,3.784l4.014,0.109l-3.183,2.448l1.137,3.851z">
-                      </path>
-                    </g>
-                  </g>
-                </svg>
-              </div>
-            </div>
-          </div>
-  
-          <div class="performance-body">
-            <div id="chart-polyvalence-defensive" style="width: 100%; height:300px"></div>
-          </div>
-        </div>
-      </div> -->
-      <!-- 7 -->
-      <!-- <div id="diversite-passes" class="diversite-passes col-12 col-md-4 mt-4 justify-content-center align-content-center">
-        <div class="performance">
-          <div class="performance-header">
-            <div class="d-flex justify-content-between align-content-between ">
-              <span class="title-header justify-content-end align-content-end">
-                Diversité des passes <span class="sub-des"></span>
-              </span>
-              <div class="logo-club ml-4">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                  width="24px" height="24px" viewBox="0,0,256,256">
-                  <g fill="#1b1b19" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                    stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                    font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                    style="mix-blend-mode: normal">
-                    <g transform="scale(10.66667,10.66667)">
-                      <path
-                        d="M23.04,9.021l-8.27,-0.225l-2.77,-7.796l-2.77,7.796l-8.27,0.225l6.559,5.043l-2.342,7.936l6.823,-4.679l6.823,4.679l-2.342,-7.935zM12,14.896l-3.312,2.271l1.137,-3.851l-3.183,-2.448l4.014,-0.109l1.344,-3.785l1.344,3.784l4.014,0.109l-3.183,2.448l1.137,3.851z">
-                      </path>
-                    </g>
-                  </g>
-                </svg>
-              </div>
-            </div>
-          </div>
-  
-          <div class="performance-body">
-            <div id="chart-diversite-passes" style="width: 100%; height:300px"></div>
-          </div>
-        </div>
-      </div> -->
-      <!-- 8 -->
-      <!-- <div id="efficacite-domination" class="efficacite-domination col-12 col-md-4 mt-4 justify-content-center align-content-center">
-        <div class="performance">
-          <div class="performance-header">
-            <div class="d-flex justify-content-between align-content-between ">
-              <span class="title-header justify-content-end align-content-end">
-                Efficacité de Domination Aérienne <span class="sub-des"></span>
-              </span>
-              <div class="logo-club ml-4">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                  width="24px" height="24px" viewBox="0,0,256,256">
-                  <g fill="#1b1b19" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                    stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                    font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                    style="mix-blend-mode: normal">
-                    <g transform="scale(10.66667,10.66667)">
-                      <path
-                        d="M23.04,9.021l-8.27,-0.225l-2.77,-7.796l-2.77,7.796l-8.27,0.225l6.559,5.043l-2.342,7.936l6.823,-4.679l6.823,4.679l-2.342,-7.935zM12,14.896l-3.312,2.271l1.137,-3.851l-3.183,-2.448l4.014,-0.109l1.344,-3.785l1.344,3.784l4.014,0.109l-3.183,2.448l1.137,3.851z">
-                      </path>
-                    </g>
-                  </g>
-                </svg>
-              </div>
-            </div>
-          </div>
-  
-          <div class="performance-body">
-            <div id="chart-efficacite-domination" style="width: 100%; height:300px"></div>
-          </div>
-        </div>
-      </div> -->
-      <!-- 9 -->
-      <!-- <div id="progression-jeu" class="progression-jeu col-12 col-md-4 mt-4 justify-content-center align-content-center">
-        <div class="performance">
-          <div class="performance-header">
-            <div class="d-flex justify-content-between align-content-between ">
-              <span class="title-header justify-content-end align-content-end">
-                Progression du jeu <span class="sub-des"></span>
-              </span>
-              <div class="logo-club ml-4">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                  width="24px" height="24px" viewBox="0,0,256,256">
-                  <g fill="#1b1b19" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                    stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                    font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                    style="mix-blend-mode: normal">
-                    <g transform="scale(10.66667,10.66667)">
-                      <path
-                        d="M23.04,9.021l-8.27,-0.225l-2.77,-7.796l-2.77,7.796l-8.27,0.225l6.559,5.043l-2.342,7.936l6.823,-4.679l6.823,4.679l-2.342,-7.935zM12,14.896l-3.312,2.271l1.137,-3.851l-3.183,-2.448l4.014,-0.109l1.344,-3.785l1.344,3.784l4.014,0.109l-3.183,2.448l1.137,3.851z">
-                      </path>
-                    </g>
-                  </g>
-                </svg>
-              </div>
-            </div>
-          </div>
-  
-          <div class="performance-body">
-            <div id="chart-progression-jeu" style="width: 100%; height:300px"></div>
-          </div>
-        </div>
-      </div> -->
-      <!-- 10 -->
-      <!-- <div id='limplication-creative' class="limplication-creative col-12 col-md-4 mt-4 justify-content-center align-content-center">
-        <div class="performance">
-          <div class="performance-header">
-            <div class="d-flex justify-content-between align-content-between ">
-              <span class="title-header justify-content-end align-content-end">
-                Iimplication créative <span class="sub-des"></span>
-              </span>
-              <div class="logo-club ml-4">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                  width="24px" height="24px" viewBox="0,0,256,256">
-                  <g fill="#1b1b19" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                    stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                    font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                    style="mix-blend-mode: normal">
-                    <g transform="scale(10.66667,10.66667)">
-                      <path
-                        d="M23.04,9.021l-8.27,-0.225l-2.77,-7.796l-2.77,7.796l-8.27,0.225l6.559,5.043l-2.342,7.936l6.823,-4.679l6.823,4.679l-2.342,-7.935zM12,14.896l-3.312,2.271l1.137,-3.851l-3.183,-2.448l4.014,-0.109l1.344,-3.785l1.344,3.784l4.014,0.109l-3.183,2.448l1.137,3.851z">
-                      </path>
-                    </g>
-                  </g>
-                </svg>
-              </div>
-            </div>
-          </div>
-  
-          <div class="performance-body">
-            <div id="chart-limplication-creative" style="width: 100%; height:300px"></div>
-          </div>
-        </div>
-      </div> -->
-      <!-- 11 -->
-      <!-- <div id="contribution-offensive" class="contribution-offensive col-12 col-md-4 mt-4 justify-content-center align-content-center">
-        <div class="performance">
-          <div class="performance-header">
-            <div class="d-flex justify-content-between align-content-between ">
-              <span class="title-header justify-content-end align-content-end">
-                Indice de contribution offensive <span class="sub-des"></span>
-              </span>
-              <div class="logo-club ml-4">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                  width="24px" height="24px" viewBox="0,0,256,256">
-                  <g fill="#1b1b19" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                    stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                    font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                    style="mix-blend-mode: normal">
-                    <g transform="scale(10.66667,10.66667)">
-                      <path
-                        d="M23.04,9.021l-8.27,-0.225l-2.77,-7.796l-2.77,7.796l-8.27,0.225l6.559,5.043l-2.342,7.936l6.823,-4.679l6.823,4.679l-2.342,-7.935zM12,14.896l-3.312,2.271l1.137,-3.851l-3.183,-2.448l4.014,-0.109l1.344,-3.785l1.344,3.784l4.014,0.109l-3.183,2.448l1.137,3.851z">
-                      </path>
-                    </g>
-                  </g>
-                </svg>
-              </div>
-            </div>
-          </div>
-  
-          <div class="performance-body">
-            <div id="chart-contribution-offensive" style="width: 100%; height:300px"></div>
-          </div>
-        </div>
-      </div> -->
-      <!-- 12 -->
-      <!-- <div class="precision-passes col-12 col-md-4 mt-4 justify-content-center align-content-center">
-        <div class="performance">
-          <div class="performance-header">
-            <div class="d-flex justify-content-between align-content-between ">
-              <span class="title-header justify-content-end align-content-end">
-                Précision des passes <span class="sub-des"></span>
-              </span>
-              <div class="logo-club ml-4">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                  width="24px" height="24px" viewBox="0,0,256,256">
-                  <g fill="#1b1b19" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                    stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                    font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                    style="mix-blend-mode: normal">
-                    <g transform="scale(10.66667,10.66667)">
-                      <path
-                        d="M23.04,9.021l-8.27,-0.225l-2.77,-7.796l-2.77,7.796l-8.27,0.225l6.559,5.043l-2.342,7.936l6.823,-4.679l6.823,4.679l-2.342,-7.935zM12,14.896l-3.312,2.271l1.137,-3.851l-3.183,-2.448l4.014,-0.109l1.344,-3.785l1.344,3.784l4.014,0.109l-3.183,2.448l1.137,3.851z">
-                      </path>
-                    </g>
-                  </g>
-                </svg>
-              </div>
-            </div>
-          </div>
-  
-          <div class="performance-body">
-            <div id="chart-precision-passes" style="width: 100%; height:300px"></div>
-          </div>
-        </div>
-      </div> -->
-      <!-- 13 -->
-      <!-- <div class="jeu-aerien col-12 col-md-4 mt-4 justify-content-center align-content-center">
-        <div class="performance">
-          <div class="performance-header">
-            <div class="d-flex justify-content-between align-content-between ">
-              <span class="title-header justify-content-end align-content-end">
-                Jeu aérien <span class="sub-des"></span>
-              </span>
-              <div class="logo-club ml-4">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                  width="24px" height="24px" viewBox="0,0,256,256">
-                  <g fill="#1b1b19" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                    stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                    font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                    style="mix-blend-mode: normal">
-                    <g transform="scale(10.66667,10.66667)">
-                      <path
-                        d="M23.04,9.021l-8.27,-0.225l-2.77,-7.796l-2.77,7.796l-8.27,0.225l6.559,5.043l-2.342,7.936l6.823,-4.679l6.823,4.679l-2.342,-7.935zM12,14.896l-3.312,2.271l1.137,-3.851l-3.183,-2.448l4.014,-0.109l1.344,-3.785l1.344,3.784l4.014,0.109l-3.183,2.448l1.137,3.851z">
-                      </path>
-                    </g>
-                  </g>
-                </svg>
-              </div>
-            </div>
-          </div>
-  
-          <div class="performance-body">
-            <div id="chart-jeu-aerien" style="width: 100%; height:300px"></div>
-          </div>
-        </div>
-      </div> -->
-      <!-- 14 -->
-      <!-- <div class="efficacite-sauvegarde  col-12 col-md-4 mt-4 justify-content-center align-content-center">
-        <div class="performance">
-          <div class="performance-header">
-            <div class="d-flex justify-content-between align-content-between ">
-              <span class="title-header justify-content-end align-content-end">
-                Taux d'efficacité de sauvegarde <span class="sub-des"></span>
-              </span>
-              <div class="logo-club ml-4">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                  width="24px" height="24px" viewBox="0,0,256,256">
-                  <g fill="#1b1b19" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                    stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                    font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                    style="mix-blend-mode: normal">
-                    <g transform="scale(10.66667,10.66667)">
-                      <path
-                        d="M23.04,9.021l-8.27,-0.225l-2.77,-7.796l-2.77,7.796l-8.27,0.225l6.559,5.043l-2.342,7.936l6.823,-4.679l6.823,4.679l-2.342,-7.935zM12,14.896l-3.312,2.271l1.137,-3.851l-3.183,-2.448l4.014,-0.109l1.344,-3.785l1.344,3.784l4.014,0.109l-3.183,2.448l1.137,3.851z">
-                      </path>
-                    </g>
-                  </g>
-                </svg>
-              </div>
-            </div>
-          </div>
-  
-          <div class="performance-body">
-            <div id="chart-efficacite-sauvegarde" style="width: 100%; height:300px"></div>
-          </div>
-        </div>
-      </div> -->
-      <!-- 15 -->
-      <!-- <div class="controle-surface col-12 col-md-4 mt-4 justify-content-center align-content-center">
-        <div class="performance">
-          <div class="performance-header">
-            <div class="d-flex justify-content-between align-content-between ">
-              <span class="title-header justify-content-end align-content-end">
-                Contrôle de la surface <span class="sub-des"></span>
-              </span>
-              <div class="logo-club ml-4">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                  width="24px" height="24px" viewBox="0,0,256,256">
-                  <g fill="#1b1b19" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                    stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                    font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                    style="mix-blend-mode: normal">
-                    <g transform="scale(10.66667,10.66667)">
-                      <path
-                        d="M23.04,9.021l-8.27,-0.225l-2.77,-7.796l-2.77,7.796l-8.27,0.225l6.559,5.043l-2.342,7.936l6.823,-4.679l6.823,4.679l-2.342,-7.935zM12,14.896l-3.312,2.271l1.137,-3.851l-3.183,-2.448l4.014,-0.109l1.344,-3.785l1.344,3.784l4.014,0.109l-3.183,2.448l1.137,3.851z">
-                      </path>
-                    </g>
-                  </g>
-                </svg>
-              </div>
-            </div>
-          </div>
-  
-          <div class="performance-body">
-            <div id="chart-controle-surface" style="width: 100%; height:300px"></div>
-          </div>
-        </div>
-      </div> -->
-      <!-- 16 -->
-      <!-- <div class="charge-defensive col-12 col-md-4 mt-4 justify-content-center align-content-center">
-        <div class="performance">
-          <div class="performance-header">
-            <div class="d-flex justify-content-between align-content-between ">
-              <span class="title-header justify-content-end align-content-end">
-                Charge défensive <span class="sub-des"></span>
-              </span>
-              <div class="logo-club ml-4">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                  width="24px" height="24px" viewBox="0,0,256,256">
-                  <g fill="#1b1b19" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                    stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                    font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                    style="mix-blend-mode: normal">
-                    <g transform="scale(10.66667,10.66667)">
-                      <path
-                        d="M23.04,9.021l-8.27,-0.225l-2.77,-7.796l-2.77,7.796l-8.27,0.225l6.559,5.043l-2.342,7.936l6.823,-4.679l6.823,4.679l-2.342,-7.935zM12,14.896l-3.312,2.271l1.137,-3.851l-3.183,-2.448l4.014,-0.109l1.344,-3.785l1.344,3.784l4.014,0.109l-3.183,2.448l1.137,3.851z">
-                      </path>
-                    </g>
-                  </g>
-                </svg>
-              </div>
-            </div>
-          </div>
-  
-          <div class="performance-body">
-            <div id="chart-charge-defensive" style="width: 100%; height:300px"></div>
-          </div>
-        </div>
-      </div> -->
-    <!-- </div> -->
-    <!-- end content -->
+<button type="button" class="closeDialog btn btn-danger" aria-label="Close" (click)="closeDialog()">
+  <span aria-hidden="true">&times;</span>
+</button>
+<div class="container equipeContainer col-12 col-md-12 justify-content-center align-content-center">
+  <!-- 1 -->
+  <div *ngIf="data.type === 'efficacite'" class="row container-content d-flex col-12 col-md-12 justify-content-center align-content-center" >
+      <!-- Echart -->
+      <div class="demo2 col-12 col-md-8 justify-content-center align-content-center">
+         <div class="performance-deffensive">
+             <div class="deffensive-header ">
+                 <div class="d-flex justify-content-between align-content-between ">
+                     <span class="title-header justify-content-end align-content-end">
+                         Efficacite Dribbleur
+                     </span>
+                     <div class="logo-club ml-4">
+                         <img src="https://seeklogo.com/images/R/renaissance-sportive-berkane-rsb-logo-9B110745FD-seeklogo.com.png"
+                             alt="" width="100%" height="100%" />
+                     </div>
+                 </div>
+                 <p class="sub-description">Premier Division this seasion</p>
+             </div>
+ 
+             <div class="deffensive-body">
+                 <div id="chart-efficacite-dribbleur" style="width:100%; height:100%"></div>
+             </div>
+         </div>
+     </div>
+     <!-- Description -->
+      <div class="demo col-12 col-md-4 justify-content-center align-content-center">
+         <p>
+             We are Performing well above average in attacking statisstics, which is great to see.
+          </p>
+          <p>
+             Man City:
+          </p>
+          <p>
+             Scores a high number of Expected Goals per 90 minutes compared to average
+          </p>
+          <p>
+             Finds the target with a relatively average number of shots
+          </p>
+     </div>
   </div>
+ <!-- 2 -->
+ <div *ngIf="data.type === 'creativite'" class="row container-content d-flex col-12 col-md-12 justify-content-center align-content-center">
+  <!-- Echart -->
+  <div class="demo2 col-12 col-md-8 justify-content-center align-content-center">
+     <div class="performance-deffensive">
+         <div class="deffensive-header ">
+             <div class="d-flex justify-content-between align-content-between ">
+                 <span class="title-header justify-content-end align-content-end">
+                  chart-efficacite-creativite
+                 </span>
+                 <div class="logo-club ml-4">
+                     <img src="https://seeklogo.com/images/R/renaissance-sportive-berkane-rsb-logo-9B110745FD-seeklogo.com.png"
+                         alt="" width="100%" height="100%" />
+                 </div>
+             </div>
+             <p class="sub-description">Premier Division this seasion</p>
+         </div>
+
+         <div class="deffensive-body">
+             <div id="chart-efficacite-creativite" style="width:100%; height:100%"></div>
+         </div>
+     </div>
+ </div>
+ <!-- Description -->
+  <div class="demo col-12 col-md-4 justify-content-center align-content-center">
+     <p>
+         We are Performing well above average in attacking statisstics, which is great to see.
+      </p>
+      <p>
+         Man City:
+      </p>
+      <p>
+         Scores a high number of Expected Goals per 90 minutes compared to average
+      </p>
+      <p>
+         Finds the target with a relatively average number of shots
+      </p>
+ </div>
+</div>
+<!-- 3 -->
+<div *ngIf="data.type === 'présenceTir'" class="row container-content d-flex col-12 col-md-12 justify-content-center align-content-center">
+  <!-- Echart -->
+  <div class="demo2 col-12 col-md-8 justify-content-center align-content-center">
+     <div class="performance-deffensive">
+         <div class="deffensive-header ">
+             <div class="d-flex justify-content-between align-content-between ">
+                 <span class="title-header justify-content-end align-content-end">
+                  Présence au Tir
+                 </span>
+                 <div class="logo-club ml-4">
+                     <img src="https://seeklogo.com/images/R/renaissance-sportive-berkane-rsb-logo-9B110745FD-seeklogo.com.png"
+                         alt="" width="100%" height="100%" />
+                 </div>
+             </div>
+             <p class="sub-description">Premier Division this seasion</p>
+         </div>
+
+         <div class="deffensive-body">
+             <div id="chart-efficacite-presence-tir" style="width:100%; height:100%"></div>
+         </div>
+     </div>
+ </div>
+ <!-- Description -->
+  <div class="demo col-12 col-md-4 justify-content-center align-content-center">
+     <p>
+         We are Performing well above average in attacking statisstics, which is great to see.
+      </p>
+      <p>
+         Man City:
+      </p>
+      <p>
+         Scores a high number of Expected Goals per 90 minutes compared to average
+      </p>
+      <p>
+         Finds the target with a relatively average number of shots
+      </p>
+ </div>
+</div>
+<!-- 4 -->
+<div *ngIf="data.type === 'qualité-tir'" class="row container-content d-flex col-12 col-md-12 justify-content-center align-content-center">
+  <!-- Echart -->
+  <div class="demo2 col-12 col-md-8 justify-content-center align-content-center">
+     <div class="performance-deffensive">
+         <div class="deffensive-header ">
+             <div class="d-flex justify-content-between align-content-between ">
+                 <span class="title-header justify-content-end align-content-end">
+                  Qualité de Tir
+                 </span>
+                 <div class="logo-club ml-4">
+                     <img src="https://seeklogo.com/images/R/renaissance-sportive-berkane-rsb-logo-9B110745FD-seeklogo.com.png"
+                         alt="" width="100%" height="100%" />
+                 </div>
+             </div>
+             <p class="sub-description">Premier Division this seasion</p>
+         </div>
+
+         <div class="deffensive-body">
+             <div id="chart-chart-qualité-tir" style="width:100%; height:100%"></div>
+         </div>
+     </div>
+ </div>
+ <!-- Description -->
+  <div class="demo col-12 col-md-4 justify-content-center align-content-center">
+     <p>
+         We are Performing well above average in attacking statisstics, which is great to see.
+      </p>
+      <p>
+         Man City:
+      </p>
+      <p>
+         Scores a high number of Expected Goals per 90 minutes compared to average
+      </p>
+      <p>
+         Finds the target with a relatively average number of shots
+      </p>
+ </div>
+</div>
+<!-- 5 -->
+<div *ngIf="data.type === 'contribution-jeu'" class="row container-content d-flex col-12 col-md-12 justify-content-center align-content-center">
+  <!-- Echart -->
+  <div class="demo2 col-12 col-md-8 justify-content-center align-content-center">
+     <div class="performance-deffensive">
+         <div class="deffensive-header ">
+             <div class="d-flex justify-content-between align-content-between ">
+                 <span class="title-header justify-content-end align-content-end">
+                  Contribution de Jeu
+                 </span>
+                 <div class="logo-club ml-4">
+                     <img src="https://seeklogo.com/images/R/renaissance-sportive-berkane-rsb-logo-9B110745FD-seeklogo.com.png"
+                         alt="" width="100%" height="100%" />
+                 </div>
+             </div>
+             <p class="sub-description">Premier Division this seasion</p>
+         </div>
+
+         <div class="deffensive-body">
+             <div id="chart-efficacite-contribution-jeu" style="width:100%; height:100%"></div>
+         </div>
+     </div>
+ </div>
+ <!-- Description -->
+  <div class="demo col-12 col-md-4 justify-content-center align-content-center">
+     <p>
+         We are Performing well above average in attacking statisstics, which is great to see.
+      </p>
+      <p>
+         Man City:
+      </p>
+      <p>
+         Scores a high number of Expected Goals per 90 minutes compared to average
+      </p>
+      <p>
+         Finds the target with a relatively average number of shots
+      </p>
+ </div>
+</div>
+<!-- 6 -->
+<div *ngIf="data.type === 'polyvalence-defensive'" class="row container-content d-flex col-12 col-md-12 justify-content-center align-content-center">
+    <!-- Echart -->
+    <div class="demo2 col-12 col-md-8 justify-content-center align-content-center">
+       <div class="performance-deffensive">
+           <div class="deffensive-header ">
+               <div class="d-flex justify-content-between align-content-between ">
+                   <span class="title-header justify-content-end align-content-end">
+                    Polyvalence Defensive
+                   </span>
+                   <div class="logo-club ml-4">
+                       <img src="https://seeklogo.com/images/R/renaissance-sportive-berkane-rsb-logo-9B110745FD-seeklogo.com.png"
+                           alt="" width="100%" height="100%" />
+                   </div>
+               </div>
+               <p class="sub-description">Premier Division this seasion</p>
+           </div>
+  
+           <div class="deffensive-body" >
+               <div id="chart-efficacite-polyvalence-defensive" style="width:100%; height:100%"></div>
+           </div>
+       </div>
+   </div>
+   <!-- Description -->
+    <div class="demo col-12 col-md-4 justify-content-center align-content-center">
+       <p>
+           We are Performing well above average in attacking statisstics, which is great to see.
+        </p>
+        <p>
+           Man City:
+        </p>
+        <p>
+           Scores a high number of Expected Goals per 90 minutes compared to average
+        </p>
+        <p>
+           Finds the target with a relatively average number of shots
+        </p>
+   </div>
+  </div>
+  <!-- 7 -->
+<div *ngIf="data.type === 'diversite-passes'" class="row container-content d-flex col-12 col-md-12 justify-content-center align-content-center">
+    <!-- Echart -->
+    <div class="demo2 col-12 col-md-8 justify-content-center align-content-center">
+       <div class="performance-deffensive">
+           <div class="deffensive-header ">
+               <div class="d-flex justify-content-between align-content-between ">
+                   <span class="title-header justify-content-end align-content-end">
+                    Diversite Passes
+                   </span>
+                   <div class="logo-club ml-4">
+                       <img src="https://seeklogo.com/images/R/renaissance-sportive-berkane-rsb-logo-9B110745FD-seeklogo.com.png"
+                           alt="" width="100%" height="100%" />
+                   </div>
+               </div>
+               <p class="sub-description">Premier Division this seasion</p>
+           </div>
+  
+           <div class="deffensive-body" >
+               <div id="chart-efficacite-polyvalence-defensive" style="width:100%; height:100%"></div>
+           </div>
+       </div>
+   </div>
+   <!-- Description -->
+    <div class="demo col-12 col-md-4 justify-content-center align-content-center">
+       <p>
+           We are Performing well above average in attacking statisstics, which is great to see.
+        </p>
+        <p>
+           Man City:
+        </p>
+        <p>
+           Scores a high number of Expected Goals per 90 minutes compared to average
+        </p>
+        <p>
+           Finds the target with a relatively average number of shots
+        </p>
+   </div>
+  </div>
+    <!-- 8 -->
+<div *ngIf="data.type === 'efficacité-domination-aérienne'" class="row container-content d-flex col-12 col-md-12 justify-content-center align-content-center">
+    <!-- Echart -->
+    <div class="demo2 col-12 col-md-8 justify-content-center align-content-center">
+       <div class="performance-deffensive">
+           <div class="deffensive-header ">
+               <div class="d-flex justify-content-between align-content-between ">
+                   <span class="title-header justify-content-end align-content-end">
+                    Efficacité de Domination Aérienne 
+                   </span>
+                   <div class="logo-club ml-4">
+                       <img src="https://seeklogo.com/images/R/renaissance-sportive-berkane-rsb-logo-9B110745FD-seeklogo.com.png"
+                           alt="" width="100%" height="100%" />
+                   </div>
+               </div>
+               <p class="sub-description">Premier Division this seasion</p>
+           </div>
+  
+           <div class="deffensive-body" >
+               <div id="chart-efficacite-polyvalence-defensive" style="width:100%; height:100%"></div>
+           </div>
+       </div>
+   </div>
+   <!-- Description -->
+    <div class="demo col-12 col-md-4 justify-content-center align-content-center">
+       <p>
+           We are Performing well above average in attacking statisstics, which is great to see.
+        </p>
+        <p>
+           Man City:
+        </p>
+        <p>
+           Scores a high number of Expected Goals per 90 minutes compared to average
+        </p>
+        <p>
+           Finds the target with a relatively average number of shots
+        </p>
+   </div>
+  </div>
+    <!-- 9 -->
+<div *ngIf="data.type === 'progression-jeu'" class="row container-content d-flex col-12 col-md-12 justify-content-center align-content-center">
+    <!-- Echart -->
+    <div class="demo2 col-12 col-md-8 justify-content-center align-content-center">
+       <div class="performance-deffensive">
+           <div class="deffensive-header ">
+               <div class="d-flex justify-content-between align-content-between ">
+                   <span class="title-header justify-content-end align-content-end">
+                    Progression Jeu
+                   </span>
+                   <div class="logo-club ml-4">
+                       <img src="https://seeklogo.com/images/R/renaissance-sportive-berkane-rsb-logo-9B110745FD-seeklogo.com.png"
+                           alt="" width="100%" height="100%" />
+                   </div>
+               </div>
+               <p class="sub-description">Premier Division this seasion</p>
+           </div>
+  
+           <div class="deffensive-body" >
+               <div id="chart-progression-jeu" style="width:100%; height:100%"></div>
+           </div>
+       </div>
+   </div>
+   <!-- Description -->
+    <div class="demo col-12 col-md-4 justify-content-center align-content-center">
+       <p>
+           We are Performing well above average in attacking statisstics, which is great to see.
+        </p>
+        <p>
+           Man City:
+        </p>
+        <p>
+           Scores a high number of Expected Goals per 90 minutes compared to average
+        </p>
+        <p>
+           Finds the target with a relatively average number of shots
+        </p>
+   </div>
+  </div>
+     <!-- 10 -->
+<div *ngIf="data.type === 'Iimplication-créative'" class="row container-content d-flex col-12 col-md-12 justify-content-center align-content-center">
+    <!-- Echart -->
+    <div class="demo2 col-12 col-md-8 justify-content-center align-content-center">
+       <div class="performance-deffensive">
+           <div class="deffensive-header ">
+               <div class="d-flex justify-content-between align-content-between ">
+                   <span class="title-header justify-content-end align-content-end">
+                    Limplication Créative
+                   </span>
+                   <div class="logo-club ml-4">
+                       <img src="https://seeklogo.com/images/R/renaissance-sportive-berkane-rsb-logo-9B110745FD-seeklogo.com.png"
+                           alt="" width="100%" height="100%" />
+                   </div>
+               </div>
+               <p class="sub-description">Premier Division this seasion</p>
+           </div>
+  
+           <div class="deffensive-body" >
+               <div id="chart-Iimplication-créative" style="width:100%; height:100%"></div>
+           </div>
+       </div>
+   </div>
+   <!-- Description -->
+    <div class="demo col-12 col-md-4 justify-content-center align-content-center">
+       <p>
+           We are Performing well above average in attacking statisstics, which is great to see.
+        </p>
+        <p>
+           Man City:
+        </p>
+        <p>
+           Scores a high number of Expected Goals per 90 minutes compared to average
+        </p>
+        <p>
+           Finds the target with a relatively average number of shots
+        </p>
+   </div>
+  </div>
+       <!-- 11 -->
+<div *ngIf="data.type === 'contribution-offensive'" class="row container-content d-flex col-12 col-md-12 justify-content-center align-content-center">
+    <!-- Echart -->
+    <div class="demo2 col-12 col-md-8 justify-content-center align-content-center">
+       <div class="performance-deffensive">
+           <div class="deffensive-header ">
+               <div class="d-flex justify-content-between align-content-between ">
+                   <span class="title-header justify-content-end align-content-end">
+                    Indice de contribution offensive
+                   </span>
+                   <div class="logo-club ml-4">
+                       <img src="https://seeklogo.com/images/R/renaissance-sportive-berkane-rsb-logo-9B110745FD-seeklogo.com.png"
+                           alt="" width="100%" height="100%" />
+                   </div>
+               </div>
+               <p class="sub-description">Premier Division this seasion</p>
+           </div>
+  
+           <div class="deffensive-body" >
+               <div id="chart-contribution-offensive" style="width:100%; height:100%"></div>
+           </div>
+       </div>
+   </div>
+   <!-- Description -->
+    <div class="demo col-12 col-md-4 justify-content-center align-content-center">
+       <p>
+           We are Performing well above average in attacking statisstics, which is great to see.
+        </p>
+        <p>
+           Man City:
+        </p>
+        <p>
+           Scores a high number of Expected Goals per 90 minutes compared to average
+        </p>
+        <p>
+           Finds the target with a relatively average number of shots
+        </p>
+   </div>
+  </div>
+     <!-- 12 -->
+<div *ngIf="data.type === 'precision-passes'" class="row container-content d-flex col-12 col-md-12 justify-content-center align-content-center">
+    <!-- Echart -->
+    <div class="demo2 col-12 col-md-8 justify-content-center align-content-center">
+       <div class="performance-deffensive">
+           <div class="deffensive-header ">
+               <div class="d-flex justify-content-between align-content-between ">
+                   <span class="title-header justify-content-end align-content-end">
+                    Indice de contribution offensive
+                   </span>
+                   <div class="logo-club ml-4">
+                       <img src="https://seeklogo.com/images/R/renaissance-sportive-berkane-rsb-logo-9B110745FD-seeklogo.com.png"
+                           alt="" width="100%" height="100%" />
+                   </div>
+               </div>
+               <p class="sub-description">Premier Division this seasion</p>
+           </div>
+  
+           <div class="deffensive-body" >
+               <div id="chart-precision-passes" style="width:100%; height:100%"></div>
+           </div>
+       </div>
+   </div>
+   <!-- Description -->
+    <div class="demo col-12 col-md-4 justify-content-center align-content-center">
+       <p>
+           We are Performing well above average in attacking statisstics, which is great to see.
+        </p>
+        <p>
+           Man City:
+        </p>
+        <p>
+           Scores a high number of Expected Goals per 90 minutes compared to average
+        </p>
+        <p>
+           Finds the target with a relatively average number of shots
+        </p>
+   </div>
+  </div>
+       <!-- 13 -->
+<div *ngIf="data.type === 'jeu-aerien'" class="row container-content d-flex col-12 col-md-12 justify-content-center align-content-center">
+    <!-- Echart -->
+    <div class="demo2 col-12 col-md-8 justify-content-center align-content-center">
+       <div class="performance-deffensive">
+           <div class="deffensive-header ">
+               <div class="d-flex justify-content-between align-content-between ">
+                   <span class="title-header justify-content-end align-content-end">
+                    Indice de contribution offensive
+                   </span>
+                   <div class="logo-club ml-4">
+                       <img src="https://seeklogo.com/images/R/renaissance-sportive-berkane-rsb-logo-9B110745FD-seeklogo.com.png"
+                           alt="" width="100%" height="100%" />
+                   </div>
+               </div>
+               <p class="sub-description">Premier Division this seasion</p>
+           </div>
+  
+           <div class="deffensive-body" >
+               <div id="chart-jeu-aerien" style="width:100%; height:100%"></div>
+           </div>
+       </div>
+   </div>
+   <!-- Description -->
+    <div class="demo col-12 col-md-4 justify-content-center align-content-center">
+       <p>
+           We are Performing well above average in attacking statisstics, which is great to see.
+        </p>
+        <p>
+           Man City:
+        </p>
+        <p>
+           Scores a high number of Expected Goals per 90 minutes compared to average
+        </p>
+        <p>
+           Finds the target with a relatively average number of shots
+        </p>
+   </div>
+  </div>
+        <!-- 14 -->
+<div *ngIf="data.type === 'efficacite-sauvegarde'" class="row container-content d-flex col-12 col-md-12 justify-content-center align-content-center">
+    <!-- Echart -->
+    <div class="demo2 col-12 col-md-8 justify-content-center align-content-center">
+       <div class="performance-deffensive">
+           <div class="deffensive-header ">
+               <div class="d-flex justify-content-between align-content-between ">
+                   <span class="title-header justify-content-end align-content-end">
+                    Taux d'efficacité de sauvegarde
+                   </span>
+                   <div class="logo-club ml-4">
+                       <img src="https://seeklogo.com/images/R/renaissance-sportive-berkane-rsb-logo-9B110745FD-seeklogo.com.png"
+                           alt="" width="100%" height="100%" />
+                   </div>
+               </div>
+               <p class="sub-description">Premier Division this seasion</p>
+           </div>
+  
+           <div class="deffensive-body" >
+               <div id="chart-efficacite-sauvegarde" style="width:100%; height:100%"></div>
+           </div>
+       </div>
+   </div>
+   <!-- Description -->
+    <div class="demo col-12 col-md-4 justify-content-center align-content-center">
+       <p>
+           We are Performing well above average in attacking statisstics, which is great to see.
+        </p>
+        <p>
+           Man City:
+        </p>
+        <p>
+           Scores a high number of Expected Goals per 90 minutes compared to average
+        </p>
+        <p>
+           Finds the target with a relatively average number of shots
+        </p>
+   </div>
+  </div>
+     <!-- 15 -->
+<div *ngIf="data.type === 'controle-surface'" class="row container-content d-flex col-12 col-md-12 justify-content-center align-content-center">
+    <!-- Echart -->
+    <div class="demo2 col-12 col-md-8 justify-content-center align-content-center">
+       <div class="performance-deffensive">
+           <div class="deffensive-header ">
+               <div class="d-flex justify-content-between align-content-between ">
+                   <span class="title-header justify-content-end align-content-end">
+                    Contrôle de la surface
+                   </span>
+                   <div class="logo-club ml-4">
+                       <img src="https://seeklogo.com/images/R/renaissance-sportive-berkane-rsb-logo-9B110745FD-seeklogo.com.png"
+                           alt="" width="100%" height="100%" />
+                   </div>
+               </div>
+               <p class="sub-description">Premier Division this seasion</p>
+           </div>
+  
+           <div class="deffensive-body" >
+               <div id="chart-controle-surface" style="width:100%; height:100%"></div>
+           </div>
+       </div>
+   </div>
+   <!-- Description -->
+    <div class="demo col-12 col-md-4 justify-content-center align-content-center">
+       <p>
+           We are Performing well above average in attacking statisstics, which is great to see.
+        </p>
+        <p>
+           Man City:
+        </p>
+        <p>
+           Scores a high number of Expected Goals per 90 minutes compared to average
+        </p>
+        <p>
+           Finds the target with a relatively average number of shots
+        </p>
+   </div>
+  </div>
+    <!-- 16 -->
+<div *ngIf="data.type === 'charge-defensive'" class="row container-content d-flex col-12 col-md-12 justify-content-center align-content-center">
+    <!-- Echart -->
+    <div class="demo2 col-12 col-md-8 justify-content-center align-content-center">
+       <div class="performance-deffensive">
+           <div class="deffensive-header ">
+               <div class="d-flex justify-content-between align-content-between ">
+                   <span class="title-header justify-content-end align-content-end">
+                    Contrôle de la surface
+                   </span>
+                   <div class="logo-club ml-4">
+                       <img src="https://seeklogo.com/images/R/renaissance-sportive-berkane-rsb-logo-9B110745FD-seeklogo.com.png"
+                           alt="" width="100%" height="100%" />
+                   </div>
+               </div>
+               <p class="sub-description">Premier Division this seasion</p>
+           </div>
+  
+           <div class="deffensive-body" >
+               <div id="chart-charge-defensive" style="width:100%; height:100%"></div>
+           </div>
+       </div>
+   </div>
+   <!-- Description -->
+    <div class="demo col-12 col-md-4 justify-content-center align-content-center">
+       <p>
+           We are Performing well above average in attacking statisstics, which is great to see.
+        </p>
+        <p>
+           Man City:
+        </p>
+        <p>
+           Scores a high number of Expected Goals per 90 minutes compared to average
+        </p>
+        <p>
+           Finds the target with a relatively average number of shots
+        </p>
+   </div>
+  </div>
+</div>
+   

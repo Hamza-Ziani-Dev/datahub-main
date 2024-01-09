@@ -60,12 +60,13 @@ export class DialogEquipeComponent implements OnInit {
         setTimeout(() => {
           const ChartGenerale = document.getElementById("chart-efficacite-dialog");
              try {
-              // const myChart = echarts.init(ChartGenerale);
-              // myChart.setOption(this.data?.data?.general);
+              const myChart = echarts.init(ChartGenerale);
+              myChart.setOption(this.data?.data?.general);
              } catch (error) {
              }
         }, 200); 
         break;
+        
       default:
         break;
     }

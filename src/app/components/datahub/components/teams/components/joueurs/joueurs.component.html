@@ -7,9 +7,9 @@
   </div>
   <!-- end title -->
   <!-- header  -->
-  <div class="header row col-12 mt-4 col-md-12 d-flex justify-content-center align-items-center ">
-    <div class="block_title p-0 col-12 row mx-0 ">
-      <div class="col-12 col-md-4 label_0" type="button">
+  <div class="header row col-12 mt-4 col-md-12 d-flex justify-content-center align-items-center">
+    <div class="block_title p-0 col-12 row mx-0">
+      <div class="col-12 col-md-4 label_0" type="button"  [ngClass]="{ active: activeLabel === 0 }">
         <svg version="1.1" class="mr-4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
           width="30px" height="25px" viewBox="0,0,256,256">
           <g fill="#fff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
@@ -26,25 +26,25 @@
           <div class="bold__text mr-1 text-white">Favorites</div>
         </div>
       </div>
-      <div class="col-12 col-md-2 label_1" type="button" [ngClass]="{'active': activeLabel === 1 }"
+      <div class="col-12 col-md-2 label_1" type="button"   [ngClass]="{ active: activeLabel === 1 }"
         (click)="setActiveLabel(1)">
         <div class="ml-2 d-flex justify-content-center align-items-center">
           <div class="bold__text mr-1 text-white">Attaquants</div>
         </div>
       </div>
-      <div class="col-12 col-md-2 label_2" type="button" [ngClass]="{'active': activeLabel === 2 }"
+      <div class="col-12 col-md-2 label_2" type="button"  [ngClass]="{ active: activeLabel === 2 }"
         (click)="setActiveLabel(2)">
         <div class="ml-2 d-flex justify-content-center align-items-center">
           <div class="bold__text mr-1 text-white">Défenseurs</div>
         </div>
       </div>
-      <div class="col-12 col-md-2 label_3" type="button" [ngClass]="{'active': activeLabel === 3 }"
+      <div class="col-12 col-md-2 label_3" type="button"  [ngClass]="{ active: activeLabel === 3 }"
         (click)="setActiveLabel(3)">
         <div class="ml-2 d-flex justify-content-center align-items-center">
           <div class="bold__text mr-1 text-white">Milieux de terrain</div>
         </div>
       </div>
-      <div class="col-12 col-md-2 label_4" type="button" [ngClass]="{'active': activeLabel === 4 }"
+      <div class="col-12 col-md-2 label_4" type="button"  [ngClass]="{ active: activeLabel === 4 }"
         (click)="setActiveLabel(4)">
         <div class="ml-2 d-flex justify-content-center align-items-center">
           <div class="bold__text mr-1 text-white">Gardiens de but</div>
@@ -54,22 +54,24 @@
   </div>
   <!-- header  -->
   <!-- content -->
-  <div class="content1 d-flex row col-12 col-md-12 justify-content-center align-content-center mt-4 mb-4 ">
+  <div class="content1 d-flex row col-12 col-md-12 justify-content-center align-content-center mt-4 mb-4">
     <!-- 1 -->
-    <div (click)="openJouersEquipeDialog('efficacite')" class="efficacite col-12 col-md-4 mt-4 justify-content-center align-content-center">
+    <div class="efficacite col-12 col-md-4 mt-4 justify-content-center align-content-center">
       <div class="performance">
         <div class="performance-header">
-          <div class="d-flex justify-content-between align-content-between ">
+          <div class="d-flex justify-content-between align-content-between">
             <span class="title-header justify-content-end align-content-end">
               Efficacité dribbleur <span class="sub-des"> </span>
             </span>
-            <div class="logo-club ml-4">
+            <div class="logo-club ml-4" (click)="toggleFavorite('efficacite')"
+              [ngClass]="{ favorited: isInFavorites('efficacite') }">
               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                width="24px" height="24px" viewBox="0,0,256,256">
-                <g fill="#1b1b19" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                  stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                  font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                  style="mix-blend-mode: normal">
+                [ngStyle]="{
+                  fill: isInFavorites('efficacite') ? '#DAE101' : '#1b1b19'
+                }" width="24px" height="24px" viewBox="0,0,256,256">
+                <g fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
+                  stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+                  font-size="none" text-anchor="none" style="mix-blend-mode: normal">
                   <g transform="scale(10.66667,10.66667)">
                     <path
                       d="M23.04,9.021l-8.27,-0.225l-2.77,-7.796l-2.77,7.796l-8.27,0.225l6.559,5.043l-2.342,7.936l6.823,-4.679l6.823,4.679l-2.342,-7.935zM12,14.896l-3.312,2.271l1.137,-3.851l-3.183,-2.448l4.014,-0.109l1.344,-3.785l1.344,3.784l4.014,0.109l-3.183,2.448l1.137,3.851z">
@@ -79,11 +81,10 @@
               </svg>
             </div>
           </div>
-
         </div>
 
-        <div class="performance-body">
-          <div id="chart-efficacite" style="width: 100%; height:300px"></div>
+        <div class="performance-body" (click)="openJouersEquipeDialog('efficacite')">
+          <div id="chart-efficacite" style="width: 100%; height: 300px"></div>
         </div>
       </div>
     </div>
@@ -91,17 +92,19 @@
     <div class="creativite col-12 col-md-4 mt-4 justify-content-center align-content-center">
       <div class="performance">
         <div class="performance-header">
-          <div class="d-flex justify-content-between align-content-between ">
+          <div class="d-flex justify-content-between align-content-between">
             <span class="title-header justify-content-end align-content-end">
               Indice créativité<span class="sub-des"></span>
             </span>
-            <div class="logo-club ml-4">
+            <div class="logo-club ml-4" (click)="toggleFavorite('creativite')"
+              [ngClass]="{ favorited: isInFavorites('creativite') }">
               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                width="24px" height="24px" viewBox="0,0,256,256">
-                <g fill="#1b1b19" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                  stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                  font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                  style="mix-blend-mode: normal">
+                [ngStyle]="{
+                  fill: isInFavorites('creativite') ? '#DAE101' : '#1b1b19'
+                }" width="24px" height="24px" viewBox="0,0,256,256">
+                <g fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
+                  stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+                  font-size="none" text-anchor="none" style="mix-blend-mode: normal">
                   <g transform="scale(10.66667,10.66667)">
                     <path
                       d="M23.04,9.021l-8.27,-0.225l-2.77,-7.796l-2.77,7.796l-8.27,0.225l6.559,5.043l-2.342,7.936l6.823,-4.679l6.823,4.679l-2.342,-7.935zM12,14.896l-3.312,2.271l1.137,-3.851l-3.183,-2.448l4.014,-0.109l1.344,-3.785l1.344,3.784l4.014,0.109l-3.183,2.448l1.137,3.851z">
@@ -113,8 +116,8 @@
           </div>
         </div>
 
-        <div class="performance-body">
-          <div id="chart-creativite" style="width: 100%; height:300px"></div>
+        <div class="performance-body" (click)="openJouersEquipeDialog('creativite')">
+          <div id="chart-creativite" style="width: 100%; height: 300px"></div>
         </div>
       </div>
     </div>
@@ -122,17 +125,19 @@
     <div class="presence-tir col-12 col-md-4 mt-4 justify-content-center align-content-center">
       <div class="performance">
         <div class="performance-header">
-          <div class="d-flex justify-content-between align-content-between ">
+          <div class="d-flex justify-content-between align-content-between">
             <span class="title-header justify-content-end align-content-end">
               Présence au Tir<span class="sub-des"></span>
             </span>
-            <div class="logo-club ml-4">
+            <div class="logo-club ml-4" (click)="toggleFavorite('presence-tir')"
+              [ngClass]="{ favorited: isInFavorites('presence-tir') }">
               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                width="24px" height="24px" viewBox="0,0,256,256">
-                <g fill="#1b1b19" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                  stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                  font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                  style="mix-blend-mode: normal">
+                [ngStyle]="{
+                  fill: isInFavorites('presence-tir') ? '#DAE101' : '#1b1b19'
+                }" width="24px" height="24px" viewBox="0,0,256,256">
+                <g fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
+                  stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+                  font-size="none" text-anchor="none" style="mix-blend-mode: normal">
                   <g transform="scale(10.66667,10.66667)">
                     <path
                       d="M23.04,9.021l-8.27,-0.225l-2.77,-7.796l-2.77,7.796l-8.27,0.225l6.559,5.043l-2.342,7.936l6.823,-4.679l6.823,4.679l-2.342,-7.935zM12,14.896l-3.312,2.271l1.137,-3.851l-3.183,-2.448l4.014,-0.109l1.344,-3.785l1.344,3.784l4.014,0.109l-3.183,2.448l1.137,3.851z">
@@ -144,8 +149,8 @@
           </div>
         </div>
 
-        <div class="performance-body">
-          <div id="chart-presence-tir" style="width: 100%; height:300px"></div>
+        <div class="performance-body" (click)="openJouersEquipeDialog('présenceTir')">
+          <div id="chart-presence-tir" style="width: 100%; height: 300px"></div>
         </div>
       </div>
     </div>
@@ -153,17 +158,19 @@
     <div class="qualite-tir col-12 col-md-4 mt-4 justify-content-center align-content-center">
       <div class="performance">
         <div class="performance-header">
-          <div class="d-flex justify-content-between align-content-between ">
+          <div class="d-flex justify-content-between align-content-between">
             <span class="title-header justify-content-end align-content-end">
               Qualité de Tir <span class="sub-des"></span>
             </span>
-            <div class="logo-club ml-4">
+            <div class="logo-club ml-4" (click)="toggleFavorite('qualite-tir')"
+              [ngClass]="{ favorited: isInFavorites('qualite-tir') }">
               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                width="24px" height="24px" viewBox="0,0,256,256">
-                <g fill="#1b1b19" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                  stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                  font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                  style="mix-blend-mode: normal">
+                [ngStyle]="{
+                  fill: isInFavorites('qualite-tir') ? '#DAE101' : '#1b1b19'
+                }" width="24px" height="24px" viewBox="0,0,256,256">
+                <g fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
+                  stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+                  font-size="none" text-anchor="none" style="mix-blend-mode: normal">
                   <g transform="scale(10.66667,10.66667)">
                     <path
                       d="M23.04,9.021l-8.27,-0.225l-2.77,-7.796l-2.77,7.796l-8.27,0.225l6.559,5.043l-2.342,7.936l6.823,-4.679l6.823,4.679l-2.342,-7.935zM12,14.896l-3.312,2.271l1.137,-3.851l-3.183,-2.448l4.014,-0.109l1.344,-3.785l1.344,3.784l4.014,0.109l-3.183,2.448l1.137,3.851z">
@@ -173,11 +180,10 @@
               </svg>
             </div>
           </div>
-
         </div>
 
-        <div class="performance-body">
-          <div id="chart-qualite-tir" style="width: 100%; height:300px"></div>
+        <div class="performance-body" (click)="openJouersEquipeDialog('qualité-tir')">
+          <div id="chart-qualite-tir" style="width: 100%; height: 300px"></div>
         </div>
       </div>
     </div>
@@ -185,17 +191,21 @@
     <div class="contribution-jeu col-12 col-md-4 mt-4 justify-content-center align-content-center">
       <div class="performance">
         <div class="performance-header">
-          <div class="d-flex justify-content-between align-content-between ">
+          <div class="d-flex justify-content-between align-content-between">
             <span class="title-header justify-content-end align-content-end">
               Contribution de Jeu<span class="sub-des"></span>
             </span>
-            <div class="logo-club ml-4">
+            <div class="logo-club ml-4" (click)="toggleFavorite('contribution-jeu')"
+              [ngClass]="{ favorited: isInFavorites('contribution-jeu') }">
               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                width="24px" height="24px" viewBox="0,0,256,256">
-                <g fill="#1b1b19" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                  stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                  font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                  style="mix-blend-mode: normal">
+                [ngStyle]="{
+                  fill: isInFavorites('contribution-jeu')
+                    ? '#DAE101'
+                    : '#1b1b19'
+                }" width="24px" height="24px" viewBox="0,0,256,256">
+                <g fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
+                  stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+                  font-size="none" text-anchor="none" style="mix-blend-mode: normal">
                   <g transform="scale(10.66667,10.66667)">
                     <path
                       d="M23.04,9.021l-8.27,-0.225l-2.77,-7.796l-2.77,7.796l-8.27,0.225l6.559,5.043l-2.342,7.936l6.823,-4.679l6.823,4.679l-2.342,-7.935zM12,14.896l-3.312,2.271l1.137,-3.851l-3.183,-2.448l4.014,-0.109l1.344,-3.785l1.344,3.784l4.014,0.109l-3.183,2.448l1.137,3.851z">
@@ -207,26 +217,30 @@
           </div>
         </div>
 
-        <div class="performance-body">
-          <div id="chart-contribution-jeu" style="width: 100%; height:300px"></div>
+        <div class="performance-body" (click)="openJouersEquipeDialog('contribution-jeu')">
+          <div id="chart-contribution-jeu" style="width: 100%; height: 300px"></div>
         </div>
       </div>
     </div>
     <!-- 6 -->
-    <div class="polyvalence-defensive  col-12 col-md-4 mt-4 justify-content-center align-content-center">
+    <div class="polyvalence-defensive col-12 col-md-4 mt-4 justify-content-center align-content-center">
       <div class="performance">
         <div class="performance-header">
-          <div class="d-flex justify-content-between align-content-between ">
+          <div class="d-flex justify-content-between align-content-between">
             <span class="title-header justify-content-end align-content-end">
-              Polyvalence defensive <span class="sub-des"></span>
+              Polyvalence Defensive <span class="sub-des"></span>
             </span>
-            <div class="logo-club ml-4">
+            <div class="logo-club ml-4" (click)="toggleFavorite('polyvalence-defensive')"
+              [ngClass]="{ favorited: isInFavorites('polyvalence-defensive') }">
               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                width="24px" height="24px" viewBox="0,0,256,256">
-                <g fill="#1b1b19" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                  stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                  font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                  style="mix-blend-mode: normal">
+                [ngStyle]="{
+                  fill: isInFavorites('polyvalence-defensive')
+                    ? '#DAE101'
+                    : '#1b1b19'
+                }" width="24px" height="24px" viewBox="0,0,256,256">
+                <g fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
+                  stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+                  font-size="none" text-anchor="none" style="mix-blend-mode: normal">
                   <g transform="scale(10.66667,10.66667)">
                     <path
                       d="M23.04,9.021l-8.27,-0.225l-2.77,-7.796l-2.77,7.796l-8.27,0.225l6.559,5.043l-2.342,7.936l6.823,-4.679l6.823,4.679l-2.342,-7.935zM12,14.896l-3.312,2.271l1.137,-3.851l-3.183,-2.448l4.014,-0.109l1.344,-3.785l1.344,3.784l4.014,0.109l-3.183,2.448l1.137,3.851z">
@@ -238,8 +252,8 @@
           </div>
         </div>
 
-        <div class="performance-body">
-          <div id="chart-polyvalence-defensive" style="width: 100%; height:300px"></div>
+        <div class="performance-body" (click)="openJouersEquipeDialog('polyvalence-defensive')">
+          <div id="chart-polyvalence-defensive" style="width: 100%; height: 300px"></div>
         </div>
       </div>
     </div>
@@ -247,17 +261,21 @@
     <div class="diversite-passes col-12 col-md-4 mt-4 justify-content-center align-content-center">
       <div class="performance">
         <div class="performance-header">
-          <div class="d-flex justify-content-between align-content-between ">
+          <div class="d-flex justify-content-between align-content-between">
             <span class="title-header justify-content-end align-content-end">
               Diversité des passes <span class="sub-des"></span>
             </span>
-            <div class="logo-club ml-4">
+            <div class="logo-club ml-4" (click)="toggleFavorite('diversite-passes')"
+              [ngClass]="{ favorited: isInFavorites('diversite-passes') }">
               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                width="24px" height="24px" viewBox="0,0,256,256">
-                <g fill="#1b1b19" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                  stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                  font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                  style="mix-blend-mode: normal">
+                [ngStyle]="{
+                  fill: isInFavorites('diversite-passes')
+                    ? '#DAE101'
+                    : '#1b1b19'
+                }" width="24px" height="24px" viewBox="0,0,256,256">
+                <g fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
+                  stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+                  font-size="none" text-anchor="none" style="mix-blend-mode: normal">
                   <g transform="scale(10.66667,10.66667)">
                     <path
                       d="M23.04,9.021l-8.27,-0.225l-2.77,-7.796l-2.77,7.796l-8.27,0.225l6.559,5.043l-2.342,7.936l6.823,-4.679l6.823,4.679l-2.342,-7.935zM12,14.896l-3.312,2.271l1.137,-3.851l-3.183,-2.448l4.014,-0.109l1.344,-3.785l1.344,3.784l4.014,0.109l-3.183,2.448l1.137,3.851z">
@@ -269,8 +287,8 @@
           </div>
         </div>
 
-        <div class="performance-body">
-          <div id="chart-diversite-passes" style="width: 100%; height:300px"></div>
+        <div class="performance-body" (click)="openJouersEquipeDialog('diversite-passes')">
+          <div id="chart-diversite-passes" style="width: 100%; height: 300px"></div>
         </div>
       </div>
     </div>
@@ -278,17 +296,21 @@
     <div class="efficacite-domination col-12 col-md-4 mt-4 justify-content-center align-content-center">
       <div class="performance">
         <div class="performance-header">
-          <div class="d-flex justify-content-between align-content-between ">
+          <div class="d-flex justify-content-between align-content-between">
             <span class="title-header justify-content-end align-content-end">
               Efficacité de Domination Aérienne <span class="sub-des"></span>
             </span>
-            <div class="logo-club ml-4">
+            <div class="logo-club ml-4" (click)="toggleFavorite('efficacite-domination')"
+              [ngClass]="{ favorited: isInFavorites('efficacite-domination') }">
               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                width="24px" height="24px" viewBox="0,0,256,256">
-                <g fill="#1b1b19" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                  stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                  font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                  style="mix-blend-mode: normal">
+                [ngStyle]="{
+                  fill: isInFavorites('efficacite-domination')
+                    ? '#DAE101'
+                    : '#1b1b19'
+                }" width="24px" height="24px" viewBox="0,0,256,256">
+                <g fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
+                  stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+                  font-size="none" text-anchor="none" style="mix-blend-mode: normal">
                   <g transform="scale(10.66667,10.66667)">
                     <path
                       d="M23.04,9.021l-8.27,-0.225l-2.77,-7.796l-2.77,7.796l-8.27,0.225l6.559,5.043l-2.342,7.936l6.823,-4.679l6.823,4.679l-2.342,-7.935zM12,14.896l-3.312,2.271l1.137,-3.851l-3.183,-2.448l4.014,-0.109l1.344,-3.785l1.344,3.784l4.014,0.109l-3.183,2.448l1.137,3.851z">
@@ -300,8 +322,8 @@
           </div>
         </div>
 
-        <div class="performance-body">
-          <div id="chart-efficacite-domination" style="width: 100%; height:300px"></div>
+        <div class="performance-body" (click)="openJouersEquipeDialog('efficacité-domination-aérienne')">
+          <div id="chart-efficacite-domination" style="width: 100%; height: 300px"></div>
         </div>
       </div>
     </div>
@@ -309,17 +331,19 @@
     <div class="progression-jeu col-12 col-md-4 mt-4 justify-content-center align-content-center">
       <div class="performance">
         <div class="performance-header">
-          <div class="d-flex justify-content-between align-content-between ">
+          <div class="d-flex justify-content-between align-content-between">
             <span class="title-header justify-content-end align-content-end">
               Progression du jeu <span class="sub-des"></span>
             </span>
-            <div class="logo-club ml-4">
+            <div class="logo-club ml-4" (click)="toggleFavorite('progression-jeu')"
+              [ngClass]="{ favorited: isInFavorites('progression-jeu') }">
               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                width="24px" height="24px" viewBox="0,0,256,256">
-                <g fill="#1b1b19" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                  stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                  font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                  style="mix-blend-mode: normal">
+                [ngStyle]="{
+                  fill: isInFavorites('progression-jeu') ? '#DAE101' : '#1b1b19'
+                }" width="24px" height="24px" viewBox="0,0,256,256">
+                <g fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
+                  stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+                  font-size="none" text-anchor="none" style="mix-blend-mode: normal">
                   <g transform="scale(10.66667,10.66667)">
                     <path
                       d="M23.04,9.021l-8.27,-0.225l-2.77,-7.796l-2.77,7.796l-8.27,0.225l6.559,5.043l-2.342,7.936l6.823,-4.679l6.823,4.679l-2.342,-7.935zM12,14.896l-3.312,2.271l1.137,-3.851l-3.183,-2.448l4.014,-0.109l1.344,-3.785l1.344,3.784l4.014,0.109l-3.183,2.448l1.137,3.851z">
@@ -331,8 +355,8 @@
           </div>
         </div>
 
-        <div class="performance-body">
-          <div id="chart-progression-jeu" style="width: 100%; height:300px"></div>
+        <div class="performance-body" (click)="openJouersEquipeDialog('progression-jeu')">
+          <div id="chart-progression-jeu" style="width: 100%; height: 300px"></div>
         </div>
       </div>
     </div>
@@ -340,17 +364,21 @@
     <div class="limplication-creative col-12 col-md-4 mt-4 justify-content-center align-content-center">
       <div class="performance">
         <div class="performance-header">
-          <div class="d-flex justify-content-between align-content-between ">
+          <div class="d-flex justify-content-between align-content-between">
             <span class="title-header justify-content-end align-content-end">
               Iimplication créative <span class="sub-des"></span>
             </span>
-            <div class="logo-club ml-4">
+            <div class="logo-club ml-4" (click)="toggleFavorite('limplication-creative')"
+              [ngClass]="{ favorited: isInFavorites('limplication-creative') }">
               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                width="24px" height="24px" viewBox="0,0,256,256">
-                <g fill="#1b1b19" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                  stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                  font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                  style="mix-blend-mode: normal">
+                [ngStyle]="{
+                  fill: isInFavorites('limplication-creative')
+                    ? '#DAE101'
+                    : '#1b1b19'
+                }" width="24px" height="24px" viewBox="0,0,256,256">
+                <g fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
+                  stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+                  font-size="none" text-anchor="none" style="mix-blend-mode: normal">
                   <g transform="scale(10.66667,10.66667)">
                     <path
                       d="M23.04,9.021l-8.27,-0.225l-2.77,-7.796l-2.77,7.796l-8.27,0.225l6.559,5.043l-2.342,7.936l6.823,-4.679l6.823,4.679l-2.342,-7.935zM12,14.896l-3.312,2.271l1.137,-3.851l-3.183,-2.448l4.014,-0.109l1.344,-3.785l1.344,3.784l4.014,0.109l-3.183,2.448l1.137,3.851z">
@@ -362,8 +390,8 @@
           </div>
         </div>
 
-        <div class="performance-body">
-          <div id="chart-limplication-creative" style="width: 100%; height:300px"></div>
+        <div class="performance-body" (click)="openJouersEquipeDialog('Iimplication-créative')">
+          <div id="chart-limplication-creative" style="width: 100%; height: 300px"></div>
         </div>
       </div>
     </div>
@@ -371,17 +399,21 @@
     <div class="contribution-offensive col-12 col-md-4 mt-4 justify-content-center align-content-center">
       <div class="performance">
         <div class="performance-header">
-          <div class="d-flex justify-content-between align-content-between ">
+          <div class="d-flex justify-content-between align-content-between">
             <span class="title-header justify-content-end align-content-end">
               Indice de contribution offensive <span class="sub-des"></span>
             </span>
-            <div class="logo-club ml-4">
+            <div class="logo-club ml-4" (click)="toggleFavorite('contribution-offensive')"
+              [ngClass]="{ favorited: isInFavorites('contribution-offensive') }">
               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                width="24px" height="24px" viewBox="0,0,256,256">
-                <g fill="#1b1b19" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                  stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                  font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                  style="mix-blend-mode: normal">
+                [ngStyle]="{
+                  fill: isInFavorites('contribution-offensive')
+                    ? '#DAE101'
+                    : '#1b1b19'
+                }" width="24px" height="24px" viewBox="0,0,256,256">
+                <g fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
+                  stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+                  font-size="none" text-anchor="none" style="mix-blend-mode: normal">
                   <g transform="scale(10.66667,10.66667)">
                     <path
                       d="M23.04,9.021l-8.27,-0.225l-2.77,-7.796l-2.77,7.796l-8.27,0.225l6.559,5.043l-2.342,7.936l6.823,-4.679l6.823,4.679l-2.342,-7.935zM12,14.896l-3.312,2.271l1.137,-3.851l-3.183,-2.448l4.014,-0.109l1.344,-3.785l1.344,3.784l4.014,0.109l-3.183,2.448l1.137,3.851z">
@@ -393,8 +425,8 @@
           </div>
         </div>
 
-        <div class="performance-body">
-          <div id="chart-contribution-offensive" style="width: 100%; height:300px"></div>
+        <div class="performance-body" (click)="openJouersEquipeDialog('contribution-offensive')">
+          <div id="chart-contribution-offensive" style="width: 100%; height: 300px"></div>
         </div>
       </div>
     </div>
@@ -402,17 +434,21 @@
     <div class="precision-passes col-12 col-md-4 mt-4 justify-content-center align-content-center">
       <div class="performance">
         <div class="performance-header">
-          <div class="d-flex justify-content-between align-content-between ">
+          <div class="d-flex justify-content-between align-content-between">
             <span class="title-header justify-content-end align-content-end">
               Précision des passes <span class="sub-des"></span>
             </span>
-            <div class="logo-club ml-4">
+            <div class="logo-club ml-4" (click)="toggleFavorite('precision-passes')"
+              [ngClass]="{ favorited: isInFavorites('precision-passes') }">
               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                width="24px" height="24px" viewBox="0,0,256,256">
-                <g fill="#1b1b19" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                  stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                  font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                  style="mix-blend-mode: normal">
+                [ngStyle]="{
+                  fill: isInFavorites('precision-passes')
+                    ? '#DAE101'
+                    : '#1b1b19'
+                }" width="24px" height="24px" viewBox="0,0,256,256">
+                <g fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
+                  stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+                  font-size="none" text-anchor="none" style="mix-blend-mode: normal">
                   <g transform="scale(10.66667,10.66667)">
                     <path
                       d="M23.04,9.021l-8.27,-0.225l-2.77,-7.796l-2.77,7.796l-8.27,0.225l6.559,5.043l-2.342,7.936l6.823,-4.679l6.823,4.679l-2.342,-7.935zM12,14.896l-3.312,2.271l1.137,-3.851l-3.183,-2.448l4.014,-0.109l1.344,-3.785l1.344,3.784l4.014,0.109l-3.183,2.448l1.137,3.851z">
@@ -424,8 +460,8 @@
           </div>
         </div>
 
-        <div class="performance-body">
-          <div id="chart-precision-passes" style="width: 100%; height:300px"></div>
+        <div class="performance-body" (click)="openJouersEquipeDialog('precision-passes')">
+          <div id="chart-precision-passes" style="width: 100%; height: 300px"></div>
         </div>
       </div>
     </div>
@@ -433,17 +469,19 @@
     <div class="jeu-aerien col-12 col-md-4 mt-4 justify-content-center align-content-center">
       <div class="performance">
         <div class="performance-header">
-          <div class="d-flex justify-content-between align-content-between ">
+          <div class="d-flex justify-content-between align-content-between">
             <span class="title-header justify-content-end align-content-end">
               Jeu aérien <span class="sub-des"></span>
             </span>
-            <div class="logo-club ml-4">
+            <div class="logo-club ml-4" (click)="toggleFavorite('jeu-aerien')"
+              [ngClass]="{ favorited: isInFavorites('jeu-aerien') }">
               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                width="24px" height="24px" viewBox="0,0,256,256">
-                <g fill="#1b1b19" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                  stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                  font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                  style="mix-blend-mode: normal">
+                [ngStyle]="{
+                  fill: isInFavorites('jeu-aerien') ? '#DAE101' : '#1b1b19'
+                }" width="24px" height="24px" viewBox="0,0,256,256">
+                <g fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
+                  stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+                  font-size="none" text-anchor="none" style="mix-blend-mode: normal">
                   <g transform="scale(10.66667,10.66667)">
                     <path
                       d="M23.04,9.021l-8.27,-0.225l-2.77,-7.796l-2.77,7.796l-8.27,0.225l6.559,5.043l-2.342,7.936l6.823,-4.679l6.823,4.679l-2.342,-7.935zM12,14.896l-3.312,2.271l1.137,-3.851l-3.183,-2.448l4.014,-0.109l1.344,-3.785l1.344,3.784l4.014,0.109l-3.183,2.448l1.137,3.851z">
@@ -455,26 +493,30 @@
           </div>
         </div>
 
-        <div class="performance-body">
-          <div id="chart-jeu-aerien" style="width: 100%; height:300px"></div>
+        <div class="performance-body" (click)="openJouersEquipeDialog('jeu-aerien')">
+          <div id="chart-jeu-aerien" style="width: 100%; height: 300px"></div>
         </div>
       </div>
     </div>
     <!-- 14 -->
-    <div class="efficacite-sauvegarde  col-12 col-md-4 mt-4 justify-content-center align-content-center">
+    <div class="efficacite-sauvegarde col-12 col-md-4 mt-4 justify-content-center align-content-center">
       <div class="performance">
         <div class="performance-header">
-          <div class="d-flex justify-content-between align-content-between ">
+          <div class="d-flex justify-content-between align-content-between">
             <span class="title-header justify-content-end align-content-end">
               Taux d'efficacité de sauvegarde <span class="sub-des"></span>
             </span>
-            <div class="logo-club ml-4">
+            <div class="logo-club ml-4" (click)="toggleFavorite('efficacite-sauvegarde')"
+              [ngClass]="{ favorited: isInFavorites('efficacite-sauvegarde') }">
               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                width="24px" height="24px" viewBox="0,0,256,256">
-                <g fill="#1b1b19" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                  stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                  font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                  style="mix-blend-mode: normal">
+                [ngStyle]="{
+                  fill: isInFavorites('efficacite-sauvegarde')
+                    ? '#DAE101'
+                    : '#1b1b19'
+                }" width="24px" height="24px" viewBox="0,0,256,256">
+                <g fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
+                  stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+                  font-size="none" text-anchor="none" style="mix-blend-mode: normal">
                   <g transform="scale(10.66667,10.66667)">
                     <path
                       d="M23.04,9.021l-8.27,-0.225l-2.77,-7.796l-2.77,7.796l-8.27,0.225l6.559,5.043l-2.342,7.936l6.823,-4.679l6.823,4.679l-2.342,-7.935zM12,14.896l-3.312,2.271l1.137,-3.851l-3.183,-2.448l4.014,-0.109l1.344,-3.785l1.344,3.784l4.014,0.109l-3.183,2.448l1.137,3.851z">
@@ -486,8 +528,8 @@
           </div>
         </div>
 
-        <div class="performance-body">
-          <div id="chart-efficacite-sauvegarde" style="width: 100%; height:300px"></div>
+        <div class="performance-body" (click)="openJouersEquipeDialog('efficacite-sauvegarde')">
+          <div id="chart-efficacite-sauvegarde" style="width: 100%; height: 300px"></div>
         </div>
       </div>
     </div>
@@ -495,17 +537,21 @@
     <div class="controle-surface col-12 col-md-4 mt-4 justify-content-center align-content-center">
       <div class="performance">
         <div class="performance-header">
-          <div class="d-flex justify-content-between align-content-between ">
+          <div class="d-flex justify-content-between align-content-between">
             <span class="title-header justify-content-end align-content-end">
               Contrôle de la surface <span class="sub-des"></span>
             </span>
-            <div class="logo-club ml-4">
+            <div class="logo-club ml-4" (click)="toggleFavorite('controle-surface')"
+              [ngClass]="{ favorited: isInFavorites('controle-surface') }">
               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                width="24px" height="24px" viewBox="0,0,256,256">
-                <g fill="#1b1b19" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                  stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                  font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                  style="mix-blend-mode: normal">
+                [ngStyle]="{
+                  fill: isInFavorites('controle-surface')
+                    ? '#DAE101'
+                    : '#1b1b19'
+                }" width="24px" height="24px" viewBox="0,0,256,256">
+                <g fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
+                  stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+                  font-size="none" text-anchor="none" style="mix-blend-mode: normal">
                   <g transform="scale(10.66667,10.66667)">
                     <path
                       d="M23.04,9.021l-8.27,-0.225l-2.77,-7.796l-2.77,7.796l-8.27,0.225l6.559,5.043l-2.342,7.936l6.823,-4.679l6.823,4.679l-2.342,-7.935zM12,14.896l-3.312,2.271l1.137,-3.851l-3.183,-2.448l4.014,-0.109l1.344,-3.785l1.344,3.784l4.014,0.109l-3.183,2.448l1.137,3.851z">
@@ -516,9 +562,8 @@
             </div>
           </div>
         </div>
-
-        <div class="performance-body">
-          <div id="chart-controle-surface" style="width: 100%; height:300px"></div>
+        <div class="performance-body" (click)="openJouersEquipeDialog('controle-surface')">
+          <div id="chart-controle-surface" style="width: 100%; height: 300px"></div>
         </div>
       </div>
     </div>
@@ -526,17 +571,21 @@
     <div class="charge-defensive col-12 col-md-4 mt-4 justify-content-center align-content-center">
       <div class="performance">
         <div class="performance-header">
-          <div class="d-flex justify-content-between align-content-between ">
+          <div class="d-flex justify-content-between align-content-between">
             <span class="title-header justify-content-end align-content-end">
-              Charge défensive <span class="sub-des"></span>
+              Charge Defensive <span class="sub-des"></span>
             </span>
-            <div class="logo-club ml-4">
+            <div class="logo-club ml-4" (click)="toggleFavorite('charge-defensive')"
+              [ngClass]="{ favorited: isInFavorites('charge-defensive') }">
               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                width="24px" height="24px" viewBox="0,0,256,256">
-                <g fill="#1b1b19" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                  stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                  font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                  style="mix-blend-mode: normal">
+                [ngStyle]="{
+                  fill: isInFavorites('charge-defensive')
+                    ? '#DAE101'
+                    : '#1b1b19'
+                }" width="24px" height="24px" viewBox="0,0,256,256">
+                <g fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
+                  stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+                  font-size="none" text-anchor="none" style="mix-blend-mode: normal">
                   <g transform="scale(10.66667,10.66667)">
                     <path
                       d="M23.04,9.021l-8.27,-0.225l-2.77,-7.796l-2.77,7.796l-8.27,0.225l6.559,5.043l-2.342,7.936l6.823,-4.679l6.823,4.679l-2.342,-7.935zM12,14.896l-3.312,2.271l1.137,-3.851l-3.183,-2.448l4.014,-0.109l1.344,-3.785l1.344,3.784l4.014,0.109l-3.183,2.448l1.137,3.851z">
@@ -548,8 +597,8 @@
           </div>
         </div>
 
-        <div class="performance-body">
-          <div id="chart-charge-defensive" style="width: 100%; height:300px"></div>
+        <div class="performance-body" (click)="openJouersEquipeDialog('charge-defensive')">
+          <div id="chart-charge-defensive" style="width: 100%; height: 300px"></div>
         </div>
       </div>
     </div>

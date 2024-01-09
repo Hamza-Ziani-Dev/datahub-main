@@ -11,9 +11,21 @@ import { MatDialog } from "@angular/material/dialog";
   styleUrls: ["./joueurs.component.css"],
 })
 export class JoueursComponent implements OnInit {
+  efficaciteData : any; precisionPasses :any;
+  creativiteData :any; jeuAerien :any;
+  présenceTirData :any; efficaciteSauvegarde :any;
+  qualiteTirData :any; contrôleSurface :any;
+  contributionJeuData : any; chargeDefensive :any;
+  polyvalenceDefensive :any;
+  diversitePasses :any;
+  efficacité_Domination_Aérienne :any;
+  progressionJeu :any;
+  IimplicationCréative :any;
+  contributionOffensive :any;
   Data_Efficacite:any;
   Indice_Créativite:any;
-  activeLabel: number = 1; // Initially, no label is active
+  favorites: string[] = [];
+  activeLabel: number = 1; 
   setActiveLabel(labelNumber: number) {
     this.activeLabel = labelNumber;
   }
@@ -33,6 +45,12 @@ export class JoueursComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    // Fetch favorites from localStorage on component initialization
+    const storedFavorites = localStorage.getItem('favorites');
+    if (storedFavorites) {
+      this.favorites = JSON.parse(storedFavorites);
+    }
+    
     this.actions("CREATE_CHART_SCATTER1");
     this.actions("CREATE_CHART_SCATTER2");
     this.actions("CREATE_CHART_SCATTER3");
@@ -50,6 +68,46 @@ export class JoueursComponent implements OnInit {
     this.actions("CREATE_CHART_SCATTER15");
     this.actions("CREATE_CHART_SCATTER16");
   }
+
+  //Favourites Items:
+  toggleFavorite(type: string): void {
+    // Logic to add/remove item to/from favorites
+    if (this.isInFavorites(type)) {
+      this.removeFromFavorites(type);
+    } else {
+      this.addToFavorites(type);
+    }
+    // Save updated favorites to localStorage after each change
+    localStorage.setItem('favorites', JSON.stringify(this.favorites));
+    console.log('Favorites:', this.favorites); //
+  }
+  
+  
+
+  // Method to check if the item is in favorites
+  isInFavorites(item: string): boolean {
+    return this.favorites.includes(item);
+  }
+
+  // Method to add an item to favorites
+  addToFavorites(item: string): void {
+    if (!this.isInFavorites(item)) {
+      this.favorites.push(item);
+      // Perform additional actions if needed when an item is added to favorites
+    }
+  }
+
+  // Method to remove an item from favorites
+  removeFromFavorites(item: string): void {
+    const index = this.favorites.indexOf(item);
+    if (index !== -1) {
+      this.favorites.splice(index, 1);
+      // Perform additional actions if needed when an item is removed from favorites
+    }
+  }
+
+
+  // Dialog With Type Open
   openJouersEquipeDialog(type: string): void {
     let dialogData;
     switch (type) {
@@ -59,7 +117,48 @@ export class JoueursComponent implements OnInit {
       case 'creativite':
         dialogData = this.creativiteData;
         break;
-      // Add cases for other types as needed
+        case 'présenceTir':
+          dialogData = this.présenceTirData;
+          break;
+          case 'qualité-tir':
+            dialogData = this.qualiteTirData;
+            break;
+            case 'contribution-jeu':
+              dialogData = this.qualiteTirData;
+              break;
+              case 'polyvalence-defensive':
+              dialogData = this.polyvalenceDefensive;
+              break;
+              case 'diversite-passes':
+              dialogData = this.polyvalenceDefensive;
+              break;
+              case 'efficacité-domination-aérienne':
+              dialogData = this.efficacité_Domination_Aérienne;
+              break;
+              case 'progression-jeu':
+                dialogData = this.progressionJeu;
+                break;
+                case 'Iimplication-créative':
+                dialogData = this.IimplicationCréative;
+                break;
+                case 'contribution-offensive':
+                  dialogData = this.contributionOffensive;
+                  break;
+                  case 'precision-passes':
+                  dialogData = this.precisionPasses;
+                  break;
+                  case 'jeu-aerien':
+                  dialogData = this.jeuAerien;
+                  break;
+                  case 'efficacite-sauvegarde':
+                  dialogData = this.efficaciteSauvegarde ;
+                  break;
+                  case 'contrôle-surface':
+                  dialogData = this.contrôleSurface ;
+                  break;
+                  case 'charge-defensive':
+                    dialogData = this.chargeDefensive ;
+                    break;
       default:
         break;
     }
@@ -71,49 +170,7 @@ export class JoueursComponent implements OnInit {
     });
   }
 
-  // Assuming you have data for each section
-  efficaciteData = { /* Your efficacite data here */ };
-  creativiteData = { /* Your creativite data here */ };
-  // Other data variables
 
-  // openDialogWithDataType(data: any, type: string) {
-  //   // console.log("type Dialog");
-    
-  //   const dialogRef = this.dialog.open(DialogJoueurComponent, {
-  //     height: "520px",
-  //     data: {
-  //       type: type,
-  //       data: data,
-  //     },
-  //     disableClose: true,
-  //   });
-  
-  //   dialogRef.afterClosed().subscribe((result) => {
-  //   });
-  // }
-  
-  // openDialogWithType(type: string) {
-  //   let data;
-  //   switch (type) {
-  //     case "Efficacite_Dribbleur":
-  //       data = this.Data_Efficacite;
-  //       break;
-  //       case "Indice_Créativité":
-  //         data = this.Indice_Créativite;
-  //       break;
-       
-  //     default:
-  //       break;
-  //   }
-  //   if (data) {
-  //     this.openDialogWithDataType(data, type);
-  //   } else {
-  //     console.log('No Data In Dialog');
-      
-  //   }
-  //   // console.log(data,type,'A')
-  //   // if(Object.keys(data)) this.openDialogWithDataType(data, type);
-  // }
 
   actions(CASE: string, RES: any = null) {
     switch (CASE) {
