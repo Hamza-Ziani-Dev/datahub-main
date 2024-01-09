@@ -79,10 +79,14 @@ openDialogWithType(type: string) {
   let data;
   switch (type) {
     case "Offensive":
-      case "Deffensive":
-        case "Generale":
       data = this.dataGraphsEquipe;
-      break;
+    break;  
+      case "Deffensive":
+        data = this.dataGraphsEquipe;
+    break;    
+        case "Generale":
+          data = this.dataGraphsEquipe;
+    break;      
       case "Efficacite_Offensive":
       data = this.dataEfficacite_Offensive;
       break;
@@ -96,7 +100,6 @@ openDialogWithType(type: string) {
       break;
   }
 
-  console.log(data,type,'A')
    if(Object.keys(data)) this.openDialogWithDataType(data, type);
 }
 
@@ -108,7 +111,7 @@ openDialogWithType(type: string) {
             document.getElementById("chart-offensive")
           );
           myChart1.setOption(this.dataGraphsEquipe?.attacking);
-        }, 1000); // Replace 1000 with the desired delay in milliseconds
+        }, 10); // Replace 1000 with the desired delay in milliseconds
         break;
         case "CREATE_CHART_RADAR2":
           setTimeout(() => {
@@ -116,19 +119,16 @@ openDialogWithType(type: string) {
               document.getElementById("chart-deffensive")
             );
             myChart2.setOption(this.dataGraphsEquipe?.defending);
-          }, 1000); // Replace 1000 with the desired delay in milliseconds
+          }, 10); // Replace 1000 with the desired delay in milliseconds
           break;
-        
           case "CREATE_CHART_RADAR3":
             setTimeout(() => {
               const myChart3 = echarts.init(
                 document.getElementById("chart-generale")
               );
               myChart3.setOption(this.dataGraphsEquipe?.general);
-            }, 1000); // Replace 1000 with the desired delay in milliseconds
+            }, 10); // Replace 1000 with the desired delay in milliseconds
             break;
-          
-      
     
       case "CREATE_CHART_SCATTER1":
         const myChart4 = echarts.init(
