@@ -1,4 +1,4 @@
-import { Component, ElementRef, Inject, OnInit, ViewChild } from "@angular/core";
+import { Component, Inject, OnInit } from "@angular/core";
 import { TeamsService } from "../../../service/teams.service";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import * as echarts from "echarts";
@@ -27,45 +27,29 @@ export class DialogEquipeComponent implements OnInit {
   URL9: string =
     "https://seeklogo.com/images/M/maghreb-association-sportive-de-fez-mas-logo-D6AA7B92EB-seeklogo.com.png";
   URL: string = "https://interface.myteambyfrmf.ma/uploads/datahub/";
-  @ViewChild('echartsContainer') echartsContainer: ElementRef;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dialogRef: MatDialogRef<DialogEquipeComponent>
   ) {}
   ngOnInit() {
     console.log(this.data);
-    
-   this.renderECharts();
-    console.log(this.data);
-    console.log(this.data?.data?.attacking);
     this.actions("CREATE_CHART_RADAR1");
     this.actions("CREATE_CHART_RADAR2");
     this.actions("CREATE_CHART_RADAR3");
     this.actions("CREATE_CHART_SCATTER1");
     this.actions("CREATE_CHART_SCATTER2");
     this.actions("CREATE_CHART_SCATTER3");
-   
   }
   closeDialog(): void {
     this.dialogRef.close();
   }
-  renderECharts() {
-    // Access the DOM element using ViewChild and ElementRef
-    const chartElement = this.echartsContainer.nativeElement;
 
-    // Initialize ECharts with your data
-    const myChart = echarts.init(chartElement);
-
-    // Assuming this.data.data contains the ECharts configuration
-    const options = this.data.data;
-
-    // Set options and render the chart
-    myChart.setOption(options);
-  }
   actions(CASE: string, RES: any = null) {
     switch (CASE) {
       case "CREATE_CHART_RADAR1":
-        const myChart1 = echarts.init(document.getElementById("chart-offensive"));
+        const myChart1 = echarts.init(
+          document.getElementById("chart-offensive")
+        );
         myChart1.setOption(this.data?.data?.attacking);
         break;
       case "CREATE_CHART_RADAR2":
@@ -81,295 +65,162 @@ export class DialogEquipeComponent implements OnInit {
         myChart3.setOption(this.data?.data?.general);
         break;
       case "CREATE_CHART_SCATTER1":
-        const myChart4 = echarts.init(document.getElementById("chart_efficacite_offensive")
-        );
-        const option4 = {
-          xAxis: {},
-          yAxis: {},
-          title: {
-            text: "Aerial Duel Win Ratio %",
-            left: "center",
-            bottom: 10,
-            textStyle: {
-              fontWeight: "bold", // Font weight
-              fontSize: 14, // Font size in pixels
-            },
-          },
-          tooltip: {
-            formatter: function (params) {
-              // return `
-              //       <div style="width: 10px" >
-              //       <div class="mt-2 d-flex flex-column justify-content-center align-items-center ">
-              //        Logo
-              //       </div>
-              //       </div>
-              // `;
-            },
-          },
-          series: [
-            {
-              data: [
-                {
-                  value: [90, 90, "RCA"],
-                  name: "RCA",
-                  symbol: `image://${this.URL1}`,
-                  symbolSize: [20, 20],
-                },
-                {
-                  value: [80, 86, "RSB"],
-                  name: "RSB",
-                  symbol: `image://${this.URL2}`,
-                  symbolSize: [20, 20],
-                },
-
-                {
-                  value: [40, 40, "IRT"],
-                  name: "IRT",
-                  symbol: `image://${this.URL3}`,
-                  symbolSize: [20, 20],
-                },
-                {
-                  value: [83, 87, "WAC"],
-                  name: "WAC",
-                  symbol: `image://${this.URL4}`,
-                  symbolSize: [20, 20],
-                },
-                {
-                  value: [10, 20, "KAC"],
-                  name: "KAC",
-                  symbol: `image://${this.URL5}`,
-                  symbolSize: [20, 20],
-                },
-                {
-                  value: [49, 43, "FUS"],
-                  name: "FUS",
-                  symbol: `image://${this.URL6}`,
-                  symbolSize: [20, 20],
-                },
-                {
-                  value: [59, 26, "FAR"],
-                  name: "FAR",
-                  symbol: `image://${this.URL7}`,
-                  symbolSize: [20, 20],
-                },
-                {
-                  value: [14, 40, "MAT"],
-                  name: "MAT",
-                  symbol: `image://${this.URL8}`,
-                  symbolSize: [20, 20],
-                },
-                {
-                  value: [32, 70, "MAS"],
-                  name: "MAS",
-                  symbol: `image://${this.URL9}`,
-                  symbolSize: [20, 20],
-                },
-              ],
-              type: "scatter",
-              name: "Title",
-              stack: "Total",
-              itemStyle: {},
-              emphasis: {
-                focus: "self",
+        setTimeout(() => {
+          const myChart4 = echarts.init(
+            document.getElementById("chart-efficacite")
+          );
+          const option4 = {
+            xAxis: {},
+            yAxis: {},
+            title: {
+              text: "Aerial Duel Win Ratio %",
+              left: "center",
+              bottom: 10,
+              textStyle: {
+                fontWeight: "bold", // Font weight
+                fontSize: 14, // Font size in pixels
               },
             },
-          ],
-        };
-        myChart4.setOption(option4);
+            tooltip: {
+              formatter: function (params) {
+                // return `
+                //       <div style="width: 10px" >
+                //       <div class="mt-2 d-flex flex-column justify-content-center align-items-center ">
+                //        Logo
+                //       </div>
+                //       </div>
+                // `;
+              },
+            },
+            series: [
+              {
+                data: [
+                  {
+                    value: [90, 90, "RCA"],
+                    name: "RCA",
+                    symbol: `image://${this.URL1}`,
+                    symbolSize: [20, 20],
+                  },
+                  // Rest of your data...
+                ],
+                type: "scatter",
+                name: "Title",
+                stack: "Total",
+                itemStyle: {},
+                emphasis: {
+                  focus: "self",
+                },
+              },
+            ],
+          };
+          myChart4.setOption(option4);
+        }, 1000); // Replace 1000 with the desired delay in milliseconds
         break;
+
       case "CREATE_CHART_SCATTER2":
-        const myChart5 = echarts.init(
-          document.getElementById("chart_efficacite_deffensive")
-        );
-        const option5 = {
-          xAxis: {},
-          yAxis: {},
-          title: {
-            text: "Aerial Duel Win Ratio %",
-            left: "center",
-            bottom: 10,
-            textStyle: {
-              fontWeight: "bold", // Font weight
-              fontSize: 14, // Font size in pixels
-            },
-          },
-          tooltip: {
-            formatter: function (params) {
-              // return `
-              //       <div style="width: 120px" >
-              //       <div class="mt-2 d-flex flex-column justify-content-center align-items-center ">
-              //        Logo
-              //       </div>
-              //       </div>
-              // `;
-            },
-          },
-          series: [
-            {
-              data: [
-                {
-                  value: [90, 90, "RCA"],
-                  name: "RCA",
-                  symbol: `image://${this.URL1}`,
-                  symbolSize: [20, 20],
-                },
-                {
-                  value: [80, 86, "RSB"],
-                  name: "RSB",
-                  symbol: `image://${this.URL2}`,
-                  symbolSize: [20, 20],
-                },
-
-                {
-                  value: [40, 40, "IRT"],
-                  name: "IRT",
-                  symbol: `image://${this.URL3}`,
-                  symbolSize: [20, 20],
-                },
-                {
-                  value: [83, 87, "WAC"],
-                  name: "WAC",
-                  symbol: `image://${this.URL4}`,
-                  symbolSize: [20, 20],
-                },
-                {
-                  value: [10, 20, "KAC"],
-                  name: "KAC",
-                  symbol: `image://${this.URL5}`,
-                  symbolSize: [20, 20],
-                },
-                {
-                  value: [49, 43, "FUS"],
-                  name: "FUS",
-                  symbol: `image://${this.URL6}`,
-                  symbolSize: [20, 20],
-                },
-                {
-                  value: [59, 26, "FAR"],
-                  name: "FAR",
-                  symbol: `image://${this.URL7}`,
-                  symbolSize: [20, 20],
-                },
-                {
-                  value: [14, 40, "MAT"],
-                  name: "MAT",
-                  symbol: `image://${this.URL8}`,
-                  symbolSize: [20, 20],
-                },
-                {
-                  value: [32, 70, "MAS"],
-                  name: "MAS",
-                  symbol: `image://${this.URL9}`,
-                  symbolSize: [20, 20],
-                },
-              ],
-              type: "scatter",
-              name: "Title",
-              stack: "Total",
-              itemStyle: {},
-              emphasis: {
-                focus: "self",
+        setTimeout(() => {
+          const myChart5 = echarts.init(
+            document.getElementById("chart-defensive")
+          );
+          const option5 = {
+            xAxis: {},
+            yAxis: {},
+            title: {
+              text: "Aerial Duel Win Ratio %",
+              left: "center",
+              bottom: 10,
+              textStyle: {
+                fontWeight: "bold", // Font weight
+                fontSize: 14, // Font size in pixels
               },
             },
-          ],
-        };
-        myChart5.setOption(option5);
+            tooltip: {
+              formatter: function (params) {
+                // return `
+                //       <div style="width: 120px" >
+                //       <div class="mt-2 d-flex flex-column justify-content-center align-items-center ">
+                //        Logo
+                //       </div>
+                //       </div>
+                // `;
+              },
+            },
+            series: [
+              {
+                data: [
+                  {
+                    value: [90, 90, "RCA"],
+                    name: "RCA",
+                    symbol: `image://${this.URL1}`,
+                    symbolSize: [20, 20],
+                  },
+                  // Rest of your data...
+                ],
+                type: "scatter",
+                name: "Title",
+                stack: "Total",
+                itemStyle: {},
+                emphasis: {
+                  focus: "self",
+                },
+              },
+            ],
+          };
+          myChart5.setOption(option5);
+        }, 1000); // Replace 1000 with the desired delay in milliseconds
         break;
-      case "CREATE_CHART_SCATTER3":
-        const myChart6 = echarts.init(document.getElementById("chart_efficacite_passes"));
-        const option6 = {
-          xAxis: {},
-          yAxis: {},
-          title: {
-            text: "Aerial Duel Win Ratio %",
-            left: "center",
-            bottom: 10,
-            textStyle: {
-              fontWeight: "bold", // Font weight
-              fontSize: 14, // Font size in pixels
-            },
-          },
-          tooltip: {
-            formatter: function (params) {
-              // return `
-              //       <div style="width: 120px" >
-              //       <div class="mt-2 d-flex flex-column justify-content-center align-items-center ">
-              //        Logo
-              //       </div>
-              //       </div>
-              // `;
-            },
-          },
-          series: [
-            {
-              data: [
-                {
-                  value: [90, 90, "RCA"],
-                  name: "RCA",
-                  symbol: `image://${this.URL1}`,
-                  symbolSize: [20, 20],
-                },
-                {
-                  value: [80, 86, "RSB"],
-                  name: "RSB",
-                  symbol: `image://${this.URL2}`,
-                  symbolSize: [20, 20],
-                },
 
-                {
-                  value: [40, 40, "IRT"],
-                  name: "IRT",
-                  symbol: `image://${this.URL3}`,
-                  symbolSize: [20, 20],
-                },
-                {
-                  value: [83, 87, "WAC"],
-                  name: "WAC",
-                  symbol: `image://${this.URL4}`,
-                  symbolSize: [20, 20],
-                },
-                {
-                  value: [10, 20, "KAC"],
-                  name: "KAC",
-                  symbol: `image://${this.URL5}`,
-                  symbolSize: [20, 20],
-                },
-                {
-                  value: [49, 43, "FUS"],
-                  name: "FUS",
-                  symbol: `image://${this.URL6}`,
-                  symbolSize: [20, 20],
-                },
-                {
-                  value: [59, 26, "FAR"],
-                  name: "FAR",
-                  symbol: `image://${this.URL7}`,
-                  symbolSize: [20, 20],
-                },
-                {
-                  value: [14, 40, "MAT"],
-                  name: "MAT",
-                  symbol: `image://${this.URL8}`,
-                  symbolSize: [20, 20],
-                },
-                {
-                  value: [32, 70, "MAS"],
-                  name: "MAS",
-                  symbol: `image://${this.URL9}`,
-                  symbolSize: [20, 20],
-                },
-              ],
-              type: "scatter",
-              name: "Title",
-              stack: "Total",
-              itemStyle: {},
-              emphasis: {
-                focus: "self",
+      case "CREATE_CHART_SCATTER3":
+        setTimeout(() => {
+          const myChart6 = echarts.init(
+            document.getElementById("chart-passes")
+          );
+          const option6 = {
+            xAxis: {},
+            yAxis: {},
+            title: {
+              text: "Aerial Duel Win Ratio %",
+              left: "center",
+              bottom: 10,
+              textStyle: {
+                fontWeight: "bold", // Font weight
+                fontSize: 14, // Font size in pixels
               },
             },
-          ],
-        };
-        myChart6.setOption(option6);
+            tooltip: {
+              formatter: function (params) {
+                // return `
+                //       <div style="width: 120px" >
+                //       <div class="mt-2 d-flex flex-column justify-content-center align-items-center ">
+                //        Logo
+                //       </div>
+                //       </div>
+                // `;
+              },
+            },
+            series: [
+              {
+                data: [
+                  {
+                    value: [90, 90, "RCA"],
+                    name: "RCA",
+                    symbol: `image://${this.URL1}`,
+                    symbolSize: [20, 20],
+                  },
+                  // Rest of your data...
+                ],
+                type: "scatter",
+                name: "Title",
+                stack: "Total",
+                itemStyle: {},
+                emphasis: {
+                  focus: "self",
+                },
+              },
+            ],
+          };
+          myChart6.setOption(option6);
+        }, 1000); // Replace 1000 with the desired delay in milliseconds
         break;
 
       case "UPDATE_CHART":

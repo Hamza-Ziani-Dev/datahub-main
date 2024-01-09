@@ -99,7 +99,7 @@ actions(CASE: string, RES: any = null) {
       setTimeout(() => {
         const myChart = echarts.init(document.getElementById('chartGeneraleElement'));
         myChart.setOption(this.radarGenerale);
-      }, 1000); // Adjust the time delay (in milliseconds) as needed
+      }, 1000); 
       break;
 
     // Dialog Responsibilites

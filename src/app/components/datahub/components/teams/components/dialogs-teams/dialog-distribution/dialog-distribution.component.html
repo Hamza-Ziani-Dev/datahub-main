@@ -2,21 +2,50 @@
     <span aria-hidden="true">&times;</span>
  </button>
  <div class="row justify-content-center align-content-center">
-     <div class="mt-2 mb-2">
+   <div class="mt-2 mb-2">
+      <div class="navbar">
+        <div class="nav-btn" [class.active]="activeButton === 'xG'" (click)="setActiveButton('xG')">XG</div>
+        <div class="nav-btn" [class.active]="activeButton === 'xA'" (click)="setActiveButton('xA')">xA</div>
+        <div class="nav-btn" [class.active]="activeButton === 'Dribbles'" (click)="setActiveButton('Dribbles')">Dribbles</div>
+        <!-- Add more buttons as needed -->
+      </div>
+    </div>
+    <div class="distribution" *ngIf="activeButton === 'xG'">
+      <div class="chart-distribution">
+        <div id="chart-distribution-xg" style="width: 100%; height:244px;"></div>
+      </div>
+    </div>
+    <div class="distribution" *ngIf="activeButton === 'xA'">
+      <div class="chart-distribution">
+        <div id="chart-distribution-xa" style="width: 100%; height:244px;"></div>
+      </div>
+    </div>
+    <div class="distribution" *ngIf="activeButton === 'Dribbles'">
+      <div class="chart-distribution">
+        <div id="chart-distribution-Dribbles" style="width: 100%; height:244px;"></div>
+      </div>
+    </div>
+    <!-- Add more sections for other buttons if needed -->
+    
+     <!-- <div class="mt-2 mb-2">
        <div class="navbar">
          <div class="nav-btn" [class.active]="activeButton === 'XG'" (click)="setActiveButton('xG')">XG</div>
          <div class="nav-btn" [class.active]="activeButton === 'xA'" (click)="setActiveButton('xA')">xA</div>
          <div class="nav-btn" [class.active]="activeButton === 'Dribbles'" (click)="setActiveButton('Dribbles')">Dribbles</div>
-          <!-- <div class="nav-btn" [class.active]="activeButton === 'G'" (click)="setActiveButton('G')">G</div> -->
         </div>
      </div>
-     <div class="distribution" >
+     <div class="distribution" *ngIf="activeButton === 'XG'" >
         <div class="chart-distribution">
-           <div id="chart-distribution" style="width: 100%; height:244px;" ></div>
+           <div id="chart-distribution-xg" style="width: 100%; height:244px;" ></div>
         </div>
      </div>
-     <div class="desc-match">
+     <div class="distribution" *ngIf="activeButton === 'xA'" >
+      <div class="chart-distribution">
+         <div id="chart-distribution-xa" style="width: 100%; height:244px;" ></div>
+      </div>
+   </div> -->
+     <!-- <div class="desc-match">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, ipsam, esse ullam at saepe repudiandae fugiat illum blanditiis quod temporibus labore officiis, facilis quibusdam mollitia enim ad suscipit beatae. Ipsam.
-     </div>
+     </div> -->
     
  </div>

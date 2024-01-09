@@ -50,46 +50,70 @@ export class JoueursComponent implements OnInit {
     this.actions("CREATE_CHART_SCATTER15");
     this.actions("CREATE_CHART_SCATTER16");
   }
-
-
-  openDialogWithDataType(data: any, type: string) {
-    // console.log("type Dialog");
-    
-    const dialogRef = this.dialog.open(DialogJoueurComponent, {
-      height: "520px",
-      data: {
-        type: type,
-        data: data,
-      },
-      disableClose: true,
-    });
-  
-    dialogRef.afterClosed().subscribe((result) => {
-    });
-  }
-  
-  openDialogWithType(type: string) {
-    let data;
+  openJouersEquipeDialog(type: string): void {
+    let dialogData;
     switch (type) {
-      case "Efficacite_Dribbleur":
-        data = this.Data_Efficacite;
+      case 'efficacite':
+        dialogData = this.efficaciteData;
         break;
-        case "Indice_Créativité":
-          data = this.Indice_Créativite;
+      case 'creativite':
+        dialogData = this.creativiteData;
         break;
-       
+      // Add cases for other types as needed
       default:
         break;
     }
-    if (data) {
-      this.openDialogWithDataType(data, type);
-    } else {
-      console.log('No Data In Dialog');
-      
-    }
-    // console.log(data,type,'A')
-    // if(Object.keys(data)) this.openDialogWithDataType(data, type);
+
+    this.dialog.open(DialogJoueurComponent, {
+      width: '80%',
+      maxWidth: '1200px',
+      data: { type, ...dialogData }
+    });
   }
+
+  // Assuming you have data for each section
+  efficaciteData = { /* Your efficacite data here */ };
+  creativiteData = { /* Your creativite data here */ };
+  // Other data variables
+
+  // openDialogWithDataType(data: any, type: string) {
+  //   // console.log("type Dialog");
+    
+  //   const dialogRef = this.dialog.open(DialogJoueurComponent, {
+  //     height: "520px",
+  //     data: {
+  //       type: type,
+  //       data: data,
+  //     },
+  //     disableClose: true,
+  //   });
+  
+  //   dialogRef.afterClosed().subscribe((result) => {
+  //   });
+  // }
+  
+  // openDialogWithType(type: string) {
+  //   let data;
+  //   switch (type) {
+  //     case "Efficacite_Dribbleur":
+  //       data = this.Data_Efficacite;
+  //       break;
+  //       case "Indice_Créativité":
+  //         data = this.Indice_Créativite;
+  //       break;
+       
+  //     default:
+  //       break;
+  //   }
+  //   if (data) {
+  //     this.openDialogWithDataType(data, type);
+  //   } else {
+  //     console.log('No Data In Dialog');
+      
+  //   }
+  //   // console.log(data,type,'A')
+  //   // if(Object.keys(data)) this.openDialogWithDataType(data, type);
+  // }
 
   actions(CASE: string, RES: any = null) {
     switch (CASE) {

@@ -53,8 +53,6 @@ export class EquipeComponent implements OnInit {
 getGraphOffensive(){
   this.teamService.getGraphsEquipe().subscribe((res)=>{
     this.dataGraphsEquipe = res;
-    // this.attackingData = res;
-    // console.log(this.attackingData);
     this.actions("CREATE_CHART_RADAR1");
     this.actions("CREATE_CHART_RADAR2");
     this.actions("CREATE_CHART_RADAR3");
@@ -72,9 +70,8 @@ openDialogWithDataType(data: any, type: string) {
   });
 
   dialogRef.afterClosed().subscribe((result) => {
-    if (result) {
-      // Handle the result if needed
-    }
+  console.log("Close Dialog");
+  
   });
 }
 
@@ -82,13 +79,9 @@ openDialogWithType(type: string) {
   let data;
   switch (type) {
     case "Offensive":
-      data = this.dataGraphsEquipe;
-      break;
       case "Deffensive":
-        data = this.dataGraphsEquipe;
-      break;
-      case "Generale":
-        data = this.dataGraphsEquipe;
+        case "Generale":
+      data = this.dataGraphsEquipe;
       break;
       case "Efficacite_Offensive":
       data = this.dataEfficacite_Offensive;
@@ -103,29 +96,40 @@ openDialogWithType(type: string) {
       break;
   }
 
-  this.openDialogWithDataType(data, type);
+  console.log(data,type,'A')
+   if(Object.keys(data)) this.openDialogWithDataType(data, type);
 }
 
   actions(CASE: string, RES: any = null) {
     switch (CASE) {
       case "CREATE_CHART_RADAR1":
-        const myChart1 = echarts.init(
-          document.getElementById("chart-offensive")
-        );
-        myChart1.setOption(this.dataGraphsEquipe?.attacking);
-        break;
-      case "CREATE_CHART_RADAR2":
-        const myChart2 = echarts.init(
-          document.getElementById("chart-deffensive")
-        );
-        myChart2.setOption(this.dataGraphsEquipe?.defending);
-        break;
-      case "CREATE_CHART_RADAR3":
-          const myChart3 = echarts.init(
-            document.getElementById("chart-generale")
+        setTimeout(() => {
+          const myChart1 = echarts.init(
+            document.getElementById("chart-offensive")
           );
-          myChart3.setOption(this.dataGraphsEquipe?.general);
-          break;  
+          myChart1.setOption(this.dataGraphsEquipe?.attacking);
+        }, 1000); // Replace 1000 with the desired delay in milliseconds
+        break;
+        case "CREATE_CHART_RADAR2":
+          setTimeout(() => {
+            const myChart2 = echarts.init(
+              document.getElementById("chart-deffensive")
+            );
+            myChart2.setOption(this.dataGraphsEquipe?.defending);
+          }, 1000); // Replace 1000 with the desired delay in milliseconds
+          break;
+        
+          case "CREATE_CHART_RADAR3":
+            setTimeout(() => {
+              const myChart3 = echarts.init(
+                document.getElementById("chart-generale")
+              );
+              myChart3.setOption(this.dataGraphsEquipe?.general);
+            }, 1000); // Replace 1000 with the desired delay in milliseconds
+            break;
+          
+      
+    
       case "CREATE_CHART_SCATTER1":
         const myChart4 = echarts.init(
           document.getElementById("chart-efficacite")
@@ -415,11 +419,6 @@ openDialogWithType(type: string) {
           ],
         };
         myChart6.setOption(option6);
-        break;
-
-      case "UPDATE_CHART":
-        break;
-      case "DO_FILTER":
         break;
 
       default:
