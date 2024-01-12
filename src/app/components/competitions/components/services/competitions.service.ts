@@ -13,17 +13,28 @@ export class CompetitionsService {
   endpoint = "competitions";
 
   constructor( private http: HttpClient,) { }
-
   //Upload File Resultas
   uploadCsv(file: File) {
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
     return this.http.post<any>(`http://localhost:5000/import-csv`, formData);
   }
-
   //Get Table Resultats:
   getResultats(): Observable<any> {
     return this.http.get<any>(`${this.link}/${this.API}/${this.endpoint}/resultats`);
+  }
+
+
+  //Get Table Classment:
+  getClassment(): Observable<any> {
+    return this.http.get<any>(`${this.link}/${this.API}/${this.endpoint}/classment`);
+  }
+
+
+  
+  //Get Table Champions:
+  getChampions(): Observable<any> {
+    return this.http.get<any>(`${this.link}/${this.API}/${this.endpoint}/classment`);
   }
 
  

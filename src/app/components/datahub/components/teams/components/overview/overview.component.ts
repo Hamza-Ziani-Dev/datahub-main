@@ -89,6 +89,8 @@ export class OverviewComponent implements OnInit {
 
   ngOnInit() {
     this.teamsService.getListTable().subscribe((res) => {
+      console.log(res);
+      
       this.matches = res;
       this.sortedData = this.matches.slice();
     });

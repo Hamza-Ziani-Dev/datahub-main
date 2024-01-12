@@ -13,12 +13,24 @@
       </div>
       <div class="sub_header col-12 col-md-12 d-flex mt-4 justify-content-between align-content-center">
         <mat-form-field appearance="outline" color="primary">
+          <mat-select class="custom-mat-select" [(value)]="selectedOptionChompions" (selectionChange)="onSelectionChangeCompetions()">
+            <mat-option value="D1">Botola Pro D1</mat-option>
+            <mat-option value="D2">Botola Pro D2</mat-option>
+            <mat-option value="Nord">Champions Des Espoirs Nord</mat-option>
+            <mat-option value="Sud">Champions Des Espoirs Sud</mat-option>
+            <mat-option value="U16"> U16</mat-option>
+            <mat-option value="U17"> U17</mat-option>
+            <mat-option value="U18"> U18</mat-option>
+            <mat-option value="U19"> U19</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" color="primary">
           <mat-select class="custom-mat-select" [(value)]="selectedOption" (selectionChange)="onSelectionChange()">
             <mat-option value="classment">Classement</mat-option>
             <mat-option value="calendrier">Calendrier</mat-option>
           </mat-select>
         </mat-form-field>
-              
+                   
         <mat-form-field  color="primary" appearance="outline">
           <mat-select value="option1">
             <mat-option value="option1">2023/2024</mat-option>
@@ -44,83 +56,76 @@
         </mat-chip-list>
       </div>
       <div class="classement mt-4 mb-4 justify-content-center align-content-center">
-     <div *ngIf="selectedOption === 'classment'">
+     <div class="mb-4" *ngIf="selectedOption === 'classment'">
        <!-- table -->
       <table class="th-head w-90 table1 table" id="table1"  [dataSource]="dataSource" mat-table >
         <!-- POSITION Column -->
         <ng-container matColumnDef="possition">
          <th mat-header-cell *matHeaderCellDef> POS </th>
          <td mat-cell *matCellDef="let element"> 
-           {{element.possition}}
+           {{element.Classement}}
           </td>
        </ng-container>
          <!-- Equipe Column -->
        <ng-container matColumnDef="equipe">
          <th mat-header-cell *matHeaderCellDef> Equipe</th>
-         <td mat-cell *matCellDef="let element">
-           <img src="https://seeklogo.com/images/R/raja-club-athletic-rca-logo-2C8B83D406-seeklogo.com.png" alt="" class="logo">
-            {{element.equipe}} 
+         <td mat-cell *matCellDef="let element" style="text-align: start !important;">
+           <img [src]="element.Team.logo" alt="" class="logo">
+            {{element.Team.name}} 
          </td>
        </ng-container>
         <!-- Matches Column -->
         <ng-container matColumnDef="matches">
           <th mat-header-cell *matHeaderCellDef> Matches </th>
           <td mat-cell *matCellDef="let element">
-             {{element.matches}} 
+             {{element.Matches}} 
           </td>
         </ng-container>
         <!-- Points Column -->
         <ng-container matColumnDef="points">
           <th mat-header-cell *matHeaderCellDef> Points </th>
           <td mat-cell *matCellDef="let element">
-             {{element.points}} 
+             {{element.Points}} 
           </td>
         </ng-container>
-         <!-- GAGNÉS Column -->
-       <ng-container matColumnDef="gagnes">
-        <th mat-header-cell *matHeaderCellDef class="hide-on-mobile">GAGNÉS</th>
-        <td mat-cell *matCellDef="let element" class="hide-on-mobile"> {{element.gagnes}} </td>
-      </ng-container>
+        <!-- Defaites Column -->
+      <!-- <ng-container matColumnDef="defaites">
+        <th mat-header-cell *matHeaderCellDef> Defaites </th>
+        <td mat-cell *matCellDef="let element"> {{element.Defaites}} </td>
+      </ng-container> -->
          <!-- Nulls Column -->
        <ng-container matColumnDef="n">
         <th mat-header-cell *matHeaderCellDef> N </th>
         <td mat-cell *matCellDef="let element">
-          <!-- <img src="https://upload.wikimedia.org/wikipedia/fr/9/96/Logo_Wydad_Athletic_Club.png" alt="" class="logo"> -->
-           {{element.n}} 
+           {{element.Nuls}} 
         </td>
        </ng-container>
-      <!-- Perdus Column -->
-      <ng-container matColumnDef="p">
-       <th mat-header-cell *matHeaderCellDef> P </th>
-       <td mat-cell *matCellDef="let element"> {{element.p}} </td>
-     </ng-container>
+      
       <!-- BP Column -->
       <ng-container matColumnDef="bp">
        <th mat-header-cell *matHeaderCellDef> BP </th>
-       <td mat-cell *matCellDef="let element"> {{element.bp}} </td>
+       <td mat-cell *matCellDef="let element"> {{element.BP}} </td>
      </ng-container>
        <!-- BC Column -->
       <ng-container matColumnDef="bc">
        <th mat-header-cell *matHeaderCellDef> BC </th>
-       <td mat-cell *matCellDef="let element"> {{element.bc}} </td>
+       <td mat-cell *matCellDef="let element"> {{element.BC}} </td>
      </ng-container>
-     <!-- Diff Column -->
-     <ng-container matColumnDef="diff">
-      <th mat-header-cell *matHeaderCellDef> Diff </th>
-      <td mat-cell *matCellDef="let element"> {{element.diff}} </td>
+     <!-- BD Column -->
+     <ng-container matColumnDef="bd">
+      <th mat-header-cell *matHeaderCellDef> BD </th>
+      <td mat-cell *matCellDef="let element"> {{element.BD}} </td>
     </ng-container>
       <!-- Forme Column -->
-      <ng-container matColumnDef="forme">
-        <th mat-header-cell *matHeaderCellDef class="hide-on-mobile"> Forme </th>
-        <td  mat-cell *matCellDef="let element" class="hide-on-mobile"> {{element.forme}}
-          <span class="icon win"></span>
-          <span class="icon win"></span>
-          <span class="icon win"></span>
-          <span class="icon lose"></span>
-          <span class="icon null"></span>
+<ng-container matColumnDef="forme">
+  <th mat-header-cell *matHeaderCellDef class="hide-on-mobile"> Forme </th>
+  <td mat-cell *matCellDef="let element" class="hide-on-mobile">
+    <ng-container *ngFor="let result of element.Forme">
+      <span class="icon" [ngClass]="{'win': result === 'V', 'lose': result === 'D', 'null': result === 'N'}"></span>
+    </ng-container>
+  </td>
+</ng-container>
 
-        </td>
-      </ng-container>
        <!-- Replace column names with your actual column names -->
        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -167,8 +172,6 @@
         </tbody>
       </table>
       </div>
-      </div>
-      
-      </div>
+    
       <router-outlet></router-outlet>
 </div>

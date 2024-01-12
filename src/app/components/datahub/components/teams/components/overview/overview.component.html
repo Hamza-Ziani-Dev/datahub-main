@@ -26,33 +26,30 @@
             <th mat-sort-header="pos" style="background-color: #1a1919;color: white;">Pos</th>
             <th mat-sort-header="equipe">Equipe</th>
             <th mat-sort-header="matches">Matches</th>
+            <th mat-sort-header="points">Points</th>
             <th mat-sort-header="v">V</th>
-            <th mat-sort-header="d">D</th>
             <th mat-sort-header="n" class="hide-on-mobile">N</th>
+            <th mat-sort-header="d">D</th>
             <th mat-sort-header="bp">BP</th>
             <th mat-sort-header="bc">BC</th>
-            <th mat-sort-header="xgp" class="hide-on-mobile">xGP</th>
-            <th mat-sort-header="xgc" class="hide-on-mobile">xGC</th>
-            <th mat-sort-header="xgd">xGD</th>
+            <th mat-sort-header="xgp" class="hide-on-mobile">BD</th>
           </tr>
         </thead>
          <tbody>
-          <tr *ngFor="let item of sortedData">
-            <td>{{item.Pos}}</td>
-            <td style="text-align: left;">
-              <!-- <img src={{item.image_src}} alt="" class="logo"> -->
-              <img src="https://seeklogo.com/images/R/raja-club-athletic-rca-logo-2C8B83D406-seeklogo.com.png" alt="" class="logo">
-              {{item['Équipe']}}
+          <tr *ngFor="let item of sortedData; let i = index">
+            <td>{{item.Classement}}</td>
+            <td style="text-align: start;">
+              <img [src]="item.Team.logo" alt="" class="logo">
+              {{item['Team']?.name}}
             </td>
             <td>{{item.Matches}}</td>
-            <td>{{item.V}}</td>
-            <td>{{item.D}}</td>
-            <td class="hide-on-mobile">{{item.N}}</td>
+            <td>{{item.Points}}</td>
+            <td>{{item.Victoires}}</td>
+            <td class="hide-on-mobile">{{item.Nuls}}</td>
+            <td>{{item.Defaites}}</td>
             <td>{{item.BP}}</td>
             <td>{{item.BC}}</td>
-            <td class="hide-on-mobile">{{item.xGP}}</td>
-            <td class="hide-on-mobile">{{item.xGC}}</td>
-            <td>{{item.xGD}}</td>
+            <td class="hide-on-mobile">{{item.BD}}</td>
           </tr>
         </tbody>
         </table>
@@ -89,9 +86,6 @@
           <tfoot>
             <tr>
                 <td colspan="5"> 
-                  <!-- <div class="d-grid gap-2">
-                    <button class="btn btn-primary" type="button" (click)="openDialogWithType('Goals')">Button</button>
-                  </div> -->
                   <div class="button-container">
                   <button id="readMoreBtn" class="btn btn-light readMoreBtn" (click)="openDialogWithType('Goals')">Read More</button>
                   </div>

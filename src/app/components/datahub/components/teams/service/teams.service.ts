@@ -19,7 +19,7 @@ export class TeamsService {
   }
  
   getListTable(): Observable<any> {
-    return this.http.get<any>(`${this.link}/${this.API}/${this.endpoint}/table`);
+    return this.http.get<any>(`${this.link}/${this.API}/${this.endpoint}/classment`);
   }
 
   getRankingInfo(): Observable<any> {
