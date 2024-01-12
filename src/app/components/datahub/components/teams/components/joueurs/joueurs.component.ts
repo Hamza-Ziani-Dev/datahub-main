@@ -11,21 +11,26 @@ import { MatDialog } from "@angular/material/dialog";
   styleUrls: ["./joueurs.component.css"],
 })
 export class JoueursComponent implements OnInit {
-  efficaciteData : any; precisionPasses :any;
-  creativiteData :any; jeuAerien :any;
-  présenceTirData :any; efficaciteSauvegarde :any;
-  qualiteTirData :any; contrôleSurface :any;
-  contributionJeuData : any; chargeDefensive :any;
-  polyvalenceDefensive :any;
-  diversitePasses :any;
-  efficacité_Domination_Aérienne :any;
-  progressionJeu :any;
-  IimplicationCréative :any;
-  contributionOffensive :any;
-  Data_Efficacite:any;
-  Indice_Créativite:any;
+  efficaciteData: any;
+  precisionPasses: any;
+  creativiteData: any;
+  jeuAerien: any;
+  présenceTirData: any;
+  efficaciteSauvegarde: any;
+  qualiteTirData: any;
+  contrôleSurface: any;
+  contributionJeuData: any;
+  chargeDefensive: any;
+  polyvalenceDefensive: any;
+  diversitePasses: any;
+  efficacité_Domination_Aérienne: any;
+  progressionJeu: any;
+  IimplicationCréative: any;
+  contributionOffensive: any;
+  Data_Efficacite: any;
+  Indice_Créativite: any;
   favorites: string[] = [];
-  activeLabel: number = 1; 
+  activeLabel: number = 1;
   setActiveLabel(labelNumber: number) {
     this.activeLabel = labelNumber;
   }
@@ -35,7 +40,8 @@ export class JoueursComponent implements OnInit {
     { name: "PM25", index: 2, text: "Tir" },
     { name: "PM10", index: 3, text: "Buts" },
   ];
-  imageUrl: string ="https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--fc106789-60ea-4534-ace7-ee4e3247d853/MODRIC_carita_380x501.app.png?preferwebp=true&width=288&height=384";
+  imageUrl: string =
+    "https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--fc106789-60ea-4534-ace7-ee4e3247d853/MODRIC_carita_380x501.app.png?preferwebp=true&width=288&height=384";
   URL: string = "https://interface.myteambyfrmf.ma/uploads/datahub/";
   dataSource: any[] = [];
   constructor(
@@ -46,11 +52,11 @@ export class JoueursComponent implements OnInit {
 
   ngOnInit() {
     // Fetch favorites from localStorage on component initialization
-    const storedFavorites = localStorage.getItem('favorites');
+    const storedFavorites = localStorage.getItem("favorites");
     if (storedFavorites) {
       this.favorites = JSON.parse(storedFavorites);
     }
-    
+
     this.actions("CREATE_CHART_SCATTER1");
     this.actions("CREATE_CHART_SCATTER2");
     this.actions("CREATE_CHART_SCATTER3");
@@ -78,11 +84,9 @@ export class JoueursComponent implements OnInit {
       this.addToFavorites(type);
     }
     // Save updated favorites to localStorage after each change
-    localStorage.setItem('favorites', JSON.stringify(this.favorites));
-    console.log('Favorites:', this.favorites); //
+    localStorage.setItem("favorites", JSON.stringify(this.favorites));
+    console.log("Favorites:", this.favorites); //
   }
-  
-  
 
   // Method to check if the item is in favorites
   isInFavorites(item: string): boolean {
@@ -106,71 +110,68 @@ export class JoueursComponent implements OnInit {
     }
   }
 
-
   // Dialog With Type Open
   openJouersEquipeDialog(type: string): void {
     let dialogData;
     switch (type) {
-      case 'efficacite':
+      case "efficacite":
         dialogData = this.efficaciteData;
         break;
-      case 'creativite':
+      case "creativite":
         dialogData = this.creativiteData;
         break;
-        case 'présenceTir':
-          dialogData = this.présenceTirData;
-          break;
-          case 'qualité-tir':
-            dialogData = this.qualiteTirData;
-            break;
-            case 'contribution-jeu':
-              dialogData = this.qualiteTirData;
-              break;
-              case 'polyvalence-defensive':
-              dialogData = this.polyvalenceDefensive;
-              break;
-              case 'diversite-passes':
-              dialogData = this.polyvalenceDefensive;
-              break;
-              case 'efficacité-domination-aérienne':
-              dialogData = this.efficacité_Domination_Aérienne;
-              break;
-              case 'progression-jeu':
-                dialogData = this.progressionJeu;
-                break;
-                case 'Iimplication-créative':
-                dialogData = this.IimplicationCréative;
-                break;
-                case 'contribution-offensive':
-                  dialogData = this.contributionOffensive;
-                  break;
-                  case 'precision-passes':
-                  dialogData = this.precisionPasses;
-                  break;
-                  case 'jeu-aerien':
-                  dialogData = this.jeuAerien;
-                  break;
-                  case 'efficacite-sauvegarde':
-                  dialogData = this.efficaciteSauvegarde ;
-                  break;
-                  case 'contrôle-surface':
-                  dialogData = this.contrôleSurface ;
-                  break;
-                  case 'charge-defensive':
-                    dialogData = this.chargeDefensive ;
-                    break;
+      case "présenceTir":
+        dialogData = this.présenceTirData;
+        break;
+      case "qualité-tir":
+        dialogData = this.qualiteTirData;
+        break;
+      case "contribution-jeu":
+        dialogData = this.qualiteTirData;
+        break;
+      case "polyvalence-defensive":
+        dialogData = this.polyvalenceDefensive;
+        break;
+      case "diversite-passes":
+        dialogData = this.polyvalenceDefensive;
+        break;
+      case "efficacité-domination-aérienne":
+        dialogData = this.efficacité_Domination_Aérienne;
+        break;
+      case "progression-jeu":
+        dialogData = this.progressionJeu;
+        break;
+      case "Iimplication-créative":
+        dialogData = this.IimplicationCréative;
+        break;
+      case "contribution-offensive":
+        dialogData = this.contributionOffensive;
+        break;
+      case "precision-passes":
+        dialogData = this.precisionPasses;
+        break;
+      case "jeu-aerien":
+        dialogData = this.jeuAerien;
+        break;
+      case "efficacite-sauvegarde":
+        dialogData = this.efficaciteSauvegarde;
+        break;
+      case "contrôle-surface":
+        dialogData = this.contrôleSurface;
+        break;
+      case "charge-defensive":
+        dialogData = this.chargeDefensive;
+        break;
       default:
         break;
     }
 
     this.dialog.open(DialogJoueurComponent, {
-      width: '80%',
-      maxWidth: '1200px',
-      data: { type, ...dialogData }
+      width: "80%",
+      maxWidth: "1200px",
+      data: { type, ...dialogData },
     });
   }
-
-
 
   actions(CASE: string, RES: any = null) {
     switch (CASE) {

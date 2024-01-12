@@ -1,7 +1,7 @@
 
 .demo{
     width: 100%;
-    height: 390px;
+    height: 450px;
     border-radius: 10px;
     box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
 }
@@ -12,7 +12,7 @@
 
 .performance-deffensive{
     width: 100%;
-    height: 400px;
+    height: 450px;
     background-color: rgba(240, 239, 239, 0.918);
     border-radius: 24px;
     box-shadow: rgba(247, 247, 248, 0.25) 0px 30px 60px -12px inset, rgba(234, 230, 230, 0.3) 0px 18px 36px -18px inset;
@@ -43,7 +43,7 @@
 
 .deffensive-body{
     width: 100%;
-    height: 300px;
+    height: 380px;
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
 }
@@ -76,12 +76,15 @@
         padding-left: 0px;
         display: contents;
     }
+    .performance-offensive{
+        height: 465px;
+    }
     .demo{
         margin-bottom: 20px;
         padding-right: 0px;
         padding-left: 0px;
         line-height: initial;
-        height: 300px;
+        height: 365px;
         padding: 0px 14px;
     }
 

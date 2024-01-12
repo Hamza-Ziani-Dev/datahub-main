@@ -16,8 +16,7 @@
   justify-content: space-around;
 }
 .table-content2{
-  height: 350px;
-  /* margin-right: 60px; */
+  height: 332px ; 
   border-radius: 20px;
   margin-bottom: 40px;
   background-color:  #00242b;
@@ -87,7 +86,7 @@
   background-color: rgb(255, 239, 8);
 }
 .button-container {
-  margin-top: 22px;
+  margin-top: 10px;
   display: flex;
   justify-content: center;
 }
