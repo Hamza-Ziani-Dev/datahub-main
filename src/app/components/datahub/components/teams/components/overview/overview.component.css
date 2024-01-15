@@ -1,6 +1,6 @@
 .overviewContainer{
   height: 100%;
-  min-height: 600px;
+  min-height: 1000px;
 }
 .table-classement, .team-ranking{
   border-radius: 10px;
@@ -38,9 +38,6 @@
 #table2  tbody ,thead{
   color: #fcfdfe;
 }
-/* #table2  thead tr th{
-  border-radius: 30px;
-} */
 
 #table2 th, td{
   padding: 8px 1px;
@@ -123,26 +120,34 @@
     padding: 0px;
     margin-top: -3px;
   }
+  .table1{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+  }
  #table1{
   border-spacing: 0;
   border-radius: 10px; 
   overflow: hidden; 
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
  }
  #table1 th{
   font-family: "Century Gothic";
   text-transform: uppercase;
   text-align: center;
   justify-content: center;
+  align-content: center;
   color: #464646;
   font-size: medium;
   border-bottom: 1px solid #dee2e6;
   border-top: 0px solid #dee2e6;
  }
  #table1 td{
-  text-align: center;
+  text-align: start;
   padding: 7px 4px;
  }
+ #table1 .BkFirstRow {
+  background-color: #f39100;
+  font-weight: bold;
+  color: #fff;
+}
  #table1  .mat-sort-header{
     justify-content: center !important;
     padding: 10px 10px;
@@ -173,6 +178,7 @@
     #table1 .hide-on-mobile {
       display: none !important;
     }
+  
      #table1 th{
       font-size: small !important;
       border-bottom: 1px solid #dee2e6;

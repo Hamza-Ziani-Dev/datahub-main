@@ -1,9 +1,9 @@
 <div class="container equipeContainer mt-4 col-12 col-md-12 justify-content-center align-content-center mt-4 mb-2">
     <div class="row container-content mb-4 d-flex col-12 col-md-12 justify-content-center align-content-center">
         <!-- 1 -->
-        <div class="box1 mb-4 col-12 col-md-4 justify-content-center align-content-center">
-            <div class="performance-offensive">
-                <div class="offensive-header ">
+        <div class="box1 col-12 col-md-4 justify-content-center align-content-center">
+            <div class="performance">
+                <div class="performance-header">
                     <div class="d-flex justify-content-between align-content-between ">
                         <span class="title-header justify-content-end align-content-end">
                             Prestation  Offensive
@@ -16,7 +16,7 @@
                     <p class="sub-description">Berkan Session Acual</p>
                 </div>
 
-                <div class="offensive-body" (click)="openDialogWithType('Offensive')">
+                <div class="performance-body" (click)="openDialogWithType('Offensive')">
                     <div id="chart-offensive" style="width: 100%; height: 360px"></div>
                 </div>
                 <!-- <div class="offensive-footer">
@@ -26,8 +26,8 @@
         </div>
         <!-- 2 -->
         <div class="box1 col-12 col-md-4 justify-content-center align-content-center">
-            <div class="performance-offensive">
-                <div class="deffensive-header ">
+            <div class="performance">
+                <div class="performance-header">
                     <div class="d-flex justify-content-between align-content-between ">
                         <span class="title-header justify-content-end align-content-end">
                             Prestation Deffensive
@@ -40,7 +40,7 @@
                     <p class="sub-description">Berkan Session Acual</p>
                 </div>
 
-                <div class="deffensive-body" (click)="openDialogWithType('Deffensive')">
+                <div class="performance-body" (click)="openDialogWithType('Deffensive')">
                     <div id="chart-deffensive" style="width: 100%; height: 360px"></div>
                 </div>
                 <!-- <div class="deffensive-footer">
@@ -50,8 +50,8 @@
         </div>
         <!-- 3 -->
         <div class="box1 col-12 col-md-4 justify-content-center align-content-center">
-            <div class="performance-offensive">
-                <div class="offensive-header ">
+            <div class="performance">
+                <div class="performance-header">
                     <div class="d-flex justify-content-between align-content-between ">
                         <span class="title-header justify-content-end align-content-end">
                             Prestation Generale
@@ -64,7 +64,7 @@
                     <p class="sub-description">Berkan Session Acual</p>
                 </div>
 
-                <div class="generale-body" (click)="openDialogWithType('Generale')">
+                <div class="performance-body" (click)="openDialogWithType('Generale')">
                     <div id="chart-generale" style="width: 100%; height: 360px"></div>
                 </div>
                 <!-- <div class="generale-footer">
@@ -76,7 +76,7 @@
     <div class="box d-flex mb-4 row col-12 col-md-12 justify-content-center align-content-center mt-4">
         <!-- 1 -->
         <div class="box1 col-12 col-md-4 justify-content-center align-content-center">
-            <div class="performance-efficacite">
+            <div class="efficacite">
                 <div class="efficacite-header">
                     <div class="d-flex justify-content-between align-content-between ">
                         <span class="title-header justify-content-end align-content-end">
@@ -89,15 +89,15 @@
                     </div>
                     <p class="sub-description">Botola Pro, saison actuelle</p>
                 </div>
-                <div class="efficacite-body" (click)="openDialogWithType('Efficacite_Offensive')">
+                <div class="efficacite-body" (click)="openDialogWithType('EfficaciteOffensive')">
                     <div id="chart-efficacite" style="width: 100%; height: 350px"></div>
                 </div>
             </div>
         </div>
         <!-- 2 -->
         <div class="box1 col-12 col-md-4 justify-content-center align-content-center" >
-            <div class="performance-efficacite">
-                <div class="passes-header">
+            <div class="efficacite">
+                <div class="efficacite-header">
                     <div class="d-flex justify-content-between align-content-between ">
                         <span class="title-header justify-content-end align-content-end">
                             Efficacité Défensive,
@@ -109,15 +109,15 @@
                     </div>
                     <p class="sub-description">Botola Pro, saison actuelle</p>
                 </div>
-                <div class="defensive-body" (click)="openDialogWithType('Efficacite_Deffensive')">
+                <div class="efficacite-body" (click)="openDialogWithType('EfficaciteDeffensive')">
                     <div id="chart-defensive" style="width: 100%; height: 350px"></div>
                 </div>
             </div>
         </div>
         <!-- 3 -->
         <div class="box1 col-12 col-md-4 justify-content-center align-content-center">
-            <div class="performance-efficacite">
-                <div class="passes-header">
+            <div class="efficacite">
+                <div class="efficacite-header">
                     <div class="d-flex justify-content-between align-content-between ">
                         <span class="title-header justify-content-end align-content-end">
                             Passes
@@ -130,7 +130,7 @@
                     <p class="sub-description">Botola Pro, saison actuelle</p>
                 </div>
 
-                <div class="passes-body" (click)="openDialogWithType('Passes')">
+                <div class="efficacite-body" (click)="openDialogWithType('Passes')">
                     <div id="chart-passes" style="width: 100%; height: 350px"></div>
                 </div>
             </div>

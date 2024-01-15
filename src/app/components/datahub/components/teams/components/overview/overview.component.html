@@ -19,11 +19,13 @@
   </div>
   <div class="content mt-4">
     <div *ngIf="showTable === 'table1' || !showTable">
-      <div class="table-content  justify-content-center align-content-center">
-        <table class="table table-striped" id="table1" matSort (matSortChange)="sortData($event)">
+      <div class="table-content">
+        <table style="margin: auto;" class="table table1 table-striped" id="table1" matSort (matSortChange)="sortData($event)">
           <thead>
-          <tr>
-            <th mat-sort-header="pos" style="background-color: #1a1919;color: white;">Pos</th>
+          <tr style="text-align: center;">
+            <th mat-sort-header="pos" style="background-color: #1a1919;color: white;">
+              <div style="text-align: center;">Pos</div>
+            </th>
             <th mat-sort-header="equipe">Equipe</th>
             <th mat-sort-header="matches">Matches</th>
             <th mat-sort-header="points">Points</th>
@@ -34,22 +36,22 @@
             <th mat-sort-header="bc">BC</th>
             <th mat-sort-header="xgp" class="hide-on-mobile">BD</th>
           </tr>
-        </thead>
+          </thead>
          <tbody>
-          <tr *ngFor="let item of sortedData; let i = index">
-            <td>{{item.Classement}}</td>
-            <td style="text-align: start;">
+          <tr *ngFor="let item of sortedData;let firstRow = first; let i = index" >
+            <td [ngClass]="{'BkFirstRow': firstRow}" style="text-align: center;">{{item.Classement}}</td>
+            <td [ngClass]="{'BkFirstRow': firstRow}">
               <img [src]="item.Team.logo" alt="" class="logo">
-              {{item['Team']?.name}}
+              {{item['Team']?.slug}}
             </td>
-            <td>{{item.Matches}}</td>
-            <td>{{item.Points}}</td>
-            <td>{{item.Victoires}}</td>
-            <td class="hide-on-mobile">{{item.Nuls}}</td>
-            <td>{{item.Defaites}}</td>
-            <td>{{item.BP}}</td>
-            <td>{{item.BC}}</td>
-            <td class="hide-on-mobile">{{item.BD}}</td>
+            <td [ngClass]="{'BkFirstRow': firstRow}" >{{item.Matches}}</td>
+            <td [ngClass]="{'BkFirstRow': firstRow}">{{item.Points}}</td>
+            <td [ngClass]="{'BkFirstRow': firstRow}">{{item.Victoires}}</td>
+            <td [ngClass]="{'BkFirstRow': firstRow}" class="hide-on-mobile">{{item.Nuls}}</td>
+            <td [ngClass]="{'BkFirstRow': firstRow}">{{item.Defaites}}</td>
+            <td [ngClass]="{'BkFirstRow': firstRow}">{{item.BP}}</td>
+            <td [ngClass]="{'BkFirstRow': firstRow}">{{item.BC}}</td>
+            <td [ngClass]="{'BkFirstRow': firstRow}" class="hide-on-mobile">{{item.BD}}</td>
           </tr>
         </tbody>
         </table>

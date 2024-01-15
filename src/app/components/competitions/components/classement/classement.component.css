@@ -84,7 +84,7 @@
 /* End Header  */
 /* Select  */
 ::ng-deep .custom-mat-select .mat-select-arrow {
-  color: #04fd42 !important;
+  color: #fd9104 !important;
 }
 
 ::ng-deep .mat-primary .mat-option:hover:not(.-list-item--disabled),
@@ -97,10 +97,6 @@
 
 
 /* Table  */
-.table1 {
-  padding: 20px;
-}
-
 .table1 .logo {
   width: 33px;
   height: 33px;
@@ -116,7 +112,9 @@
   font-family: "Century Gothic Bold";
   text-transform: uppercase;
 }
-
+.table1{
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
 .table1 th {
   color: #fff;
   text-align: center;
@@ -153,7 +151,7 @@
 }
 
 .table1 td.mat-cell {
-  padding: 12px;
+  padding: 4px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
 }
@@ -168,17 +166,14 @@
 
 .win {
   background-color: green;
-  /* Color for win */
 }
 
 .lose {
   background-color: red;
-  /* Color for lose */
 }
 
 .null {
   background-color: gray;
-  /* Color for null state */
 }
 
 tr.mat-row:nth-child(even) {

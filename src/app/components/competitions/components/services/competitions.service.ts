@@ -37,6 +37,19 @@ export class CompetitionsService {
     return this.http.get<any>(`${this.link}/${this.API}/${this.endpoint}/classment`);
   }
 
+
+
+    //Get Categories:
+    getCategoriesChampions(){
+      return this.http.get('https://fakestoreapi.com/products/categories');
+    }
+  
+    //Filter Categories:
+    getFilterCategorieChampions(key:any,journee:any){
+      return this.http.get<any>(`https://fakestoreapi.com/products/category/${key}/${journee}`);
+    }
+  
+
  
 
 }

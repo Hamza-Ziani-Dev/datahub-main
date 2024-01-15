@@ -89,8 +89,7 @@ export class OverviewComponent implements OnInit {
 
   ngOnInit() {
     this.teamsService.getListTable().subscribe((res) => {
-      console.log(res);
-      
+      // console.log(res);
       this.matches = res;
       this.sortedData = this.matches.slice();
     });
@@ -202,7 +201,8 @@ export class OverviewComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        // Handle the result if needed
+        console.log("Close Dialog");
+        
       }
     });
   }
@@ -250,93 +250,7 @@ export class OverviewComponent implements OnInit {
       default:
         break;
     }
-
     this.openDialogWithDataType(data, type);
   }
-
-  // openDialogWithGoalsData() {
-  //   const dataGoals = this.dataGoals;
-  //   const type = 'Goals';
-  //   this.openDialogRanking(dataGoals,type);
-  // }
-
-  // openDialogWithXGData() {
-  //   const dataXG = this.dataXG;
-  //   const type = 'XG';
-  //   this.openDialogRanking(dataXG,type);
-  // }
-
-  // openDialogWithTirsData() {
-  //   const dataTirs = this.dataTirs;
-  //   const type = 'Tirs';
-  //   this.openDialogRanking(dataTirs,type);
-  // }
-  // openDialogWithTirsCadresData() {
-  //   const dataTirsCadres = this.dataTirsCadres;
-  //   const type = 'TirsCadres';
-  //   this.openDialogRanking(dataTirsCadres,type);
-  // }
-  // openDialogWithButsConcedesData() {
-  //   const dataButsConcedes = this.dataButsConcedes;
-  //   const type = 'ButsConcedes';
-  //   this.openDialogRanking(dataButsConcedes,type);
-  // }
-
-  // openDialogWithXgAgainData() {
-  //   const dataXgAgain = this.dataXgAgain;
-  //   const type = 'XG_Again';
-  //   this.openDialogRanking(dataXgAgain,type);
-  // }
-
-  // openDialogWithTirsContreData() {
-  //   const dataTirsContre = this.dataTirsContre;
-  //   const type = 'TirsContre';
-  //   this.openDialogRanking(dataTirsContre,type);
-  // }
-
-  // openDialogWithTirsContreCadreData() {
-  //   const dataTirsContreCadre = this.dataTirsContreCadre;
-  //   const type = 'TirsContreCadre';
-  //   this.openDialogRanking(dataTirsContreCadre,type);
-  // }
-
-  // openDialogWithFautesData() {
-  //   const dataFautes = this.dataFautes;
-  //   const type = 'Fautes';
-  //   this.openDialogRanking(dataFautes,type);
-  // }
-
-  // openDialogWithCartonsJaunesData() {
-  //   const dataCartonsJaunes = this.dataCartonsJaunes;
-  //   const type = 'CartonsJaunes';
-  //   this.openDialogRanking(dataCartonsJaunes,type);
-  // }
-  // openDialogWithCartonsRougesData() {
-  //   const dataCartonsRouges = this.dataCartonsRouges;
-  //   const type = 'CartonsRouges';
-  //   this.openDialogRanking(dataCartonsRouges,type);
-  // }
-
-  // openDialogWithPossessionData() {
-  //   const dataPossession = this.dataPossession;
-  //   const type = 'Possession';
-  //   this.openDialogRanking(dataPossession,type);
-  // }
-
-  // openDialogRanking(data: any,type: string) {
-  //   const dialogRef = this.dialog.open(DialogRankingComponent, {
-  //     height: '520px',
-  //     data: {
-  //       type: type,
-  //       data: data
-  //     },
-  //     disableClose: true,
-  //   });
-
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     if (result) {
-  //       // Handle the result if needed
-  //     }
-  //   });
-  // }
+ 
 }
