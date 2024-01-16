@@ -335,17 +335,17 @@
                 <div class="title_sub_goals">{{headerDataTirsContreCadre['teamName']}}</div>
               </th>
               <th scope="col" class="title_header">
-                <div class="demo-goals">{{headerDataTirsContreCadre?.Tirs_contre_cadres}}</div>
+                <div class="demo-goals">{{headerDataTirsContreCadre?.Total_shotsOTAgainst}}</div>
                 <img class="img_header" [src]="headerDataTirsContreCadre?.TeamLogo" alt="">
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let team of bodyDataTirsContreCadre.slice(0, 4)">
+            <tr *ngFor="let team of bodyDataTirsContreCadre">
               <th scope="row" class="class_body">{{team['classment']}}</th>
               <td colspan="2">{{team['teamName']}}</td>
               <td>
-                <span class="text_bold" >{{team.Tirs_contre_cadres}}</span>
+                <span class="text_bold" >{{team.Total_shotsOTAgainst}}</span>
                 <span><img class="img_body ml-2" [src]="team?.TeamLogo" alt=""></span>
               </td>
             </tr>

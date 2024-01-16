@@ -162,9 +162,9 @@ export class OverviewComponent implements OnInit {
       this.headerDataXgAgain = res["Tirs Contre"][0]
       this.bodyDataXgAgain = res["Tirs Contre"].slice(1, 5);
 
-      this.dataTirsContre = res["xG Contre"];
-      this.headerDataTirsContre = res["xG Contre"];
-      this.bodyDataTirsContre = res["xG Contre"].slice(1, 5);
+      this.dataTirsContre = res["Tirs Contre"];
+      this.headerDataTirsContre = res["Tirs Contre"][0];
+      this.bodyDataTirsContre = res["Tirs Contre"].slice(1, 5);
 
       this.dataTirsContreCadre = res["Tirs Contre Cadres"];
       this.headerDataTirsContreCadre = res["Tirs Contre Cadres"][0];
@@ -183,7 +183,7 @@ export class OverviewComponent implements OnInit {
       this.bodyDataCarteRouge = res["Cartes Rouges"].slice(1, 5);
 
       this.dataPossession = res["Possession"];
-      this.headerDataPossession = res["Possession"];
+      this.headerDataPossession = res["Possession"][0];
       this.bodyDataPossession = res["Possession"].slice(1, 5);
     });
   }
