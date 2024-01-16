@@ -59,28 +59,28 @@
     </div>
     <div *ngIf="showTable === 'table2'">
      <div class="row justify-content-around align-content-center">
-           <!-- 1 Goals -->
+      <!-- 1 Goals -->
       <div class="table-content2 col-12 col-md-3 ml-2 justify-content-center align-content-center">
         <table class="table " id="table2">
           <thead>
-            <tr>
+            <tr >
               <th colspan="3" class="title_goals">
-                <span class="goals-header text_bold">Goals </span>
-                <div class="title_sub_goals">{{headerDataGoals['\u00c9quipe']}}</div>
+                <span class="goals-header text_bold">Goals</span>
+                <div class="title_sub_goals">{{headerDataGoals['teamName']}}</div>
               </th>
               <th scope="col" class="title_header">
-                <div class="demo-goals">{{headerDataGoals?.Buts}}</div>
-                <img class="img_header" [src]="headerDataGoals?.image_src" alt="">
+                <div class="demo-goals">{{headerDataGoals?.Total_Goals}}</div>
+                <img class="img_header" [src]="headerDataGoals?.TeamLogo" alt="">
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let team of bodyDataGoals.slice(0, 4)">
-              <th scope="row" class="class_body">{{team['classment']}}</th>
-              <td colspan="2">{{team['\u00c9quipe']}}</td>
+            <tr *ngFor="let team of bodyDataGoals">
+              <th scope="row" class="class_body"></th>
+              <td colspan="2">{{team['TeamSlug']}}</td>
               <td>
-                <span class="mr-4 text_bold" >{{team.Buts}}</span>
-                <span><img class="img_body ml-2" [src]="team?.image_src" alt=""></span>
+                <span class="mr-4 text_bold" >{{team.Total_Goals}}</span>
+                <span><img class="img_body ml-2" [src]="team?.TeamLogo" alt=""></span>
               </td>
             </tr>
       
@@ -104,21 +104,21 @@
             <tr>
               <th colspan="3" class="title_goals">
                 <span class="goals-header text_bold">XG </span>
-                <div class="title_sub_goals">{{headerDataXg['\u00c9quipe']}}</div>
+                <div class="title_sub_goals">{{headerDataXg['teamName']}}</div>
               </th>
               <th scope="col" class="title_header">
-                <div class="demo-goals">{{headerDataXg?.xG}}</div>
-                <img class="img_header" [src]="headerDataXg?.image_src" alt="">
+                <div class="demo-goals">{{headerDataXg?.value}}</div>
+                <img class="img_header" [src]="headerDataXg?.TeamLogo" alt="">
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let team of bodyDataXg.slice(0, 4)">
+            <tr *ngFor="let team of bodyDataXg">
               <th scope="row" class="class_body">{{team['classment']}}</th>
-              <td colspan="2">{{team['\u00c9quipe']}}</td>
+              <td colspan="2">{{team['teamName']}}</td>
               <td>
-                <span class="text_bold" >{{team.xG}}</span>
-                <span><img class="img_body ml-2" [src]="team?.image_src" alt=""></span>
+                <span class="text_bold" >{{team.value}}</span>
+                <span><img class="img_body ml-2" [src]="team?.TeamLogo" alt=""></span>
               </td>
             </tr>
       
@@ -135,7 +135,6 @@
         </table>
       </div>
       <!-- 2 End XG -->
-
       <!-- 3 TIRS -->
       <div class="table-content2 col-12 col-md-3 ml-2 justify-content-center align-content-center">
         <table class="table " id="table2">
@@ -143,21 +142,21 @@
             <tr>
               <th colspan="3" class="title_goals">
                 <span class="goals-header text_bold">TIRS </span>
-                <div class="title_sub_goals">{{headerDataTirs['\u00c9quipe']}}</div>
+                <div class="title_sub_goals">{{headerDataTirs?.teamName}}</div>
               </th>
               <th scope="col" class="title_header">
-                <div class="demo-goals">{{headerDataTirs?.Tirs}}</div>
-                <img class="img_header" [src]="headerDataTirs?.image_src" alt="">
+                <div class="demo-goals">{{headerDataTirs?.Total_Tirs}}</div>
+                <img class="img_header" [src]="headerDataTirs?.TeamLogo" alt="">
               </th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let team of bodyDataTirs.slice(0, 4)">
               <th scope="row" class="class_body">{{team['classment']}}</th>
-              <td colspan="2">{{team['\u00c9quipe']}}</td>
+              <td colspan="2">{{team['teamName']}}</td>
               <td>
                 <span class="text_bold" >{{team.Tirs}}</span>
-                <span><img class="img_body ml-2" [src]="team?.image_src" alt=""></span>
+                <span><img class="img_body ml-2" [src]="team?.TeamLogo" alt=""></span>
               </td>
             </tr>
       
@@ -181,21 +180,21 @@
             <tr>
               <th colspan="3" class="title_goals">
                 <span class="goals-header text_bold">TIRS CADRES </span>
-                <div class="title_sub_goals">{{headerDataTirCadre['\u00c9quipe']}}</div>
+                <div class="title_sub_goals">{{headerDataTirCadre['teamName']}}</div>
               </th>
               <th scope="col" class="title_header">
-                <div class="demo-goals">{{headerDataTirCadre?.Tirs_cadres}}</div>
-                <img class="img_header" [src]="headerDataTirs?.image_src" alt="">
+                <div class="demo-goals">{{headerDataTirCadre?.Total_shotsOnTarget}}</div>
+                <img class="img_header" [src]="headerDataTirs?.TeamLogo" alt="">
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let team of bodyDataTirCadre.slice(0, 4)">
+            <tr *ngFor="let team of bodyDataTirCadre">
               <th scope="row" class="class_body">{{team['classment']}}</th>
-              <td colspan="2">{{team['\u00c9quipe']}}</td>
+              <td colspan="2">{{team['teamName']}}</td>
               <td>
-                <span class="text_bold" >{{team.Tirs_cadres}}</span>
-                <span><img class="img_body ml-2" [src]="team?.image_src" alt=""></span>
+                <span class="text_bold" >{{team.Total_shotsOnTarget}}</span>
+                <span><img class="img_body ml-2" [src]="team?.TeamLogo" alt=""></span>
               </td>
             </tr>
       
@@ -219,21 +218,21 @@
             <tr>
               <th colspan="3" class="title_goals">
                 <span class="goals-header text_bold">BUTS CONCEDES</span>
-                <div class="title_sub_goals">{{headerDataButsCon['\u00c9quipe']}}</div>
+                <div class="title_sub_goals">{{headerDataButsCon['teamName']}}</div>
               </th>
               <th scope="col" class="title_header">
-                <div class="demo-goals">{{headerDataButsCon?.Buts_concedes}}</div>
-                <img class="img_header" [src]="headerDataButsCon?.image_src" alt="">
+                <div class="demo-goals">{{headerDataButsCon?.Total_BC}}</div>
+                <img class="img_header" [src]="headerDataButsCon?.TeamLogo" alt="">
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let team of bodyDataButsCon.slice(0, 4)">
+            <tr *ngFor="let team of bodyDataButsCon">
               <th scope="row" class="class_body">{{team['classment']}}</th>
-              <td colspan="2">{{team['\u00c9quipe']}}</td>
+              <td colspan="2">{{team['teamName']}}</td>
               <td>
-                <span class="text_bold" >{{team.Buts_concedes}}</span>
-                <span><img class="img_body ml-2" [src]="team?.image_src" alt=""></span>
+                <span class="text_bold" >{{team.Total_BC}}</span>
+                <span><img class="img_body ml-2" [src]="team?.TeamLogo" alt=""></span>
               </td>
             </tr>
       
@@ -251,27 +250,27 @@
       </div>
       <!-- 5 End Buts concédés -->
       <!-- 6 XG_against -->
-      <div class="table-content2 col-12 col-md-3 ml-2 justify-content-center align-content-center">
+      <!-- <div class="table-content2 col-12 col-md-3 ml-2 justify-content-center align-content-center">
         <table class="table " id="table2">
           <thead>
             <tr>
               <th colspan="3" class="title_goals">
                 <span class="goals-header text_bold">XG AGAINST </span>
-                <div class="title_sub_goals">{{headerDataXgAgain['\u00c9quipe']}}</div>
+                <div class="title_sub_goals">{{headerDataXgAgain['teamName']}}</div>
               </th>
               <th scope="col" class="title_header">
-                <div class="demo-goals">{{headerDataXgAgain?.XG_against}}</div>
-                <img class="img_header" [src]="headerDataXgAgain?.image_src" alt="">
+                <div class="demo-goals">{{headerDataXgAgain?.Total_shotsAgainst}}</div>
+                <img class="img_header" [src]="headerDataXgAgain?.TeamLogo" alt="">
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let team of bodyDataXgAgain.slice(0, 4)">
+            <tr *ngFor="let team of bodyDataXgAgain">
               <th scope="row" class="class_body">{{team['classment']}}</th>
-              <td colspan="2">{{team['\u00c9quipe']}}</td>
+              <td colspan="2">{{team['teamName']}}</td>
               <td>
-                <span class="text_bold" >{{team.XG_against}}</span>
-                <span><img class="img_body ml-2" [src]="team?.image_src" alt=""></span>
+                <span class="text_bold" >{{team.Total_shotsAgainst}}</span>
+                <span><img class="img_body ml-2" [src]="team?.TeamLogo" alt=""></span>
               </td>
             </tr>
       
@@ -286,7 +285,7 @@
               </tr>
           </tfoot>
         </table>
-      </div>
+      </div> -->
       <!-- 6 End XG_against -->
       <!-- 7 Tirs contre --> 
       <div class="table-content2 col-12 col-md-3 ml-2 justify-content-center align-content-center">
@@ -295,21 +294,21 @@
             <tr>
               <th colspan="3" class="title_goals">
                 <span class="goals-header text_bold">Tire Contre </span>
-                <div class="title_sub_goals">{{headerDataTirsContre['\u00c9quipe']}}</div>
+                <div class="title_sub_goals">{{headerDataTirsContre['teamName']}}</div>
               </th>
               <th scope="col" class="title_header">
-                <div class="demo-goals">{{headerDataTirsContre?.Tirs_contre}}</div>
-                <img class="img_header" [src]="headerDataTirsContre?.image_src" alt="">
+                <div class="demo-goals">{{headerDataTirsContre?.Total_shotsAgainst}}</div>
+                <img class="img_header" [src]="headerDataTirsContre?.TeamLogo" alt="">
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let team of bodyDataTirsContre.slice(0, 4)">
+            <tr *ngFor="let team of bodyDataTirsContre">
               <th scope="row" class="class_body">{{team['classment']}}</th>
-              <td colspan="2">{{team['\u00c9quipe']}}</td>
+              <td colspan="2">{{team['teamName']}}</td>
               <td>
-                <span class="text_bold" >{{team.Tirs_contre}}</span>
-                <span><img class="img_body ml-2" [src]="team?.image_src" alt=""></span>
+                <span class="text_bold" >{{team.Total_shotsAgainst}}</span>
+                <span><img class="img_body ml-2" [src]="team?.TeamLogo" alt=""></span>
               </td>
             </tr>
       
@@ -333,21 +332,21 @@
             <tr>
               <th colspan="3" class="title_goals">
                 <span class="goals-header text_bold">TIRE CONTRE CADRE </span>
-                <div class="title_sub_goals">{{headerDataTirsContreCadre['\u00c9quipe']}}</div>
+                <div class="title_sub_goals">{{headerDataTirsContreCadre['teamName']}}</div>
               </th>
               <th scope="col" class="title_header">
                 <div class="demo-goals">{{headerDataTirsContreCadre?.Tirs_contre_cadres}}</div>
-                <img class="img_header" [src]="headerDataTirsContreCadre?.image_src" alt="">
+                <img class="img_header" [src]="headerDataTirsContreCadre?.TeamLogo" alt="">
               </th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let team of bodyDataTirsContreCadre.slice(0, 4)">
               <th scope="row" class="class_body">{{team['classment']}}</th>
-              <td colspan="2">{{team['\u00c9quipe']}}</td>
+              <td colspan="2">{{team['teamName']}}</td>
               <td>
                 <span class="text_bold" >{{team.Tirs_contre_cadres}}</span>
-                <span><img class="img_body ml-2" [src]="team?.image_src" alt=""></span>
+                <span><img class="img_body ml-2" [src]="team?.TeamLogo" alt=""></span>
               </td>
             </tr>
       
@@ -371,21 +370,21 @@
             <tr>
               <th colspan="3" class="title_goals">
                 <span class="goals-header text_bold">FAUTES </span>
-                <div class="title_sub_goals">{{headerDataFautes['\u00c9quipe']}}</div>
+                <div class="title_sub_goals">{{headerDataFautes['teamName']}}</div>
               </th>
               <th scope="col" class="title_header">
-                <div class="demo-goals">{{headerDataFautes?.Fautes}}</div>
-                <img class="img_header" [src]="headerDataFautes?.image_src" alt="">
+                <div class="demo-goals">{{headerDataFautes?.Total_fouls}}</div>
+                <img class="img_header" [src]="headerDataFautes?.TeamLogo" alt="">
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let team of bodyDataFautes.slice(0, 4)">
+            <tr *ngFor="let team of bodyDataFautes">
               <th scope="row" class="class_body">{{team['classment']}}</th>
-              <td colspan="2">{{team['\u00c9quipe']}}</td>
+              <td colspan="2">{{team['teamName']}}</td>
               <td>
-                <span class="text_bold" >{{team.Fautes}}</span>
-                <span><img class="img_body ml-2" [src]="team?.image_src" alt=""></span>
+                <span class="text_bold" >{{team.Total_fouls}}</span>
+                <span><img class="img_body ml-2" [src]="team?.TeamLogo" alt=""></span>
               </td>
             </tr>
       
@@ -409,21 +408,21 @@
             <tr>
               <th colspan="3" class="title_goals">
                 <span class="goals-header text_bold">CARTES JOUNES </span>
-                <div class="title_sub_goals">{{headerDataCarteJoune['\u00c9quipe']}}</div>
+                <div class="title_sub_goals">{{headerDataCarteJoune['teamName']}}</div>
               </th>
               <th scope="col" class="title_header">
-                <div class="demo-goals">{{headerDataCarteJoune?.Cartons_jaunes}}</div>
-                <img class="img_header" [src]="headerDataCarteJoune?.image_src" alt="">
+                <div class="demo-goals">{{headerDataCarteJoune?.Total_yellowCards}}</div>
+                <img class="img_header" [src]="headerDataCarteJoune?.TeamLogo" alt="">
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let team of bodyDataCarteJoune.slice(0, 4)">
+            <tr *ngFor="let team of bodyDataCarteJoune">
               <th scope="row" class="class_body">{{team['classment']}}</th>
-              <td colspan="2">{{team['\u00c9quipe']}}</td>
+              <td colspan="2">{{team['teamName']}}</td>
               <td>
-                <span class="text_bold" >{{team.Cartons_jaunes}}</span>
-                <span><img class="img_body ml-2" [src]="team?.image_src" alt=""></span>
+                <span class="text_bold" >{{team.Total_yellowCards}}</span>
+                <span><img class="img_body ml-2" [src]="team?.TeamLogo" alt=""></span>
               </td>
             </tr>
       
@@ -447,21 +446,21 @@
             <tr>
               <th colspan="3" class="title_goals">
                 <span class="goals-header text_bold">CARTES ROUGES </span>
-                <div class="title_sub_goals">{{headerDataCarteRouge['\u00c9quipe']}}</div>
+                <div class="title_sub_goals">{{headerDataCarteRouge['teamName']}}</div>
               </th>
               <th scope="col" class="title_header">
-                <div class="demo-goals">{{headerDataCarteRouge?.Cartons_rouges}}</div>
-                <img class="img_header" [src]="headerDataCarteRouge?.image_src" alt="">
+                <div class="demo-goals">{{headerDataCarteRouge?.Total_redCards}}</div>
+                <img class="img_header" [src]="headerDataCarteRouge?.TeamLogo" alt="">
               </th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let team of bodyDataCarteRouge.slice(0, 4)">
               <th scope="row" class="class_body">{{team['classment']}}</th>
-              <td colspan="2">{{team['\u00c9quipe']}}</td>
+              <td colspan="2">{{team['teamName']}}</td>
               <td>
-                <span class="text_bold" >{{team.Cartons_rouges}}</span>
-                <span><img class="img_body ml-2" [src]="team?.image_src" alt=""></span>
+                <span class="text_bold" >{{team.Total_redCards}}</span>
+                <span><img class="img_body ml-2" [src]="team?.TeamLogo" alt=""></span>
               </td>
             </tr>
       
@@ -485,21 +484,21 @@
             <tr>
               <th colspan="3" class="title_goals">
                 <span class="goals-header text_bold">POSSESSION </span>
-                <div class="title_sub_goals">{{headerDataPossession['\u00c9quipe']}}</div>
+                <div class="title_sub_goals">{{headerDataPossession['teamName']}}</div>
               </th>
               <th scope="col" class="title_header">
-                <div class="demo-goals">{{headerDataPossession?.Possession}}</div>
-                <img class="img_header" [src]="headerDataPossession?.image_src" alt="">
+                <div class="demo-goals">{{headerDataPossession?.Avg_Pos}}</div>
+                <img class="img_header" [src]="headerDataPossession?.TeamLogo" alt="">
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let team of bodyDataPossession.slice(0, 4)">
+            <tr *ngFor="let team of bodyDataPossession">
               <th scope="row" class="class_body">{{team['classment']}}</th>
-              <td colspan="2">{{team['\u00c9quipe']}}</td>
+              <td colspan="2">{{team['teamName']}}</td>
               <td>
-                <span class="text_bold" >{{team.Possession}}</span>
-                <span><img class="img_body ml-2" [src]="team?.image_src" alt=""></span>
+                <span class="text_bold" >{{team.Avg_Pos}}</span>
+                <span><img class="img_body ml-2" [src]="team?.TeamLogo" alt=""></span>
               </td>
             </tr>
       

@@ -138,54 +138,53 @@ export class OverviewComponent implements OnInit {
 
   getRankingInfos() {
     this.teamsService.getRankingInfo().subscribe((res: any[]) => {
-      this.dataGoals = res["Buts"];
-      this.headerDataGoals = res["Buts"][0]["header"][0];
-      this.bodyDataGoals = res["Buts"][1]["body"];
+      this.dataGoals = res["Goals"];
+      this.headerDataGoals = res["Goals"][0]
+      this.bodyDataGoals = res["Goals"].slice(1, 5);
 
       this.dataXG = res["xG"];
-      this.headerDataXg = res["xG"][0]["header"][0];
-      this.bodyDataXg = res["xG"][1]["body"];
+      this.headerDataXg = res["xG"][0];
+      this.bodyDataXg = res["xG"].slice(1, 5);
 
       this.dataTirs = res["Tirs"];
-      this.headerDataTirs = res["Tirs"][0]["header"][0];
-      this.bodyDataTirs = res["Tirs"][1]["body"];
+      this.headerDataTirs = res["Tirs"][0]
+      this.bodyDataTirs = res["Tirs"].slice(1, 5);
 
-      this.dataTirsCadres = res["Tirs_cadres"];
-      this.headerDataTirCadre = res["Tirs_cadres"][0]["header"][0];
-      this.bodyDataTirCadre = res["Tirs_cadres"][1]["body"];
+      this.dataTirsCadres = res["Tirs Encadres"];
+      this.headerDataTirCadre = res["Tirs Encadres"][0];
+      this.bodyDataTirCadre = res["Tirs Encadres"].slice(1, 5);
 
-      this.dataButsConcedes = res["Buts_concedes"];
-      this.headerDataButsCon = res["Buts_concedes"][0]["header"][0];
-      this.bodyDataButsCon = res["Buts_concedes"][1]["body"];
+      this.dataButsConcedes = res["Buts Concedes"];
+      this.headerDataButsCon = res["Buts Concedes"][0];
+      this.bodyDataButsCon = res["Buts Concedes"].slice(1, 5);
 
-      this.dataXgAgain = res["XG_against"];
-      this.headerDataXgAgain = res["XG_against"][0]["header"][0];
-      this.bodyDataXgAgain = res["XG_against"][1]["body"];
+      this.dataXgAgain = res["Tirs Contre"];
+      this.headerDataXgAgain = res["Tirs Contre"][0]
+      this.bodyDataXgAgain = res["Tirs Contre"].slice(1, 5);
 
-      this.dataTirsContre = res["Tirs contre"];
-      this.headerDataTirsContre = res["Tirs contre"][0]["header"][0];
-      this.bodyDataTirsContre = res["Tirs contre"][1]["body"];
+      this.dataTirsContre = res["xG Contre"];
+      this.headerDataTirsContre = res["xG Contre"];
+      this.bodyDataTirsContre = res["xG Contre"].slice(1, 5);
 
-      this.dataTirsContreCadre = res["Tirs_contre_cadres"];
-      this.headerDataTirsContreCadre =
-        res["Tirs_contre_cadres"][0]["header"][0];
-      this.bodyDataTirsContreCadre = res["Tirs_contre_cadres"][1]["body"];
+      this.dataTirsContreCadre = res["Tirs Contre Cadres"];
+      this.headerDataTirsContreCadre = res["Tirs Contre Cadres"][0];
+      this.bodyDataTirsContreCadre = res["Tirs Contre Cadres"].slice(1, 5);
 
       this.dataFautes = res["Fautes"];
-      this.headerDataFautes = res["Fautes"][0]["header"][0];
-      this.bodyDataFautes = res["Fautes"][1]["body"];
+      this.headerDataFautes = res["Fautes"][0];
+      this.bodyDataFautes = res["Fautes"].slice(1, 5);
 
-      this.dataCartonsJaunes = res["Cartons_jaunes"];
-      this.headerDataCarteJoune = res["Cartons_jaunes"][0]["header"][0];
-      this.bodyDataCarteJoune = res["Cartons_jaunes"][1]["body"];
+      this.dataCartonsJaunes = res["Cartes Jaunes"];
+      this.headerDataCarteJoune = res["Cartes Jaunes"][0];
+      this.bodyDataCarteJoune = res["Cartes Jaunes"].slice(1, 5);
 
-      this.dataCartonsRouges = res["Cartons_rouges"];
-      this.headerDataCarteRouge = res["Cartons_rouges"][0]["header"][0];
-      this.bodyDataCarteRouge = res["Cartons_rouges"][1]["body"];
+      this.dataCartonsRouges = res["Cartes Rouges"];
+      this.headerDataCarteRouge = res["Cartes Rouges"][0];
+      this.bodyDataCarteRouge = res["Cartes Rouges"].slice(1, 5);
 
       this.dataPossession = res["Possession"];
-      this.headerDataPossession = res["Possession"][0]["header"][0];
-      this.bodyDataPossession = res["Possession"][1]["body"];
+      this.headerDataPossession = res["Possession"];
+      this.bodyDataPossession = res["Possession"].slice(1, 5);
     });
   }
 
