@@ -3,9 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from '../../service/database.service';
 import { ActivatedRoute } from '@angular/router';
 import * as echarts from 'echarts';
-import { PlayerService } from 'src/app/services/player.service';
 import { CharedService } from 'src/app/services/chared.service';
-import { PhysiqueService } from 'src/app/services/physique.service';
 
 
 @Component({
@@ -26,7 +24,7 @@ export class DatabasePlayerPerformanceComponent implements OnInit {
     { "className": "vitesse", "color": "#7ac143" },
     { "className": "inferieurs", "color": "#ffaaaa" },
   ]
-
+  class_chart = 'col-md-8';
   isLoading: boolean = true;
   URL: string = "https://interface.myteambyfrmf.ma/uploads/datahub/";
   COLORS: string[] = ['#0357A0', "#007934", "#E55C00"];
@@ -43,8 +41,6 @@ export class DatabasePlayerPerformanceComponent implements OnInit {
   isLoadingTest: boolean = true;
   constructor(
     private rankingService: DatabaseService,
-    private playerService: PlayerService,
-    private physiqueService: PhysiqueService,
     private charedService: CharedService,
     private route: ActivatedRoute
   ) { }
@@ -53,15 +49,18 @@ export class DatabasePlayerPerformanceComponent implements OnInit {
     this.PLAYER_ID = this.route.snapshot.parent?.params.player_id;
     this.ID = this.route.snapshot.parent?.params.id;
     this.actions('GET');
-    this.playerService.getGpsPlayer(this.PLAYER_ID).subscribe(
+    this.rankingService.getGpsPlayer(this.PLAYER_ID).subscribe(
       (RES: any) => {
-        this.actions('CREATE_CHART_BAR1', RES.distance);
-        this.actions('CREATE_CHART_BAR2', RES.duration);
-        this.actions('CREATE_CHART_BAR3', { max_speed: RES.max_speed, speed_event: RES.speed_event });
-        this.actions('CREATE_CHART_BAR4', RES.acceleration_deceleration);
+        this.class_chart = RES.duration.data.length > 12 ? 'col-md-12' : 'col-md-8';
+        setTimeout(() => {
+          this.actions('CREATE_CHART_BAR1', RES.distance);
+          this.actions('CREATE_CHART_BAR2', RES.duration);
+          this.actions('CREATE_CHART_BAR3', { max_speed: RES.max_speed, speed_event: RES.speed_event });
+          this.actions('CREATE_CHART_BAR4', RES.acceleration_deceleration);
+        }, 50)
       }
     )
-    this.physiqueService.getTestPhysique().subscribe(
+    this.rankingService.getTestPhysiqueByPlayer(this.PLAYER_ID).subscribe(
       (result: any) => {
         this.dataSource = result.reduce((accumulator, currentValue) => {
           const testIndex = accumulator.findIndex(element => element.id === currentValue.testId);
@@ -80,21 +79,19 @@ export class DatabasePlayerPerformanceComponent implements OnInit {
           return accumulator;
         }, this.dataSource);
         this.isLoadingTest = false;
-        this.physiqueService.getPlayerPhysiqueTestDatabase(this.PLAYER_ID);
         setTimeout(() => {
           this.actions('CREATE_CHART_RADAR', this.dataSource);
         }, 300);
       }
     );
-    this.physiqueService.getUpdatedDatabasePlayerPhysiqueTestsListner().subscribe(
+    this.rankingService.getPlayerPhysiqueTestDatabase(this.PLAYER_ID).subscribe(
       (result: any) => {
         this.playerTestsPhysiques = result;
         console.log(this.playerTestsPhysiques);
       })
-
   }
   getPlayerTests(id) {
-    let data = this.playerTestsPhysiques.filter(element => element.childTestId == id);
+    let data = this.playerTestsPhysiques.filter((element: any) => element.childTestId == id);
     if (data.length > 0) {
       data = data.sort((a, b) => { return (new Date(b.date)).getTime() - (new Date(a.date)).getTime(); });
       return data[0].value;
@@ -185,6 +182,7 @@ export class DatabasePlayerPerformanceComponent implements OnInit {
         break;
       case 'CREATE_CHART_BAR2':
         const myChart2 = echarts.init(document.getElementById('chart-temps'));
+        const DATA = RES.data.map(e => Object({ label: e.adversaire, value: this.charedService.timeStringToFloat(e.value) }))
         const option2 = {
           title: [
             {
@@ -205,7 +203,7 @@ export class DatabasePlayerPerformanceComponent implements OnInit {
             {
               type: 'category',
               axisLabel: { interval: 0, rotate: 30 },
-              data: RES.data.map(e => e.adversaire),
+              data: DATA.map(e => e.label),
               axisPointer: {
                 type: 'shadow'
               }
@@ -224,7 +222,7 @@ export class DatabasePlayerPerformanceComponent implements OnInit {
             {
               type: 'bar',
 
-              data: RES.data.map(e => this.charedService.timeStringToFloat(e.value)),
+              data: DATA.map(e => e.value),
             },
           ]
         };
@@ -397,7 +395,7 @@ export class DatabasePlayerPerformanceComponent implements OnInit {
         })
         break;
       case 'GET':
-        this.rankingService.TabOne('player-performance', this.ID, this.PLAYER_ID).subscribe(
+        this.rankingService.TabOne('player-performance', this.PLAYER_ID).subscribe(
           (RES: any) => {
             this.isLoading = false;
             this.COLORS = RES?.Option?.colors;

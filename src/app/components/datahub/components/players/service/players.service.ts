@@ -6,8 +6,7 @@ import { environment } from "src/environments/environment";
   providedIn: "root",
 })
 export class PlayersService {
-  link: string = 'http://localhost:3000';
-  //link: string = environment.link;
+  link: string = environment.link;
   API: string = environment.API2;
   endpoint = "players-hub";
   constructor(private http: HttpClient) { }

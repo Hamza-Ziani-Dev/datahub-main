@@ -1,0 +1,24 @@
+<div class="container-pagination row my-4 m-0 p-0 loading__app__0">
+  <div class="row m-0 col-12 col-md-10 loading__app__1 ">
+    <div class="mx-2 my-1 col-12 col-md-2 container-pagination">
+      <button mat-raised-button (click)="navigateToRoute('previous')" id="button_pagination" color="primary">
+        <i class="fas fa-chevron-left mr-2"></i> PRÉCÉDENT
+      </button>
+    </div>
+    <div class="mx-2 my-1 col-12 col-md-3 container-pagination">
+      <button mat-raised-button (click)="navigateToRoute('home')" id="button_pagination" color="primary">
+        <i class="fas fa-home mr-2"></i> {{ label_home }}
+      </button>
+    </div>
+    <div class="mx-2 my-1 col-12 col-md-2 container-pagination">
+      <button mat-raised-button (click)="navigateToRoute('dashboard')" id="button_pagination" color="primary">
+        <i class="fas fa-layer-group mr-2"></i> TABLEAU DE BORD
+      </button>
+    </div>
+  </div>
+  <!-- <div class="mx-2 my-1">
+    <button mat-raised-button (click)="navigateToRoute('next')" id="button_pagination" color="primary">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+  </div> -->
+</div>

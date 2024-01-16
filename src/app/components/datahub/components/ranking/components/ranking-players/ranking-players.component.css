@@ -1,0 +1,8 @@
+.no__data {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 1.5rem;
+}

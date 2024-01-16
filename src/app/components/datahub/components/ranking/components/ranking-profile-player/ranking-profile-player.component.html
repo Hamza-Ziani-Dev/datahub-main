@@ -1,173 +1,248 @@
-<div class="row mx-0 mb-4 container-blk " *ngIf="dataSource['Informations personnelles']">
-  <div class="col-12 mb-4 d-flex justify-content-center align-items-center  row mx-0">
-    <div class="col-md-3 col-12  img_profile row mx-0 d-flex justify-content-end align-items-end  ">
+<div class="rankingContainer d-flex justify-content-center align-items-center  row mx-0" *ngIf="dataSource">
+  <div class="row demo-player mt-4 col-12 col-md-10 mb-3 d-flex justify-content-center align-items-center">
+    <!-- image -->
+    <div class="row img_profile col-12 col-md-2 mx-0 d-flex justify-content-end align-items-end">
       <div class="image-player">
-        <img [src]="URL+dataSource['Informations personnelles']?.img_src" alt="" width="100%" height="100%" />
+        <img [src]="dataSource?.player?.img" alt="" width="100%" height="100%" />
       </div>
     </div>
-    <div class="col-md-9 col-12  d-flex justify-content-center align-items-center row mx-0 info-block">
-      <div class="col-12 d-flex justify-content-start align-items-center row mx-0 ">
-        <div class="d-flex col-12 col-md-2 d-flex justify-content-center align-items-center  name-player ">
-          <div class="bold__text">{{ dataSource['Informations personnelles']?.Joueur }}</div>
-          <!-- <div class="ml-2">Anas</div> -->
-        </div>
-        <div *ngIf="dataSource['Informations personnelles']"
-          class=" col-12 d-flex justify-content-center align-items-center col-md-3 post_">
-          {{ dataSource['Informations personnelles']['main position']?.label }}
-        </div>
-        <div class="d-flex col-12 col-md-3 justify-content-center align-items-center  "
-          *ngIf="dataSource['Informations personnelles']">
-          <div class="club-logo"> <img [src]="URL+dataSource['Informations personnelles']['Équipe']?.logo" alt=""
-              width="100%" height="100%" />
+
+    <div class="info-block row mx-0 col-12 col-md-10 d-flex justify-content-start align-items-start ">
+      <div class="col-12 row mx-0 d-flex justify-content-start align-items-start  ">
+        <div class="d-flex col-12 col-md-auto d-flex pl-0 justify-content-start align-items-start name-player">
+          <div class="bold__text">
+            {{ dataSource?.player?.fullname }}
           </div>
-          <div class="ml-2">{{ dataSource['Informations personnelles']['Équipe']?.nom }}</div>
         </div>
+        <div class="d-flex col-12 col-md-auto  justify-content-center align-items-center post-head post_">
+          {{ dataSource?.player?.post_label }}
+        </div>
+        <div class="d-flex col-12 col-md-auto  _club justify-content-center align-items-center">
+          <div class="club-logo">
+            <img [src]=" dataSource?.player?.equipe?.logo" alt="" width="100%" height="100%" />
+          </div>
+          <div class="ml-1 bold__text">
+            {{dataSource?.player?.equipe?.nom }}
+          </div>
+        </div>
+
+
       </div>
-      <div class="col-12 row mx-0 d-flex justify-content-start align-items-center pt-0">
-        <div class="d-flex col-12 col-md-4 p-0 row mx-0 align-items-center justify-content-center">
-          <div class="d-flex col-6 col-md-6 align-items-center justify-content-center">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="mr-2"
-              xmlns:xlink="http://www.w3.org/1999/xlink" width="25px" height="25px" viewBox="0,0,256,256">
-              <g class="i-color " fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                style="mix-blend-mode: normal">
-                <g transform="scale(4,4)">
-                  <path
-                    d="M31.77539,4.00391c-0.44177,0.00443 -0.8847,0.01955 -1.33008,0.04492c-0.284,0.016 -0.54661,0.152 -0.72461,0.375c-0.177,0.222 -0.25108,0.50806 -0.20508,0.78906l1.16797,6.95117c0.083,0.488 0.51391,0.82699 1.00391,0.83399c9.052,-0.149 17.01362,6.24825 18.89063,15.03125l-2.54492,-0.0918c-0.397,-0.005 -0.74683,0.19797 -0.92383,0.54297c-0.177,0.345 -0.13934,0.76136 0.09766,1.06836l7,9.0625c0.187,0.242 0.4743,0.38467 0.7793,0.38867h0.01172c0.301,0 0.58539,-0.13514 0.77539,-0.36914l7,-8.62305c0.239,-0.294 0.29176,-0.69797 0.13477,-1.04297c-0.157,-0.345 -0.496,-0.57194 -0.875,-0.58594l-2.20312,-0.08008c-0.018,-0.09 -0.04145,-0.17858 -0.06445,-0.26758c-0.058,-0.225 -0.1153,-0.45073 -0.1543,-0.67773c-2.30369,-13.65841 -14.1412,-23.4869 -27.83594,-23.34961zM24.72852,5.05273c-0.1375,-0.02 -0.27852,-0.01311 -0.41602,0.02539c-7.829,2.222 -14.28298,7.74258 -17.70898,15.14258c-0.117,0.252 -0.12162,0.54083 -0.01562,0.79883c0.105,0.257 0.31322,0.45864 0.57422,0.55664l6.58008,2.46094c0.115,0.043 0.23456,0.06445 0.35156,0.06445c0.37,0 0.72053,-0.20569 0.89453,-0.55469c2.249,-4.529 6.28808,-8.02952 11.08008,-9.60352c0.469,-0.154 0.75583,-0.63019 0.67383,-1.11719l-1.17188,-6.95117c-0.047,-0.28 -0.21117,-0.52769 -0.45117,-0.67969c-0.1195,-0.0755 -0.25313,-0.12258 -0.39062,-0.14258zM31.67773,6.00391c12.758,-0.189 23.81594,8.95869 25.96094,21.67969c0.047,0.281 0.11845,0.5628 0.18945,0.8418c0.078,0.303 0.15173,0.5897 0.17773,0.8457c0.051,0.496 0.45903,0.87848 0.95703,0.89648l0.99609,0.03516l-4.93945,6.08594l-4.92383,-6.375l1.64453,0.05859c0.317,0.013 0.5823,-0.11203 0.7793,-0.33203c0.198,-0.22 0.28809,-0.51655 0.24609,-0.81055l-0.01953,-0.14258c-0.011,-0.091 -0.02111,-0.18134 -0.03711,-0.27734c-1.663,-9.882 -10.26041,-17.27177 -20.19141,-17.50977zM23.78711,7.33203l0.8418,4.99805c-4.657,1.75 -8.60072,5.16139 -11.01172,9.52539l-4.72461,-1.76562c3.11,-6.05 8.45153,-10.62581 14.89453,-12.75781zM31.99219,16.52734c-0.2475,0.00188 -0.49405,0.0953 -0.68555,0.2793l-8,7.68945c-0.196,0.188 -0.30664,0.4487 -0.30664,0.7207v18.7793c0,0.552 0.448,1 1,1h16c0.552,0 1,-0.448 1,-1v-18.98828c0,-0.277 -0.11441,-0.54247 -0.31641,-0.73047l-8,-7.48047c-0.1945,-0.1815 -0.44391,-0.27141 -0.69141,-0.26953zM32.00977,18.9043l6.99023,6.53711v17.55469h-14v-17.35352zM32,22.99609c-1.654,0 -3,1.346 -3,3c0,1.654 1.346,3 3,3c1.654,0 3,-1.346 3,-3c0,-1.654 -1.346,-3 -3,-3zM32,24.99609c0.551,0 1,0.449 1,1c0,0.551 -0.449,1 -1,1c-0.551,0 -1,-0.449 -1,-1c0,-0.551 0.449,-1 1,-1zM10.08203,25.00391c-0.31,-0.03 -0.60645,0.09241 -0.81445,0.31641l-8,8.62109c-0.266,0.287 -0.34045,0.70345 -0.18945,1.06445c0.151,0.361 0.49572,0.60123 0.88672,0.61523l2.2832,0.08008c0.04,0.314 0.08763,0.62831 0.14063,0.94531c2.288,13.564 13.97878,23.35256 27.55078,23.35156c0.536,0 1.07424,-0.01588 1.61523,-0.04687c0.284,-0.016 0.54661,-0.152 0.72461,-0.375c0.177,-0.222 0.25108,-0.50806 0.20508,-0.78906l-1.16992,-6.95117c-0.083,-0.488 -0.52091,-0.83398 -1.00391,-0.83398c-9.045,0.153 -17.01163,-6.24725 -18.89062,-15.03125l2.54492,0.0918c0.39,0.022 0.7262,-0.18472 0.9082,-0.51172c0.183,-0.327 0.16794,-0.72902 -0.03906,-1.04102l-6,-9.0625c-0.169,-0.255 -0.44695,-0.41836 -0.75195,-0.44336zM9.86719,27.61133l4.22656,6.38281l-1.83398,-0.06445c-0.312,-0.022 -0.58325,0.11003 -0.78125,0.33203c-0.198,0.221 -0.28814,0.5195 -0.24414,0.8125l0.01953,0.14258c0.011,0.091 0.02306,0.18244 0.03906,0.27344c1.662,9.882 10.2565,17.27177 20.1875,17.50977l0.8418,4.99609c-12.78,0.218 -23.81689,-8.95869 -25.96289,-21.67969c-0.095,-0.566 -0.1637,-1.12555 -0.2207,-1.68555c-0.051,-0.497 -0.45998,-0.88144 -0.95898,-0.89844l-0.95898,-0.0332zM27,39v2h2v-2zM31,39v2h2v-2zM35,39v2h2v-2zM49.89258,39.89844c-0.36436,0.00539 -0.70986,0.20969 -0.88086,0.55469c-2.249,4.529 -6.28808,8.02952 -11.08008,9.60352c-0.47,0.154 -0.75583,0.63019 -0.67383,1.11719l1.16992,6.95117c0.049,0.28 0.21312,0.52769 0.45313,0.67969c0.162,0.102 0.3462,0.1543 0.5332,0.1543c0.091,0 0.18444,-0.01211 0.27344,-0.03711c7.828,-2.222 14.28203,-7.74258 17.70703,-15.14258c0.117,-0.252 0.12358,-0.54083 0.01758,-0.79883c-0.105,-0.257 -0.31322,-0.45864 -0.57422,-0.55664l-6.58008,-2.46094c-0.11975,-0.04475 -0.24378,-0.06625 -0.36523,-0.06445zM50.38281,42.14453l4.72266,1.76563c-3.11,6.05 -8.44958,10.62677 -14.89258,12.75977l-0.84375,-5c4.658,-1.75 8.60267,-5.16239 11.01367,-9.52539z">
-                  </path>
+
+      <div class="row mt-2 col-12 col-md-12 mx-0 d-flex justify-content-start align-items-start block__infos">
+
+        <div class="col-12 col-md-3 row mx-0 px-0">
+          <div class="col-4">
+            <div class="d-flex p-0 m-0  align-items-center justify-content-center">
+              <span>
+                <img class="m-0 pied-img"
+                  [src]="['gaucher','ambidextre' ].includes(dataSource?.player?.pied) ? 'assets/icons/left_on.png' : 'assets/icons/left_off.png'" />
+              </span>
+              <span>
+                <img class="m-0 pied-img"
+                  [src]="['droitier','ambidextre' ].includes(dataSource?.player?.pied) ? 'assets/icons/right_on.png' : 'assets/icons/right_off.png'" />
+              </span>
+            </div>
+          </div>
+          <div class="col-8">
+            <div class=" p-0 m-0  d-flex  align-items-center justify-content-center">
+              <svg class="mr-1" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px" viewBox="0,0,256,256">
+                <g fill="rgb(226 200 120)" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                  stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                  font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                  style="mix-blend-mode: normal">
+                  <g transform="scale(4,4)">
+                    <path
+                      d="M31.76953,5.00391c-0.42079,0.00421 -0.84398,0.01881 -1.26758,0.04297l1.16992,6.94922c9.739,-0.174 18.38778,6.78973 20.05078,16.67773c0.022,0.133 0.03374,0.26348 0.05273,0.39648l-3.77539,-0.13281l7,9.0625l7,-8.62109l-3,-0.10937c-0.06,-0.58 -0.27505,-1.164 -0.37305,-1.75c-2.24072,-13.2835 -13.81284,-22.64615 -26.85742,-22.51562zM24.58398,6.04102c-7.732,2.195 -13.86027,7.65961 -17.07227,14.59961l6.58008,2.46094c2.325,-4.681 6.46506,-8.40238 11.66406,-10.10937zM32,17.52539l-8,7.69141v18.7793h16v-18.98828zM32,23.99609c1.105,0 2,0.895 2,2c0,1.105 -0.895,2 -2,2c-1.105,0 -2,-0.895 -2,-2c0,-1.105 0.895,-2 2,-2zM10,26l-8,8.62109l3.14453,0.10938c0.06,0.58 0.12952,1.164 0.22852,1.75c2.313,13.712 14.56805,23.24666 28.12305,22.47266l-1.16992,-6.95117c-9.739,0.174 -18.38583,-6.78973 -20.04883,-16.67773c-0.022,-0.133 -0.03374,-0.26349 -0.05274,-0.39648l4.77539,0.13477zM27,39h2v2h-2zM31,39h2v2h-2zM35,39h2v2h-2zM49.90625,40.89844c-2.325,4.681 -6.46311,8.40138 -11.66211,10.10937l1.16992,6.95117c7.733,-2.195 13.86027,-7.65961 17.07227,-14.59961z">
+                    </path>
+                  </g>
                 </g>
-              </g>
-            </svg>
-            <div class="bold__text mr-1">{{ dataSource['Informations personnelles']['Âge'] }}</div> <small
-              class="ml-1">ans</small>
-          </div>
-          <div class=" d-flex col-6 col-md-6 p-0 justify-content-center align-items-center">
-            <i class="fas fa-ruler-vertical i-color mr-2 "></i>
-            <div class="bold__text mr-1">{{ dataSource['Informations personnelles']?.Taille }}</div> <small>Cm</small>
+              </svg>
+              <div class=" bold__text mr-2">
+                {{ dataSource?.player?.age }} ans
+              </div>
+            </div>
           </div>
         </div>
-        <div class="d-flex col-12 col-md-6 row mx-0 align-items-center py-2 justify-content-center">
-          <div class=" d-flex col-6 col-md-6 justify-content-center align-items-center ">
-            <i class="fas fa-weight-hanging i-color mr-2"></i>
-            <div class="bold__text mr-1">{{ 
-                                     (dataSource["Informations personnelles"]["Poids"] > 0 ?
-                                      dataSource["Informations personnelles"]["Poids"]+" KG" :
-                                       dataSource["Informations personnelles"]["Poids"]) }}</div>
+        <div class="col-12 col-md-4 row mx-0 px-0">
+          <div class="col-6">
+            <div class="p-0 m-0 d-flex  align-items-center justify-content-center">
+              <i class="fas fa-weight-hanging i-color mr-1"></i>
+              <div class="bold__text mr-2">
+                {{
+                dataSource?.physique?.weight
+                }}
+              </div>
+            </div>
           </div>
-          <div class=" d-flex col-6 col-md-6 justify-content-center align-items-center ">
-            <i class="fas fa-history i-color mr-2 "></i>
-            <div class="bold__text mr-1">{{ dataSource['Informations personnelles']['Minutes jouées'] }}</div>
-            <small>Min</small>
+          <div class="col-6">
+            <div class="p-0 m-0 d-flex  justify-content-center align-items-center ">
+              <svg class="i-color mr-1" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px" viewBox="0,0,256,256">
+                <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                  stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                  font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                  style="mix-blend-mode: normal">
+                  <g transform="scale(3.2,3.2)">
+                    <path transform="translate(-16.56854,40.00099) rotate(-45.001)"
+                      d="M-3.341,27.772h86.681v24.456h-86.681z" fill="#f5ce85"></path>
+                    <path
+                      d="M62,1.414l16.586,16.586l-60.586,60.586l-16.586,-16.586l60.586,-60.586M62,0l-62,62l18,18l62,-62l-18,-18z"
+                      fill="#967a44"></path>
+                    <g fill="#704e34">
+                      <path
+                        d="M61.147,13.854c0.194,0.194 0.513,0.194 0.707,0c0.194,-0.194 0.194,-0.513 0,-0.707l-6.501,-6.501l-0.707,0.707zM49.147,25.854c0.194,0.194 0.513,0.194 0.707,0c0.194,-0.194 0.194,-0.513 0,-0.707l-6.501,-6.501l-0.707,0.707zM37.147,37.854c0.194,0.194 0.513,0.194 0.707,0c0.194,-0.194 0.194,-0.513 0,-0.707l-6.501,-6.501l-0.707,0.707zM25.147,49.854c0.194,0.194 0.513,0.194 0.707,0c0.194,-0.194 0.194,-0.513 0,-0.707l-6.501,-6.501l-0.707,0.707zM13.147,61.854c0.194,0.194 0.513,0.194 0.707,0c0.194,-0.194 0.194,-0.513 0,-0.707l-6.501,-6.501l-0.707,0.707zM16.854,52.147l-3.501,-3.501l-0.707,0.707l3.501,3.501c0.194,0.194 0.513,0.194 0.707,0c0.195,-0.194 0.195,-0.512 0,-0.707zM28.147,40.854c0.194,0.194 0.513,0.194 0.707,0c0.194,-0.194 0.194,-0.513 0,-0.707l-3.501,-3.501l-0.707,0.707zM40.147,28.854c0.194,0.194 0.513,0.194 0.707,0c0.194,-0.194 0.194,-0.513 0,-0.707l-3.501,-3.501l-0.707,0.707zM52.147,16.854c0.194,0.194 0.513,0.194 0.707,0c0.194,-0.194 0.194,-0.513 0,-0.707l-3.501,-3.501l-0.707,0.707z">
+                      </path>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+              <div class="bold__text mr-2">
+                {{
+
+                dataSource?.physique?.height
+                }}
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="col-12 col-md-3 row mx-0 px-0">
+          <div class="col-6">
+            <div class="d-flex  justify-content-center align-items-center ">
+              <i class="fas fa-history i-color mr-1"></i>
+              <div class="p-0 d-flex justify-content-center align-items-center mr-2">
+                <div class="bold__text">{{dataSource?.TimingOfMatchsPlayed }}<small class="ml-1">Min</small>
+                </div>
+                <div class="mx-1">/</div>
+                <div class="bold__text">{{ dataSource?.TimingOfMatchs }}<small class="ml-1">Min</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="d-flex  _club justify-content-center align-items-center">
+              <div class="ml-1 bold__text ">
+                <i class="far fa-futbol i-color mr-2"></i>
+                {{ dataSource?.NbrGoals }}
+              </div>
+            </div>
           </div>
         </div>
-        <!-- <div class="d-flex col-12 col-md-4 row mx-0 align-items-center justify-content-center">
-          <div class=" d-flex col-6 col-md-6 justify-content-center align-items-center ">
-            <i class="fas fa-bullseye i-color mr-2 "></i>
-            <div class=" d-flex justify-content-center align-items-center mr-1">
-              <div class="bold__text">{{ dataSource['Informations personnelles'].xG }}</div>
-              <div class="ml-1">xG/90</div>
-            </div> <small>Min</small>
-          </div>
-          <div class="d-flex col-6 col-md-6 justify-content-center align-items-center ">
-            <i class="fas fa-bullseye i-color mr-2"></i>
-            <div class=" d-flex justify-content-center align-items-center mr-1">
-              <div class="bold__text">{{ dataSource['Informations personnelles'].xA }}</div>
-              <div class="ml-1">xA/90</div>
-            </div> <small>Min</small>
-          </div>
-        </div> -->
+
       </div>
     </div>
   </div>
   <div class="col-12 col-md-6 d-flex justify-content-center align-items-start">
-    <div class="chart-block  d-flex justify-content-center align-items-center row p-4  mx-0">
-      <div class="col-11 d-flex justify-content-center align-items-center">
-        <div id="radar-chart" style="width: 100%; height: 500px;"></div>
-      </div>
-      <!-- <div class="chart-block-labels row mx-0 col-12">
-        <div class="mx-2 my-1 p-0 d-flex col-12 col-md-3 justify-content-center align-items-center"
-          *ngFor="let label of chart?.legend;let i = index ">
-          <div class="ec-color mr-2" [ngStyle]="{'background-color' : COLORS[i]}"></div>
-          <div class="ec-label label_chart_name">{{ label }} 1</div>
+    <ng-container *ngIf="dataSource['charts']">
+      <div class="chart-block  d-flex justify-content-center align-items-center row p-4  mx-0">
+        <div class="col-12 p-0 m-0 d-flex justify-content-center align-items-center">
+          <div id="radar-chart" style="width: 100%; height: 700px;"></div>
         </div>
-      </div> -->
-    </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!dataSource['charts']">
+      <div class="row col-12 col-md-6 m-0 h_no_data p-0 d-flex justify-content-center align-items-center">
+        <div>
+          Aucune données n’est disponible
+        </div>
+      </div>
+    </ng-container>
   </div>
+
+
   <div class="col-12 col-md-6 row mx-0 d-flex justify-content-center align-items-center">
-    <div class="block_title  p-0 col-12 row mx-0">
-      <div class="col-12 col-md-6  label_1">
-        <ng-container *ngTemplateOutlet="CHART"></ng-container>
-        <div class="ml-1 d-flex justify-content-center align-items-center ">
-          <div class="bold__text mr-1">Ranking</div> POST
-        </div>
-      </div>
-      <div class="col-12 col-md-6 label_2">
-        <div class="bold__text"><strong>{{ dataSource['Classements']['Classement'] }}</strong></div> <small>Th</small>
-      </div>
-    </div>
-    <div class="col-12 p-0 " *ngIf="dataSource['Informations personnelles']">
-      <div class="block_similarities">
-        <div class="black_title">
-          <ng-container *ngTemplateOutlet="ICON_SIMILARITIE"></ng-container>
-          <div class="bold__text">Similarities</div>
-        </div>
-        <div class="profile-container row mx-0">
-          <div class="profile col-12 col-md-6 ">
-            <div class="profile-image-container">
-              <div class="profile-image">
-                <img [src]="URL+dataSource['Informations personnelles']?.img_src" alt="" width="100%" height="100%" />
-              </div>
-              <div class="online-indicator left-image  ">
-                <img [src]="URL+dataSource['Informations personnelles']['Équipe']?.logo" alt="" width="100%"
-                  height="100%" />
-              </div>
-            </div>
-            <div class="profile-name">
-              <!-- <div>Mouhsin</div> -->
-              <div class="ml-2 bold__text">{{ dataSource['Informations personnelles']?.Joueur }}</div>
-            </div>
-            <div class="profile-name">
-              <div class="post-player" *ngIf="dataSource['Informations personnelles']['main position']?.label">
-                {{ dataSource['Informations personnelles']['main position']?.label }}
-              </div>
-            </div>
-            <div class="w-100 progress__bar"></div>
+    <ng-container *ngIf="dataSource['charts']">
+      <div class="block_title  p-0 col-12 row mx-0">
+        <div class="col-12 col-md-6  label_1">
+          <ng-container *ngTemplateOutlet="CHART"></ng-container>
+          <div class="ml-1 d-flex justify-content-center align-items-center  text-white">
+            <div class="bold__text mr-1">Ranking</div> POST
           </div>
-          <div class="col-12 col-md-6 mx-0 row p-0 ">
-            <div class="profile col-12 col-md-12 " *ngFor="let player of dataSource['Similarité']">
+        </div>
+        <div class="col-12 col-md-6 label_2 text-white">
+          <div class="bold__text text-white"><strong>{{ dataSource['charts']['Classements']['Classement'] }}</strong>
+          </div>
+          <small>Th</small>
+        </div>
+      </div>
+      <div class="col-12 p-0 " *ngIf="dataSource">
+        <div class="block_similarities">
+          <div class="black_title">
+            <ng-container *ngTemplateOutlet="ICON_SIMILARITIE"></ng-container>
+            <div class="bold__text">Similarities</div>
+          </div>
+          <div class="profile-container row mx-0">
+            <div class="profile col-12 col-md-6 ">
               <div class="profile-image-container">
                 <div class="profile-image">
-                  <img [src]="!player.img_src ? 'assets/images/profil-default.jpg' : URL+player.img_src " alt=""
-                    width="100%" height="100%" />
+                  <img [src]="dataSource?.player?.img" alt="" width="100%" height="100%" />
                 </div>
-                <div class="online-indicator right-image">
-                  <img [src]="!player['equipe'].logo ? 'assets/images/default-logo.jpg' : URL+player['equipe'].logo "
-                    alt="" width="100%" height="100%" />
+                <div class="online-indicator left-image  ">
+                  <img [src]="dataSource?.player?.equipe?.logo" alt="" width="100%" height="100%" />
                 </div>
               </div>
               <div class="profile-name">
                 <!-- <div>Mouhsin</div> -->
-                <div class="ml-2"><strong>{{ player?.Joueur }}</strong></div>
+                <div class="ml-2 bold__text">{{ dataSource?.player?.fullname }}</div>
               </div>
               <div class="profile-name">
-                <div class="post-player" *ngIf="player['main position']">
-                  {{ player['main position']?.label }}
+                <div class="post-player" *ngIf="dataSource?.player?.post_label">
+                  {{ dataSource?.player?.post_label }}
                 </div>
               </div>
-              <div class="w-100">
-                <app-progress-bar [value]=" +player?.score  > 0  ? +player?.score  : 0 "></app-progress-bar>
+              <div class="w-100 progress__bar"></div>
+            </div>
+
+            <div class="col-12 col-md-6 mx-0 row p-0 " *ngIf="dataSource['charts']['similarite']?.length > 0">
+              <div class="profile col-12 col-md-12 " *ngFor="let player of dataSource['charts']['similarite']">
+                <div class="profile-image-container">
+                  <div class="profile-image">
+                    <img [src]="!player.img_src ? 'assets/images/profil-default.jpg' : URL+player?.img_src " alt=""
+                      width="100%" height="100%" />
+                  </div>
+                  <div class="online-indicator right-image">
+                    <img
+                      [src]="!player['Équipe']?.logo ? 'assets/images/default-logo.jpg' : URL+player['Équipe']?.logo "
+                      alt="" width="100%" height="100%" />
+                  </div>
+                </div>
+                <div class="profile-name">
+                  <!-- <div>Mouhsin</div> -->
+                  <div class="ml-2"><strong>
+                      {{ player?.Joueur }}
+                    </strong></div>
+                </div>
+                <div class="profile-name">
+                  <div class="post-player" *ngIf="player['main position']">
+                    {{ player['main position']?.label }}
+                  </div>
+                </div>
+                <div class="w-100">
+                  <app-progress-bar [value]=" +player?.score  > 0  ? +player?.score  : 0 "></app-progress-bar>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </ng-container>
+    <ng-container *ngIf="!dataSource['charts']">
+      <div class="row col-12 col-md-6 m-0 p-0 d-flex  h_no_data justify-content-center align-items-center">
+        <div>
+          Aucune données n’est disponible
+        </div>
+      </div>
+    </ng-container>
+
   </div>
+
 </div>
 
 <ng-template #CHART>
-  <svg version="1.1" id="Calque_1" width="25px" fill="#000" height="25px" xmlns="http://www.w3.org/2000/svg"
+  <svg version="1.1" id="Calque_1" width="25px" fill="#fff" height="25px" xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 125 111"
     style="enable-background:new 0 0 125 111;" xml:space="preserve">
     <g>

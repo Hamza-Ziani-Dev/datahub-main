@@ -74,7 +74,7 @@
 }
 
 .logo-botola {
-  width: 40px !important;
+  width: 50px !important;
 }
 
 @media screen and (max-width: 768px) {
@@ -99,4 +99,8 @@
     transform: translateY(-30px);
   }
 
+}
+
+.padding---outlet {
+  padding-bottom: 6em;
 }

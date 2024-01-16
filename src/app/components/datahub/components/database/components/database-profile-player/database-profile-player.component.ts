@@ -1,16 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import * as echarts from 'echarts';
 import { DatabaseService } from '../../service/database.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { PlayerService } from 'src/app/services/player.service';
-import { Player } from 'src/app/shared/interface/player.model';
+import { CharedService } from 'src/app/services/chared.service';
 
 @Component({
   selector: 'app-database-profile-player',
   templateUrl: './database-profile-player.component.html',
-  styleUrls: ['./database-profile-player.component.css']
+  styleUrls: ['./database-profile-player.component.css', '../../database.component.css']
 })
 export class DatabaseProfilePlayerComponent implements OnInit {
   isLoading: boolean = true;
@@ -20,45 +18,44 @@ export class DatabaseProfilePlayerComponent implements OnInit {
     title: null,
     legend: []
   };
-  ID: number = null;
-  PLAYER_ID: number = null;
-  player: Player;
+  PLAYER_ID: number | null = null;
+  LIGUE: string | null = null;
   playerSub: Subscription;
   dataSource: any[] = [];
   constructor(
-    private playerService: PlayerService,
-    private rankingService: DatabaseService,
+    private sharedService: CharedService,
+    public rankingService: DatabaseService,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this.PLAYER_ID = this.route.snapshot.params.player_id;
-    this.ID = this.route.snapshot.params.is;
+    this.LIGUE = this.route.snapshot.params.ligue;
     this.route.params.subscribe(
       p => {
         if (this.PLAYER_ID != p.player_id) {
           this.PLAYER_ID = p.player_id;
         }
-        if (this.ID != p.id) {
-          this.ID = p.id;
+        if (this.LIGUE != p.ligue) {
+          this.LIGUE = p.ligue;
         }
       }
     );
     this.actions('GET');
-    this.playerSub = this.playerService.getUpdatedPlayerDatabaseListner().subscribe(
-      (result: Player) => {
-        this.player = result;
-      }
-    );
-    this.playerService.getPlayerDatadase(this.PLAYER_ID);
+
   }
 
   actions(CASE: string, RES: any = null) {
     switch (CASE) {
       case 'GET':
-        this.rankingService.One(this.ID, this.PLAYER_ID).subscribe(
+        this.rankingService.One(this.PLAYER_ID).subscribe(
           (RES: any) => {
-            this.dataSource = RES;
+            this.dataSource = {
+              ...RES, player: {
+                ...RES.player,
+                post_label: this.sharedService.getPosts(RES.player?.post).slice(0, 1).shift()?.label
+              }
+            };
             this.isLoading = false;
             this.COLORS = RES?.Option?.colors;
             this.chart = {

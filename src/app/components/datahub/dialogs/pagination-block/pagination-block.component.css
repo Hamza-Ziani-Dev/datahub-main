@@ -1,0 +1,38 @@
+.container-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#button_pagination {
+  background-color: var(--secondary-color);
+  color: #fff;
+  border-radius: 11px;
+  height: 2.9em;
+  border-bottom: var(--secondary-color) 0.2em solid;
+  text-align: right;
+  transition: all 0.6s ease;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading__app__1 {
+  background: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+}
+
+.loading__app__0 {
+  position: fixed;
+  z-index: 1000;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

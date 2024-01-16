@@ -1,5 +1,32 @@
 <div class="col-12 row mx-0">
-  <div class="col-12 col-md-3" *ngFor="let data of datasource;let i = index">
-    <app-two-players-by-post [data]="data" [routerLink]="['list-players-post',i]"></app-two-players-by-post>
+  <div class="d-flex col-12 mx-0 px-0 row">
+    <mat-form-field class="form--field col-12 col-md-2" appearance="outline">
+      <mat-label> <i class="far fa-user mr-2"></i>Catégorie d'âge :</mat-label>
+      <mat-select (ngModelChange)="actions('DO_FILTER',{column:'categorie',value:$event})" [(ngModel)]="categorie"
+        name="categorie">
+        <mat-option [value]="category" *ngFor="let category of CATEGORIES">
+          <i class="far fa-user mr-2"></i>{{ category }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
+  <ng-container *ngIf="datasource.length == 0 && !isLoading">
+    <div class="no__data">
+      <div>
+        <ng-container *ngTemplateOutlet="NoFile"></ng-container>
+      </div>
+      <strong>{{ 'Aucune donnée !' | titlecase }}</strong>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="isLoading">
+    <div class="mt-4 pb-4 pt-4 col-12 d-flex justify-content-center align-items-center  mb-4">
+      <app-loading-three-points></app-loading-three-points>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="!isLoading">
+    <div class="col-12 col-md-3" *ngFor="let data of datasource;let i = index">
+      <app-two-players-by-post [data]="data"
+        [routerLink]="['list-players-post',data.post,categorie]"></app-two-players-by-post>
+    </div>
+  </ng-container>
 </div>

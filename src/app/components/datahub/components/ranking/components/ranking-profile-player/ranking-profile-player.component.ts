@@ -3,85 +3,75 @@ import * as echarts from 'echarts';
 import { RankingService } from '../../service/ranking.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { CharedService } from 'src/app/services/chared.service';
 
 @Component({
   selector: 'app-ranking-profile-player',
   templateUrl: './ranking-profile-player.component.html',
-  styleUrls: ['./ranking-profile-player.component.css']
+  styleUrls: ['./ranking-profile-player.component.css', '../../../database/components/database-profile-player/database-profile-player.component.css']
 })
 export class RankingProfilePlayerComponent implements OnInit {
   isLoading: boolean = true;
   URL: string = "https://interface.myteambyfrmf.ma/uploads/datahub/";
   COLORS: string[] = ['#0357A0', "#007934", "#E55C00"];
-  ID: number = null;
   chart: any = {
     title: [],
     legend: []
   };
+  playerSub: Subscription;
   PLAYER_ID: number = null;
   dataSource: any[] = [];
+  player: any;
   constructor(
     private rankingService: RankingService,
+    private sharedService: CharedService,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.ID = this.route.snapshot.params.id;
     this.PLAYER_ID = this.route.snapshot.params.player_id;
     this.route.params.subscribe(
       p => {
-        if (this.ID != p.id) {
-          this.ID = p.id;
-        }
         if (this.PLAYER_ID != p.player_id) {
           this.PLAYER_ID = p.player_id;
         }
       }
     );
     this.actions('GET');
+
   }
 
   actions(CASE: string, RES: any = null) {
     switch (CASE) {
       case 'CREATE_CHART':
         const myChart = echarts.init(document.getElementById('radar-chart'));
-        const option = RES ? RES : {
-
-          radar: {
-            // shape: 'circle',
-            indicator: []
-          },
-          series: [
-            {
-              name: 'Budget vs spending',
-              type: 'radar',
-              data: []
-            }
-          ]
-        };
-
-        myChart.setOption(option);
+        myChart.setOption(RES?.option);
         break;
       case 'UPDATE_CHART':
 
         break;
       case 'GET':
-        this.rankingService.One(this.ID, this.PLAYER_ID).subscribe(
+        this.rankingService.One(this.PLAYER_ID).subscribe(
           (RES: any) => {
-            this.dataSource = RES;
-            console.log("this.dataSource", this.dataSource);
+            this.dataSource = {
+              ...RES, player: {
+                ...RES.player,
+                post_label: this.sharedService.getPosts(RES.player?.post).slice(0, 1).shift()?.label
+              }
+            };
+
             this.isLoading = false;
-            this.COLORS = RES?.Option?.colors;
+            this.COLORS = RES?.charts?.Option?.colors;
             //  delete RES?.Option?.legend;
             this.chart = {
               title: [
                 {
-                  text: RES?.Option?.title?.text,
-                  left: 'center',
+                  text: RES?.charts?.Option?.title?.text,
+                  left: 'center'
                 }
-
               ],
-              legend: RES?.Option?.legend,
+              legend: RES?.charts?.Option?.legend,
             }
 
             // lineStyle: {
@@ -94,15 +84,7 @@ export class RankingProfilePlayerComponent implements OnInit {
             //  delete RES?.Option?.title?.text;
 
             setTimeout(() => {
-              this.actions('CREATE_CHART', {
-                ...RES?.Option, legend: { bottom: '0%', right: 'center' }, title: [
-                  {
-                    text: RES?.Option?.title?.text,
-                    left: 'center',
-                  }
-
-                ]
-              })
+              this.actions('CREATE_CHART', { option: RES?.charts?.Option })
             }, 200);
           },
           (ERROR: HttpErrorResponse) => {

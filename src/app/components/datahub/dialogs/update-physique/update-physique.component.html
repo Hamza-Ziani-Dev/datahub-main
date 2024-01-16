@@ -1,0 +1,14 @@
+<h4 mat-dialog-title class="text-center"><strong class="text-center"> {{ data.title }} </strong> </h4>
+<div mat-dialog-content class="w-100 m-0" [style]="{'padding':'5%'}">
+  <mat-form-field class="w-100" appearance="outline">
+    <mat-label>Value : </mat-label>
+    <input matInput [(ngModel)]="data.value" cdkFocusInitial type="number" name="value" #value="ngModel">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions class="mb-1 d-flex justify-content-around align-items-center w-100">
+  <button mat-button [mat-dialog-close]="false" style="outline: none;background-color: #efeded;"><i
+      class="fas fa-undo-alt mr-2"></i>Annuler</button>
+  <button mat-button [mat-dialog-close]="data"
+    style="background-color: var(--secondary-color);color:white;outline: none;"><i
+      class="far fa-save mr-2"></i>Enregistrer </button>
+</div>

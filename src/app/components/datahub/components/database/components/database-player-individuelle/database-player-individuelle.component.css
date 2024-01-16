@@ -72,13 +72,16 @@
   border-right: 2px solid white;
 }
 
+.no_data {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: gray;
+}
+
 .__canvas {
   width: 100%;
   height: 400px;
-}
-
-.analyse-container {
-  /* box-shadow: rgba(15, 99, 183, 0.2) 0px 8px 24px; */
 }
 
 .bg-dorry {

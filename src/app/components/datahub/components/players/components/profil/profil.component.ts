@@ -23,6 +23,7 @@ export class ProfilComponent implements OnInit {
 
   ngOnInit() {
     this.actions("GET_PROFIL");
+
   }
   actions(CASE: string, REQUEST: any = null) {
     switch (CASE) {

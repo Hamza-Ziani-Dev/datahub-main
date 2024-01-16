@@ -3,10 +3,8 @@ import { Component, ElementRef, OnInit, Renderer2, ViewChild } from "@angular/co
 import { DatabaseService } from "../../service/database.service";
 import { ActivatedRoute } from "@angular/router";
 import * as echarts from "echarts";
-import { PlayerService } from "src/app/services/player.service";
 import { Subscription } from "rxjs";
 import { CharedService } from "src/app/services/chared.service";
-import { statisticsService } from "src/app/services/statistics.service";
 
 @Component({
   selector: "app-database-player-individuelle",
@@ -25,17 +23,14 @@ export class DatabasePlayerIndividuelleComponent implements OnInit {
   };
   CHART_TYPES: any[] = [];
   type_chart: string = 'pie';
-  PLAYER_ID: number = null;
-  ID: number = null;
+  PLAYER_ID: number | null = null;
   @ViewChild('canvasContainers', { read: ElementRef }) canvasContainers: ElementRef;
   @ViewChild('canvasEntrainment', { read: ElementRef }) canvasEntrainment: ElementRef;
   dataSource: any = {};
   constructor(
-    private statistics: statisticsService,
     private renderer: Renderer2,
     private charedService: CharedService,
     private rankingService: DatabaseService,
-    private playerService: PlayerService,
     private route: ActivatedRoute
   ) { }
   countPresence = {
@@ -48,16 +43,11 @@ export class DatabasePlayerIndividuelleComponent implements OnInit {
     exempté: 0,
     adapté: 0,
   };
-  trainingSub: Subscription;
-  ngOnDestroy(): void {
-    this.trainingSub.unsubscribe()
-  }
+
   ngOnInit() {
     this.PLAYER_ID = this.route.snapshot.parent?.params.player_id;
-    this.ID = this.route.snapshot.parent?.params.id;
     this.actions("GET");
-    this.actions("chart");
-    this.trainingSub = this.playerService.getUpdatedTrainingsDatabaseListner().subscribe(
+    this.rankingService.getTrainingsDatabase(this.PLAYER_ID).subscribe(
       (result: any) => {
         Object.keys(this.countPresence).forEach(key => {
           this.countPresence[key] = 0;
@@ -76,7 +66,6 @@ export class DatabasePlayerIndividuelleComponent implements OnInit {
         // chartDivContainer.className = 'p-4';
         const chartDiv = this.renderer.createElement('div');
         chartDiv.className = `chart_one ___block m-0  d-flex justify-content-center align-items-center col-12 p-0`;
-
 
         const canvas = this.renderer.createElement('canvas')// document.createElement('canvas');
         canvas.style.width = '100%';
@@ -148,12 +137,14 @@ export class DatabasePlayerIndividuelleComponent implements OnInit {
       }
     );
 
-    this.playerService.getTrainingsDatabase(this.PLAYER_ID);
     this.rankingService.PlayerDureeTraining(this.PLAYER_ID).subscribe(
       (res: any) => {
         this.DUREE = res?.duree ?? 0;
+        this.actions("chart");
       },
-      (error: HttpErrorResponse) => { }
+      (error: HttpErrorResponse) => {
+        this.actions("chart");
+      }
     )
   }
 
@@ -167,8 +158,9 @@ export class DatabasePlayerIndividuelleComponent implements OnInit {
         break
       case 'chart':
         // this.isLoadingcharts[0] = true;
-        this.statistics.allWithValueChartDatabase(this.PLAYER_ID).subscribe(
+        this.rankingService.allWithValueChartDatabase(this.PLAYER_ID).subscribe(
           (res: any) => {
+            console.log("A_D", res);
             this.actions('create-charts', res)
             // this.isLoadingcharts[0] = false;
           },
@@ -225,26 +217,54 @@ export class DatabasePlayerIndividuelleComponent implements OnInit {
 
         break;
       case "CREATE_CHART_RADAR":
-        const myChart1_ = echarts.init(document.getElementById("radar-percentilles-" + this.type_chart)
+        const myChart1_ = echarts.init(
+          document.getElementById("radar-percentilles-" + this.type_chart)
         );
         let data = RES;
-        const allLabelsAndValues = Object.keys(data.option).reduce((result, category) => {
-          const color = data.option[category].color;
+        function processString(inputString) {
+          // Remove '_par_90'
+          let processedString = inputString.replace('_par_90', '').replace('_per_90', '');
+
+          // Replace underscores with spaces
+          processedString = processedString.replace(/_/g, ' ');
+
+          return processedString;
+        }
+        console.log("data", data);
+        const allLabelsAndValues = data?.data.reduce((result, categoryObject) => {
+          const category = Object.keys(categoryObject)[0]; // Get the category name
+          const color = categoryObject[category].color;
+
           this.CHART_TYPES.push({ label: category, color });
-          const categoryData = data.option[category].data.map(item => ({ color, name: item.name, value: item.value }));
+          const categoryData = categoryObject[category].data.map(item => ({
+            color,
+            label: category, // Include the category name as a label
+            name: item.name,
+            value: item.value
+          }));
+
           return result.concat(categoryData);
         }, []);
+
         var option = {
+          // legend: {
+          //   top: "5%",
+          //   left: "center",
+          // },
+          // title: {
+          //   text: "Hi Anas",
+          //   fontSize: 18,
+          //   textStyle: {
+          //     color: "black",
+          //   },
+          //   left: "center",
+          //   padding: [0, 0, 20, 0],
+          // },
+
           angleAxis: {
             type: "category",
             data: allLabelsAndValues?.map(({ value, name }) => {
-              const _name = name.split('').reduce((acc, char, index) => {
-                if (index % 17 === 0) {
-                  acc.push(name.substr(index, 17));
-                }
-                return acc;
-              }, []).join('\n')
-              return `${_name} \n ( ${value} )`
+              return `${processString(name)} \n ( ${value} )`
             }) ?? [],
             axisLabel: {
               fontSize: 13,
@@ -289,6 +309,7 @@ export class DatabasePlayerIndividuelleComponent implements OnInit {
           document.getElementById(RES.id)
         );
         const ___data = RES.data;
+        console.log(___data);
         const _URL = this.URL;
         // prettier-ignore
         const option2 = {
@@ -319,7 +340,7 @@ export class DatabasePlayerIndividuelleComponent implements OnInit {
           series: [
             {
               data: ___data.map(({ value, img_src, itemStyle, symbolSize, fullname }) => ({
-                value: [value[0], 2],
+                value: [value, 2],
                 itemStyle,
                 img_src,
                 symbolSize,
@@ -335,18 +356,22 @@ export class DatabasePlayerIndividuelleComponent implements OnInit {
 
       case "GET":
         this.isLoading = true;
-        this.rankingService.One(this.ID, this.PLAYER_ID).subscribe(
+
+        this.rankingService.TabOne('player-individuelle', this.PLAYER_ID).subscribe(
           (RES: any) => {
             this.dataSource = RES;
             this.isLoading = false;
-            this.actions("CREATE_CHART_RADAR", this.dataSource.graphs.find(e => e.type === this.type_chart));
-            this.actions("CREATE_CHART_SCATTER", { id: "chart-scatter1", data: this.dataSource.performances['Offensive Score'] });
-            this.actions("CREATE_CHART_SCATTER", { id: "chart-scatter2", data: this.dataSource.performances['Defensive Score'] });
+            setTimeout(() => {
+              this.actions("CREATE_CHART_RADAR", this.dataSource?.graphs?.find(e => e.type === this.type_chart));
+              this.actions("CREATE_CHART_SCATTER", { id: "chart-scatter1", data: this.dataSource?.performances['Offensive Score'] });
+              this.actions("CREATE_CHART_SCATTER", { id: "chart-scatter2", data: this.dataSource?.performances['Defensive Score'] });
+            }, 100);
           },
           (ERROR: HttpErrorResponse) => {
             this.isLoading = false;
           }
-        );
+        )
+
         break;
       case "DO_FILTER":
         break;

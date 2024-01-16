@@ -1,180 +1,166 @@
+<div class="rankingContainer  row mx-0">
+  <div class="d-flex justify-content-center align-items-center  mx-0 p-0 col-12 row">
+    <div class="header col-12 col-md-11 mx-0">
+      <div class="image-background-header w-100">
+        <div class="py-3 d-flex justify-content-center align-items-center ">
+          <!-- <div class="logo">
+            <ng-container *ngIf="true">
+              <img width="100%" [src]="'assets/images/icon-logo.png'" class="sideLogo" alt="" />
+            </ng-container>
+          </div> -->
+          <div class="title">
+            Performance en Pixels : <span>{{ LIGUE === 'LNFF' ? 'Les Données des Joueuses
+              Marocaines' : 'Les Données des Joueurs Marocains' }} </span>
+          </div>
+          <div class="logo logo-botola">
+            <img width="100%" [src]="rankingService.logos(LIGUE)" class="sideLogo" alt="" />
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
 <div class="row d-flex flex-column justify-content-center align-items-center  mx-0 mb-4" *ngIf="!isLoading">
   <!-- player -->
-  <div class="row demo-player col-12 col-md-8 mb-3 d-flex justify-content-center align-items-center">
+  <div class="row demo-player mt-4 col-12 col-md-10 mb-3 d-flex justify-content-center align-items-center">
     <!-- image -->
     <div class="row img_profile col-12 col-md-2 mx-0 d-flex justify-content-end align-items-end">
       <div class="image-player">
-        <img [src]="URL + dataSource['Informations personnelles']?.img_src" alt="" width="100%" height="100%" />
+        <img [src]="dataSource?.player?.img" alt="" width="100%" height="100%" />
       </div>
     </div>
-    <!-- image -->
-    <!-- end info-block -->
-    <div class="info-block row mx-0 col-12 col-md-10 d-flex justify-content-center align-items-start ">
-      <div class="col-12 row mx-0 d-flex justify-content-center align-items-center mb-2">
-        <div class="d-flex col-12 col-md-3 d-flex justify-content-center align-items-center name-player">
+
+    <div class="info-block row mx-0 col-12 col-md-10 d-flex justify-content-start align-items-start ">
+      <div class="col-12 row mx-0 d-flex justify-content-start align-items-start  ">
+        <div class="d-flex col-12 col-md-auto d-flex pl-0 justify-content-start align-items-start name-player">
           <div class="bold__text">
-            {{ dataSource["Informations personnelles"]?.Joueur }}
+            {{ dataSource?.player?.fullname }}
           </div>
         </div>
-        <div *ngIf="dataSource['Informations personnelles'] && dataSource['Informations personnelles']['main position']"
-          class="d-flex justify-content-center align-items-center post-head post_">
-          {{ dataSource["Informations personnelles"]["main position"]?.label }}
+        <div class="d-flex col-12 col-md-auto  justify-content-center align-items-center post-head post_">
+          {{ dataSource?.player?.post_label }}
         </div>
-
-
-        <div class="d-flex col-12 col-md-6 _club justify-content-center align-items-center">
+        <div class="d-flex col-12 col-md-auto  _club justify-content-center align-items-center">
           <div class="club-logo">
-            <img [src]="URL + dataSource['Informations personnelles']['Équipe']?.logo" alt="" width="100%"
-              height="100%" />
+            <img [src]=" dataSource?.player?.equipe?.logo" alt="" width="100%" height="100%" />
           </div>
-          <div class="ml-1 ">
-            {{ dataSource["Informations personnelles"]["Équipe"]?.nom }}
+          <div class="ml-1 bold__text">
+            {{dataSource?.player?.equipe?.nom }}
           </div>
         </div>
+
 
       </div>
 
-      <div class="row col-12 col-md-12 mx-0 d-flex justify-content-center align-items-center  pt-0">
-        <div class="row mx-0 col-12 col-md-4 d-flex p-0 align-items-center justify-content-center">
-          <!-- icon 1 -->
-          <div class="d-flex col-6 col-md-6 align-items-center justify-content-center">
-            <svg class="i-color mr-2" version="1.1" xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px" viewBox="0,0,256,256">
-              <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                style="mix-blend-mode: normal">
-                <g transform="scale(5.33333,5.33333)">
-                  <path
-                    d="M45.117,16.751c-3.671,-7.372 -9.039,-9.736 -15.913,-7.924c0,0 0.972,2.205 -1.015,4.453c1.867,0 9.624,3.648 15.756,7.885c-0.461,-3.306 1.172,-4.414 1.172,-4.414z"
-                    fill="rgb(226 200 120)"></path>
-                  <path
-                    d="M36.144,13.526c-0.102,-0.099 -0.215,-0.198 -0.336,-0.295c-1.529,-1.237 -3.586,-1.755 -5.531,-1.35c-1.578,0.329 -3.277,1.846 -3.277,4.04c0,2.633 0.324,4.204 1.924,7.26c2.169,4.142 0.005,10.051 -2.708,14.043c-2.551,3.754 -1.186,8.76 4.439,8.76c4.719,0 5.488,-2.616 6.391,-6.127c0.902,-3.511 4.282,-12.87 6.087,-15.503c1.806,-2.633 1.312,-9.72 -6.989,-10.828z"
-                    fill="rgb(226 200 120)"></path>
-                  <path
-                    d="M45.958,13.051c-0.264,-0.168 -0.583,-0.207 -0.911,-0.158c0.443,-1.266 0.204,-2.758 -0.686,-3.189c-0.542,-0.262 -1.201,-0.063 -1.772,0.394c0.247,-1.473 -0.337,-3.07 -1.445,-3.374c-0.708,-0.194 -1.46,0.189 -2.026,0.859c-0.123,-1.379 -0.816,-2.641 -1.803,-2.838c-0.853,-0.171 -1.684,0.507 -2.181,1.51c-0.156,-1.519 -0.911,-2.865 -2.091,-3.184c-1.649,-0.446 -3.38,1.217 -3.886,3.35c-0.506,2.134 0.404,3.931 2.053,4.377c1.419,0.383 2.844,-0.319 3.538,-1.881c0.222,1.072 0.921,1.83 1.822,2.01c0.632,0.126 1.235,-0.061 1.7,-0.504c0.151,0.934 0.744,1.634 1.574,1.861c0.536,0.147 1.071,0.064 1.531,-0.207c-0.216,1.058 0.19,1.975 0.982,2.358c0.231,0.112 0.472,0.166 0.713,0.167c-0.279,0.813 -0.018,1.593 0.629,2.005c0.782,0.497 1.817,0.267 2.441,-0.715c0.623,-0.981 0.599,-2.344 -0.182,-2.841z"
-                    fill="rgb(226 200 120)"></path>
-                  <path
-                    d="M35.991,42.897c-0.037,0.106 -0.052,0.187 -0.056,0.257c0.475,-0.94 0.795,-2.063 1.112,-3.298c0.736,-2.862 3.118,-9.61 4.951,-13.432c-0.618,0.686 -4.699,4.541 -5.489,8.125c-0.864,3.922 0.346,5.883 -0.518,8.348z"
-                    fill="rgb(226 200 120)"></path>
-                  <path
-                    d="M32.189,24.13c-2.565,-1.154 -3.807,-2.497 -4.406,-3.462c0.266,0.729 0.625,1.527 1.142,2.513c2.019,3.854 0.283,9.237 -2.153,13.184c5.402,-3.286 8.8,-10.714 5.417,-12.235z"
-                    fill="#f9a825"></path>
-                  <g>
-                    <path
-                      d="M2.87,16.751c3.671,-7.372 9.039,-9.736 15.913,-7.924c0,0 -0.972,2.205 1.015,4.453c-1.867,0 -9.624,3.648 -15.756,7.885c0.461,-3.306 -1.172,-4.414 -1.172,-4.414z"
-                      fill="rgb(226 200 120)"></path>
-                    <path
-                      d="M11.843,13.526c0.102,-0.099 0.215,-0.198 0.336,-0.295c1.529,-1.237 3.586,-1.755 5.531,-1.35c1.579,0.329 3.278,1.846 3.278,4.041c0,2.633 -0.324,4.204 -1.924,7.26c-2.169,4.142 -0.005,10.051 2.708,14.043c2.551,3.754 1.186,8.76 -4.439,8.76c-4.719,0 -5.488,-2.616 -6.391,-6.127c-0.902,-3.511 -4.282,-12.87 -6.087,-15.503c-1.807,-2.634 -1.312,-9.721 6.988,-10.829z"
-                      fill="#ffba57"></path>
-                    <path
-                      d="M2.03,13.051c0.264,-0.168 0.583,-0.207 0.911,-0.158c-0.443,-1.266 -0.204,-2.758 0.686,-3.189c0.543,-0.262 1.202,-0.064 1.772,0.393c-0.247,-1.473 0.337,-3.07 1.445,-3.374c0.708,-0.194 1.46,0.189 2.026,0.859c0.123,-1.379 0.816,-2.641 1.803,-2.838c0.853,-0.171 1.684,0.507 2.181,1.51c0.156,-1.519 0.911,-2.865 2.091,-3.184c1.649,-0.446 3.38,1.217 3.886,3.35c0.506,2.134 -0.404,3.931 -2.053,4.377c-1.419,0.383 -2.844,-0.319 -3.538,-1.881c-0.222,1.072 -0.921,1.83 -1.822,2.01c-0.632,0.126 -1.235,-0.061 -1.7,-0.504c-0.151,0.934 -0.744,1.634 -1.574,1.861c-0.536,0.147 -1.071,0.064 -1.531,-0.207c0.216,1.058 -0.19,1.975 -0.982,2.358c-0.231,0.112 -0.472,0.166 -0.713,0.167c0.279,0.813 0.018,1.593 -0.629,2.005c-0.782,0.497 -1.817,0.267 -2.441,-0.715c-0.623,-0.98 -0.6,-2.343 0.182,-2.84z"
-                      fill="#ffba57"></path>
-                    <path
-                      d="M11.997,42.897c0.037,0.106 0.052,0.187 0.056,0.257c-0.475,-0.94 -0.795,-2.063 -1.112,-3.298c-0.736,-2.862 -3.118,-9.61 -4.951,-13.432c0.618,0.686 4.699,4.541 5.489,8.125c0.863,3.922 -0.346,5.883 0.518,8.348z"
-                      fill="#f9a825"></path>
-                    <path
-                      d="M15.799,24.13c2.565,-1.154 3.807,-2.497 4.406,-3.462c-0.266,0.729 -0.625,1.527 -1.142,2.513c-2.019,3.854 -0.283,9.237 2.153,13.184c-5.403,-3.286 -8.8,-10.714 -5.417,-12.235z"
-                      fill="#f9a825"></path>
-                  </g>
-                </g>
-              </g>
-            </svg>
-          </div>
-          <!-- end icon 1 -->
+      <div class="row mt-2 col-12 col-md-12 mx-0 d-flex justify-content-start align-items-start block__infos">
 
-          <!-- icon 2 -->
-          <div class="p-0 d-flex col-6 col-md-6 align-items-center justify-content-center">
-            <svg class="mr-1" version="1.1" xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px" viewBox="0,0,256,256">
-              <g fill="rgb(226 200 120)" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                style="mix-blend-mode: normal">
-                <g transform="scale(4,4)">
-                  <path
-                    d="M31.76953,5.00391c-0.42079,0.00421 -0.84398,0.01881 -1.26758,0.04297l1.16992,6.94922c9.739,-0.174 18.38778,6.78973 20.05078,16.67773c0.022,0.133 0.03374,0.26348 0.05273,0.39648l-3.77539,-0.13281l7,9.0625l7,-8.62109l-3,-0.10937c-0.06,-0.58 -0.27505,-1.164 -0.37305,-1.75c-2.24072,-13.2835 -13.81284,-22.64615 -26.85742,-22.51562zM24.58398,6.04102c-7.732,2.195 -13.86027,7.65961 -17.07227,14.59961l6.58008,2.46094c2.325,-4.681 6.46506,-8.40238 11.66406,-10.10937zM32,17.52539l-8,7.69141v18.7793h16v-18.98828zM32,23.99609c1.105,0 2,0.895 2,2c0,1.105 -0.895,2 -2,2c-1.105,0 -2,-0.895 -2,-2c0,-1.105 0.895,-2 2,-2zM10,26l-8,8.62109l3.14453,0.10938c0.06,0.58 0.12952,1.164 0.22852,1.75c2.313,13.712 14.56805,23.24666 28.12305,22.47266l-1.16992,-6.95117c-9.739,0.174 -18.38583,-6.78973 -20.04883,-16.67773c-0.022,-0.133 -0.03374,-0.26349 -0.05274,-0.39648l4.77539,0.13477zM27,39h2v2h-2zM31,39h2v2h-2zM35,39h2v2h-2zM49.90625,40.89844c-2.325,4.681 -6.46311,8.40138 -11.66211,10.10937l1.16992,6.95117c7.733,-2.195 13.86027,-7.65961 17.07227,-14.59961z">
-                  </path>
-                </g>
-              </g>
-            </svg>
-            <div class=" bold__text mr-2">
-              {{ player?.date_naiss ? getAge(player?.date_naiss) : dataSource["Informations personnelles"]["Âge"]}} ans
+        <div class="col-12 col-md-3 row mx-0 px-0">
+          <div class="col-4">
+            <div class="d-flex p-0 m-0  align-items-center justify-content-center">
+              <span>
+                <img class="m-0 pied-img"
+                  [src]="['gaucher','ambidextre' ].includes(dataSource?.player?.pied) ? 'assets/icons/left_on.png' : 'assets/icons/left_off.png'" />
+              </span>
+              <span>
+                <img class="m-0 pied-img"
+                  [src]="['droitier','ambidextre' ].includes(dataSource?.player?.pied) ? 'assets/icons/right_on.png' : 'assets/icons/right_off.png'" />
+              </span>
             </div>
           </div>
-          <!-- end icon 2 -->
-        </div>
-
-        <div class="d-flex col-12 col-md-6 row mx-0 align-items-center py-2 justify-content-center">
-          <!-- icon 3 -->
-          <div class="p-0 d-flex col-6 col-md-6 align-items-center justify-content-center">
-            <i class="fas fa-weight-hanging i-color mr-1"></i>
-            <div class="bold__text mr-2">
-              {{
-              +player?.weight > 0 ? player?.weight+" KG" :
-              (+dataSource["Informations personnelles"]["Poids"] > 0 ?
-              dataSource["Informations personnelles"]["Poids"]+" KG" :
-              dataSource["Informations personnelles"]["Poids"])
-              }}
-            </div>
-          </div>
-          <!-- end icon 3 -->
-          <!-- icon 4 -->
-          <div class="p-0 d-flex col-6 col-md-6 justify-content-center align-items-center ">
-            <svg class="i-color mr-1" version="1.1" xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px" viewBox="0,0,256,256">
-              <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                style="mix-blend-mode: normal">
-                <g transform="scale(3.2,3.2)">
-                  <path transform="translate(-16.56854,40.00099) rotate(-45.001)"
-                    d="M-3.341,27.772h86.681v24.456h-86.681z" fill="#f5ce85"></path>
-                  <path
-                    d="M62,1.414l16.586,16.586l-60.586,60.586l-16.586,-16.586l60.586,-60.586M62,0l-62,62l18,18l62,-62l-18,-18z"
-                    fill="#967a44"></path>
-                  <g fill="#704e34">
+          <div class="col-8">
+            <div class=" p-0 m-0  d-flex  align-items-center justify-content-center">
+              <svg class="mr-1" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px" viewBox="0,0,256,256">
+                <g fill="rgb(226 200 120)" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                  stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                  font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                  style="mix-blend-mode: normal">
+                  <g transform="scale(4,4)">
                     <path
-                      d="M61.147,13.854c0.194,0.194 0.513,0.194 0.707,0c0.194,-0.194 0.194,-0.513 0,-0.707l-6.501,-6.501l-0.707,0.707zM49.147,25.854c0.194,0.194 0.513,0.194 0.707,0c0.194,-0.194 0.194,-0.513 0,-0.707l-6.501,-6.501l-0.707,0.707zM37.147,37.854c0.194,0.194 0.513,0.194 0.707,0c0.194,-0.194 0.194,-0.513 0,-0.707l-6.501,-6.501l-0.707,0.707zM25.147,49.854c0.194,0.194 0.513,0.194 0.707,0c0.194,-0.194 0.194,-0.513 0,-0.707l-6.501,-6.501l-0.707,0.707zM13.147,61.854c0.194,0.194 0.513,0.194 0.707,0c0.194,-0.194 0.194,-0.513 0,-0.707l-6.501,-6.501l-0.707,0.707zM16.854,52.147l-3.501,-3.501l-0.707,0.707l3.501,3.501c0.194,0.194 0.513,0.194 0.707,0c0.195,-0.194 0.195,-0.512 0,-0.707zM28.147,40.854c0.194,0.194 0.513,0.194 0.707,0c0.194,-0.194 0.194,-0.513 0,-0.707l-3.501,-3.501l-0.707,0.707zM40.147,28.854c0.194,0.194 0.513,0.194 0.707,0c0.194,-0.194 0.194,-0.513 0,-0.707l-3.501,-3.501l-0.707,0.707zM52.147,16.854c0.194,0.194 0.513,0.194 0.707,0c0.194,-0.194 0.194,-0.513 0,-0.707l-3.501,-3.501l-0.707,0.707z">
+                      d="M31.76953,5.00391c-0.42079,0.00421 -0.84398,0.01881 -1.26758,0.04297l1.16992,6.94922c9.739,-0.174 18.38778,6.78973 20.05078,16.67773c0.022,0.133 0.03374,0.26348 0.05273,0.39648l-3.77539,-0.13281l7,9.0625l7,-8.62109l-3,-0.10937c-0.06,-0.58 -0.27505,-1.164 -0.37305,-1.75c-2.24072,-13.2835 -13.81284,-22.64615 -26.85742,-22.51562zM24.58398,6.04102c-7.732,2.195 -13.86027,7.65961 -17.07227,14.59961l6.58008,2.46094c2.325,-4.681 6.46506,-8.40238 11.66406,-10.10937zM32,17.52539l-8,7.69141v18.7793h16v-18.98828zM32,23.99609c1.105,0 2,0.895 2,2c0,1.105 -0.895,2 -2,2c-1.105,0 -2,-0.895 -2,-2c0,-1.105 0.895,-2 2,-2zM10,26l-8,8.62109l3.14453,0.10938c0.06,0.58 0.12952,1.164 0.22852,1.75c2.313,13.712 14.56805,23.24666 28.12305,22.47266l-1.16992,-6.95117c-9.739,0.174 -18.38583,-6.78973 -20.04883,-16.67773c-0.022,-0.133 -0.03374,-0.26349 -0.05274,-0.39648l4.77539,0.13477zM27,39h2v2h-2zM31,39h2v2h-2zM35,39h2v2h-2zM49.90625,40.89844c-2.325,4.681 -6.46311,8.40138 -11.66211,10.10937l1.16992,6.95117c7.733,-2.195 13.86027,-7.65961 17.07227,-14.59961z">
                     </path>
                   </g>
                 </g>
-              </g>
-            </svg>
-            <div class="bold__text mr-2">
-              {{
-              +player?.height > 0 ? player?.height+" CM" :
-              (+dataSource["Informations personnelles"]["Taille"] > 0 ?
-              dataSource["Informations personnelles"]["Taille"]+" CM" :
-              dataSource["Informations personnelles"]["Taille"])
-              }}
-            </div>
-          </div>
-          <!-- end icon 4 -->
-
-        </div>
-        <div class="d-flex col-12 col-md-2 row mx-0 align-items-center justify-content-center">
-          <!-- icon 5 -->
-          <div class=" box3 d-flex col-6 col-md-2 justify-content-center align-items-center ">
-            <i class="fas fa-history i-color mr-1"></i>
-            <div class="p-0 d-flex justify-content-center align-items-center mr-2">
-              <div class="bold__text">{{dataSource["Informations personnelles"]["Minutes jouées"]}}<small>Min</small>
+              </svg>
+              <div class=" bold__text mr-2">
+                {{ dataSource?.player?.age }} ans
               </div>
             </div>
           </div>
-          <!-- end icon 5 -->
-          <!-- icon 6 -->
-          <div class=" align-items-center justify-content-center">
-          </div>
-          <!-- end icon 6 -->
         </div>
+        <div class="col-12 col-md-4 row mx-0 px-0">
+          <div class="col-6">
+            <div class="p-0 m-0 d-flex  align-items-center justify-content-center">
+              <i class="fas fa-weight-hanging i-color mr-1"></i>
+              <div class="bold__text mr-2">
+                {{
+                dataSource?.physique?.weight
+                }}
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="p-0 m-0 d-flex  justify-content-center align-items-center ">
+              <svg class="i-color mr-1" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px" viewBox="0,0,256,256">
+                <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                  stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                  font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                  style="mix-blend-mode: normal">
+                  <g transform="scale(3.2,3.2)">
+                    <path transform="translate(-16.56854,40.00099) rotate(-45.001)"
+                      d="M-3.341,27.772h86.681v24.456h-86.681z" fill="#f5ce85"></path>
+                    <path
+                      d="M62,1.414l16.586,16.586l-60.586,60.586l-16.586,-16.586l60.586,-60.586M62,0l-62,62l18,18l62,-62l-18,-18z"
+                      fill="#967a44"></path>
+                    <g fill="#704e34">
+                      <path
+                        d="M61.147,13.854c0.194,0.194 0.513,0.194 0.707,0c0.194,-0.194 0.194,-0.513 0,-0.707l-6.501,-6.501l-0.707,0.707zM49.147,25.854c0.194,0.194 0.513,0.194 0.707,0c0.194,-0.194 0.194,-0.513 0,-0.707l-6.501,-6.501l-0.707,0.707zM37.147,37.854c0.194,0.194 0.513,0.194 0.707,0c0.194,-0.194 0.194,-0.513 0,-0.707l-6.501,-6.501l-0.707,0.707zM25.147,49.854c0.194,0.194 0.513,0.194 0.707,0c0.194,-0.194 0.194,-0.513 0,-0.707l-6.501,-6.501l-0.707,0.707zM13.147,61.854c0.194,0.194 0.513,0.194 0.707,0c0.194,-0.194 0.194,-0.513 0,-0.707l-6.501,-6.501l-0.707,0.707zM16.854,52.147l-3.501,-3.501l-0.707,0.707l3.501,3.501c0.194,0.194 0.513,0.194 0.707,0c0.195,-0.194 0.195,-0.512 0,-0.707zM28.147,40.854c0.194,0.194 0.513,0.194 0.707,0c0.194,-0.194 0.194,-0.513 0,-0.707l-3.501,-3.501l-0.707,0.707zM40.147,28.854c0.194,0.194 0.513,0.194 0.707,0c0.194,-0.194 0.194,-0.513 0,-0.707l-3.501,-3.501l-0.707,0.707zM52.147,16.854c0.194,0.194 0.513,0.194 0.707,0c0.194,-0.194 0.194,-0.513 0,-0.707l-3.501,-3.501l-0.707,0.707z">
+                      </path>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+              <div class="bold__text mr-2">
+                {{
+
+                dataSource?.physique?.height
+                }}
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="col-12 col-md-3 row mx-0 px-0">
+          <div class="col-6">
+            <div class="d-flex  justify-content-center align-items-center ">
+              <i class="fas fa-history i-color mr-1"></i>
+              <div class="p-0 d-flex justify-content-center align-items-center mr-2">
+                <div class="bold__text">{{dataSource?.TimingOfMatchsPlayed }}<small class="ml-1">Min</small>
+                </div>
+                <div class="mx-1">/</div>
+                <div class="bold__text">{{ dataSource?.TimingOfMatchs }}<small class="ml-1">Min</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="d-flex  _club justify-content-center align-items-center">
+              <div class="ml-1 bold__text ">
+                <i class="far fa-futbol i-color mr-2"></i>
+                {{ dataSource?.NbrGoals }}
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
-    <!-- end info-block -->
   </div>
-  <!--end player -->
 
-  <!-- infivuedialle-palyer  -->
   <div class="infivuedialle-palyer row col-12 col-md-12 pb-0 d-flex justify-content-center align-items-center ">
     <div class="block_title p-0 col-12 row mx-0">
       <div class="col-12 col-md-3 py-2 label_0" routerLinkActive="active" routerLink="player-resume" type="button">

@@ -15,19 +15,42 @@
   margin: 10px 0;
 }
 
+.equipe_logo {
+  width: 20px;
+}
+
+.catagory-age {
+  text-transform: capitalize;
+}
+
 .th-head {
-  font-size: 13px;
+  font-size: 1rem;
   font-weight: bold;
   color: #000;
   border-bottom: 2px solid;
   font-family: "Century Gothic Bold";
 }
 
-.equipe__logo {
+.return_data {
+  background: var(--primary-color);
+  color: white;
+  border-bottom: 2px solid var(--secondary-color);
+  margin-top: 2px;
+}
+
+.equipe__logo,
+.player__logo {
   border-radius: 50%;
   overflow: hidden;
-  width: 38px;
+  width: 28px;
   margin-right: 20px;
+}
+
+.player__logo {
+  width: 38px;
+  height: 38px;
+  border: 1px solid white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 .tr-rows td {
@@ -127,6 +150,7 @@
   .th-head {
     font-size: 1rem;
     border-bottom: 1px solid;
+
   }
 
   .table-container {
@@ -161,4 +185,83 @@
   .form--field {
     font-size: .8rem;
   }
+}
+
+.sexe_f {
+  color: rgb(248 99 250);
+  font-size: 1.2rem;
+}
+
+.sexe_m {
+  color: rgb(99, 182, 250);
+  font-size: 1.2rem;
+}
+
+
+.button_edit {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: rgb(44, 44, 44); */
+  border-radius: 10px;
+  cursor: pointer;
+  transition-duration: .3s;
+  /* box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.13); */
+  border: none;
+}
+
+.bell {
+  width: 18px;
+}
+
+.bell path {
+  fill: var(--secondary-color);
+}
+
+.button_edit:hover {
+  background-color: #000;
+}
+
+.button_edit:hover .bell {
+  animation: bellRing 0.9s both;
+}
+
+.button_edit:hover .bell path {
+  fill: #fff;
+}
+
+/* bell ringing animation keyframes*/
+@keyframes bellRing {
+
+  0%,
+  100% {
+    transform-origin: top;
+  }
+
+  15% {
+    transform: rotateZ(10deg);
+  }
+
+  30% {
+    transform: rotateZ(-10deg);
+  }
+
+  45% {
+    transform: rotateZ(5deg);
+  }
+
+  60% {
+    transform: rotateZ(-5deg);
+  }
+
+  75% {
+    transform: rotateZ(2deg);
+  }
+}
+
+.button_edit:active {
+  transform: scale(0.8);
 }

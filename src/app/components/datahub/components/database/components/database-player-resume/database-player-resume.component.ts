@@ -3,102 +3,29 @@ import { Component, OnInit } from '@angular/core';
 import * as echarts from "echarts";
 import { DatabaseService } from '../../service/database.service';
 import { ActivatedRoute } from '@angular/router';
-import { PlayerService } from 'src/app/services/player.service';
 import { CharedService } from 'src/app/services/chared.service';
 import { Subscription } from 'rxjs';
+import { authService } from 'src/app/components/auth/service/auth.service';
+import { User } from 'src/app/shared/interface/user.model';
 @Component({
   selector: 'app-database-player-resume',
   templateUrl: './database-player-resume.component.html',
   styleUrls: ['./database-player-resume.component.css']
 })
 export class DatabasePlayerResumeComponent implements OnInit {
-
+  DUREE: number = 0;
   isLoading: boolean = true;
   URL: string = "https://interface.myteambyfrmf.ma/uploads/datahub/";
   COLORS: string[] = ["#0357A0", "#007934", "#E55C00"];
-  datapresence = [];
-  injuriesType = [];
-  leftSideInjuries = [];
-  rightSideInjuries = [];
-  dataPlayer = [
-    {
-        "minutes_played": {
-          "label": "Minutes jou\u00e9es",
-          "player_value": 288,
-          "league_value": 515.2
-        },
-        "xG": {
-          "label": "xG",
-          "player_value": 0.0,
-          "league_value": 0.0
-        },
-        "Tirs": {
-          "label": "Tirs",
-          "player_value": 0.0,
-          "league_value": 0.30000000000000004
-        },
-        "qualite_tir": {
-          "label": "xG/Tir",
-          "player_value": 0.0,
-          "league_value": 0.1
-        },
-        "touches_surface": {
-          "label": "Touches dans la surface",
-          "player_value": 0.0,
-          "league_value": 0.5
-        },
-        "dribbles": {
-          "label": "Dribbles",
-          "player_value": 0.63,
-          "league_value": 0.4
-        },
-        "dribbles_reussis": {
-          "label": "Dribbles gagn\u00e9s",
-          "player_value": 100.0,
-          "league_value": 52.4
-        },
-        "actions_def": {
-          "label": "Actions D\u00e9fensives",
-          "player_value": 11.88,
-          "league_value": 8.1
-        },
-        "aerial_duels": {
-          "label": "Duels A\u00e9riens",
-          "player_value": 1.88,
-          "league_value": 2.4
-        },
-        "interceptions": {
-          "label": "Interceptions",
-          "player_value": 5.63,
-          "league_value": 4.5
-        },
-        "passes_prog": {
-          "label": "Passes Prog",
-          "player_value": 10.0,
-          "league_value": 7.3
-        },
-        "passes_surface": {
-          "label": "Passes vers la surface",
-          "player_value": 0.31,
-          "league_value": 0.5
-        },
-        "passes": {
-          "label": "Passes",
-          "player_value": 61.25,
-          "league_value": 38.5
-        },
-        "passes_precision": {
-          "label": "Passes pr\u00e9cises, %",
-          "player_value": 89.29,
-          "league_value": 83.3
-        }
-    }
-]
+  datapresence = []
   chart: any = {
     title: null,
     legend: [],
   };
-  CHART_TYPES: any[] = [];
+  CHART_TYPES: any[] = [
+    { label: 'Joueur', color: '#314E82' },
+    { label: 'Moy. Botola', color: '#E5753C' },
+  ];
   countPresence = {
     présent: 0,
     absent: 0,
@@ -109,43 +36,156 @@ export class DatabasePlayerResumeComponent implements OnInit {
     exempté: 0,
     adapté: 0,
   };
-  trainingSub: Subscription;
+  playerTiming: any;
   type_chart: string = 'pie';
   ID: number = null;
   PLAYER_ID: number = null;
   dataSource: any = {
+    blessures: [],
     injuries: [],
     one: []
   };
+
+  MannequinBack: string[] = ['tete', 'cou', 'dos', 'bas_du_dos', 'fessier', 'éqaule_gauche_derrière', 'éqaule_droite_derrière', 'biceps_gauche', 'biceps_droite', 'coude_gauche_derrière', 'coude_droite_derrière', 'avant-bras_gauche', 'avant-bras_droite', 'poignet_gauche', 'poignet_droite', 'dos_de_la_main_gauche', 'dos_de_la_main_droite', 'cuisse_gauche_derrière', 'cuisse_droite_derrière', 'arrière_du_genou_gauche', 'arrière_du_genou_droite', 'mollet_gauche', 'mollet_droite', 'cheville_gauche', 'cheville_droite', 'calcanéum_gauche', 'calcanéum_droite', 'pied_gauche', 'pied_droite'];
+
+  selectedTabIndex = 0;
+  muscleInjury = [
+    'déchirure',
+    'contusion',
+    'elongation'
+  ];
+  tendonInjury = [
+    'désinsertion partielle',
+    'désinsertion totale',
+    'rupture partielle',
+    'rupture totale'
+  ];
+  articularInjury = [
+    'entorse',
+    'fissure',
+    'fracture',
+    'fracture de fatigue',
+    'luxation',
+    'Œdème'
+  ];
+  contusionInjury = [
+    'plaie'
+  ];
+  otherInjury = [
+    'abces',
+    'algie dentaire',
+    'adénopathie',
+    'angine',
+    'appendicite aigue',
+    'arthrite',
+    'autre',
+    'bronchite',
+    'bursite',
+    'calcification',
+    'carie dentaire',
+    'céphalées',
+    'chondropathie aigue',
+    'chondropathie dégénérative',
+    'colique hépatique',
+    'colique néphrétique',
+    'collection ou épanchement liquide',
+    'commotion cérébrale',
+    'conjonctivite',
+    'corps étranger',
+    'crise d\'epilepsie',
+    'crise de spasmophilie',
+    'dégénérescence',
+    'distension ligamentaire',
+    'douleur',
+    'douleur abdominale sans précision',
+    'epigastralgie',
+    'etirement',
+    'gastro-entérite aigue',
+    'hématome',
+    'hernie',
+    'infection',
+    'infection urinaire',
+    'infection virale',
+    'inflammation',
+    'instabilité',
+    'intoxication alimentaire',
+    'intoxication médicamenteuse',
+    'lésion',
+    'maladie de croissance',
+    'maladie sexuellement transmissible',
+    'malaise',
+    'migraines',
+    'ostéo-arthrite',
+    'otite',
+    'pneumopathie',
+    'pseudo-inflammation',
+    'pubalgie',
+    'rhinite',
+    'rhinite Allergique',
+    'rhinopharyngite',
+    'rupture ligamentaire',
+    'syndrome carrefour postérieur',
+    'syndrome dépressif',
+    'ténosynovite',
+    'tensions',
+    'tuméfaction',
+    'tumeur',
+    'ulcère gastrique ou gastrite',
+    'urticaire'
+  ];
+  turn = 0;
+  rightSideInjuries = [];
+  injuriesSub: Subscription;
+  muscleInjuriesCount = [];
+  tendonInjuriesCount = [];
+  articularInjuriesCount = [];
+  contusionInjuriesCount = [];
+  otherInjuriesCount = [];
+  showedInjuries = [];
+  injuriesType = [];
+  leftSideInjuries = [];
+  totalUnavailability = 0;
+  noUnavailability = 0;
+  lessThanWeekUnavailability = 0;
+  moreThanWeekUnavailability = 0;
+  gravityInjuriesCount = [
+    [], [], [], [], [], []
+  ];
+  locationFilter = '';
+  typeFilter = '';
+  class_chart = 'col-md-8';
+  injuries: any = [];
   constructor(
-    private playerService: PlayerService,
     private rankingService: DatabaseService,
+    public authService: authService,
     public charedService: CharedService,
     private route: ActivatedRoute
   ) { }
-  ngOnDestroy(): void {
-    this.trainingSub.unsubscribe();
-  }
+
+  user: User;
   ngOnInit() {
     this.PLAYER_ID = this.route.snapshot.parent?.params.player_id;
     this.ID = this.route.snapshot.parent?.params.id;
     this.actions("GET");
-    this.playerService.getInjuries(this.PLAYER_ID);
-    this.playerService.getUpdatedInjuriesListner().subscribe(
+    this.authService.getUpdatedUser()
+      .subscribe(
+        (result: User) => {
+          this.user = result;
+        })
+    this.authService.getUser();
+    this.rankingService.getInjuries(this.PLAYER_ID).subscribe(
       (RES: any) => {
         this.dataSource = { ... this.dataSource, injuries: RES };
-        this.injuriesType = [];
-        this.leftSideInjuries = [];
-        this.rightSideInjuries = [];
       })
-    this.playerService.getGpsPlayer(this.PLAYER_ID).subscribe(
+    this.rankingService.getGpsPlayer(this.PLAYER_ID).subscribe(
       (RES: any) => {
-        this.actions('CREATE_CHART_BAR2', RES.duration);
-      });
+        this.class_chart = RES.duration.data.length > 12 ? 'col-md-12' : 'col-md-8';
+        setTimeout(() => {
+          this.actions('CREATE_CHART_BAR2', RES.duration);
+        }, 50);
+      })
 
-    
-
-    this.trainingSub = this.playerService.getUpdatedTrainingsDatabaseListner().subscribe(
+    this.rankingService.getTrainingsDatabase(this.PLAYER_ID).subscribe(
       (result: any) => {
         Object.keys(this.countPresence).forEach(key => {
           this.countPresence[key] = 0;
@@ -160,15 +200,14 @@ export class DatabasePlayerResumeComponent implements OnInit {
         this.datapresence = this.datapresence.filter(({ value }) => value > 0);
         // const myChart = echarts.init(chartDiv);
         const option = {
-          title: [
-            {
-              text: "Rapport de présence",
-              top: 0,
-              left: "center",
-              show: true,
-            }
-          ],
-
+          // title: [
+          //   {
+          //     text: `<h1>Analyse de la Présence</h1>`,
+          //     top: 0,
+          //     left: "center",
+          //     show: true,
+          //   }
+          // ],
           label: {
             show: true,
             // position:'inside',
@@ -222,104 +261,202 @@ export class DatabasePlayerResumeComponent implements OnInit {
       }
     );
 
-    this.playerService.getTrainingsDatabase(this.PLAYER_ID);
+
+
+    this.rankingService.getInjuries(this.PLAYER_ID).subscribe(
+      (RES: any) => {
+        this.injuries = [];
+        this.muscleInjuriesCount = [];
+        this.tendonInjuriesCount = [];
+        this.articularInjuriesCount = [];
+        this.contusionInjuriesCount = [];
+        this.otherInjuriesCount = [];
+        this.gravityInjuriesCount = [
+          [], [], [], [], [], []
+        ];
+        this.showedInjuries = [];
+        this.injuriesType = [];
+        this.leftSideInjuries = [];
+        this.totalUnavailability = 0;
+        this.noUnavailability = 0;
+        this.lessThanWeekUnavailability = 0;
+        this.moreThanWeekUnavailability = 0;
+        this.rightSideInjuries = [];
+        this.locationFilter = '';
+        this.typeFilter = '';
+        this.injuries = RES;
+        for (let i = 0; i < this.injuries.length; i++) {
+          this.injuries[i].moyen_recuperation = this.injuries[i]?.moyen_recuperation ? ("" + this.injuries[i]?.moyen_recuperation).split(',') : [];
+          this.totalUnavailability += +this.injuries[i].date_retour_prevue * (+this.injuries[i].durre_injury || 1);
+          const key = this.injuries[i].localisation;
+          if (this.injuriesType[key] === undefined) {
+            if (this.turn == 0) {
+              this.leftSideInjuries[key] = 1;
+              this.turn = 1;
+            } else {
+              this.rightSideInjuries[key] = 1;
+              this.turn = 0;
+            }
+            this.injuriesType[key] = 1;
+          } else {
+            if (this.leftSideInjuries[key] !== undefined) {
+              this.leftSideInjuries[key] += 1;
+            } else {
+              this.rightSideInjuries[key] += 1;
+            }
+            this.injuriesType[key] += 1;
+          }
+          if (this.injuries[i].gravity != '' && this.injuries[i].gravity != null) {
+            this.gravityInjuriesCount[this.injuries[i].gravity].push(this.injuries[i].type_blessure);
+          } else {
+            this.gravityInjuriesCount[0].push(this.injuries[i].type_blessure);
+          }
+          if (this.muscleInjury.includes(this.injuries[i].type_blessure)) {
+            this.muscleInjuriesCount.push(this.injuries[i].type_blessure);
+          }
+          if (this.tendonInjury.includes(this.injuries[i].type_blessure)) {
+            this.tendonInjuriesCount.push(this.injuries[i].type_blessure);
+          }
+          if (this.articularInjury.includes(this.injuries[i].type_blessure)) {
+            this.articularInjuriesCount.push(this.injuries[i].type_blessure);
+          }
+          if (this.contusionInjury.includes(this.injuries[i].type_blessure)) {
+            this.contusionInjuriesCount.push(this.injuries[i].type_blessure);
+          }
+          if (this.otherInjury.includes(this.injuries[i].type_blessure)) {
+            this.otherInjuriesCount.push(this.injuries[i].type_blessure);
+          }
+        }
+        this.showedInjuries = [...this.injuries];
+        this.showedInjuries.forEach((item, index) => {
+          if (item.traitement_nom != (null || undefined)) {
+
+            if (item.traitement_nom.toLowerCase().indexOf(this.user?.nom.toLowerCase()) != -1) {
+              item.edit_traitement = true;
+            } else {
+              item.edit_traitement = false;
+            }
+          }
+
+        });
+      }
+    );
+
+    this.rankingService.PlayerDureeTraining(this.PLAYER_ID).subscribe(
+      (res: any) => {
+        this.DUREE = res?.duree ?? 0;
+      },
+      (error: HttpErrorResponse) => { }
+    )
+
+    this.rankingService.getPlayerTiming(this.PLAYER_ID).subscribe(
+      (result: any) => {
+        this.playerTiming = {
+          titulaire: result[0]?.titulaire ?? 0,
+          no_titulaire: result[0]?.no_titulaire ?? 0,
+          count: result[0]?.match_total ?? 0,
+          minutes: result[0]?.minutes ?? 0
+        };
+      }
+    );
   }
-
-  displayedColumns: string[] = ['minite', 'buts', 'xg', 'assits'];
-
-  
 
   actions(CASE: string, RES: any = null) {
     switch (CASE) {
-      case 'TYPE_CHART':
-        this.type_chart = RES;
-        const graphs = this.dataSource.one?.graphs.find(e => e.type === RES);
-        setTimeout(() => {
-          this.actions("CREATE_CHART_RADAR", graphs);
-        }, 100);
-        break
       case "CREATE_CHART_RADAR":
-        const myChart1 = echarts.init(document.getElementById("radar-percentiles-" + this.type_chart));
-        let data = RES;
-        const allLabelsAndValues = Object.keys(data.option).reduce((result, category) => {
-          const color = data.option[category].color;
-          this.CHART_TYPES.push({ label: category, color });
-          const categoryData = data.option[category].data.map(item => ({ color, name: item.name, value: item.value }));
-          return result.concat(categoryData);
-        }, []);
-        var option = {
-          angleAxis: {
-            type: "category",
-            // data: allLabelsAndValues?.map(({ value, name }) => {
-            //   const _name = name.split('').reduce((acc, char, index) => {
-            //     if (index % 17 === 0) {
-            //       acc.push(name.substr(index, 17));
-            //     }
-            //     return acc;
-            //   }, []).join('\n')
-            //   return `${_name} \n ( ${value} )`
-            // }) ?? [],
-            //  data : this.dataPlayer.forEach(player => {
-            //    Object.keys(player).forEach(key => {
-            //     const label = player[key].label;
-            //          console.log('====================================');
-            //          console.log(label);
-            //          console.log('====================================');
-            // });
-            // }),
-            data : ['Xg', 'Tirs', 'qualite_tir',
-            'touches_surface', 'dribbles', 'dribbles_reussis',
-            'actions_def', 'aerial_duels','interceptions','passes_prog',
-            'passes_surface','passes','passes_precision'],
-            axisLabel: {
-              fontSize: 13,
-              fontWeight: "bold",
-              align: "center",
-            },
+        const myChart1 = echarts.init(
+          document.getElementById("radar-percentiles-" + this.type_chart)
+        );
+        let allLabelsAndValues = this.dataSource?.one?.recent_performance.map((e: any) => {
+          return [e, ...(e?.children.length > 0 ? e?.children : [])];
+        }).flat();
+        allLabelsAndValues = allLabelsAndValues?.filter(({ label }) => {
+          return ![
+            "Touches de balle dans la surface de réparation", "Actions défensives réussies par 90", "Duels aériens gagnés", "Passes progressives", "Passes vers la surface de réparation"
+          ].includes(label)
+        });
+        const option = {
+          legend: {
+            data: ["Joueur", "Moy. Poste", "Moy. Botola"],
+            bottom: "0%",
+            left: "center",
           },
-          radiusAxis: {
-            max: 100,
-            min: 0,
+          tooltip: {
+            position: 'top',
           },
-          polar: {},
+          radar: {
+            indicator: allLabelsAndValues?.map(({ player_value, league_value, position_value, label }) => {
+              return { name: `${label} \n ( ${player_value} |  ${league_value}  |  ${position_value} )`, color: '#000' }
+            }) ?? [],
+          },
           series: [
             {
-              type: "bar",
-              data: allLabelsAndValues?.map(({ value }) => value) ?? [],
-            //  data : this.dataPlayer.forEach(player => {
-            //    Object.keys(player).forEach(key => {
-            //     const value = player[key].player_value;
-            //          console.log('====================================');
-            //          console.log(value);
-            //          console.log('====================================');
-            // });
-            // }),
-              coordinateSystem: "polar",
-              name: "A",
-              stack: "a",
-              emphasis: {
-                focus: "series",
-              },
-              itemStyle: {
-                color: function (params) {
-                  return allLabelsAndValues?.map(({ color }) => color)[params.dataIndex % allLabelsAndValues?.map(({ color }) => color).length] ?? [];
+              type: "radar",
+              areaStyle: {},
+              data: [
+                {
+                  value: allLabelsAndValues?.map(({ player_value }) => +player_value) ?? [],
+                  name: "Joueur",
+                  itemStyle: {
+                    color: "#BB1A2F",
+                    emphasis: {
+                      label: {
+                        color: "#000",
+                        formatter: function (params) {
+                          return `${params.value}`;
+                        },
+                      },
+                    },
+                  },
                 },
-                barBorderRadius: [30, 0, 10, 10],
-              },
+                {
+                  value: allLabelsAndValues?.map(({ league_value }) => +league_value) ?? [],
+                  name: "Moy. Poste",
+                  itemStyle: {
+                    color: "#0E709A",
+                    emphasis: {
+                      label: {
+                        color: "#000",
+                        formatter: function (params) {
+                          return `${params.value}`;
+                        },
+                      },
+                    },
+                  },
+                },
+                {
+                  value: allLabelsAndValues?.map(({ position_value }) => +position_value) ?? [],
+                  name: "Moy. Botola",
+                  itemStyle: {
+                    color: "#00CD66",
+                    emphasis: {
+                      label: {
+                        color: "#000",
+                        formatter: function (params) {
+                          return `${params.value}`;
+                        },
+                      },
+                    },
+                  },
+                },
+              ],
             },
           ],
         };
-
         myChart1.setOption(option);
 
         break;
       case 'CREATE_CHART_BAR2':
         const myChart2 = echarts.init(document.getElementById('chart-temps'));
+        const DATA = RES.data.map(e => Object({ label: e.adversaire, value: this.charedService.timeStringToFloat(e.value) }));
         const option2 = {
           title: [
             {
               left: 'center',
               text: RES.name || 'Temps de Jeu',
+              textStyle: {
+                fontSize: 14, // You can adjust the font size as needed
+              }
             },
           ],
           tooltip: {
@@ -335,7 +472,7 @@ export class DatabasePlayerResumeComponent implements OnInit {
             {
               type: 'category',
               axisLabel: { interval: 0, rotate: 30 },
-              data: RES.data.map(e => e.adversaire),
+              data: DATA.map(e => e.label),
               axisPointer: {
                 type: 'shadow'
               },
@@ -353,8 +490,7 @@ export class DatabasePlayerResumeComponent implements OnInit {
           series: [
             {
               type: 'bar',
-
-              data: RES.data.map(e => this.charedService.timeStringToFloat(e.value)),
+              data: DATA.map(e => e.value),
             },
           ]
         };
@@ -368,29 +504,18 @@ export class DatabasePlayerResumeComponent implements OnInit {
       case "UPDATE_CHART":
         break;
       case "GET":
-
-
-        this.rankingService.One(this.ID, this.PLAYER_ID).subscribe(
+        this.rankingService.TabOne('player-resume', this.PLAYER_ID).subscribe(
           (RES: any) => {
             this.dataSource = { ... this.dataSource, one: RES };
             this.isLoading = false;
-            this.actions('TYPE_CHART', 'pie');
-            // this.rankingService.One(this.ID, this.PLAYER_ID).subscribe(
-            //   (RES: any) => {
-            //     this.dataSource = RES;
-            //     this.isLoading = false;
-            //     console.log("this.dataSource", this.dataSource);
-            //     this.actions('TYPE_CHART', 'pie');
-            //   },
-            //   (ERROR: HttpErrorResponse) => {
-            //     this.isLoading = false;
-            //   }
-            // )
+            setTimeout(() => {
+              this.actions('CREATE_CHART_RADAR');
+            }, 100);
           },
           (ERROR: HttpErrorResponse) => {
             this.isLoading = false;
           }
-        );
+        )
         break;
       case "DO_FILTER":
         break;

@@ -383,8 +383,6 @@ mat-tab-group {
 }
 
 .range {
-  -webkit-appearance: none;
-  -moz-appearance: none;
   display: block;
   width: 100%;
 }

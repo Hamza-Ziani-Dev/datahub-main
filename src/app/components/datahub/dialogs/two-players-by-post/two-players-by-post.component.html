@@ -1,58 +1,53 @@
-<div class="w-100 container-block btn my-2 p-0" role="button">
+<!-- role="button" -->
+<div class="w-100 container-block btn my-2 p-0">
   <div class="header-box">
     <div class="header-text position"><i class="fas fa-ticket-alt mr-2"></i>Position</div>
-    <div class="header-text milieu-offensif">{{data['Poste'].label }}</div>
+    <div class="header-text milieu-offensif">{{ data?.post_label }}</div>
   </div>
   <div class="content-box">
     <div class="profile-container row mx-0">
       <div class="profile col-12 col-md-6 ">
         <div class="profile-image-container">
           <div class="profile-image">
-            <img
-              [src]="!data['Statistiques']['Jeune Joueur'].img_src ? 'assets/images/profil-default.jpg' : URL+data['Statistiques']['Jeune Joueur'].img_src "
-              alt="" width="100%" height="100%" />
+            <img [src]="!data?.max?.img ? 'assets/images/profil-default.jpg' : data?.max?.img " alt="" width="100%"
+              height="100%" />
           </div>
           <div class="online-indicator">
-            <img
-              [src]="!data['Statistiques']['Jeune Joueur']['equipe'].logo ? 'assets/images/profil-default.jpg' : URL+data['Statistiques']['Jeune Joueur']['equipe'].logo  "
-              [alt]="data['Statistiques']['Jeune Joueur']['equipe'].name" width="100%" height="100%" />
+            <img [src]="!data?.max?.equipe?.logo ? 'assets/images/profil-default.jpg' :data?.max?.equipe?.logo  "
+              [alt]="data?.max?.equipe?.nom" width="100%" height="100%" />
           </div>
         </div>
         <div class="profile-name ">
           <!-- <div class="first-name">{{ data['Statistiques']['Jeune Joueur']['Nom'] }}</div> -->
-          <div class="ml-2 bold__text">{{ data['Statistiques']['Jeune Joueur']['Nom'] }}</div>
+          <div class="ml-2 bold__text">{{ data?.max?.prenom?.slice(0,1)+"."+data?.max?.nom | uppercase }}</div>
         </div>
         <div class="profile-name">
           <div>
-            <ng-container
-              *ngTemplateOutlet="data['Statistiques']['Jeune Joueur'].status_age == 'down' ? AGE_DOWN : AGE_UP"></ng-container>
+            <ng-container *ngTemplateOutlet="data?.max?.status_age == 'down' ? AGE_DOWN : AGE_UP"></ng-container>
           </div>
-          <div>{{ data['Statistiques']['Jeune Joueur']['Âge'] }} <small>ans</small> </div>
+          <div>{{ data?.max?.maxAge > 0 ? data?.max?.maxAge : 0 }} <small>ans</small> </div>
         </div>
       </div>
       <div class="profile col-12 col-md-6 ">
         <div class="profile-image-container">
           <div class="profile-image">
-            <img
-              [src]="!data['Statistiques']['Vétéran'].img_src ? 'assets/images/profil-default.jpg' : URL+data['Statistiques']['Vétéran'].img_src "
-              alt="" width="100%" height="100%" />
+            <img [src]="!data?.min.img ? 'assets/images/profil-default.jpg' : data?.min.img " alt="" width="100%"
+              height="100%" />
           </div>
           <div class="online-indicator">
-            <img
-              [src]="!data['Statistiques']['Vétéran']['equipe'].logo  ? 'assets/images/profil-default.jpg' : URL+data['Statistiques']['Vétéran']['equipe'].logo  "
-              [alt]="data['Statistiques']['Vétéran']['equipe'].name" width="100%" height="100%" />
+            <img [src]="!data?.min?.equipe?.logo  ? 'assets/images/profil-default.jpg' : data?.min?.equipe?.logo  "
+              [alt]="data?.min?.equipe?.name" width="100%" height="100%" />
           </div>
         </div>
         <div class="profile-name">
           <!-- <div class="first-name">Mouhsin</div> -->
-          <div class="ml-2 bold__text">{{ data['Statistiques']['Vétéran']['Nom'] }}</div>
+          <div class="ml-2 bold__text">{{ data?.min?.prenom?.slice(0,1)+"."+data?.min.nom | uppercase }}</div>
         </div>
         <div class="profile-name">
           <div>
-            <ng-container
-              *ngTemplateOutlet="data['Statistiques']['Vétéran'].status_age == 'down' ?  AGE_DOWN : AGE_UP"></ng-container>
+            <ng-container *ngTemplateOutlet="data?.min?.status_age == 'down' ?  AGE_DOWN : AGE_UP"></ng-container>
           </div>
-          <div><strong>{{ data['Statistiques']['Vétéran']['Âge'] }}</strong> <small>ans</small> </div>
+          <div><strong>{{ data?.min?.minAge > 0 ? data?.min?.minAge : 0 }}</strong> <small>ans</small> </div>
         </div>
       </div>
     </div>
@@ -63,7 +58,7 @@
         <ng-container *ngTemplateOutlet="NBR_TOTAL"></ng-container>
       </div>
       <div class="number-box number-box-1">
-        <div class="number-box-content">{{ data['Statistiques']['Nombre de Joueurs'] }}</div>
+        <div class="number-box-content">{{ data?.playerCount?.playerCount }}</div>
         <div class="total-number">Nombre Total</div>
       </div>
     </div>
@@ -74,7 +69,7 @@
         <ng-container *ngTemplateOutlet="AGE"></ng-container>
       </div>
       <div class="number-box number-box-2 ">
-        <div class="number-box-content">{{ data['Statistiques']['Âge Moyen'] }}</div>
+        <div class="number-box-content">{{data?.avg_age?.age }}</div>
         <div class="total-number">Moyen Age</div>
       </div>
     </div>

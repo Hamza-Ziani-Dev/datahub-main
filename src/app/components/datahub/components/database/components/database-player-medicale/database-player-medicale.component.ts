@@ -3,7 +3,6 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import * as echarts from 'echarts';
 import { DatabaseService } from '../../service/database.service';
 import { ActivatedRoute } from '@angular/router';
-import { PlayerService } from 'src/app/services/player.service';
 import { CharedService } from 'src/app/services/chared.service';
 import { Subscription } from 'rxjs';
 import { User } from 'src/app/shared/interface/user.model';
@@ -29,6 +28,7 @@ export class DatabasePlayerMedicaleComponent implements OnInit {
     'gravityChart': null,
     'typeInjuryChart': null
   };
+
   MannequinBack: string[] = ['tete', 'cou', 'dos', 'bas_du_dos', 'fessier', 'éqaule_gauche_derrière', 'éqaule_droite_derrière', 'biceps_gauche', 'biceps_droite', 'coude_gauche_derrière', 'coude_droite_derrière', 'avant-bras_gauche', 'avant-bras_droite', 'poignet_gauche', 'poignet_droite', 'dos_de_la_main_gauche', 'dos_de_la_main_droite', 'cuisse_gauche_derrière', 'cuisse_droite_derrière', 'arrière_du_genou_gauche', 'arrière_du_genou_droite', 'mollet_gauche', 'mollet_droite', 'cheville_gauche', 'cheville_droite', 'calcanéum_gauche', 'calcanéum_droite', 'pied_gauche', 'pied_droite'];
 
   selectedTabIndex = 0;
@@ -117,7 +117,6 @@ export class DatabasePlayerMedicaleComponent implements OnInit {
     'urticaire'
   ];
   turn = 0;
-  ID: number = null;
   PLAYER_ID: number = null;
   dataSource: any[] = [];
   rightSideInjuries = [];
@@ -142,7 +141,6 @@ export class DatabasePlayerMedicaleComponent implements OnInit {
   injuries = [];
 
   constructor(
-    private playerService: PlayerService,
     private rankingService: DatabaseService,
     private route: ActivatedRoute,
     private authService: authService,
@@ -151,7 +149,6 @@ export class DatabasePlayerMedicaleComponent implements OnInit {
   user: User;
   ngOnInit() {
     this.PLAYER_ID = this.route.snapshot.parent?.params?.player_id;
-    this.ID = this.route.snapshot.parent?.params?.id;
     this.actions('GET');
     this.authService.getUpdatedUser()
       .subscribe(
@@ -159,7 +156,7 @@ export class DatabasePlayerMedicaleComponent implements OnInit {
           this.user = result;
         })
     this.authService.getUser();
-    this.injuriesSub = this.playerService.JoueurPhysiqueChart(this.PLAYER_ID).subscribe(
+   this.rankingService.JoueurPhysiqueChart(this.PLAYER_ID).subscribe(
       (res: any) => {
         this.actions('CREATE_CHART_BIO1', res?.taille);
         this.actions('CREATE_CHART_BIO2', res?.poids);
@@ -169,8 +166,7 @@ export class DatabasePlayerMedicaleComponent implements OnInit {
       },
       (err: HttpErrorResponse) => { }
     )
-    this.playerService.getInjuries(this.PLAYER_ID);
-    this.playerService.getUpdatedInjuriesListner().subscribe(
+    this.rankingService.getInjuries(this.PLAYER_ID).subscribe(
       (RES: any) => {
         this.dataSource = RES;
         this.injuries = [];
@@ -273,11 +269,7 @@ export class DatabasePlayerMedicaleComponent implements OnInit {
 
   }
 
-  ngOnDestroy(): void {
-    //Called once, before the instance is destroyed.
-    //Add 'implements OnDestroy' to the class.
-    this.injuriesSub.unsubscribe()
-  }
+
   buildChart(canvasId, chartName, values, dates, type = 'line') {
     if (this.dataCharts[chartName] == null) {
       this.dataCharts[chartName] = new Chart(canvasId, {
@@ -484,7 +476,7 @@ export class DatabasePlayerMedicaleComponent implements OnInit {
 
         break;
       case 'GET':
-        this.rankingService.TabOne('player-medicale', this.ID, this.PLAYER_ID).subscribe(
+        this.rankingService.TabOne('player-medicale', this.PLAYER_ID).subscribe(
           (RES: any) => {
             this.isLoading[1] = false;
             this.COLORS = RES?.Option?.colors;

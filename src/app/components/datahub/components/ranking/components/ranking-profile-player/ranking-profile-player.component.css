@@ -27,6 +27,10 @@
   align-items: center;
 }
 
+.h_no_data {
+  height: 50vh;
+}
+
 .post_ {
   background-color: rgb(226 200 120);
   border-radius: 8px;
@@ -38,16 +42,10 @@
 .info-block {
   font-size: 1.1rem;
   font-weight: bold;
-  height: 50px;
-  padding-right: 0px;
-    padding-left: 0px;
+  height: 74px;
 }
 
-/* .box2{
-  background-color: red;
-  padding-right: 0px !important;
-  padding-left: 0px !important;
-} */
+
 
 .i-color {
   color: rgb(226 200 120);
@@ -75,7 +73,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   background-color: white;
 }
 

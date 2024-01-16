@@ -4,7 +4,7 @@
 
 /* player */
 .demo-player {
-  background-color: rgb(237 237 237);
+  /* background-color: rgb(237 237 237); */
   padding: 11px;
   border-radius: 23px;
   height: auto;
@@ -14,12 +14,27 @@
   font-size: 1.1rem;
 }
 
+.block__infos {
+  background: #cfcfcf66;
+  border-radius: 7px;
+  padding: 10px 20px;
+  border: 1px solid white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.pied-img {
+  filter: brightness(0.1);
+  width: 12px;
+}
+
 .image-player {
   overflow: hidden;
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
+  width: 140px;
+  height: 140px;
   border: 2px solid rgb(183, 180, 180);
+  /* border: 1px solid white; */
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 .post-head {
@@ -41,7 +56,6 @@
 
 .bold__text {
   font-family: "Century Gothic Bold" !important;
-  font-weight: 600;
 }
 
 /* end player */
@@ -95,11 +109,11 @@
 .label_2,
 .label_3 {
   background-color: rgb(16, 14, 14);
-  padding: 5px 4px;
+  /* padding: 5px 4px; */
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .chart1 {
@@ -146,7 +160,7 @@
 
 .club-logo {
   width: 20px;
-  height: 20px;
+  /* height: 20px; */
   border-radius: 50%;
   overflow: hidden;
   display: flex;
@@ -331,8 +345,14 @@
     padding: 20px;
   }
 
+  ._club div {
+    font-weight: bold;
+    font-family: "Century Gothic Bold";
+  }
+
   ._club {
     padding: 10px 0;
+
   }
 
   .label_0,

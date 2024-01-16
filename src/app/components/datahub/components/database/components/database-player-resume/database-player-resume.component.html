@@ -1,107 +1,142 @@
 <div class="row p-0 m-0 col-12 w-100 mb-4">
   <!-- Resume-generele -->
   <div class="___block row mx-0 col-12 col-md-12 mb-4 d-flex justify-content-center align-items-start">
-    <div class="col-12 col-md-4 p-0 justify-content-center align-items-center">
-      <!-- table -->
-      <table class="table">
-        <thead>
-          <tr>
-            <th >Metrics</th>
-            <th >Joueurs</th>
-            <th >Moy. Botola</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>XG</td>
-            <td>1</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>Tirs</td>
-            <td>4</td>
-            <td>57</td>
-          </tr>
-          <tr>
-            <td>XG/Tir</td>
-            <td>10</td>
-            <td>58</td>
-          </tr>
-          <tr>
-            <td>Touche Dans la surface</td>
-            <td>11</td>
-            <td>18</td>
-          </tr>
-          <tr>
-            <td>Dribbles</td>
-            <td>11</td>
-            <td>18</td>
-          </tr>
-          <tr>
-            <td>Dribbles Réussis</td>
-            <td>31</td>
-            <td>18</td>
-          </tr>
-          <tr>
-            <td>Passes Prog</td>
-            <td>31</td>
-            <td>18</td>
-          </tr>
-          <tr>
-            <td>Passes vers la surface</td>
-            <td>31</td>
-            <td>18</td>
-          </tr>
-          <tr>
-            <td>Passes</td>
-            <td>31</td>
-            <td>18</td>
-          </tr>
-          <tr>
-            <td>Actions Défensives G</td>
-            <td>3</td>
-            <td>18</td>
-          </tr>
-          <tr>
-            <td>Duels Aériens G</td>
-            <td>89</td>
-            <td>18</td>
-          </tr>
-          <tr>
-            <td>Interceptions</td>
-            <td>7</td>
-            <td>1</td>
-          </tr>
+    <div class="col-12 row m-0 p-0 col-md-12 justify-content-start align-items-start"
+      *ngIf="dataSource?.one?.recent_performance">
+      <div class="col-12 col-md-6">
+        <table class="table"
+          *ngIf="dataSource?.one?.recent_performance && dataSource?.one?.recent_performance.length > 0">
+          <thead>
+            <tr>
+              <th>Metrics</th>
+              <th>Joueur</th>
+              <th class="th__head">Moy. Poste</th>
+              <th class="th__head">Moy. Botola</th>
+            </tr>
+          </thead>
+          <tbody class="performance__">
+            <ng-container *ngFor="let data of dataSource?.one?.recent_performance">
+              <tr>
+                <td>{{ data?.label | titlecase }} </td>
+                <td [ngStyle]="{'color':  data?.player_color }">{{ data?.player_value }}</td>
+                <td [ngStyle]="{'color':  data?.league_color }">{{ data?.league_value }}</td>
+                <td [ngStyle]="{'color':  data?.position_color }">{{ data?.position_value }}</td>
+              </tr>
+              <tr *ngFor="let child of data?.children">
+                <td>
+                  <div class="ml-4 pl-2">{{ child?.label | titlecase }} </div>
+                </td>
+                <td [ngStyle]="{'color':  child?.player_color }">{{ child?.player_value }}</td>
+                <td [ngStyle]="{'color':  child?.league_color }">{{ child?.league_value }}</td>
+                <td [ngStyle]="{'color':  child?.position_color}">{{ child?.position_value }}</td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
 
-        </tbody>
-      </table>
-      <!-- end table -->
+      </div>
+      <div class=" p-0 col-12 col-md-6">
+        <div class="d-flex justify-content-end align-items-end">
+          <small class="par_90_min">Par 90 min</small>
+        </div>
+        <div id="radar-percentiles-pie" *ngIf="type_chart == 'pie' " style="width: 100%; height: 500px"></div>
+        <!-- <div id="radar-percentiles-bar" *ngIf="type_chart == 'bar' " style="width: 100%; height: 600px"></div> -->
+        <!-- <div class="mt-4
+        d-flex
+        justify-content-around
+        align-items-center
+        w-100
+        ">
+          <div *ngFor="let type of CHART_TYPES " class="
+          d-flex
+          justify-content-center
+          align-items-center
+          ">
+            <div class="color__circle mr-2" [ngStyle]="{'backgroundColor': type?.color}"></div>
+            <div>
+              {{
+              type?.label
+              }}
+            </div>
+          </div>
+        </div> -->
+      </div>
     </div>
-    <div class="col-12 row mx-0 col-md-8 justify-content-center align-items-center">
+    <div class="col-12 row m-0 p-0 col-md-12  justify-content-center align-items-center"
+      *ngIf="!dataSource?.one?.recent_performance">
+      <div class="no_data">
+        <h5>Aucune données n’est disponible </h5>
+      </div>
+    </div>
+    <div class="col-12 row mx-0 col-md-12 justify-content-center align-items-center">
+
+      <div class=" d-flex row chart-temps p-2 col-12 {{  class_chart }}  justify-content-center align-items-center">
+        <hr />
+        <div class="row col-12">
+          <div class="p-0 col-md-6 col-12 action__">
+            <div class="text_fontSize action___title ">Matchs joués</div>
+            <div class="action___title">
+              <ng-container>
+                {{
+                playerTiming?.titulaire + playerTiming?.no_titulaire
+                }}
+              </ng-container>
+            </div>
+          </div>
+          <div class="p-0 col-md-6 col-12 action__">
+            <div class="text_fontSize action___title ">Titulaires</div>
+            <div class="action___title">
+              <ng-container>
+                {{
+                playerTiming?.titulaire
+                }}
+              </ng-container>
+            </div>
+          </div>
+          <div class="p-0 col-md-6 col-12 action__">
+            <div class="text_fontSize action___title">Non Titulaires</div>
+            <div class="action___title">
+              <ng-container>
+                {{
+                playerTiming?.no_titulaire
+                }}
+              </ng-container>
+            </div>
+          </div>
+          <div class=" p-0 col-md-6 col-12 action__">
+            <div class="text_fontSize action___title">Temps de jeu moyen/match</div>
+            <div class="action___title">
+              <ng-container>
+                {{
+                (playerTiming?.count > 0 ? playerTiming?.minutes / playerTiming?.count : 0)
+                | number : "1.2-2"
+                }}
+              </ng-container>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="col-12">
+          <div id="chart-temps" style="width: 100%; height: 450px"></div>
+        </div>
+      </div>
       <!-- <select (ngModelChange)="actions('TYPE_CHART',$event)" class="mb-2" [(ngModel)]="type_chart" name="type_chart"
         class="radar-select form-select form-select-sm px-2 bold__text">
         <option selected value="pie">Radar Percentilles</option>
         <option value="bar">Bar</option>
       </select> -->
-      <div id="radar-percentiles-pie" *ngIf="type_chart == 'pie'" style="width: 100%;height: 450px;"></div>
-      <div id="radar-percentiles-bar" *ngIf="type_chart == 'bar'" style="width: 100%;height: 450px;"></div>
-      <div class="mt-2 d-flex justify-content-around align-items-center w-100">
-        <div *ngFor="let type of CHART_TYPES" class="d-flex justify-content-center align-items-center">
-          <div class="color__circle mr-2" [ngStyle]="{ backgroundColor: type?.color }"></div>
-          <div>
-            {{ type?.label }}
-          </div>
+
+      <div class=" mt-4 d-flex chart-temps p-2 col-12 col-md-4 row m-0 p-0 justify-content-center align-items-center">
+        <div class="d-flex duree__contrainer flex-column justify-content-center align-items-center">
+          <hr />
+          <div class="text__0 action___title ">Temps de Présence en Minutes aux Entraînements</div>
+          <div class="text__0 action___title mb-2"><i class="fas fa-history mr-2"></i>{{DUREE}} Min</div>
+          <hr />
+          <div class="text__0">Analyse de la Présence</div>
         </div>
+        <div id="chart-absence" style="width: 100%; height: 450px"></div>
       </div>
-      <!-- chart 2 et 3 -->
-      <div class="mt-2 col-12 row m-0 p-0 col-md-6 justify-content-center align-items-center">
-        <div class="chart-absence d-flex  p-2 col-12 col-md-12 justify-content-center align-items-center">
-          <div id="chart-absence" style="width: 100%; height: 350px" ></div>
-        </div>
-        <div class="chart-temps d-flex  p-2 col-12 col-md-12 justify-content-center align-items-center">
-          <div id="chart-temps" style="width: 100%; height: 350px"></div>
-        </div>
-      </div>
+
     </div>
   </div>
 
@@ -132,95 +167,93 @@
         Blessures
       </div>
     </div>
-      <div class="col-12 col-md-6 justify-content-center align-items-center">
-        <table id="MyqmdM">
-          <thead>
+    <div *ngIf="dataSource?.injuries && dataSource?.injuries.length > 0"
+      class="medicale row col-12 col-md-6 m-0 p-0 d-flex justify-content-center align-items-center">
+      <table id="MyqmdM">
+        <tbody>
+          <ng-container *ngFor="let injury of dataSource.injuries">
             <tr>
-              <th scope="col">Date</th>
-              <th scope="col">Type</th>
-              <th scope="col">Localisation</th>
-              <!-- <th scope="col">Latéralite</th> -->
-              <th scope="col">Indisponibilité (jours)</th>
+              <th>Date</th>
+              <td>{{injury?.date_blessure}}</td>
             </tr>
-          </thead>
-          <tbody *ngIf="dataSource.injuries.length == 0">
             <tr>
-              <td colspan="4">Aucune données n’est disponible</td>
+              <th>Type</th>
+              <td>{{ injury?.type_blessure }}</td>
+            </tr>
+            <tr>
+              <th>Localisation</th>
+              <td>{{ injury?.localisation }}</td>
+            </tr>
+            <tr>
+              <th>Indisponibilité (jours):</th>
+              <td>{{ injury.date_retour_prevue+"
+                "+charedService.getDaysAbsence(+injury.durre_injury ||
+                +injury.date_retour_prevue)+( injury.date_retour_prevue && +injury.durre_injury != 30 &&
+                +injury.date_retour_prevue > 1 ? 's'
+                : '') }}</td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+      <!-- <table id="MyqmdM">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Type</th>
+            <th scope="col">Localisation</th>
+            <th scope="col">Indisponibilité (jours)</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="dataSource.injuries.length == 0">
+          <tr>
+            <td colspan="4">
+              Aucune données n’est disponible
+            </td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="dataSource.injuries.length > 0">
+          <tr *ngFor="let injury of dataSource.injuries" scope="row" data-label="Date">
+            <td data-label="Date">{{ injury?.date_blessure }}</td>
+            <td data-label="Type">{{ injury?.type_blessure }}</td>
+            <td data-label="Localisation">{{ injury?.localisation }}</td>
+            <td data-label="Indisponibilité (jours)">{{ injury.date_retour_prevue+"
+              "+charedService.getDaysAbsence(+injury.durre_injury ||
+              +injury.date_retour_prevue)+( injury.date_retour_prevue && +injury.durre_injury != 30 &&
+              +injury.date_retour_prevue > 1 ? 's'
+              : '') }}</td>
             </tr>
           </tbody>
-          <tbody *ngIf="dataSource.injuries.length > 0">
-            <tr *ngFor="let injury of dataSource.injuries" scope="row" data-label="Date">
-              <td data-label="Date">{{ injury?.date_blessure }}</td>
-              <td data-label="Type">{{ injury?.type_blessure }}</td>
-              <td data-label="Localisation">{{ injury?.localisation }}</td>
-              <!-- <td data-label="Latéralite">-----</td> -->
-              <td data-label="Indisponibilité (jours)">
-                {{
-                injury.date_retour_prevue +
-                "
-                " +
-                charedService.getDaysAbsence(
-                +injury.durre_injury || +injury.date_retour_prevue
-                ) +
-                (injury.date_retour_prevue &&
-                +injury.durre_injury != 30 &&
-                +injury.date_retour_prevue > 1
-                ? "s"
-                : "")
-                }}
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        </table> -->
+
+    </div>
+    <div class="row col-12 col-md-6 m-0 p-0 d-flex justify-content-center align-items-center"
+      *ngIf="dataSource?.injuries && dataSource?.injuries.length == 0">
+      <div>
+        Aucune données n’est disponible
       </div>
-      <div class="blessures col-12 col-md-6 justify-content-center align-items-center">
-          <div class="row p-4">
-            <div class="col-md-3">
-              <div class="rightSideInjuries">
-                <div *ngFor="let injuryType of rightSideInjuries | keyvalue" class="injuryCount">
-                  {{ injuryType.key }}
-                  <div class="injurySideCount">{{ injuryType.value }}</div>
-                </div>
-              </div>
+    </div>
+    <div class="row col-12 col-md-6 m-0 p-0 d-flex justify-content-center align-items-center">
+      <div class="d-flex align-items-center" [style]="{'justify-content':'space-evenly'}">
+        <div class="mannequinConatiner" style="background-image: url(/assets/images/mannequin.png)">
+          <ng-container *ngFor="let injuryType of injuriesType | keyvalue">
+            <div *ngIf="!MannequinBack.includes(injuryType.key.split(' ').join('_'))"
+              [ngClass]="injuryType.key.split(' ').join('_')" class="injuryNumber">
+              {{ injuryType.value }}
             </div>
-            <div class="col-md-6">
-              <div class="d-flex align-items-center" [style]="{'justify-content':'space-evenly'}">
-                <div class="mannequinConatiner" style="background-image: url(/assets/images/mannequin.png)">
-                  <ng-container *ngFor="let injuryType of injuriesType | keyvalue">
-                    <div *ngIf="!MannequinBack.includes(injuryType.key.split(' ').join('_'))"
-                      [ngClass]="injuryType.key.split(' ').join('_')" class="injuryNumber">
-                      {{ injuryType.value }}
-                    </div>
-                  </ng-container>
-    
-                </div>
-                <div class="mannequinConatiner" style="background-image: url(/assets/images/mannequin_back.png)">
-                  <ng-container *ngFor="let injuryType of injuriesType | keyvalue">
-                    <div *ngIf="MannequinBack.includes(injuryType.key.split(' ').join('_'))"
-                      [ngClass]="injuryType.key.split(' ').join('_')" class="injuryNumber">
-                      {{ injuryType.value }}
-                    </div>
-                  </ng-container>
-    
-                </div>
-              </div>
-    
+          </ng-container>
+
+        </div>
+        <div class="mannequinConatiner" style="background-image: url(/assets/images/mannequin_back.png)">
+          <ng-container *ngFor="let injuryType of injuriesType | keyvalue">
+            <div *ngIf="MannequinBack.includes(injuryType.key.split(' ').join('_'))"
+              [ngClass]="injuryType.key.split(' ').join('_')" class="injuryNumber">
+              {{ injuryType.value }}
             </div>
-            <div class="col-md-3">
-              <div class="leftSideInjuries">
-                <div *ngFor="let injuryType of leftSideInjuries | keyvalue" class="injuryCount">
-                  {{ injuryType.key }}
-                  <div class="injurySideCount">{{ injuryType.value }}</div>
-                </div>
-              </div>
-            </div>
-            <!-- <div class="col-md-12">
-              <canvas id="canvas" #canvas>{{
-                dataCharts["typeInjuryChart"]
-                }}</canvas>
-            </div> -->
-          </div>
+          </ng-container>
+
+        </div>
       </div>
-    <!-- End Resume-generele -->
+    </div>
   </div>
+  <!-- End Resume-generele -->
 </div>
