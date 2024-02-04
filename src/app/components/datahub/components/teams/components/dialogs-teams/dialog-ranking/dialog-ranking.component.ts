@@ -31,46 +31,47 @@ export class DialogRankingComponent implements OnInit {
       'TirsContre', 'TirsContreCadre', 'Fautes', 'CarteJoune',
       'CarteRouge', 'Possession'
     ];
-
     
-
-      this.headerDataGoals =this.data.data[0]['header'][0];
-      this.bodyDataGoals = this.data.data[1]['body'];
-   
-      this.headerDataXG = this.data.data[0]['header'][0];
-      this.bodyDataXG = this.data.data[1]['body'];
-
-
-      this.headerDataTirs = this.data.data[0]['header'][0];
-      this.bodyDataTirs = this.data.data[1]['body'];
-
-      this.headerDataTirCadre = this.data.data[0]['header'][0];
-      this.bodyDataTirCadre = this.data.data[1]['body'];
-
-      this.headerDataButsCon = this.data.data[0]['header'][0];
-      this.bodyDataButsCon = this.data.data[1]['body'];
-
-      this.headerDataXgAgain = this.data.data[0]['header'][0];
-      this.bodyDataXgAgain = this.data.data[1]['body'];
-
-      this.headerDataTirsContre = this.data.data[0]['header'][0];
-      this.bodyDataTirsContre = this.data.data[1]['body'];
-
-
-      this.headerDataTirsContreCadre = this.data.data[0]['header'][0];
-      this.bodyDataTirsContreCadre = this.data.data[1]['body'];
-
-      this.headerDataFautes = this.data.data[0]['header'][0];
-      this.bodyDataFautes = this.data.data[1]['body'];
-
-      this.headerDataCarteJoune = this.data.data[0]['header'][0];
-      this.bodyDataCarteJoune = this.data.data[1]['body'];
       
-      this.headerDataCarteRouge = this.data.data[0]['header'][0];
-      this.bodyDataCarteRouge = this.data.data[1]['body'];
+      
+      this.headerDataGoals = this.data.data[0]
+      this.bodyDataGoals = this.data.data
+   
+   
+      this.headerDataXG = this.data.data[0];
+      this.bodyDataXG =this.data.data;
 
-      this.headerDataPossession = this.data.data[0]['header'][0];
-      this.bodyDataPossession = this.data.data[1]['body'];
+
+      this.headerDataTirs = this.data.data[0];
+      this.bodyDataTirs =this.data.data;
+
+      this.headerDataTirCadre = this.data.data[0];
+      this.bodyDataTirCadre =this.data.data;
+
+      this.headerDataButsCon = this.data.data[0];
+      this.bodyDataButsCon =this.data.data;
+
+      this.headerDataXgAgain = this.data.data[0];
+      this.bodyDataXgAgain =this.data.data;
+
+      this.headerDataTirsContre = this.data.data[0];
+      this.bodyDataTirsContre =this.data.data;
+
+
+      this.headerDataTirsContreCadre = this.data.data[0];
+      this.bodyDataTirsContreCadre =this.data.data;
+
+      this.headerDataFautes = this.data.data[0];
+      this.bodyDataFautes =this.data.data;
+
+      this.headerDataCarteJoune = this.data.data[0];
+      this.bodyDataCarteJoune =this.data.data;
+      
+      this.headerDataCarteRouge = this.data.data[0];
+      this.bodyDataCarteRouge =this.data.data;
+
+      this.headerDataPossession = this.data.data[0];
+      this.bodyDataPossession =this.data.data;
   }
 
 

@@ -16,17 +16,27 @@
   justify-content: space-around;
 }
 .table-content2{
-  height: 332px ; 
+  height: 400px ; 
   border-radius: 20px;
   margin-bottom: 40px;
   background-color:  #00242b;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
   font-family: "Century Gothic";
+  margin-left: 2px;
+  margin-top: 10px;
 }
 .text_bold{
   font-family: "Century Gothic Bold";
 }
 
+.text-white{
+  color: #fff !important;
+}
+.center-caption {
+ font-size: large;
+  text-align: center;
+  font-family: "Century Gothic Bold";
+}
 .th-flex {
   display: flex;
 }
@@ -36,33 +46,18 @@
   
 }
 #table2  tbody ,thead{
-  color: #fcfdfe;
+  color: #fff;
 }
 
 #table2 th, td{
   padding: 8px 1px;
   font-family: "Century Gothic";
 }
- .title_goals{
-  color: #fff;
-}
-.title_sub_goals{
-  margin-top: 5px;
-  margin-bottom: 15px;
-  /* padding: 0px 10px; */
-}
 .title_header{
   padding: 0px 10px;
 }
-.goals-header{
-  padding: 0px 8px;
-  margin-left: 4px;
- 
-}
-.demo-goals{
-  padding: 4px 19px;
-  color: #fff;
-}
+
+
 .img_header{
   width: 45px;
   height: 45px;
@@ -161,7 +156,7 @@
     width: 38px;
     margin-right: 20px;
   }
- 
+ /* Media Queries  */
   @media screen and (max-width: 768px) {
     .overviewContainer{
       padding-right: 0px;
@@ -247,5 +242,184 @@
     .table-content2{
       height: 370px;
     }
+
+}
+
+
+/* Media Queries  */
+@media screen and (max-width: 990px) {
+  .overviewContainer{
+    padding-right: 0px;
+    padding-left: 0px;
+    line-height: 1 !important;
+  }
+  .table-classement, .team-ranking{
+  margin: 4px;
+  margin-left: 70px;
+  padding: 12px 22px;
+  display: flex;
+  justify-content: space-around;
+  }
+  #table1 .hide-on-mobile {
+    display: none !important;
+  }
+
+   #table1 th{
+    font-size: small !important;
+    border-bottom: 1px solid #dee2e6;
+    border-top: 0px solid #dee2e6;
+   }
+   #table1 td{
+    padding: 0px !important;
+    font-size: small !important;
+    vertical-align: middle !important;
+   }
+   #table1 .mat-sort-header-arrow {
+    margin: 0px;
+    padding: 0px;
+    display: none;
+    width: 0px !important;
+    min-width: none !important;
+   }
+  #table1 .mat-sort-header-container {
+    display: none;
+    margin: 0px;
+    padding: 0px;
+  }
+   #table1 .mat-sort-header {
+    padding: 8px 0px !important;
+   }
+  #table1 .mat-sort-header-arrow{
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    width: 3px !important;
+    min-width: 3px !important;
+  }
+  .table-content  {
+      border-collapse: collapse;
+      border-radius: 20px;
+      overflow: hidden;
+  }
+  .mat-table {
+    width: 100%; 
+    border-collapse: collapse;
+  }
+  .mat-header-cell,.mat-cell {
+    padding: 8px; 
+  }
+  .d-flex, .demo-table {
+    display: block !important; 
+  }
+  .btn-header{
+    width: 300px !important;
+    height: 30px !important;
+    margin-left: 41px !important;
+  }
+  .content{
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+  .equipe__logo {
+    width: 26px !important;
+    margin: 0 20px !important;
+  } 
+
+  .demo-table{
+     margin-right: 5px !important;
+     margin-left: 5px !important;
+  } 
+  .table-content2{
+    height: 370px;
+  }
+
+}
+
+/* Media Queries  */
+@media screen and (max-width: 520px) {
+  .overviewContainer{
+    padding-right: 0px;
+    padding-left: 0px;
+    line-height: 1 !important;
+  }
+  .table-classement, .team-ranking{
+  margin: 4px;
+  margin-left: 70px;
+  padding: 12px 22px;
+  display: flex;
+  justify-content: space-around;
+  }
+  #table1 .hide-on-mobile {
+    display: none !important;
+  }
+
+   #table1 th{
+    font-size: small !important;
+    border-bottom: 1px solid #dee2e6;
+    border-top: 0px solid #dee2e6;
+   }
+   #table1 td{
+    padding: 0px !important;
+    font-size: small !important;
+    vertical-align: middle !important;
+   }
+   #table1 .mat-sort-header-arrow {
+    margin: 0px;
+    padding: 0px;
+    display: none;
+    width: 0px !important;
+    min-width: none !important;
+   }
+  #table1 .mat-sort-header-container {
+    display: none;
+    margin: 0px;
+    padding: 0px;
+  }
+   #table1 .mat-sort-header {
+    padding: 8px 0px !important;
+   }
+  #table1 .mat-sort-header-arrow{
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    width: 3px !important;
+    min-width: 3px !important;
+  }
+  .table-content  {
+      border-collapse: collapse;
+      border-radius: 20px;
+      overflow: hidden;
+  }
+  .mat-table {
+    width: 100%; 
+    border-collapse: collapse;
+  }
+  .mat-header-cell,.mat-cell {
+    padding: 8px; 
+  }
+  .d-flex, .demo-table {
+    display: block !important; 
+  }
+  .btn-header{
+    width: 300px !important;
+    height: 30px !important;
+    margin-left: 41px !important;
+  }
+  .content{
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+  .equipe__logo {
+    width: 26px !important;
+    margin: 0 20px !important;
+  } 
+
+  .demo-table{
+     margin-right: 5px !important;
+     margin-left: 5px !important;
+  } 
+  .table-content2{
+    height: 370px;
+  }
 
 }

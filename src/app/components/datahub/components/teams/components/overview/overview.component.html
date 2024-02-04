@@ -60,458 +60,362 @@
     <div *ngIf="showTable === 'table2'">
      <div class="row justify-content-around align-content-center">
       <!-- 1 Goals -->
-      <div class="table-content2 col-12 col-md-3 ml-2 justify-content-center align-content-center">
-        <table class="table " id="table2">
-          <thead>
-            <tr >
-              <th colspan="3" class="title_goals">
-                <span class="goals-header text_bold">Goals</span>
-                <div class="title_sub_goals">{{headerDataGoals['teamName']}}</div>
-              </th>
-              <th scope="col" class="title_header">
-                <div class="demo-goals">{{headerDataGoals?.Total_Goals}}</div>
-                <img class="img_header" [src]="headerDataGoals?.TeamLogo" alt="">
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let team of bodyDataGoals">
-              <th scope="row" class="class_body"></th>
-              <td colspan="2">{{team['TeamSlug']}}</td>
-              <td>
-                <span class="mr-4 text_bold" >{{team.Total_Goals}}</span>
-                <span><img class="img_body ml-2" [src]="team?.TeamLogo" alt=""></span>
-              </td>
-            </tr>
-      
-          </tbody>
-          <tfoot>
-            <tr>
-                <td colspan="5"> 
-                  <div class="button-container">
-                  <button id="readMoreBtn" class="btn btn-light readMoreBtn" (click)="openDialogWithType('Goals')">Read More</button>
-                  </div>
-                </td>
+      <div class="table-content2 col-12 col-md-3 d-flex flex-column align-items-center">
+        <table class="table">
+          <caption style="caption-side:top" class="center-caption text-white">Goals</caption>
+            <thead>
+                <tr>
+                    <th scope="col">
+                        <img class="img_header text-white" [src]="headerDataGoals?.TeamLogo" alt="">
+                        {{headerDataGoals['TeamSlug']}}
+                    </th>
+                    <th scope="col" class="text-white">{{headerDataGoals?.Total_Goals}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let team of bodyDataGoals">
+                    <th scope="row" class="text-white">
+                        <img class="img_body ml-2" [src]="team?.TeamLogo" alt="">
+                        {{team['TeamSlug']}}
+                    </th>
+                    <td class="text-white">{{team.Total_Goals}}</td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="d-grid gap-2 mx-auto text-center ">
+                      <button class="btn btn-outline-warning" (click)="openDialogWithType('Goals')">Show More</button>
+                  </td>
               </tr>
-          </tfoot>
+            </tbody>
         </table>
       </div>
       <!-- 1 End Goals -->
       <!-- 2 XG -->
-      <div class="table-content2 col-12 col-md-3 ml-2 justify-content-center align-content-center">
-        <table class="table " id="table2">
-          <thead>
-            <tr>
-              <th colspan="3" class="title_goals">
-                <span class="goals-header text_bold">XG </span>
-                <div class="title_sub_goals">{{headerDataXg['teamName']}}</div>
-              </th>
-              <th scope="col" class="title_header">
-                <div class="demo-goals">{{headerDataXg?.value}}</div>
-                <img class="img_header" [src]="headerDataXg?.TeamLogo" alt="">
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let team of bodyDataXg">
-              <th scope="row" class="class_body">{{team['classment']}}</th>
-              <td colspan="2">{{team['teamName']}}</td>
-              <td>
-                <span class="text_bold" >{{team.value}}</span>
-                <span><img class="img_body ml-2" [src]="team?.TeamLogo" alt=""></span>
-              </td>
-            </tr>
-      
-          </tbody>
-          <tfoot>
-            <tr>
-                <td colspan="5"> 
-                  <div class="button-container">
-                  <button id="readMoreBtn" class="btn btn-light readMoreBtn" (click)="openDialogWithType('XG')">Read More</button>
-                  </div>
+      <div class="table-content2 col-12 col-md-3 d-flex flex-column align-items-center">
+        <table class="table">
+          <caption style="caption-side:top" class="center-caption text-white">XG</caption>
+            <thead>
+                <tr>
+                    <th scope="col">
+                        <img class="img_header text-white" [src]="headerDataXg?.TeamLogo" alt="">
+                        {{headerDataXg['TeamSlug']}}
+                    </th>
+                    <th scope="col" class="text-white">{{headerDataXg?.value}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let team of bodyDataXg">
+                    <th scope="row" class="text-white">
+                        <img class="img_body ml-2" [src]="team?.TeamLogo" alt="">
+                        {{team['TeamSlug']}}
+                    </th>
+                    <td class="text-white">{{team.value}}</td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="d-grid gap-2 mx-auto text-center ">
+                    <button class="btn btn-outline-warning" (click)="openDialogWithType('XG')">Show More</button>
                 </td>
               </tr>
-          </tfoot>
+            </tbody>
         </table>
       </div>
       <!-- 2 End XG -->
       <!-- 3 TIRS -->
-      <div class="table-content2 col-12 col-md-3 ml-2 justify-content-center align-content-center">
-        <table class="table " id="table2">
-          <thead>
-            <tr>
-              <th colspan="3" class="title_goals">
-                <span class="goals-header text_bold">TIRS </span>
-                <div class="title_sub_goals">{{headerDataTirs?.teamName}}</div>
-              </th>
-              <th scope="col" class="title_header">
-                <div class="demo-goals">{{headerDataTirs?.Total_Tirs}}</div>
-                <img class="img_header" [src]="headerDataTirs?.TeamLogo" alt="">
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let team of bodyDataTirs.slice(0, 4)">
-              <th scope="row" class="class_body">{{team['classment']}}</th>
-              <td colspan="2">{{team['teamName']}}</td>
-              <td>
-                <span class="text_bold" >{{team.Tirs}}</span>
-                <span><img class="img_body ml-2" [src]="team?.TeamLogo" alt=""></span>
-              </td>
-            </tr>
-      
-          </tbody>
-          <tfoot>
-            <tr>
-                <td colspan="5"> 
-                  <div class="button-container">
-                  <button id="readMoreBtn" class="btn btn-light readMoreBtn" (click)="openDialogWithType('XG')">Read More</button>
-                  </div>
+      <div class="table-content2 col-12 col-md-3 d-flex flex-column align-items-center">
+        <table class="table">
+          <caption style="caption-side:top" class="center-caption text-white">TIRS</caption>
+            <thead>
+                <tr>
+                    <th scope="col">
+                        <img class="img_header text-white" [src]="headerDataTirs?.TeamLogo" alt="">
+                        {{headerDataTirs['TeamSlug']}}
+                    </th>
+                    <th scope="col" class="text-white">{{headerDataTirs?.Total_Tirs}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let team of bodyDataTirs">
+                    <th scope="row" class="text-white">
+                        <img class="img_body ml-2" [src]="team?.TeamLogo" alt="">
+                        {{team['TeamSlug']}}
+                    </th>
+                    <td class="text-white">{{team.Total_Tirs}}</td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="d-grid gap-2 mx-auto text-center ">
+                    <button class="btn btn-outline-warning" (click)="openDialogWithType('Tirs')">Show More</button>
                 </td>
               </tr>
-          </tfoot>
+            </tbody>
         </table>
       </div>
       <!-- 3 End TIRS -->
       <!-- 4 Tirs cadrés -->
-      <div class="table-content2 col-12 col-md-3 ml-2 justify-content-center align-content-center">
-        <table class="table " id="table2">
-          <thead>
-            <tr>
-              <th colspan="3" class="title_goals">
-                <span class="goals-header text_bold">TIRS CADRES </span>
-                <div class="title_sub_goals">{{headerDataTirCadre['teamName']}}</div>
-              </th>
-              <th scope="col" class="title_header">
-                <div class="demo-goals">{{headerDataTirCadre?.Total_shotsOnTarget}}</div>
-                <img class="img_header" [src]="headerDataTirs?.TeamLogo" alt="">
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let team of bodyDataTirCadre">
-              <th scope="row" class="class_body">{{team['classment']}}</th>
-              <td colspan="2">{{team['teamName']}}</td>
-              <td>
-                <span class="text_bold" >{{team.Total_shotsOnTarget}}</span>
-                <span><img class="img_body ml-2" [src]="team?.TeamLogo" alt=""></span>
-              </td>
-            </tr>
-      
-          </tbody>
-          <tfoot>
-            <tr>
-                <td colspan="5"> 
-                  <div class="button-container">
-                  <button id="readMoreBtn" class="btn btn-light readMoreBtn" (click)="openDialogWithType('TirsCadres')">Read More</button>
-                  </div>
+      <div class="table-content2 col-12 col-md-3 d-flex flex-column align-items-center">
+        <table class="table">
+          <caption style="caption-side:top" class="center-caption text-white">Tirs Cadrés</caption>
+            <thead>
+                <tr>
+                    <th scope="col">
+                        <img class="img_header text-white" [src]="headerDataTirCadre?.TeamLogo" alt="">
+                        {{headerDataTirCadre['TeamSlug']}}
+                    </th>
+                    <th scope="col" class="text-white">{{headerDataTirCadre?.Total_shotsOnTarget}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let team of bodyDataTirCadre">
+                    <th scope="row" class="text-white">
+                        <img class="img_body ml-2" [src]="team?.TeamLogo" alt="">
+                        {{team['TeamSlug']}}
+                    </th>
+                    <td class="text-white">{{team.Total_shotsOnTarget}}</td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="d-grid gap-2 mx-auto text-center ">
+                    <button class="btn btn-outline-warning" (click)="openDialogWithType('TirsCadres')">Show More</button>
                 </td>
               </tr>
-          </tfoot>
+            </tbody>
         </table>
       </div>
       <!-- 4  End Tirs cadrés -->
       <!-- 5 Buts concédés -->
-      <div class="table-content2 col-12 col-md-3 ml-2 justify-content-center align-content-center">
-        <table class="table " id="table2">
-          <thead>
-            <tr>
-              <th colspan="3" class="title_goals">
-                <span class="goals-header text_bold">BUTS CONCEDES</span>
-                <div class="title_sub_goals">{{headerDataButsCon['teamName']}}</div>
-              </th>
-              <th scope="col" class="title_header">
-                <div class="demo-goals">{{headerDataButsCon?.Total_BC}}</div>
-                <img class="img_header" [src]="headerDataButsCon?.TeamLogo" alt="">
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let team of bodyDataButsCon">
-              <th scope="row" class="class_body">{{team['classment']}}</th>
-              <td colspan="2">{{team['teamName']}}</td>
-              <td>
-                <span class="text_bold" >{{team.Total_BC}}</span>
-                <span><img class="img_body ml-2" [src]="team?.TeamLogo" alt=""></span>
-              </td>
-            </tr>
-      
-          </tbody>
-          <tfoot>
-            <tr>
-                <td colspan="5"> 
-                  <div class="button-container">
-                  <button id="readMoreBtn" class="btn btn-light readMoreBtn" (click)="openDialogWithType('ButsConcedes')">Read More</button>
-                  </div>
+      <div class="table-content2 col-12 col-md-3 d-flex flex-column align-items-center">
+        <table class="table">
+          <caption style="caption-side:top" class="center-caption text-white">Buts Concédés</caption>
+            <thead>
+                <tr>
+                    <th scope="col">
+                        <img class="img_header text-white" [src]="headerDataButsCon?.TeamLogo" alt="">
+                        {{headerDataButsCon['TeamSlug']}}
+                    </th>
+                    <th scope="col" class="text-white">{{headerDataButsCon?.Total_BC}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let team of bodyDataButsCon">
+                    <th scope="row" class="text-white">
+                        <img class="img_body ml-2" [src]="team?.TeamLogo" alt="">
+                        {{team['TeamSlug']}}
+                    </th>
+                    <td class="text-white">{{team.Total_BC}}</td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="d-grid gap-2 mx-auto text-center ">
+                    <button class="btn btn-outline-warning" (click)="openDialogWithType('ButsConcedes')">Show More</button>
                 </td>
               </tr>
-          </tfoot>
+            </tbody>
         </table>
       </div>
       <!-- 5 End Buts concédés -->
       <!-- 6 XG_against -->
-      <!-- <div class="table-content2 col-12 col-md-3 ml-2 justify-content-center align-content-center">
-        <table class="table " id="table2">
-          <thead>
-            <tr>
-              <th colspan="3" class="title_goals">
-                <span class="goals-header text_bold">XG AGAINST </span>
-                <div class="title_sub_goals">{{headerDataXgAgain['teamName']}}</div>
-              </th>
-              <th scope="col" class="title_header">
-                <div class="demo-goals">{{headerDataXgAgain?.Total_shotsAgainst}}</div>
-                <img class="img_header" [src]="headerDataXgAgain?.TeamLogo" alt="">
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let team of bodyDataXgAgain">
-              <th scope="row" class="class_body">{{team['classment']}}</th>
-              <td colspan="2">{{team['teamName']}}</td>
-              <td>
-                <span class="text_bold" >{{team.Total_shotsAgainst}}</span>
-                <span><img class="img_body ml-2" [src]="team?.TeamLogo" alt=""></span>
-              </td>
-            </tr>
-      
-          </tbody>
-          <tfoot>
-            <tr>
-                <td colspan="5"> 
-                  <div class="button-container">
-                  <button id="readMoreBtn" class="btn btn-light readMoreBtn" (click)="openDialogWithType('XG_Again')">Read More</button>
-                  </div>
+      <div class="table-content2 col-12 col-md-3 d-flex flex-column align-items-center">
+        <table class="table">
+          <caption style="caption-side:top" class="center-caption text-white">XG Against</caption>
+            <thead>
+                <tr>
+                    <th scope="col">
+                        <img class="img_header text-white" [src]="headerDataXgAgain?.TeamLogo" alt="">
+                        {{headerDataXgAgain['TeamSlug']}}
+                    </th>
+                    <th scope="col" class="text-white">{{headerDataXgAgain?.Total_BC}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let team of bodyDataXgAgain">
+                    <th scope="row" class="text-white">
+                        <img class="img_body ml-2" [src]="team?.TeamLogo" alt="">
+                        {{team['TeamSlug']}}
+                    </th>
+                    <td class="text-white">{{team.Total_shotsAgainst}}</td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="d-grid gap-2 mx-auto text-center ">
+                    <button class="btn btn-outline-warning" (click)="openDialogWithType('XG_Again')">Show More</button>
                 </td>
               </tr>
-          </tfoot>
+            </tbody>
         </table>
-      </div> -->
+      </div>
       <!-- 6 End XG_against -->
       <!-- 7 Tirs contre --> 
-      <div class="table-content2 col-12 col-md-3 ml-2 justify-content-center align-content-center">
-        <table class="table " id="table2">
-          <thead>
-            <tr>
-              <th colspan="3" class="title_goals">
-                <span class="goals-header text_bold">Tire Contre </span>
-                <div class="title_sub_goals">{{headerDataTirsContre['teamName']}}</div>
-              </th>
-              <th scope="col" class="title_header">
-                <div class="demo-goals">{{headerDataTirsContre?.Total_shotsAgainst}}</div>
-                <img class="img_header" [src]="headerDataTirsContre?.TeamLogo" alt="">
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let team of bodyDataTirsContre">
-              <th scope="row" class="class_body">{{team['classment']}}</th>
-              <td colspan="2">{{team['teamName']}}</td>
-              <td>
-                <span class="text_bold" >{{team.Total_shotsAgainst}}</span>
-                <span><img class="img_body ml-2" [src]="team?.TeamLogo" alt=""></span>
-              </td>
-            </tr>
-      
-          </tbody>
-          <tfoot>
-            <tr>
-                <td colspan="5"> 
-                  <div class="button-container">
-                  <button id="readMoreBtn" class="btn btn-light readMoreBtn" (click)="openDialogWithType('TirsContre')">Read More</button>
-                  </div>
+      <div class="table-content2 col-12 col-md-3 d-flex flex-column align-items-center">
+        <table class="table">
+          <caption style="caption-side:top" class="center-caption text-white">Tirs Contre </caption>
+            <thead>
+                <tr>
+                    <th scope="col">
+                        <img class="img_header text-white" [src]="headerDataTirsContre?.TeamLogo" alt="">
+                        {{headerDataTirsContre['TeamSlug']}}
+                    </th>
+                    <th scope="col" class="text-white">{{headerDataTirsContre?.Total_shotsAgainst}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let team of bodyDataTirsContre">
+                    <th scope="row" class="text-white">
+                        <img class="img_body ml-2" [src]="team?.TeamLogo" alt="">
+                        {{team['TeamSlug']}}
+                    </th>
+                    <td class="text-white">{{team.Total_shotsAgainst}}</td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="d-grid gap-2 mx-auto text-center ">
+                    <button class="btn btn-outline-warning" (click)="openDialogWithType('TirsContre')">Show More</button>
                 </td>
               </tr>
-          </tfoot>
+            </tbody>
         </table>
       </div>
       <!-- 7 End Tirs contre  -->
       <!-- 8 Tirs Contre Cadre -->
-      <div class="table-content2 col-12 col-md-3 ml-2 justify-content-center align-content-center">
-        <table class="table " id="table2">
-          <thead>
-            <tr>
-              <th colspan="3" class="title_goals">
-                <span class="goals-header text_bold">TIRE CONTRE CADRE </span>
-                <div class="title_sub_goals">{{headerDataTirsContreCadre['teamName']}}</div>
-              </th>
-              <th scope="col" class="title_header">
-                <div class="demo-goals">{{headerDataTirsContreCadre?.Total_shotsOTAgainst}}</div>
-                <img class="img_header" [src]="headerDataTirsContreCadre?.TeamLogo" alt="">
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let team of bodyDataTirsContreCadre">
-              <th scope="row" class="class_body">{{team['classment']}}</th>
-              <td colspan="2">{{team['teamName']}}</td>
-              <td>
-                <span class="text_bold" >{{team.Total_shotsOTAgainst}}</span>
-                <span><img class="img_body ml-2" [src]="team?.TeamLogo" alt=""></span>
-              </td>
-            </tr>
-      
-          </tbody>
-          <tfoot>
-            <tr>
-                <td colspan="5"> 
-                  <div class="button-container">
-                  <button id="readMoreBtn" class="btn btn-light readMoreBtn" (click)="openDialogWithType('TirsContreCadre')">Read More</button>
-                  </div>
+      <div class="table-content2 col-12 col-md-3 d-flex flex-column align-items-center">
+        <table class="table">
+          <caption style="caption-side:top" class="center-caption text-white">TIRE CONTRE CADRE</caption>
+            <thead>
+                <tr>
+                    <th scope="col">
+                        <img class="img_header text-white" [src]="headerDataTirsContreCadre?.TeamLogo" alt="">
+                        {{headerDataTirsContreCadre['TeamSlug']}}
+                    </th>
+                    <th scope="col" class="text-white">{{headerDataTirsContreCadre?.Total_shotsOTAgainst}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let team of bodyDataTirsContreCadre">
+                    <th scope="row" class="text-white">
+                        <img class="img_body ml-2" [src]="team?.TeamLogo" alt="">
+                        {{team['TeamSlug']}}
+                    </th>
+                    <td class="text-white">{{team.Total_shotsOTAgainst}}</td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="d-grid gap-2 mx-auto text-center ">
+                    <button class="btn btn-outline-warning" (click)="openDialogWithType('TirsContreCadre')">Show More</button>
                 </td>
               </tr>
-          </tfoot>
+            </tbody>
         </table>
       </div>
       <!-- 8 End Tirs Contre Cadre -->
       <!-- 9 Fautes -->
-       <div class="table-content2 col-12 col-md-3 ml-2 justify-content-center align-content-center">
-        <table class="table " id="table2">
-          <thead>
-            <tr>
-              <th colspan="3" class="title_goals">
-                <span class="goals-header text_bold">FAUTES </span>
-                <div class="title_sub_goals">{{headerDataFautes['teamName']}}</div>
-              </th>
-              <th scope="col" class="title_header">
-                <div class="demo-goals">{{headerDataFautes?.Total_fouls}}</div>
-                <img class="img_header" [src]="headerDataFautes?.TeamLogo" alt="">
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let team of bodyDataFautes">
-              <th scope="row" class="class_body">{{team['classment']}}</th>
-              <td colspan="2">{{team['teamName']}}</td>
-              <td>
-                <span class="text_bold" >{{team.Total_fouls}}</span>
-                <span><img class="img_body ml-2" [src]="team?.TeamLogo" alt=""></span>
-              </td>
-            </tr>
-      
-          </tbody>
-          <tfoot>
-            <tr>
-                <td colspan="5"> 
-                  <div class="button-container">
-                  <button id="readMoreBtn" class="btn btn-light readMoreBtn" (click)="openDialogWithType('Fautes')">Read More</button>
-                  </div>
+      <div class="table-content2 col-12 col-md-3 d-flex flex-column align-items-center">
+        <table class="table">
+          <caption style="caption-side:top" class="center-caption text-white">Fautes</caption>
+            <thead>
+                <tr>
+                    <th scope="col">
+                        <img class="img_header text-white" [src]="headerDataFautes?.TeamLogo" alt="">
+                        {{headerDataFautes['TeamSlug']}}
+                    </th>
+                    <th scope="col" class="text-white">{{headerDataFautes?.Total_fouls}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let team of bodyDataFautes">
+                    <th scope="row" class="text-white">
+                        <img class="img_body ml-2" [src]="team?.TeamLogo" alt="">
+                        {{team['TeamSlug']}}
+                    </th>
+                    <td class="text-white">{{team.Total_fouls}}</td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="d-grid gap-2 mx-auto text-center ">
+                    <button class="btn btn-outline-warning" (click)="openDialogWithType('Fautes')">Show More</button>
                 </td>
               </tr>
-          </tfoot>
+            </tbody>
         </table>
       </div>
       <!-- 9 End Fautes -->
       <!-- 10 Cartons_Jaunes -->
-      <div class="table-content2 col-12 col-md-3 ml-2 justify-content-center align-content-center">
-        <table class="table " id="table2">
-          <thead>
-            <tr>
-              <th colspan="3" class="title_goals">
-                <span class="goals-header text_bold">CARTES JOUNES </span>
-                <div class="title_sub_goals">{{headerDataCarteJoune['teamName']}}</div>
-              </th>
-              <th scope="col" class="title_header">
-                <div class="demo-goals">{{headerDataCarteJoune?.Total_yellowCards}}</div>
-                <img class="img_header" [src]="headerDataCarteJoune?.TeamLogo" alt="">
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let team of bodyDataCarteJoune">
-              <th scope="row" class="class_body">{{team['classment']}}</th>
-              <td colspan="2">{{team['teamName']}}</td>
-              <td>
-                <span class="text_bold" >{{team.Total_yellowCards}}</span>
-                <span><img class="img_body ml-2" [src]="team?.TeamLogo" alt=""></span>
-              </td>
-            </tr>
-      
-          </tbody>
-          <tfoot>
-            <tr>
-                <td colspan="5"> 
-                  <div class="button-container">
-                  <button id="readMoreBtn" class="btn btn-light readMoreBtn" (click)="openDialogWithType('CartonsJounes')">Read More</button>
-                  </div>
+      <div class="table-content2 col-12 col-md-3 d-flex flex-column align-items-center">
+        <table class="table">
+          <caption style="caption-side:top" class="center-caption text-white">Cartons Jaunes</caption>
+            <thead>
+                <tr>
+                    <th scope="col">
+                        <img class="img_header text-white" [src]="headerDataCarteJoune?.TeamLogo" alt="">
+                        {{headerDataCarteJoune['TeamSlug']}}
+                    </th>
+                    <th scope="col" class="text-white">{{headerDataCarteJoune?.Total_yellowCards}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let team of bodyDataCarteJoune">
+                    <th scope="row" class="text-white">
+                        <img class="img_body ml-2" [src]="team?.TeamLogo" alt="">
+                        {{team['TeamSlug']}}
+                    </th>
+                    <td class="text-white">{{team.Total_yellowCards}}</td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="d-grid gap-2 mx-auto text-center ">
+                    <button class="btn btn-outline-warning" (click)="openDialogWithType('CartonsJounes')">Show More</button>
                 </td>
               </tr>
-          </tfoot>
+            </tbody>
         </table>
       </div>
       <!-- 10 End  Cartons_Jaunes -->
       <!-- 11 Cartons_Rouge -->
-      <div class="table-content2 col-12 col-md-3 ml-2 justify-content-center align-content-center">
-        <table class="table " id="table2">
-          <thead>
-            <tr>
-              <th colspan="3" class="title_goals">
-                <span class="goals-header text_bold">CARTES ROUGES </span>
-                <div class="title_sub_goals">{{headerDataCarteRouge['teamName']}}</div>
-              </th>
-              <th scope="col" class="title_header">
-                <div class="demo-goals">{{headerDataCarteRouge?.Total_redCards}}</div>
-                <img class="img_header" [src]="headerDataCarteRouge?.TeamLogo" alt="">
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let team of bodyDataCarteRouge.slice(0, 4)">
-              <th scope="row" class="class_body">{{team['classment']}}</th>
-              <td colspan="2">{{team['teamName']}}</td>
-              <td>
-                <span class="text_bold" >{{team.Total_redCards}}</span>
-                <span><img class="img_body ml-2" [src]="team?.TeamLogo" alt=""></span>
-              </td>
-            </tr>
-      
-          </tbody>
-          <tfoot>
-            <tr>
-                <td colspan="5"> 
-                  <div class="button-container">
-                  <button id="readMoreBtn" class="btn btn-light readMoreBtn"  (click)="openDialogWithType('CartonsRouges')">Read More</button>
-                  </div>
+      <div class="table-content2 col-12 col-md-3 d-flex flex-column align-items-center">
+        <table class="table">
+          <caption style="caption-side:top" class="center-caption text-white">Cartons Rouge</caption>
+            <thead>
+                <tr>
+                    <th scope="col">
+                        <img class="img_header text-white" [src]="headerDataCarteRouge?.TeamLogo" alt="">
+                        {{headerDataCarteRouge['TeamSlug']}}
+                    </th>
+                    <th scope="col" class="text-white">{{headerDataCarteRouge?.Total_redCards}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let team of bodyDataCarteRouge">
+                    <th scope="row" class="text-white">
+                        <img class="img_body ml-2" [src]="team?.TeamLogo" alt="">
+                        {{team['TeamSlug']}}
+                    </th>
+                    <td class="text-white">{{team.Total_redCards}}</td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="d-grid gap-2 mx-auto text-center ">
+                    <button class="btn btn-outline-warning" (click)="openDialogWithType('CartonsRouges')">Show More</button>
                 </td>
               </tr>
-          </tfoot>
+            </tbody>
         </table>
       </div>
       <!-- 11 End  Cartons_Rouge -->
        <!-- 12 Possession-->
-       <div class="table-content2 col-12 col-md-3 ml-2 justify-content-center align-content-center">
-        <table class="table " id="table2">
-          <thead>
-            <tr>
-              <th colspan="3" class="title_goals">
-                <span class="goals-header text_bold">POSSESSION </span>
-                <div class="title_sub_goals">{{headerDataPossession['teamName']}}</div>
-              </th>
-              <th scope="col" class="title_header">
-                <div class="demo-goals">{{headerDataPossession?.Avg_Pos}}</div>
-                <img class="img_header" [src]="headerDataPossession?.TeamLogo" alt="">
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let team of bodyDataPossession">
-              <th scope="row" class="class_body">{{team['classment']}}</th>
-              <td colspan="2">{{team['teamName']}}</td>
-              <td>
-                <span class="text_bold" >{{team.Avg_Pos}}</span>
-                <span><img class="img_body ml-2" [src]="team?.TeamLogo" alt=""></span>
-              </td>
-            </tr>
-      
-          </tbody>
-          <tfoot>
-            <tr>
-                <td colspan="5"> 
-                  <div class="button-container">
-                  <button id="readMoreBtn" class="btn btn-light readMoreBtn" (click)="openDialogWithType('Possession')">Read More</button>
-                  </div>
+       <div class="table-content2 col-12 col-md-3 d-flex flex-column align-items-center">
+        <table class="table">
+          <caption style="caption-side:top" class="center-caption text-white">Cartons Rouge</caption>
+            <thead>
+                <tr>
+                    <th scope="col">
+                        <img class="img_header text-white" [src]="headerDataPossession?.TeamLogo" alt="">
+                        {{headerDataPossession['TeamSlug']}}
+                    </th>
+                    <th scope="col" class="text-white">{{headerDataPossession?.Avg_Pos}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let team of bodyDataPossession">
+                    <th scope="row" class="text-white">
+                        <img class="img_body ml-2" [src]="team?.TeamLogo" alt="">
+                        {{team['TeamSlug']}}
+                    </th>
+                    <td class="text-white">{{team.Avg_Pos}}</td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="d-grid gap-2 mx-auto text-center ">
+                    <button class="btn btn-outline-warning" (click)="openDialogWithType('Possession')">Show More</button>
                 </td>
               </tr>
-          </tfoot>
+            </tbody>
         </table>
       </div>
       <!-- 12 End Possession -->

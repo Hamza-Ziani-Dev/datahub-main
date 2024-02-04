@@ -5,61 +5,61 @@
     background-position: bottom;
 }
 
+.short__logo {
+    width: 10%;
+    transform: translateY(-20px);
+}
+
+.font-size-9 {
+    font-size: 1.7rem;
+}
+
+.overlayBackground>img {
+    opacity: 0.12;
+
+}
+
 .overlayBackground {
     width: 100%;
-    background: #000000;
-    position: absolute;
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    text-align: center;
-}
-
-.demo-image-container {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: top;
-    width: 100%;
     height: 100%;
-    position: relative;
-    text-align: center;
-    object-fit: cover;
-    object-position: top;
-    background-image: url('../../../../assets/images/myTeam_baground.png');
+    background: rgb(0, 0, 0);
+    position: absolute;
 }
 
-.login_image {
+.overlayBottomBar svg,
+.overlayTopBar svg {
+    width: 40%;
+}
+
+.overlayBottomBar {
     width: 100%;
-    height: 60%;
+    height: auto;
+    background: initial;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    right: 0;
 }
 
-.img1 {
+.overlayTopBar {
+    width: 100%;
+    height: auto;
+    background: initial;
     position: absolute;
     top: 0;
     left: 0;
-    width: 40%;
-    height: 30px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
-.img2 {
-    position: absolute;
-    left: 50%;
-    width: 25%;
-    top: 19%;
-    width: 29%;
-    transform: translate(-50%, -50%);
-}
-
-.img3 {
-    position: absolute;
-    width: 40%;
-    top: 95%;
-    left: 60%;
+.overlayBackground img {
+    object-fit: cover;
+    object-position: top;
+    width: 100%;
+    height: 100%;
 }
 
 .spinnerContainer {
@@ -84,12 +84,15 @@
 }
 
 .loginContainer {
-    height: 300px;
-    background: rgb(255 255 255 / 43%);
+    background: rgb(248 246 246 / 14%);
     border-radius: 11px;
-    padding: 35px;
+    padding: 50px;
     position: relative;
     border-bottom: 2px solid #ffffff;
+}
+
+.loginContainerbg {
+    background: linear-gradient(357deg, rgb(248 246 246 / 14%), var(--secondary-color))
 }
 
 label {
@@ -99,8 +102,8 @@ label {
 .block_login {
     position: absolute;
     left: 50%;
-    top: 53%;
-    width: 70%;
+    top: 50%;
+    width: 60%;
     transform: translate(-50%, -50%);
 }
 
@@ -108,14 +111,26 @@ label {
     color: #000;
 }
 
+.loginForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.input_transform {
+    transform: translateY(2px);
+}
+
 .loginButton {
-    margin-top: 20px;
-    margin-left: 26%;
+    width: 60%;
     background-color: var(--secondary-color);
-    font-size: 1.2rem;
+    padding: 8px 0;
+    font-size: 1.1rem;
     outline: none;
-    border: none;
-    padding: 6px 40px;
+    /* border: none; */
+    border-radius: 23Px;
+    background: #000
 }
 
 hr {
@@ -142,26 +157,18 @@ mat-label {
     align-items: center !important;
 }
 
+.see-psw {
+    transform: translateY(4px);
+}
+
 .footerText {
-    color: #FFF;
+    color: rgb(0, 0, 0);
     font-weight: bold;
-    width: 20%;
-    height: 26px;
-    position: absolute;
-    top:100%;
+    z-index: 99;
 }
 
-::ng-deep #login-form {
-    padding: 1px 3px;
-}
-
-::ng-deep #login-from .mat-form-field-appearance-outline .mat-form-field-wrapper {
-    margin: 0px;
-    padding-bottom: 0px !important;
-}
-
-::ng-deep #login-from .mat-form-field-flex {
-    padding: 5px 1em 0px 0.75em;
+.row-elements {
+    transform: translateY(-3px);
 }
 
 ::ng-deep #login-from .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick,
@@ -176,93 +183,180 @@ mat-label {
     border-radius: 5px;
 }
 
+::ng-deep #login-from .mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 0.4em 0 1em 0 !important;
+}
+
 .loginButton:hover {
-    background-color: #c29b6e;
+    background-color: var(--primary-color);
+}
+
+.loginButtonPro:hover {
+    background-color: var(--secondary-color);
 }
 
 .error__message {
     color: #d42525;
-    margin-top: 5px;
+    margin-top: 20px;
     font-weight: bold;
     text-align: center;
 }
 
-.img_drapo {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-}
 
-@media (max-width : 768px) {
-    .login_image {
-        width: 100%;
-        height: 50%;
+/* Media Query for screens smaller than 768 pixels (e.g., mobile devices) */
+@media only screen and (max-width: 767px) {
+    .loginContainer {
+        padding: 50px 20px;
     }
 
-    .img1 {
-        position: absolute;
-        top: 0px;
-        width: 100%;
-    }
-
-    .img2 {
-        top: 35%;
-        width: 50%;
-    }
-
-    .img3 {
-        position: relative;
-        top: 97%;
-        left: 0px;
-        width: 100%;
-        padding: 1px;
+    .short__logo {
+        width: 30%;
     }
 
     .block_login {
-        left: 50%;
-        top: 52%;
-        width: 70%;
+        width: 85%;
+    }
+
+    .overlayTopBar svg,
+    .overlayBottomBar svg {
+        width: 100%;
+    }
+
+    .overlayBottomBar svg {
+        margin-left: 0 !important;
+    }
+
+    .overlayBottomBar>div:nth-child(1) {
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
     .loginButton {
-        margin-top: 15px;
-        margin-left: 23.5%;
-        width: 55%;
+        border-radius: 7Px;
     }
 
-    .loginContainer {
-        height: 235px !important;
-        padding: 20px !important;
+    .overlayBottomBar .font-size-9 {
+        font-size: 1.2rem !important;
     }
 
-    .footerText {
-        margin-left: 71px;
-        padding: 10px;
+    .overlayBottomBar {
+        justify-content: center !important;
+        align-items: center !important;
+        flex-direction: column !important;
     }
+}
 
-    .mat-form-field-wrapper {
-        margin: 0px;
-        padding-bottom: 0.34375em !important;
+/* Media Query for screens between 768 and 1024 pixels (e.g., tablets) */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .action___title {
+        font-size: 1rem;
+        /* Adjust the font size for medium-sized screens */
     }
+}
 
-    .mat-form-field-infix {
-        border-top: 17px solid transparent;
-        padding: 3px;
-    }
+/* Media Query for screens larger than 1024 pixels (e.g., desktops) */
+@media only screen and (min-width: 1025px) {
+    /* You can add additional styles for larger screens if needed */
+}
 
-    ::ng-deep #login-from .mat-raised-button {
-        font-size: 14px;
-        line-height: 25px;
-        border-radius: 11px;
 
-    }
 
-    ::ng-deep #login-from .mat-form-field-flex {
-        padding: 5px;
-    }
 
-    ::ng-deep #login-from .mat-form-field-appearance-outline .mat-form-field-infix {
-        padding: 0px;
-    }
+.center {
+    display: table;
+    width: 100%;
+    height: 100vh;
+    z-index: 23;
+}
 
+#social-test {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 30px;
+}
+
+#social-test h2 {
+    color: #fff;
+    font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+    font-weight: 100;
+}
+
+#social-test .social {
+    padding-left: 0px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -7%);
+}
+
+.center {
+    text-align: center;
+}
+
+#social-test {
+    margin-top: 20px;
+}
+
+.social {
+    list-style: none;
+    padding: 0;
+}
+
+.social li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.social a {
+    text-decoration: none;
+    color: #333;
+    /* Set the default color for the icons */
+}
+
+/* You can customize the color of individual icons if needed */
+.social a i.fab.fa-facebook {
+    color: #0a5cc7;
+    /* Facebook blue */
+}
+
+.social a i.fab.fa-linkedin-in {
+    color: #0f5377;
+    /* LinkedIn blue */
+}
+
+.social a i.fab.fa-whatsapp {
+    color: #09903b;
+    /* WhatsApp green */
+}
+
+.social a i.fab.fa-youtube {
+    color: #8f0606;
+    /* YouTube red */
+}
+
+#social-test li {
+    color: var(--secondary-color);
+    list-style-type: none;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    padding: 1%;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    transition: ease 0.3s;
+}
+
+#social-test li:hover i {
+    color: var(--secondary-color) !important;
+}
+
+.social:hover>li {
+    opacity: 0.5;
+}
+
+.social:hover>li:hover {
+    opacity: 1;
 }

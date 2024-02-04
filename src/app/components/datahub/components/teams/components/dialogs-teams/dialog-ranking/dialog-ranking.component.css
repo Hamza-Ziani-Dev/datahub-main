@@ -1,5 +1,5 @@
 .table-content2{
-    height: 450px;
+    height: 460px;
     margin-right: 60px;
     border-radius: 20px;
     margin-bottom: 40px;
@@ -66,7 +66,7 @@
   
   .closeDialog{
     position: relative;
-    left: 248px;
+    left: 270px;
     top: -3%;
   }
 
